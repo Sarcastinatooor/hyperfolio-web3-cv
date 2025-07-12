@@ -201,18 +201,6 @@ const Portfolio = () => {
     "Web3 Analytics", "Project Management", "Strategic Planning", "Partnership Development"
   ];
 
-  const education = [
-    {
-      degree: "Master's in Business Administration",
-      institution: "Top Business School",
-      year: "2020-2022"
-    },
-    {
-      degree: "Bachelor's in Engineering",
-      institution: "Technical University",
-      year: "2016-2020"
-    }
-  ];
 
   return (
     <div className="min-h-screen bg-background">
@@ -363,31 +351,6 @@ const Portfolio = () => {
             </div>
           </div>
 
-          {/* Education Section */}
-          <div className="mb-8">
-            <div className="hl-table-header mb-0">
-              <div className="flex items-center gap-2">
-                <GraduationCap className="w-4 h-4" />
-                Education
-              </div>
-            </div>
-            <div className="hl-card">
-              {education.map((edu, index) => (
-                <div key={index} className="hl-table-cell border-b last:border-b-0">
-                  <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 items-center">
-                    <div className="lg:col-span-2">
-                      <h3 className="text-sm font-medium text-foreground mb-1">{edu.degree}</h3>
-                      <p className="text-xs hl-positive">{edu.institution}</p>
-                    </div>
-                    <div className="lg:col-span-1"></div>
-                    <div className="text-right">
-                      <span className="text-xs hl-metric text-muted-foreground">{edu.year}</span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
 
           {/* Footer */}
           <div className="hl-card text-center">
