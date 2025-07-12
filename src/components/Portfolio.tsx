@@ -143,6 +143,21 @@ const Portfolio = () => {
         { name: "Analytics", logo: "https://www.google.com/analytics/analytics/images/favicon.ico" },
         { name: "Telegram", logo: "https://web.telegram.org/favicon.ico" }
       ]
+    },
+    {
+      title: "Content Manager",
+      company: "CoinGape Crypto News",
+      period: "Jul 2021 - Aug 2021",
+      description: [
+        "Overtook the role of Content Manager/Business Developer to scale an established Crypto Media Publication.",
+        "Collaborated with a team of writers to produce high-quality Press Release, Sponsored Articles, Case Studies, Market Trend coverage, Token Analysis over a wide spectrum of crypto and blockchain developments.",
+        "Streamlined Business Development content creation to add constant revenue channels and improvised SEO strategy to grow organic reach through on-page & off-page optimisation."
+      ],
+      skills: ["Content Management", "Business Development", "SEO Strategy", "Press Releases", "Market Analysis", "Content Creation", "Team Collaboration"],
+      tools: [
+        { name: "Figma", logo: "https://www.figma.com/favicon.ico" },
+        { name: "HubSpot", logo: "https://www.hubspot.com/favicon.ico" }
+      ]
     }
   ];
 
