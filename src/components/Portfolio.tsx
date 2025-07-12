@@ -55,7 +55,14 @@ const Portfolio = () => {
       title: "Manager - Content & Communications",
       company: "Liminal Custody",
       period: "2023-2024",
-      description: "Leading end-to-end content strategy development and execution of long-format content like blog production, client and market research case studies, product-specific API documentation, sales required collaterals to close leads and social media content, all single-handedly. Aligned content distribution strategy with marketing, sales, and development teams for targeted communication understanding buyer personas, ICP behaviour and content consumption channels to curate relatable and note-worthy content. Collaborated with Strategy, Sales, and Product Marketing to extract customer insights for finding new avenues for lead generation and nurturing, drafting content pieces such as mailers, product specification one-pager and personalized reports to add more value in the process of closure. Contributed to brand-building, PR activities, and hyper-local expansion efforts based on the geographies targeted and clients acquired. Managed and directed an SEO agency to do keyword research, identify transactional and informational keywords to target, amplify current brand website DA & PA, create a Knowledge Center for organic traffic building, and set up SEM ad campaigns based on the targeted ad groups. Worked with a media buyer to optimize Google Ads campaigns, conducting A/B testing for landing page design and content framework and enhancing the overall CPC/CTR performance.",
+      description: [
+        "Leading end-to-end content strategy development and execution of long-format content like blog production, client and market research case studies, product-specific API documentation, sales required collaterals to close leads and social media content, all single-handedly",
+        "Aligned content distribution strategy with marketing, sales, and development teams for targeted communication understanding buyer personas, ICP behaviour and content consumption channels to curate relatable and note-worthy content",
+        "Collaborated with Strategy, Sales, and Product Marketing to extract customer insights for finding new avenues for lead generation and nurturing, drafting content pieces such as mailers, product specification one-pager and personalized reports to add more value in the process of closure",
+        "Contributed to brand-building, PR activities, and hyper-local expansion efforts based on the geographies targeted and clients acquired",
+        "Managed and directed an SEO agency to do keyword research, identify transactional and informational keywords to target, amplify current brand website DA & PA, create a Knowledge Center for organic traffic building, and set up SEM ad campaigns based on the targeted ad groups",
+        "Worked with a media buyer to optimize Google Ads campaigns, conducting A/B testing for landing page design and content framework and enhancing the overall CPC/CTR performance"
+      ],
       skills: ["Content Strategy", "SEO", "SEM", "Brand Building", "Lead Generation", "Marketing Analytics"]
     },
     {
@@ -164,7 +171,18 @@ const Portfolio = () => {
                       <p className="text-xs hl-positive">{exp.company}</p>
                     </div>
                     <div className="lg:col-span-2">
-                      <p className="text-xs text-muted-foreground mb-2">{exp.description}</p>
+                      {Array.isArray(exp.description) ? (
+                        <ul className="text-xs text-muted-foreground mb-2 space-y-1">
+                          {exp.description.map((point, pointIndex) => (
+                            <li key={pointIndex} className="flex items-start">
+                              <span className="mr-2 text-primary">•</span>
+                              <span>{point}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      ) : (
+                        <p className="text-xs text-muted-foreground mb-2">{exp.description}</p>
+                      )}
                       <div className="flex flex-wrap gap-1">
                         {exp.skills.map((skill, skillIndex) => (
                           <span key={skillIndex} className="text-xs bg-muted/30 text-muted-foreground px-2 py-1 rounded">
