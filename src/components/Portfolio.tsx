@@ -52,6 +52,13 @@ const Portfolio = () => {
 
   const experiences = [
     {
+      title: "Manager - Content & Communications",
+      company: "Liminal Custody",
+      period: "2023-2024",
+      description: "Leading end-to-end content strategy development and execution of long-format content like blog production, client and market research case studies, product-specific API documentation, sales required collaterals to close leads and social media content, all single-handedly. Aligned content distribution strategy with marketing, sales, and development teams for targeted communication understanding buyer personas, ICP behaviour and content consumption channels to curate relatable and note-worthy content. Collaborated with Strategy, Sales, and Product Marketing to extract customer insights for finding new avenues for lead generation and nurturing, drafting content pieces such as mailers, product specification one-pager and personalized reports to add more value in the process of closure. Contributed to brand-building, PR activities, and hyper-local expansion efforts based on the geographies targeted and clients acquired. Managed and directed an SEO agency to do keyword research, identify transactional and informational keywords to target, amplify current brand website DA & PA, create a Knowledge Center for organic traffic building, and set up SEM ad campaigns based on the targeted ad groups. Worked with a media buyer to optimize Google Ads campaigns, conducting A/B testing for landing page design and content framework and enhancing the overall CPC/CTR performance.",
+      skills: ["Content Strategy", "SEO", "SEM", "Brand Building", "Lead Generation", "Marketing Analytics"]
+    },
+    {
       title: "Blockchain Product Growth & Ecosystem Marketing",
       company: "Current Role",
       period: "Present",
