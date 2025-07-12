@@ -116,17 +116,21 @@ const Portfolio = () => {
                     {displayName}
                     <span className="animate-pulse">|</span>
                   </h1>
-                  <p className="text-lg lg:text-xl text-muted-foreground mb-3 hl-metric">
-                    Blockchain Product Growth & Ecosystem Marketing
+                  <p className="text-lg lg:text-xl text-muted-foreground mb-4 hl-metric">
+                    Vibe-led mindshare architect
                   </p>
-                  <div className="flex items-center gap-2 text-muted-foreground mb-4 text-sm">
-                    <MapPin className="w-3 h-3" />
-                    <span className="hl-metric">Dubai, UAE</span>
+                  
+                  <div className="text-sm text-foreground/80 max-w-3xl leading-relaxed space-y-3">
+                    <p className="hl-metric">
+                      👋🏼 Henlo,
+                    </p>
+                    <p>
+                      I have been in the trenches of Web3 world for about 7+ years now. I began my journey as an academic writer and since than have explored diverse roles as a content wizard, digital and growth marketing, business developemnt and what not. In these 7 years, I have experince worked in almsot all genre of Web3 from an L1 to DeFi Protocols, from an RWA project to a Custodian, from a Media Publication to Tier-1 Exchanges.
+                    </p>
+                    <p>
+                      I have tested waters in almsot all sort of conditions, worked from $10-$500k campaigns, ranked keywords like "Digital Assets" in Top-3, worked with the biggest KOLs in the industry, won Startup-World Cup Pitch competitions, led TVL growth of $50M upwards and bought $100M+ trading volumes.
+                    </p>
                   </div>
-                  <p className="text-sm text-foreground/70 max-w-2xl leading-relaxed">
-                    Web3 professional specializing in blockchain product growth, 
-                    ecosystem development, and strategic marketing.
-                  </p>
                 </div>
                 
                 <div className="flex flex-col gap-3">
