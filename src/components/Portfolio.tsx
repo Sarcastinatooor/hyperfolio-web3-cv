@@ -158,6 +158,20 @@ const Portfolio = () => {
         { name: "Figma", logo: "https://www.figma.com/favicon.ico" },
         { name: "HubSpot", logo: "https://www.hubspot.com/favicon.ico" }
       ]
+    },
+    {
+      title: "Freelance Content and Social Media Manager",
+      company: "F&K Solutions",
+      period: "Feb 2020 - Jul 2021",
+      description: [
+        "Got a distinct opportunity to work with multiple crypto & blockchain based projects & drew scalable social media map for real-world projects.",
+        "Took diverse roles from drafting whitepaper to website content, managing social media content strategy, and got prominent in brand building communications."
+      ],
+      skills: ["Content Strategy", "Social Media Management", "Whitepaper Writing", "Website Content", "Brand Building", "Blockchain Projects", "Crypto Marketing"],
+      tools: [
+        { name: "Notion", logo: "https://www.notion.so/favicon.ico" },
+        { name: "Twitter", logo: "https://abs.twimg.com/favicons/twitter.ico" }
+      ]
     }
   ];
 
