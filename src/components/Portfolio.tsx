@@ -7,7 +7,44 @@ import { useToast } from "@/hooks/use-toast";
 
 const Portfolio = () => {
   const [isGmClicked, setIsGmClicked] = useState(false);
+  const [displayName, setDisplayName] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [nameIndex, setNameIndex] = useState(0);
   const { toast } = useToast();
+
+  const names = ['Sheel Khandelwal', 'sarcastinator.crypto'];
+
+  useEffect(() => {
+    const currentName = names[nameIndex];
+    let timeout: NodeJS.Timeout;
+
+    if (!isDeleting) {
+      // Typing
+      if (displayName.length < currentName.length) {
+        timeout = setTimeout(() => {
+          setDisplayName(currentName.slice(0, displayName.length + 1));
+        }, 100);
+      } else {
+        // Pause before deleting
+        timeout = setTimeout(() => {
+          setIsDeleting(true);
+        }, 2000);
+      }
+    } else {
+      // Deleting
+      if (displayName.length > 0) {
+        timeout = setTimeout(() => {
+          setDisplayName(displayName.slice(0, -1));
+        }, 50);
+      } else {
+        // Switch to next name
+        setIsDeleting(false);
+        setNameIndex((prev) => (prev + 1) % names.length);
+      }
+    }
+
+    return () => clearTimeout(timeout);
+  }, [displayName, isDeleting, nameIndex, names]);
 
   const handleGmClick = () => {
     setIsGmClicked(true);
@@ -75,8 +112,9 @@ const Portfolio = () => {
             <div className="p-6">
               <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
                 <div className="flex-1">
-                  <h1 className="text-3xl lg:text-5xl font-bold text-foreground mb-3 hl-metric">
-                    Ritesh Khandelwal
+                  <h1 className="text-3xl lg:text-5xl font-bold text-foreground mb-3 hl-metric min-h-[1.2em]">
+                    {displayName}
+                    <span className="animate-pulse">|</span>
                   </h1>
                   <p className="text-lg lg:text-xl text-muted-foreground mb-3 hl-metric">
                     Blockchain Product Growth & Ecosystem Marketing
