@@ -61,7 +61,14 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				// DeFi themed colors
+				'neon-cyan': 'hsl(var(--neon-cyan))',
+				'neon-green': 'hsl(var(--neon-green))',
+				'neon-purple': 'hsl(var(--neon-purple))',
+				'neon-pink': 'hsl(var(--neon-pink))',
+				'dark-surface': 'hsl(var(--dark-surface))',
+				'grid-color': 'hsl(var(--grid-color))'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
