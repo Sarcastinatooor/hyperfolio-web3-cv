@@ -65,17 +65,17 @@ const Portfolio = () => {
       ],
       skills: ["Content Strategy", "SEO", "SEM", "Brand Building", "Lead Generation", "Marketing Analytics"],
       tools: [
-        { name: "Slack", logo: "💬" },
-        { name: "HubSpot", logo: "🧡" },
-        { name: "MailerLite", logo: "📧" },
-        { name: "Segment", logo: "📊" },
-        { name: "ClickUp", logo: "📝" },
-        { name: "Google Ads", logo: "🎯" },
-        { name: "Google Analytics", logo: "📈" },
-        { name: "Salesforce Sales Cloud", logo: "☁️" },
-        { name: "Salesforce Marketing Cloud", logo: "🌐" },
-        { name: "FreshMail", logo: "✉️" },
-        { name: "Freshchat", logo: "💬" }
+        { name: "Slack", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/slack/slack-original.svg" },
+        { name: "HubSpot", logo: "https://www.hubspot.com/favicon.ico" },
+        { name: "MailerLite", logo: "https://www.mailerlite.com/favicon.ico" },
+        { name: "Segment", logo: "https://segment.com/favicon.ico" },
+        { name: "ClickUp", logo: "https://clickup.com/favicon.ico" },
+        { name: "Google Ads", logo: "https://ssl.gstatic.com/google-ads/ui/logo/google-ads-logo.png" },
+        { name: "Google Analytics", logo: "https://www.google.com/analytics/static/imgs/favicon.ico" },
+        { name: "Salesforce Sales Cloud", logo: "https://c1.sfdcstatic.com/content/dam/web/en_us/www/assets/nav/salesforce-cloud-logo-blue.svg" },
+        { name: "Salesforce Marketing Cloud", logo: "https://c1.sfdcstatic.com/content/dam/web/en_us/www/assets/nav/salesforce-cloud-logo-blue.svg" },
+        { name: "FreshMail", logo: "https://www.freshmail.com/favicon.ico" },
+        { name: "Freshchat", logo: "https://www.freshworks.com/favicon.ico" }
       ]
     },
     {
@@ -197,15 +197,28 @@ const Portfolio = () => {
                         <p className="text-xs text-muted-foreground mb-2">{exp.description}</p>
                       )}
                       
-                      {/* Tools Section - Only for Liminal */}
+                      {/* Tools Section */}
                       {exp.tools && (
                         <div className="mt-3">
                           <p className="text-xs font-medium text-foreground mb-2">Tools & Technologies Used:</p>
                           <div className="grid grid-cols-3 lg:grid-cols-4 gap-2">
                             {exp.tools.map((tool, toolIndex) => (
-                              <div key={toolIndex} className="flex items-center gap-1 text-xs bg-muted/20 text-foreground px-2 py-1 rounded border border-border/30 hover:border-primary/30 transition-colors">
-                                <span className="text-sm">{tool.logo}</span>
-                                <span className="truncate">{tool.name}</span>
+                              <div key={toolIndex} className="flex items-center gap-2 text-xs bg-muted/20 text-foreground px-2 py-1.5 rounded border border-border/30 hover:border-primary/30 transition-colors group">
+                                <img 
+                                  src={tool.logo} 
+                                  alt={`${tool.name} logo`}
+                                  className="w-4 h-4 object-contain flex-shrink-0"
+                                  onError={(e) => {
+                                    const target = e.target as HTMLImageElement;
+                                    target.style.display = 'none';
+                                    const fallback = target.nextElementSibling as HTMLElement;
+                                    if (fallback) fallback.style.display = 'flex';
+                                  }}
+                                />
+                                <div className="w-4 h-4 bg-primary/10 rounded text-primary text-xs items-center justify-center flex-shrink-0 hidden">
+                                  {tool.name.charAt(0)}
+                                </div>
+                                <span className="truncate text-xs">{tool.name}</span>
                               </div>
                             ))}
                           </div>
