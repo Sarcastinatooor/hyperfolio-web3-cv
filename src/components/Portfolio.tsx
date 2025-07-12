@@ -190,20 +190,6 @@ const Portfolio = () => {
                             <span className="text-xs hl-metric text-muted-foreground">{exp.period}</span>
                           </div>
                           
-                          {/* Top Skills Preview */}
-                          <div className="flex flex-wrap gap-1 mb-2">
-                            {exp.skills.slice(0, 3).map((skill, skillIndex) => (
-                              <span key={skillIndex} className="text-xs bg-muted/30 text-muted-foreground px-2 py-1 rounded">
-                                {skill}
-                              </span>
-                            ))}
-                            {exp.skills.length > 3 && (
-                              <span className="text-xs text-muted-foreground px-2 py-1">
-                                +{exp.skills.length - 3} more
-                              </span>
-                            )}
-                          </div>
-                          
                           {/* Tools Preview */}
                           {exp.tools && (
                             <div className="flex items-center gap-2">
