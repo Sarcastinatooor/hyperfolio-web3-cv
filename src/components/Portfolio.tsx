@@ -427,9 +427,6 @@ const Portfolio = () => {
                       </div>
                       
                       <div className="mt-4 pt-4 border-t border-border/30">
-                        <p className="text-xs text-primary font-medium">
-                          Click to view full details →
-                        </p>
                       </div>
                     </CardContent>
                   </Card>
