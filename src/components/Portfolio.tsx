@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ExternalLink, MapPin, Mail, Calendar, Award, Briefcase, GraduationCap } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
@@ -250,102 +250,89 @@ const Portfolio = () => {
               </div>
             </div>
             <div className="hl-card">
-              <Accordion type="multiple" className="w-full">
+              <Tabs defaultValue="experience-0" className="w-full">
+                <TabsList className="grid w-full grid-cols-3 lg:grid-cols-7 mb-6 h-auto gap-1 bg-muted/30 p-1">
+                  {experiences.map((exp, index) => (
+                    <TabsTrigger 
+                      key={index} 
+                      value={`experience-${index}`}
+                      className="text-xs px-2 py-3 h-auto flex flex-col items-center gap-1 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm"
+                    >
+                      <span className="font-medium truncate max-w-full">{exp.company}</span>
+                      <span className="text-[10px] text-muted-foreground/70">{exp.period.split(' - ')[0]}</span>
+                    </TabsTrigger>
+                  ))}
+                </TabsList>
+                
                 {experiences.map((exp, index) => (
-                  <AccordionItem key={index} value={`experience-${index}`} className="border-b last:border-b-0">
-                    <AccordionTrigger className="hover:no-underline py-4 px-0">
-                      <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center w-full gap-4">
-                        {/* Overview Section - Always Visible */}
-                        <div className="flex-1 text-left">
-                          <div className="flex flex-col lg:flex-row lg:items-center gap-2 lg:gap-4 mb-2">
-                            <h3 className="text-sm font-medium text-foreground">{exp.title}</h3>
-                            <p className="text-xs hl-positive">{exp.company}</p>
-                            <span className="text-xs hl-metric text-muted-foreground">{exp.period}</span>
-                          </div>
-                          
-                          {/* Tools Preview */}
-                          {exp.tools && (
-                            <div className="flex items-center gap-2">
-                              <span className="text-xs text-muted-foreground">Tools:</span>
-                              <div className="flex gap-1">
-                                {exp.tools.slice(0, 6).map((tool, toolIndex) => (
-                                  <img 
-                                    key={toolIndex}
-                                    src={tool.logo} 
-                                    alt={`${tool.name} logo`}
-                                    className="w-4 h-4 object-contain opacity-70"
-                                    onError={(e) => {
-                                      const target = e.target as HTMLImageElement;
-                                      target.style.display = 'none';
-                                    }}
-                                  />
-                                ))}
-                                {exp.tools.length > 6 && (
-                                  <span className="text-xs text-muted-foreground ml-1">
-                                    +{exp.tools.length - 6}
-                                  </span>
-                                )}
-                              </div>
-                            </div>
-                          )}
+                  <TabsContent key={index} value={`experience-${index}`} className="mt-0">
+                    <div className="space-y-6">
+                      {/* Header */}
+                      <div className="border-b pb-4">
+                        <h3 className="text-lg font-semibold text-foreground mb-1">{exp.title}</h3>
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-2 text-sm">
+                          <span className="hl-positive font-medium">{exp.company}</span>
+                          <span className="hl-metric text-muted-foreground">{exp.period}</span>
                         </div>
                       </div>
-                    </AccordionTrigger>
-                    
-                    <AccordionContent className="pt-0 pb-4">
-                      {/* Detailed Description */}
-                      <div className="space-y-4">
+                      
+                      {/* Description */}
+                      <div>
+                        <h4 className="text-sm font-medium text-foreground mb-3">Responsibilities & Achievements</h4>
                         {Array.isArray(exp.description) ? (
-                          <div>
-                            <h4 className="text-sm font-medium text-foreground mb-2">Responsibilities & Achievements:</h4>
-                            <ul className="text-xs text-muted-foreground space-y-1.5">
-                              {exp.description.map((point, pointIndex) => (
-                                <li key={pointIndex} className="flex items-start">
-                                  <span className="mr-2 text-primary">•</span>
-                                  <span>{point}</span>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
+                          <ul className="text-sm text-muted-foreground space-y-2 list-disc list-inside">
+                            {exp.description.map((point, pointIndex) => (
+                              <li key={pointIndex} className="leading-relaxed">{point}</li>
+                            ))}
+                          </ul>
                         ) : (
+                          <p className="text-sm text-muted-foreground leading-relaxed">{exp.description}</p>
+                        )}
+                      </div>
+                      
+                      {/* Skills & Tools */}
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        {/* Skills */}
+                        {exp.skills && (
                           <div>
-                            <h4 className="text-sm font-medium text-foreground mb-2">Role Overview:</h4>
-                            <p className="text-xs text-muted-foreground">{exp.description}</p>
+                            <h4 className="text-sm font-medium text-foreground mb-3">Skills</h4>
+                            <div className="flex flex-wrap gap-2">
+                              {exp.skills.map((skill, skillIndex) => (
+                                <Badge key={skillIndex} variant="secondary" className="text-xs">
+                                  {skill}
+                                </Badge>
+                              ))}
+                            </div>
                           </div>
                         )}
                         
-                        {/* All Tools */}
+                        {/* Tools */}
                         {exp.tools && (
                           <div>
-                            <h4 className="text-sm font-medium text-foreground mb-2">Tools & Technologies Used:</h4>
-                            <div className="grid grid-cols-3 lg:grid-cols-4 gap-2">
+                            <h4 className="text-sm font-medium text-foreground mb-3">Tools & Platforms</h4>
+                            <div className="flex flex-wrap gap-2">
                               {exp.tools.map((tool, toolIndex) => (
-                                <div key={toolIndex} className="flex items-center gap-2 text-xs bg-muted/20 text-foreground px-2 py-1.5 rounded border border-border/30 hover:border-primary/30 transition-colors group">
+                                <div key={toolIndex} className="flex items-center gap-1.5 bg-muted/50 rounded-md px-3 py-1.5">
                                   <img 
                                     src={tool.logo} 
                                     alt={`${tool.name} logo`}
-                                    className="w-4 h-4 object-contain flex-shrink-0"
+                                    className="w-4 h-4 object-contain"
                                     onError={(e) => {
                                       const target = e.target as HTMLImageElement;
                                       target.style.display = 'none';
-                                      const fallback = target.nextElementSibling as HTMLElement;
-                                      if (fallback) fallback.style.display = 'flex';
                                     }}
                                   />
-                                  <div className="w-4 h-4 bg-primary/10 rounded text-primary text-xs items-center justify-center flex-shrink-0 hidden">
-                                    {tool.name.charAt(0)}
-                                  </div>
-                                  <span className="truncate text-xs">{tool.name}</span>
+                                  <span className="text-xs text-foreground">{tool.name}</span>
                                 </div>
                               ))}
                             </div>
                           </div>
                         )}
                       </div>
-                    </AccordionContent>
-                  </AccordionItem>
+                    </div>
+                  </TabsContent>
                 ))}
-              </Accordion>
+              </Tabs>
             </div>
           </div>
 
