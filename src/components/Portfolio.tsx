@@ -54,7 +54,7 @@ const Portfolio = () => {
     {
       title: "Manager - Content & Communications",
       company: "Liminal Custody",
-      period: "2023-2024",
+      period: "March 2023 - July 2024",
       description: [
         "Leading end-to-end content strategy development and execution of long-format content like blog production, client and market research case studies, product-specific API documentation, sales required collaterals to close leads and social media content, all single-handedly",
         "Aligned content distribution strategy with marketing, sales, and development teams for targeted communication understanding buyer personas, ICP behaviour and content consumption channels to curate relatable and note-worthy content",
@@ -63,7 +63,20 @@ const Portfolio = () => {
         "Managed and directed an SEO agency to do keyword research, identify transactional and informational keywords to target, amplify current brand website DA & PA, create a Knowledge Center for organic traffic building, and set up SEM ad campaigns based on the targeted ad groups",
         "Worked with a media buyer to optimize Google Ads campaigns, conducting A/B testing for landing page design and content framework and enhancing the overall CPC/CTR performance"
       ],
-      skills: ["Content Strategy", "SEO", "SEM", "Brand Building", "Lead Generation", "Marketing Analytics"]
+      skills: ["Content Strategy", "SEO", "SEM", "Brand Building", "Lead Generation", "Marketing Analytics"],
+      tools: [
+        { name: "Slack", logo: "💬" },
+        { name: "HubSpot", logo: "🧡" },
+        { name: "MailerLite", logo: "📧" },
+        { name: "Segment", logo: "📊" },
+        { name: "ClickUp", logo: "📝" },
+        { name: "Google Ads", logo: "🎯" },
+        { name: "Google Analytics", logo: "📈" },
+        { name: "Salesforce Sales Cloud", logo: "☁️" },
+        { name: "Salesforce Marketing Cloud", logo: "🌐" },
+        { name: "FreshMail", logo: "✉️" },
+        { name: "Freshchat", logo: "💬" }
+      ]
     },
     {
       title: "Blockchain Product Growth & Ecosystem Marketing",
@@ -183,7 +196,23 @@ const Portfolio = () => {
                       ) : (
                         <p className="text-xs text-muted-foreground mb-2">{exp.description}</p>
                       )}
-                      <div className="flex flex-wrap gap-1">
+                      
+                      {/* Tools Section - Only for Liminal */}
+                      {exp.tools && (
+                        <div className="mt-3">
+                          <p className="text-xs font-medium text-foreground mb-2">Tools & Technologies Used:</p>
+                          <div className="grid grid-cols-3 lg:grid-cols-4 gap-2">
+                            {exp.tools.map((tool, toolIndex) => (
+                              <div key={toolIndex} className="flex items-center gap-1 text-xs bg-muted/20 text-foreground px-2 py-1 rounded border border-border/30 hover:border-primary/30 transition-colors">
+                                <span className="text-sm">{tool.logo}</span>
+                                <span className="truncate">{tool.name}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                      
+                      <div className="flex flex-wrap gap-1 mt-2">
                         {exp.skills.map((skill, skillIndex) => (
                           <span key={skillIndex} className="text-xs bg-muted/30 text-muted-foreground px-2 py-1 rounded">
                             {skill}
