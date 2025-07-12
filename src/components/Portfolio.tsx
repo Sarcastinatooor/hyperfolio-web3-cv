@@ -53,6 +53,26 @@ const Portfolio = () => {
 
   const experiences = [
     {
+      title: "Growth Marketing Manager",
+      company: "BrahmaFi",
+      period: "Present",
+      description: [
+        "Leading all growth initiatives from collaborating with campaign and ecosystem specific KOLs to identifying and onboarding high-intent onchain users to test beta-phase products and push aligned narrative pieces tied to Brahma's brand and messaging.",
+        "Spearheading marquee campaigns in partnership with leading Web3 growth agencies (Hy.pe & Swell), including the Berachain launch and the Imprint NFT campaign tied to TGE reward allocations.",
+        "Collaborating cross-functionally with marketing and product teams to curate narrative-rich social content for X and DeBank, ensuring credible distribution through engagement with KOLs, ambassadors, community members, and Brahma Maxis.",
+        "Leading community operations with a 3-member team, owning the full lifecycle of Brahma's Discord: onboarding optimization, server structuring, user activations, support workflows, role-progression design, incentive mechanism development, and hosting community calls and AMAs in partnership with aligned protocols.",
+        "Working closely with the founding team to support BD efforts for new chain integrations, functionality rollouts, and incentive-based campaigns, including outreach and partner coordination for go-to-market execution.",
+        "Driven measurable growth across core KPIs — scaling TVL past $100M (peaking at $300M), and growing X and Discord engagement by over 600% and 650% respectively through strategic campaign loops and aligned narrative pushes."
+      ],
+      skills: ["Growth Marketing", "KOL Management", "Community Operations", "Campaign Management", "Cross-functional Collaboration", "Business Development", "Discord Management", "Content Strategy", "Onchain Analytics"],
+      tools: [
+        { name: "Discord", logo: "https://discord.com/assets/847541504914fd33810e70a0ea73177e.ico" },
+        { name: "Twitter", logo: "https://abs.twimg.com/favicons/twitter.2.ico" },
+        { name: "DeBank", logo: "https://debank.com/favicon.ico" },
+        { name: "Notion", logo: "https://www.notion.so/images/favicon.ico" }
+      ]
+    },
+    {
       title: "Manager - Content & Communications",
       company: "Liminal Custody",
       period: "March 2023 - July 2024",
