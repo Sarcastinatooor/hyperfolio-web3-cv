@@ -255,18 +255,6 @@ const Portfolio = () => {
                           </div>
                         )}
                         
-                        {/* All Skills */}
-                        <div>
-                          <h4 className="text-sm font-medium text-foreground mb-2">Skills & Expertise:</h4>
-                          <div className="flex flex-wrap gap-1">
-                            {exp.skills.map((skill, skillIndex) => (
-                              <span key={skillIndex} className="text-xs bg-muted/30 text-muted-foreground px-2 py-1 rounded">
-                                {skill}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                        
                         {/* All Tools */}
                         {exp.tools && (
                           <div>
