@@ -99,11 +99,20 @@ const Portfolio = () => {
       ]
     },
     {
-      title: "Product Manager",
-      company: "Web3 Company",
-      period: "2023-2024",
-      description: "Managed product development and go-to-market strategies for DeFi protocols",
-      skills: ["Product Management", "DeFi", "Strategy"]
+      title: "Marketing and Business Development Head",
+      company: "ShipFinex",
+      period: "Jul 2022 - Dec 2022",
+      description: [
+        "Orchestrated the entire brand building and digital presence setup pushing the envelope of real-world asset tokenisation and fractional ownership.",
+        "Superseded the marketing and business team to set SOP's and Marketing Roadmap including content marketing strategy, graphical brand outlook, identifying targeted keywords for SEO setup, product marketing tactics and collaborating with relevant communities and protocols.",
+        "Participated in major Blockchain events, representing the brand, curating keynote and pitch deck presentations, leading to victory in Startup World Cup Pitch Competition at World Blockchain Summit.",
+        "Initiated investor relationships, seed sale strategy, project showcase to investors generating over $10K ticket size in the private sale round for token allocation."
+      ],
+      skills: ["Brand Building", "Digital Marketing", "SEO Strategy", "Event Management", "Investor Relations", "Startup Pitch"],
+      tools: [
+        { name: "Zendesk", logo: "https://d1eipm3vz40hy0.cloudfront.net/images/AMER/zendesk-favicon.png" },
+        { name: "Discord", logo: "https://discord.com/assets/847541504914fd33810e70a0ea73177e.ico" }
+      ]
     },
     {
       title: "Growth Marketing Specialist",
