@@ -128,6 +128,21 @@ const Portfolio = () => {
         { name: "Jira", logo: "https://wac-cdn.atlassian.com/assets/img/favicons/atlassian/favicon.png" },
         { name: "Notion", logo: "https://www.notion.so/images/favicon.ico" }
       ]
+    },
+    {
+      title: "Business Development Manager (Consultant)",
+      company: "Huobi Global",
+      period: "Aug 2021 - Feb 2022",
+      description: [
+        "Worked with a small-team of BDs to create a huge Influencer and KOL ecosystem, targeting multi-tier geographies to onboard new-users in the Indian subcontinent region.",
+        "Grew the user-base and average volume on exchange by 500% over a period of 3 months, stretching it over 6 months in a global team dynamic.",
+        "Analysed data metrics to set up accurate KPIs with KOLs introducing them with the functioning of Huobi Global products and how to engage their community the best with brand goals."
+      ],
+      skills: ["Business Development", "KOL Management", "Influencer Marketing", "Data Analytics", "KPI Setting", "Community Engagement"],
+      tools: [
+        { name: "Analytics", logo: "https://www.google.com/analytics/analytics/images/favicon.ico" },
+        { name: "Telegram", logo: "https://web.telegram.org/favicon.ico" }
+      ]
     }
   ];
 
