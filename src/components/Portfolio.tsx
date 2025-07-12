@@ -80,11 +80,23 @@ const Portfolio = () => {
       ]
     },
     {
-      title: "Blockchain Product Growth & Ecosystem Marketing",
-      company: "Current Role",
-      period: "Present",
-      description: "Leading growth initiatives and ecosystem development in the blockchain space",
-      skills: ["Product Strategy", "Growth Marketing", "Ecosystem Development"]
+      title: "Senior Business Development Manager-India",
+      company: "BitMart",
+      period: "Aug 2022 - Sep 2023",
+      description: [
+        "Expanding the Future and Derivative section of BitMart exchange in the Indian sub-continent region collaborating with key KOLs, trading groups and multiple channels to execute suitable campaigns, acquire more users, increase conversion rates and trading volume.",
+        "Drove significant hike in trading volume in initial months reaching the benchmark of $100M Future trading volume, driving from more than 80+ KOLs in the starting quarter.",
+        "Working closely with the growth operations team and global marketing team to design audience-centric campaigns and business development strategies, assessing industry trends apt for stakeholders.",
+        "After being upgraded to Senior BD started to represent Bitmart in events across India to collaborate with India-specific Web3 projects, to onboard them on BitMart for listing their token or to partner with an existing BitMart listed project to do cross-promotions with them.",
+        "Sourced, ideated and briefed the senior team about the upcoming projects and use cases that can be integrated into BitMart to ease the process of onboarding Indian users and make BitMart a friendly app to use and transact for local users."
+      ],
+      skills: ["Business Development", "Growth Marketing", "KOL Management", "Partnership Development", "Event Management", "Market Analysis"],
+      tools: [
+        { name: "Slack", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/slack/slack-original.svg" },
+        { name: "Google Sheets", logo: "https://ssl.gstatic.com/docs/spreadsheets/favicon_jfk2.png" },
+        { name: "Data Studio", logo: "https://ssl.gstatic.com/analytics-suite/header/suite/v2/ic_data_studio.svg" },
+        { name: "Twitter Ads", logo: "https://abs.twimg.com/favicons/twitter.2.ico" }
+      ]
     },
     {
       title: "Product Manager",
