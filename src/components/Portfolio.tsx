@@ -182,7 +182,7 @@ const Portfolio = () => {
     {
       title: "Freelance Content and Social Media Manager",
       company: "F&K Solutions",
-      period: "Feb 2020 - Jul 2021",
+      period: "Feb 2018 - Jul 2021",
       description: [
         "Got a distinct opportunity to work with multiple crypto & blockchain based projects & drew scalable social media map for real-world projects.",
         "Took diverse roles from drafting whitepaper to website content, managing social media content strategy, and got prominent in brand building communications."
