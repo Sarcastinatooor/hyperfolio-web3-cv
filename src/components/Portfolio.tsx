@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ExternalLink, MapPin, Mail, Calendar, Award, Briefcase, GraduationCap } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
@@ -250,35 +250,21 @@ const Portfolio = () => {
               </div>
             </div>
             <div className="hl-card">
-              <Tabs defaultValue="experience-0" className="w-full">
-                <TabsList className="grid w-full grid-cols-3 lg:grid-cols-7 mb-6 h-auto gap-1 bg-muted/30 p-1">
-                  {experiences.map((exp, index) => (
-                    <TabsTrigger 
-                      key={index} 
-                      value={`experience-${index}`}
-                      className="text-xs px-2 py-3 h-auto flex flex-col items-center gap-1 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm"
-                    >
-                      <span className="font-medium truncate max-w-full">{exp.company}</span>
-                      <span className="text-[10px] text-muted-foreground/70">{exp.period.split(' - ')[0]}</span>
-                    </TabsTrigger>
-                  ))}
-                </TabsList>
-                
+              <Accordion type="single" collapsible className="w-full">
                 {experiences.map((exp, index) => (
-                  <TabsContent key={index} value={`experience-${index}`} className="mt-0">
-                    <div className="space-y-6">
-                      {/* Header */}
-                      <div className="border-b pb-4">
-                        <h3 className="text-lg font-semibold text-foreground mb-1">{exp.title}</h3>
-                        <div className="flex flex-col sm:flex-row sm:items-center gap-2 text-sm">
-                          <span className="hl-positive font-medium">{exp.company}</span>
-                          <span className="hl-metric text-muted-foreground">{exp.period}</span>
+                  <AccordionItem key={index} value={`experience-${index}`} className="border-b border-border/50 last:border-b-0">
+                    <AccordionTrigger className="hover:no-underline py-4">
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between w-full text-left">
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+                          <h3 className="text-sm font-medium text-foreground">{exp.title}</h3>
+                          <span className="hl-positive text-xs">{exp.company}</span>
                         </div>
+                        <span className="hl-metric text-xs text-muted-foreground">{exp.period}</span>
                       </div>
-                      
-                      {/* Description */}
-                      <div>
-                        <h4 className="text-sm font-medium text-foreground mb-3">Responsibilities & Achievements</h4>
+                    </AccordionTrigger>
+                    <AccordionContent className="pb-4">
+                      <div className="space-y-4">
+                        {/* Description */}
                         {Array.isArray(exp.description) ? (
                           <ul className="text-sm text-muted-foreground space-y-2 list-disc list-inside">
                             {exp.description.map((point, pointIndex) => (
@@ -288,51 +274,51 @@ const Portfolio = () => {
                         ) : (
                           <p className="text-sm text-muted-foreground leading-relaxed">{exp.description}</p>
                         )}
-                      </div>
-                      
-                      {/* Skills & Tools */}
-                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                        {/* Skills */}
-                        {exp.skills && (
-                          <div>
-                            <h4 className="text-sm font-medium text-foreground mb-3">Skills</h4>
-                            <div className="flex flex-wrap gap-2">
-                              {exp.skills.map((skill, skillIndex) => (
-                                <Badge key={skillIndex} variant="secondary" className="text-xs">
-                                  {skill}
-                                </Badge>
-                              ))}
-                            </div>
-                          </div>
-                        )}
                         
-                        {/* Tools */}
-                        {exp.tools && (
-                          <div>
-                            <h4 className="text-sm font-medium text-foreground mb-3">Tools & Platforms</h4>
-                            <div className="flex flex-wrap gap-2">
-                              {exp.tools.map((tool, toolIndex) => (
-                                <div key={toolIndex} className="flex items-center gap-1.5 bg-muted/50 rounded-md px-3 py-1.5">
-                                  <img 
-                                    src={tool.logo} 
-                                    alt={`${tool.name} logo`}
-                                    className="w-4 h-4 object-contain"
-                                    onError={(e) => {
-                                      const target = e.target as HTMLImageElement;
-                                      target.style.display = 'none';
-                                    }}
-                                  />
-                                  <span className="text-xs text-foreground">{tool.name}</span>
-                                </div>
-                              ))}
+                        {/* Skills & Tools */}
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 pt-4 border-t border-border/30">
+                          {/* Skills */}
+                          {exp.skills && (
+                            <div>
+                              <h4 className="text-sm font-medium text-foreground mb-2">Skills</h4>
+                              <div className="flex flex-wrap gap-2">
+                                {exp.skills.map((skill, skillIndex) => (
+                                  <Badge key={skillIndex} variant="secondary" className="text-xs">
+                                    {skill}
+                                  </Badge>
+                                ))}
+                              </div>
                             </div>
-                          </div>
-                        )}
+                          )}
+                          
+                          {/* Tools */}
+                          {exp.tools && (
+                            <div>
+                              <h4 className="text-sm font-medium text-foreground mb-2">Tools & Platforms</h4>
+                              <div className="flex flex-wrap gap-2">
+                                {exp.tools.map((tool, toolIndex) => (
+                                  <div key={toolIndex} className="flex items-center gap-1.5 bg-muted/50 rounded-md px-3 py-1.5">
+                                    <img 
+                                      src={tool.logo} 
+                                      alt={`${tool.name} logo`}
+                                      className="w-4 h-4 object-contain"
+                                      onError={(e) => {
+                                        const target = e.target as HTMLImageElement;
+                                        target.style.display = 'none';
+                                      }}
+                                    />
+                                    <span className="text-xs text-foreground">{tool.name}</span>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+                        </div>
                       </div>
-                    </div>
-                  </TabsContent>
+                    </AccordionContent>
+                  </AccordionItem>
                 ))}
-              </Tabs>
+              </Accordion>
             </div>
           </div>
 
