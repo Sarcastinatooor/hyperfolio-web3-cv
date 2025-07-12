@@ -115,11 +115,19 @@ const Portfolio = () => {
       ]
     },
     {
-      title: "Growth Marketing Specialist",
-      company: "Blockchain Startup",
-      period: "2022-2023",
-      description: "Developed and executed growth marketing campaigns for blockchain products",
-      skills: ["Growth Hacking", "Marketing", "Analytics"]
+      title: "Head of Marketing and Business Development Team",
+      company: "Spherium Finance",
+      period: "Aug 2021 - Jul 2022",
+      description: [
+        "Leading a dynamic team to drive adoption of DeFi, primarily cross-chain applications by building an engaging community, implementing lead generation campaigns and bringing institutional level collaboration opportunities.",
+        "Directing growth marketing hacks, working closely with Founders, Developers & Investors to elaborate product specifications, facilitate third-party integrations, leading brand representation for Business Development relationships.",
+        "Outgrow brand audience acquisition and retention through on-chain analytics, defining founders personal brand as thought leaders and positioning them into the tight circles of Web3 OG's."
+      ],
+      skills: ["Team Leadership", "DeFi Marketing", "Cross-chain Strategy", "Community Building", "Growth Hacking", "Business Development"],
+      tools: [
+        { name: "Jira", logo: "https://wac-cdn.atlassian.com/assets/img/favicons/atlassian/favicon.png" },
+        { name: "Notion", logo: "https://www.notion.so/images/favicon.ico" }
+      ]
     }
   ];
 
