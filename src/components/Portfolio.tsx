@@ -47,13 +47,7 @@ const Portfolio = () => {
   }, [displayName, isDeleting, nameIndex, names]);
 
   const handleGmClick = () => {
-    setIsGmClicked(true);
-    toast({
-      title: "GM! 🌅",
-      description: "Thanks for the good morning! Hope you're having a great day in Web3! ⚡",
-      duration: 3000,
-    });
-    setTimeout(() => setIsGmClicked(false), 2000);
+    window.open('https://t.me/SARCASTINATOOOR', '_blank');
   };
 
   const experiences = [
@@ -137,39 +131,10 @@ const Portfolio = () => {
                   {/* GM Button */}
                   <Button 
                     onClick={handleGmClick}
-                    className={`gm-button text-sm px-6 py-3 font-semibold transition-all duration-300 ${
-                      isGmClicked ? 'scale-105' : ''
-                    }`}
-                    disabled={isGmClicked}
+                    className="gm-button text-sm px-6 py-3 font-semibold transition-all duration-300"
                   >
-                    {isGmClicked ? '🌅 GM!' : 'Say GM'}
+                    Say GM
                   </Button>
-                  
-                  {/* Social Buttons */}
-                  <div className="flex gap-2">
-                    <Button 
-                      variant="outline" 
-                      size="sm"
-                      className="social-button text-xs"
-                      onClick={() => window.open('https://twitter.com/riteshkhan', '_blank')}
-                    >
-                      <svg className="w-4 h-4 mr-1" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                      </svg>
-                      Twitter
-                    </Button>
-                    <Button 
-                      variant="outline" 
-                      size="sm"
-                      className="social-button text-xs"
-                      onClick={() => window.open('https://t.me/riteshkhan', '_blank')}
-                    >
-                      <svg className="w-4 h-4 mr-1" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 0C5.374 0 0 5.373 0 12s5.374 12 12 12 12-5.373 12-12S18.626 0 12 0zm5.568 8.16c-.169 1.858-.896 6.728-.896 6.728-.766 4.353-1.135 5.309-1.556 5.309-.357 0-.75-.148-.75-.614 0-.307.062-.604.062-.604l2.515-11.031c.247-.973.39-1.342 1.021-1.342.394 0 .654.173.654.479 0 .248-.05.477-.05.477z"/>
-                      </svg>
-                      Telegram
-                    </Button>
-                  </div>
                 </div>
               </div>
             </div>
