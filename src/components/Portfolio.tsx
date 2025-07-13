@@ -302,8 +302,8 @@ const Portfolio = () => {
           index === 6 ? <Briefcase className="w-4 h-4 text-white" /> :
           <User className="w-4 h-4 text-white" />,
     colSpan: 1,
+    onClick: () => navigate(`/experience/${index}`),
     hasPersistentHover: index === 0,
-    onClick: () => navigate(`/experience/${index}`)
   }));
 
   // Scroll-triggered card animations
