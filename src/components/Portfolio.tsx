@@ -342,16 +342,16 @@ const Portfolio = () => {
                       I have tested waters in almsot all sort of conditions, worked from $10-$500k campaigns, ranked keywords like "Digital Assets" in Top-3, worked with the biggest KOLs in the industry, won Startup-World Cup Pitch competitions, led TVL growth of $50M upwards and bought $100M+ trading volumes.
                     </p>
                   </div>
-                </div>
-                
-                <div className="flex flex-col gap-3">
+                  
                   {/* GM Button */}
-                  <Button 
-                    onClick={handleGmClick}
-                    className="gm-button text-sm px-6 py-3 font-semibold transition-all duration-300"
-                  >
-                    Say GM
-                  </Button>
+                  <div className="mt-6">
+                    <Button 
+                      onClick={handleGmClick}
+                      className="gm-button text-sm px-6 py-3 font-semibold transition-all duration-300"
+                    >
+                      Say GM
+                    </Button>
+                  </div>
                 </div>
               </div>
             </div>
