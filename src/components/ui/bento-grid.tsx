@@ -112,10 +112,10 @@ function BentoGrid({ items = itemsSample }: BentoGridProps) {
                         </div>
 
                         <div className="space-y-3">
-                            <h3 className="font-semibold text-white tracking-tight text-lg">
+                            <h3 className="font-semibold text-blue-400 tracking-tight text-lg">
                                 {item.title}
                             </h3>
-                            <p className="text-sm text-gray-400 font-medium">
+                            <p className="text-sm text-emerald-400 font-medium">
                                 {item.meta}
                             </p>
                             <p className="text-sm text-gray-300 leading-snug">
