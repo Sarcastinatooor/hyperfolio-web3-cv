@@ -2,6 +2,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { TweetEmbed } from "@/components/ui/tweet-embed";
 import { ArrowLeft, Calendar, MapPin, Building2, User, Target, TrendingUp, Globe, Award, Briefcase, Code, Anchor } from "lucide-react";
 
 const ExperienceDetail = () => {
@@ -396,23 +397,15 @@ const ExperienceDetail = () => {
             <CardContent>
               <div className="space-y-6">
                 {experience.campaignHighlights.map((campaign, index) => (
-                  <div key={index} className="border border-gray-700 rounded-lg p-4 bg-gray-800/30">
-                    <h3 className="text-blue-400 font-medium mb-2">{campaign.title}</h3>
-                    <p className="text-gray-300 text-sm mb-3">{campaign.description}</p>
-                    <div className="bg-gray-800 rounded-lg p-4 border border-gray-600">
-                      <div className="flex items-center gap-2 mb-2">
-                        <Anchor className="w-4 h-4 text-blue-400" />
-                        <span className="text-xs text-gray-400">Tweet Embed</span>
-                      </div>
-                      <a 
-                        href={campaign.tweetUrl} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-blue-400 hover:text-blue-300 text-sm break-all"
-                      >
-                        {campaign.tweetUrl}
-                      </a>
+                  <div key={index} className="space-y-4">
+                    <div className="border border-gray-700 rounded-lg p-4 bg-gray-800/30">
+                      <h3 className="text-blue-400 font-medium mb-2">{campaign.title}</h3>
+                      <p className="text-gray-300 text-sm mb-4">{campaign.description}</p>
                     </div>
+                    <TweetEmbed 
+                      tweetUrl={campaign.tweetUrl} 
+                      className="w-full"
+                    />
                   </div>
                 ))}
               </div>
