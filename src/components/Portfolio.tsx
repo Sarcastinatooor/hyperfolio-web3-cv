@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { ExternalLink, MapPin, Mail, Calendar, Award, Briefcase, X, Twitter, Globe } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import AIChat from './AIChat';
 
 const Portfolio = () => {
   const [isGmClicked, setIsGmClicked] = useState(false);
@@ -540,25 +541,9 @@ const Portfolio = () => {
             </DialogContent>
           </Dialog>
 
-          {/* Skills Section */}
+          {/* AI Chat Section */}
           <div className="mb-8">
-            <div className="hl-table-header mb-0">
-              <div className="flex items-center gap-2">
-                <Award className="w-4 h-4" />
-                Skills & Expertise
-              </div>
-            </div>
-            <div className="hl-card">
-              <div className="hl-table-cell">
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-2">
-                  {skills.map((skill, index) => (
-                    <div key={index} className="text-xs bg-muted/20 text-foreground px-3 py-2 rounded border border-border/50 hover:border-primary/50 transition-colors cursor-default">
-                      {skill}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
+            <AIChat experiences={experiences} />
           </div>
 
 
