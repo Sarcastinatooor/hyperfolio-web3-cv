@@ -120,8 +120,8 @@ export default function ExperienceSection() {
     <section id="experience-section" className="py-16 bg-background">
       <InteractiveBentoGallery
         mediaItems={mediaItems}
-        title="Professional Experience"
-        description="Explore my journey through the Web3 ecosystem - drag, click, and discover my professional adventures"
+        title="Experience"
+        description="Experience"
       />
     </section>
   );
