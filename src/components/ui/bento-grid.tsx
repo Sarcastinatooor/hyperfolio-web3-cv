@@ -111,24 +111,21 @@ function BentoGrid({ items = itemsSample }: BentoGridProps) {
                             </span>
                         </div>
 
-                        <div className="space-y-2">
+                        <div className="space-y-3">
                             <h3 className="font-semibold text-white tracking-tight text-lg">
                                 {item.title}
-                                <span className="ml-2 text-sm text-gray-400 font-normal">
-                                    {item.meta}
-                                </span>
                             </h3>
-                            <p className="text-sm text-gray-300 leading-snug font-[425]">
+                            <p className="text-sm text-gray-400 font-medium">
+                                {item.meta}
+                            </p>
+                            <p className="text-sm text-gray-300 leading-snug">
                                 {item.description}
                             </p>
-                        </div>
-
-                        <div className="flex items-center justify-between mt-2">
-                            <div className="flex items-center space-x-2 text-xs text-gray-400">
+                            <div className="flex flex-wrap gap-2">
                                 {item.tags?.map((tag, i) => (
                                     <span
                                         key={i}
-                                        className="px-2 py-1 rounded-md bg-white/10 backdrop-blur-sm transition-all duration-200 hover:bg-white/20"
+                                        className="text-xs px-2 py-1 rounded-md bg-white/10 text-gray-300 backdrop-blur-sm"
                                     >
                                         {tag}
                                     </span>
