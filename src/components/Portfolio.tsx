@@ -4,10 +4,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { ExternalLink, MapPin, Mail, Calendar, Award, Briefcase, X, Twitter, Globe } from "lucide-react";
+import { ExternalLink, MapPin, Mail, Calendar, Award, Briefcase, X, Twitter, Globe, Building2, User, Target, TrendingUp } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import AIChat from './AIChat';
-import DisplayCards from './ui/display-cards';
+import { BentoGrid, type BentoItem } from './ui/bento-grid';
 
 const Portfolio = () => {
   const navigate = useNavigate();
@@ -278,6 +278,26 @@ const Portfolio = () => {
     "Web3 Analytics", "Project Management", "Strategic Planning", "Partnership Development"
   ];
 
+  // Transform experiences into BentoItems
+  const experienceBentoItems: BentoItem[] = experiences.map((exp, index) => ({
+    title: exp.title,
+    description: exp.keyResponsibilities[0],
+    meta: exp.company,
+    status: exp.period,
+    tags: exp.skills.slice(0, 3),
+    icon: index === 0 ? <TrendingUp className="w-4 h-4 text-emerald-500" /> :
+          index === 1 ? <User className="w-4 h-4 text-blue-500" /> :
+          index === 2 ? <Target className="w-4 h-4 text-purple-500" /> :
+          index === 3 ? <Building2 className="w-4 h-4 text-orange-500" /> :
+          index === 4 ? <Globe className="w-4 h-4 text-sky-500" /> :
+          index === 5 ? <Award className="w-4 h-4 text-pink-500" /> :
+          index === 6 ? <Briefcase className="w-4 h-4 text-indigo-500" /> :
+          <User className="w-4 h-4 text-gray-500" />,
+    colSpan: index === 0 ? 2 : (index % 3 === 0 ? 2 : 1),
+    hasPersistentHover: index === 0,
+    onClick: () => navigate(`/experience/${index}`)
+  }));
+
   // Scroll-triggered card animations
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -368,41 +388,8 @@ const Portfolio = () => {
               </h2>
             </div>
             
-            {/* Display Cards for Experience */}
-            <div className="flex justify-center">
-              <DisplayCards cards={[
-                {
-                  icon: <Briefcase className="size-4 text-primary" />,
-                  title: "BrahmaFi",
-                  description: "Growth Marketing Manager",
-                  date: "Present",
-                  iconClassName: "text-primary",
-                  titleClassName: "text-primary",
-                  className: "[grid-area:stack] hover:-translate-y-10 before:absolute before:w-[100%] before:outline-1 before:rounded-xl before:outline-border before:h-[100%] before:content-[''] before:bg-blend-overlay before:bg-background/50 grayscale-[100%] hover:before:opacity-0 before:transition-opacity before:duration-700 hover:grayscale-0 before:left-0 before:top-0",
-                  onClick: () => navigate('/experience/brahma-fi')
-                },
-                {
-                  icon: <Award className="size-4 text-primary" />,
-                  title: "Liminal Custody",
-                  description: "Content & Communications",
-                  date: "2023-2024",
-                  iconClassName: "text-primary",
-                  titleClassName: "text-primary",
-                  className: "[grid-area:stack] translate-x-16 translate-y-10 hover:-translate-y-1 before:absolute before:w-[100%] before:outline-1 before:rounded-xl before:outline-border before:h-[100%] before:content-[''] before:bg-blend-overlay before:bg-background/50 grayscale-[100%] hover:before:opacity-0 before:transition-opacity before:duration-700 hover:grayscale-0 before:left-0 before:top-0",
-                  onClick: () => navigate('/experience/liminal-custody')
-                },
-                {
-                  icon: <ExternalLink className="size-4 text-primary" />,
-                  title: "BitMart",
-                  description: "Senior BD Manager",
-                  date: "2022-2023",
-                  iconClassName: "text-primary",
-                  titleClassName: "text-primary",
-                  className: "[grid-area:stack] translate-x-32 translate-y-20 hover:translate-y-10",
-                  onClick: () => navigate('/experience/bitmart')
-                }
-              ]} />
-            </div>
+            {/* Bento Grid for Experience */}
+            <BentoGrid items={experienceBentoItems} />
           </div>
 
           {/* AI Chat Section */}
