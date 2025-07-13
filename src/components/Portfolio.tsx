@@ -53,12 +53,6 @@ const Portfolio = () => {
   };
 
 
-  const skills = [
-    "Blockchain Technology", "DeFi Protocols", "Product Strategy", "Growth Marketing",
-    "Ecosystem Development", "Community Building", "Token Economics", "Smart Contracts",
-    "Web3 Analytics", "Project Management", "Strategic Planning", "Partnership Development"
-  ];
-
 
 
   return (
