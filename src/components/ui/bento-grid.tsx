@@ -73,15 +73,13 @@ function BentoGrid({ items = itemsSample }: BentoGridProps) {
                     key={index}
                     className={cn(
                         "group relative p-4 rounded-xl overflow-hidden transition-all duration-300 cursor-pointer",
-                        "border border-gray-800/80 dark:border-gray-700/80 bg-gray-900 dark:bg-gray-900",
-                        "hover:shadow-[0_2px_12px_rgba(0,0,0,0.3)] dark:hover:shadow-[0_2px_12px_rgba(0,0,0,0.4)]",
+                        "border border-primary/30 bg-gradient-to-br from-primary/10 to-primary/5",
+                        "hover:shadow-[0_0_20px_hsl(var(--primary)/0.2)] hover:border-primary/50",
                         "hover:-translate-y-0.5 will-change-transform",
                         item.colSpan || "col-span-1",
                         item.colSpan === 2 ? "md:col-span-2" : "",
                         {
-                            "shadow-[0_2px_12px_rgba(0,0,0,0.3)] -translate-y-0.5":
-                                item.hasPersistentHover,
-                            "dark:shadow-[0_2px_12px_rgba(0,0,0,0.4)]":
+                            "shadow-[0_0_20px_hsl(var(--primary)/0.2)] border-primary/50 -translate-y-0.5":
                                 item.hasPersistentHover,
                         }
                     )}
@@ -94,19 +92,19 @@ function BentoGrid({ items = itemsSample }: BentoGridProps) {
                                 : "opacity-0 group-hover:opacity-100"
                         } transition-opacity duration-300`}
                     >
-                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.02)_1px,transparent_1px)] dark:bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[length:4px_4px]" />
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,hsl(var(--primary)/0.02)_1px,transparent_1px)] bg-[length:4px_4px]" />
                     </div>
 
                     <div className="relative flex flex-col space-y-3">
                         <div className="flex items-center justify-between">
-                            <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-white/10 dark:bg-white/10 group-hover:bg-gradient-to-br transition-all duration-300">
+                            <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-primary/20 group-hover:bg-primary/30 transition-all duration-300">
                                 {item.icon}
                             </div>
                             <span
                                 className={cn(
                                     "text-xs font-medium px-2 py-1 rounded-lg backdrop-blur-sm",
-                                    "bg-white/10 dark:bg-white/10 text-gray-300 dark:text-gray-300",
-                                    "transition-colors duration-300 group-hover:bg-white/20 dark:group-hover:bg-white/20"
+                                    "bg-primary/20 text-primary-foreground",
+                                    "transition-colors duration-300 group-hover:bg-primary/30"
                                 )}
                             >
                                 {item.status || "Active"}
@@ -114,36 +112,33 @@ function BentoGrid({ items = itemsSample }: BentoGridProps) {
                         </div>
 
                         <div className="space-y-2">
-                            <h3 className="font-medium text-white dark:text-white tracking-tight text-[15px]">
+                            <h3 className="font-medium text-foreground tracking-tight text-[15px]">
                                 {item.title}
-                                <span className="ml-2 text-xs text-gray-400 dark:text-gray-400 font-normal">
+                                <span className="ml-2 text-xs text-muted-foreground font-normal">
                                     {item.meta}
                                 </span>
                             </h3>
-                            <p className="text-sm text-gray-300 dark:text-gray-300 leading-snug font-[425]">
+                            <p className="text-sm text-muted-foreground leading-snug font-[425]">
                                 {item.description}
                             </p>
                         </div>
 
                         <div className="flex items-center justify-between mt-2">
-                            <div className="flex items-center space-x-2 text-xs text-gray-400 dark:text-gray-400">
+                            <div className="flex items-center space-x-2 text-xs text-muted-foreground">
                                 {item.tags?.map((tag, i) => (
                                     <span
                                         key={i}
-                                        className="px-2 py-1 rounded-md bg-white/10 dark:bg-white/10 backdrop-blur-sm transition-all duration-200 hover:bg-white/20 dark:hover:bg-white/20"
+                                        className="px-2 py-1 rounded-md bg-primary/20 backdrop-blur-sm transition-all duration-200 hover:bg-primary/30"
                                     >
-                                        #{tag}
+                                        {tag}
                                     </span>
                                 ))}
                             </div>
-                            <span className="text-xs text-gray-400 dark:text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity">
-                                {item.cta || "Explore →"}
-                            </span>
                         </div>
                     </div>
 
                     <div
-                        className={`absolute inset-0 -z-10 rounded-xl p-px bg-gradient-to-br from-transparent via-gray-700/50 to-transparent dark:via-gray-700/50 ${
+                        className={`absolute inset-0 -z-10 rounded-xl p-px bg-gradient-to-br from-transparent via-primary/20 to-transparent ${
                             item.hasPersistentHover
                                 ? "opacity-100"
                                 : "opacity-0 group-hover:opacity-100"

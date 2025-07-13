@@ -293,15 +293,16 @@ const Portfolio = () => {
     meta: exp.company,
     status: exp.period,
     tags: exp.skills.slice(0, 3),
-    icon: index === 0 ? <TrendingUp className="w-4 h-4 text-emerald-500" /> :
-          index === 1 ? <User className="w-4 h-4 text-blue-500" /> :
-          index === 2 ? <Target className="w-4 h-4 text-purple-500" /> :
-          index === 3 ? <Building2 className="w-4 h-4 text-orange-500" /> :
-          index === 4 ? <Globe className="w-4 h-4 text-sky-500" /> :
-          index === 5 ? <Award className="w-4 h-4 text-pink-500" /> :
-          index === 6 ? <Briefcase className="w-4 h-4 text-indigo-500" /> :
-          <User className="w-4 h-4 text-gray-500" />,
-    colSpan: index === 0 ? 2 : (index % 3 === 0 ? 2 : 1),
+    icon: index === 0 ? <TrendingUp className="w-4 h-4 text-primary" /> :
+          index === 1 ? <User className="w-4 h-4 text-primary" /> :
+          index === 2 ? <Target className="w-4 h-4 text-primary" /> :
+          index === 3 ? <Building2 className="w-4 h-4 text-primary" /> :
+          index === 4 ? <Globe className="w-4 h-4 text-primary" /> :
+          index === 5 ? <Award className="w-4 h-4 text-primary" /> :
+          index === 6 ? <Briefcase className="w-4 h-4 text-primary" /> :
+          <User className="w-4 h-4 text-primary" />,
+    colSpan: index === 0 || index === 1 ? 2 : 
+             index === 4 || index === 5 ? 2 : 1,
     hasPersistentHover: index === 0,
     onClick: () => navigate(`/experience/${index}`)
   }));
