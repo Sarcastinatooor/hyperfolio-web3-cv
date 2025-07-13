@@ -194,23 +194,23 @@ const AIChat = ({ experiences }: AIChatsProps) => {
       <CardContent className="space-y-4">
         <ScrollArea 
           ref={scrollAreaRef}
-          className="h-80 pr-4"
+          className="h-64 pr-4"
         >
-          <div className="space-y-4">
+          <div className="space-y-3">
             {messages.map((message) => (
               <div
                 key={message.id}
-                className={`flex gap-3 ${message.sender === 'user' ? 'flex-row-reverse' : 'flex-row'}`}
+                className={`flex gap-2 ${message.sender === 'user' ? 'flex-row-reverse' : 'flex-row'}`}
               >
-                <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${
+                <div className={`flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center ${
                   message.sender === 'user' 
                     ? 'bg-primary text-primary-foreground' 
                     : 'bg-muted text-muted-foreground'
                 }`}>
-                  {message.sender === 'user' ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
+                  {message.sender === 'user' ? <User className="w-3 h-3" /> : <Bot className="w-3 h-3" />}
                 </div>
                 <div className={`max-w-[80%] space-y-2 ${message.sender === 'user' ? 'text-right' : 'text-left'}`}>
-                  <div className={`px-4 py-2 rounded-lg text-sm ${
+                  <div className={`px-3 py-2 rounded-lg text-sm ${
                     message.sender === 'user'
                       ? 'bg-primary text-primary-foreground'
                       : 'bg-muted text-foreground'
@@ -241,11 +241,11 @@ const AIChat = ({ experiences }: AIChatsProps) => {
               </div>
             ))}
             {isTyping && (
-              <div className="flex gap-3">
-                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-muted text-muted-foreground flex items-center justify-center">
-                  <Bot className="w-4 h-4" />
+              <div className="flex gap-2">
+                <div className="flex-shrink-0 w-7 h-7 rounded-full bg-muted text-muted-foreground flex items-center justify-center">
+                  <Bot className="w-3 h-3" />
                 </div>
-                <div className="bg-muted px-4 py-2 rounded-lg">
+                <div className="bg-muted px-3 py-2 rounded-lg">
                   <div className="flex gap-1">
                     <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce [animation-delay:-0.3s]"></div>
                     <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce [animation-delay:-0.15s]"></div>
@@ -272,20 +272,6 @@ const AIChat = ({ experiences }: AIChatsProps) => {
           >
             <Send className="w-4 h-4" />
           </Button>
-        </div>
-
-        <div className="flex flex-wrap gap-2">
-          {['Growth Marketing', 'DeFi Experience', 'SEO Strategy', 'KOL Management', 'Community Building'].map((suggestion) => (
-            <Button
-              key={suggestion}
-              variant="outline"
-              size="sm"
-              className="text-xs"
-              onClick={() => setInputValue(`Tell me about ${suggestion}`)}
-            >
-              {suggestion}
-            </Button>
-          ))}
         </div>
       </CardContent>
     </Card>
