@@ -360,10 +360,10 @@ const Portfolio = () => {
           <div ref={experienceRef} className="mb-16">
             <div className="text-center mb-12">
               <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-4">
-                My Journey
+                Experience
               </h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
-                Scroll to explore my professional experience through interactive cards
+                Experience
               </p>
             </div>
             
