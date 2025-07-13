@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import InteractiveBentoGallery from "@/components/ui/interactive-bento-gallery";
 
 interface Experience {
   id: string;
@@ -15,6 +16,15 @@ interface Experience {
     campaigns: string[];
     content: string[];
   };
+}
+
+interface MediaItemType {
+  id: number;
+  type: string;
+  title: string;
+  desc: string;
+  url: string;
+  span: string;
 }
 
 const experiences: Experience[] = [
@@ -78,130 +88,35 @@ const experiences: Experience[] = [
 ];
 
 export default function ExperienceSection() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const navigate = useNavigate();
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  // Convert experiences to media items for bento gallery
+  const mediaItems: MediaItemType[] = experiences.map((exp, index) => ({
+    id: index + 1,
+    type: "image",
+    title: `${exp.title} at ${exp.company}`,
+    desc: exp.description,
+    url: `https://images.unsplash.com/photo-${1550000000000 + index * 100000}-${Math.random().toString(36).substr(2, 9)}?w=800&h=600&fit=crop&crop=faces,center`,
+    span: getRandomSpan(index)
+  }));
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!sectionRef.current) return;
-
-      const rect = sectionRef.current.getBoundingClientRect();
-      const sectionHeight = sectionRef.current.offsetHeight;
-      const viewportHeight = window.innerHeight;
-      
-      // Calculate scroll progress within the section
-      const progress = Math.max(0, Math.min(1, -rect.top / (sectionHeight - viewportHeight)));
-      setScrollProgress(progress);
-
-      // Calculate which card should be current based on scroll progress
-      const cardIndex = Math.floor(progress * experiences.length);
-      setCurrentIndex(Math.min(cardIndex, experiences.length - 1));
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const handleCardClick = (experienceId: string) => {
-    console.log('Navigating to experience:', experienceId);
-    // Force page navigation
-    window.location.href = `/experience/${experienceId}`;
-  };
+  function getRandomSpan(index: number): string {
+    const spans = [
+      "md:col-span-1 md:row-span-3 sm:col-span-1 sm:row-span-2",
+      "md:col-span-2 md:row-span-2 col-span-1 sm:col-span-2 sm:row-span-2",
+      "md:col-span-1 md:row-span-3 sm:col-span-2 sm:row-span-2",
+      "md:col-span-2 md:row-span-2 sm:col-span-1 sm:row-span-2",
+      "md:col-span-1 md:row-span-3 sm:col-span-1 sm:row-span-2",
+      "md:col-span-2 md:row-span-2 sm:col-span-1 sm:row-span-2"
+    ];
+    return spans[index % spans.length];
+  }
 
   return (
-    <section ref={sectionRef} className="min-h-[400vh] relative">
-      {/* Fixed header */}
-      <div className="sticky top-0 left-0 w-full h-screen flex flex-col">
-        <div className="flex-1 flex flex-col justify-center items-center relative overflow-hidden">
-          <h2 className="text-8xl md:text-9xl font-bold text-center mb-16 z-10">
-            <span className="bg-gradient-to-r from-primary via-primary-glow to-primary bg-clip-text text-transparent">
-              Experience
-            </span>
-          </h2>
-
-          {/* Stacking cards */}
-          <div className="relative w-full max-w-4xl mx-auto px-6 h-96">
-            {experiences.map((experience, index) => {
-              const progress = Math.max(0, scrollProgress * experiences.length - index);
-              const isVisible = progress < 1;
-              const scale = Math.max(0.9, 1 - progress * 0.05);
-              const translateY = Math.min(progress * 60, 200);
-              const opacity = Math.max(0.4, 1 - progress * 0.4);
-              const rotation = Math.min(progress * 1, 3);
-
-              // Only show the card if it should be visible
-              if (!isVisible && index !== currentIndex) return null;
-
-              return (
-                <Card
-                  key={experience.id}
-                  ref={(el) => (cardRefs.current[index] = el)}
-                  className="absolute top-0 left-0 w-full cursor-pointer transition-all duration-500 ease-out neon-glow border-2 border-primary/20 hover:border-primary/40"
-                  style={{
-                    transform: `translateY(${translateY}px) scale(${scale}) rotateX(${rotation}deg)`,
-                    opacity,
-                    zIndex: experiences.length - index,
-                    transformOrigin: 'center center',
-                  }}
-                  onClick={() => handleCardClick(experience.id)}
-                >
-                  <CardContent className="p-8 h-96 flex flex-col justify-center">
-                    <div className="text-center space-y-4">
-                      <div>
-                        <h3 className="text-3xl md:text-4xl font-bold mb-2 gradient-text">
-                          {experience.title}
-                        </h3>
-                        <p className="text-xl md:text-2xl text-primary mb-1">{experience.company}</p>
-                        <p className="text-base md:text-lg text-muted-foreground">{experience.period}</p>
-                      </div>
-
-                      <p className="text-base md:text-lg leading-relaxed max-w-2xl mx-auto line-clamp-3">
-                        {experience.description}
-                      </p>
-
-                      <div className="flex flex-wrap gap-2 justify-center max-w-lg mx-auto">
-                        {experience.tools.slice(0, 5).map((tool) => (
-                          <Badge key={tool} variant="secondary" className="text-xs">
-                            {tool}
-                          </Badge>
-                        ))}
-                        {experience.tools.length > 5 && (
-                          <Badge variant="outline" className="text-xs">
-                            +{experience.tools.length - 5} more
-                          </Badge>
-                        )}
-                      </div>
-
-                      <div className="mt-6 p-3 rounded-lg bg-muted/20 border border-border/30">
-                        <p className="text-xs md:text-sm text-primary font-medium">
-                          Click to explore full details and campaigns →
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
-
-          {/* Progress indicator */}
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
-            {experiences.map((_, index) => (
-              <div
-                key={index}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === currentIndex
-                    ? 'bg-primary scale-125'
-                    : 'bg-muted-foreground/30'
-                }`}
-              />
-            ))}
-          </div>
-        </div>
-      </div>
+    <section id="experience-section" className="py-16 bg-background">
+      <InteractiveBentoGallery
+        mediaItems={mediaItems}
+        title="Professional Experience"
+        description="Explore my journey through the Web3 ecosystem - drag, click, and discover my professional adventures"
+      />
     </section>
   );
 }
