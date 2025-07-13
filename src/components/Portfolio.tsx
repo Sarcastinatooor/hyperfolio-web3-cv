@@ -293,14 +293,14 @@ const Portfolio = () => {
     meta: exp.company,
     status: exp.period,
     tags: exp.skills.slice(0, 3),
-    icon: index === 0 ? <TrendingUp className="w-4 h-4 text-primary" /> :
-          index === 1 ? <User className="w-4 h-4 text-primary" /> :
-          index === 2 ? <Target className="w-4 h-4 text-primary" /> :
-          index === 3 ? <Building2 className="w-4 h-4 text-primary" /> :
-          index === 4 ? <Globe className="w-4 h-4 text-primary" /> :
-          index === 5 ? <Award className="w-4 h-4 text-primary" /> :
-          index === 6 ? <Briefcase className="w-4 h-4 text-primary" /> :
-          <User className="w-4 h-4 text-primary" />,
+    icon: index === 0 ? <TrendingUp className="w-4 h-4 text-white" /> :
+          index === 1 ? <User className="w-4 h-4 text-white" /> :
+          index === 2 ? <Target className="w-4 h-4 text-white" /> :
+          index === 3 ? <Building2 className="w-4 h-4 text-white" /> :
+          index === 4 ? <Globe className="w-4 h-4 text-white" /> :
+          index === 5 ? <Award className="w-4 h-4 text-white" /> :
+          index === 6 ? <Briefcase className="w-4 h-4 text-white" /> :
+          <User className="w-4 h-4 text-white" />,
     colSpan: index === 0 || index === 1 ? 2 : 
              index === 4 || index === 5 ? 2 : 1,
     hasPersistentHover: index === 0,
