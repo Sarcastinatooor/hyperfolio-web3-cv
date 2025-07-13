@@ -106,6 +106,7 @@ export default function ExperienceSection() {
   }, []);
 
   const handleCardClick = (experienceId: string) => {
+    console.log('Navigating to experience:', experienceId);
     navigate(`/experience/${experienceId}`);
   };
 

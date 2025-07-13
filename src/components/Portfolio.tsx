@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { ExternalLink, MapPin, Mail, Calendar, Award, Briefcase, X, Twitter, Globe } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import ExperienceSection from "@/components/ExperienceSection";
