@@ -1,10 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Badge } from "@/components/ui/badge";
-import { Send, Bot, User, MessageCircle } from "lucide-react";
+import { Bot, User, MessageCircle } from "lucide-react";
+import { PlaceholdersAndVanishInput } from "@/components/ui/placeholders-and-vanish-input";
 
 interface Message {
   id: string;
@@ -143,7 +142,8 @@ const AIChat = ({ experiences }: AIChatsProps) => {
     };
   };
 
-  const handleSendMessage = () => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     if (!inputValue.trim()) return;
 
     const userMessage: Message = {
@@ -154,12 +154,13 @@ const AIChat = ({ experiences }: AIChatsProps) => {
     };
 
     setMessages(prev => [...prev, userMessage]);
+    const queryToProcess = inputValue;
     setInputValue('');
     setIsTyping(true);
 
     // Simulate AI thinking time
     setTimeout(() => {
-      const aiResponse = generateAIResponse(inputValue);
+      const aiResponse = generateAIResponse(queryToProcess);
       const aiMessage: Message = {
         id: (Date.now() + 1).toString(),
         text: aiResponse.text,
@@ -173,12 +174,19 @@ const AIChat = ({ experiences }: AIChatsProps) => {
     }, 1000 + Math.random() * 2000);
   };
 
-  const handleKeyPress = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      handleSendMessage();
-    }
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
   };
+
+  const placeholders = [
+    "Tell me about your growth marketing experience",
+    "What DeFi projects have you worked on?", 
+    "How did you scale TVL at BrahmaFi?",
+    "What's your experience with SEO strategy?",
+    "Tell me about your KOL management skills",
+    "How did you grow social engagement by 600%?",
+    "What community building experience do you have?"
+  ];
 
   return (
     <Card className="border border-border/50">
@@ -257,21 +265,13 @@ const AIChat = ({ experiences }: AIChatsProps) => {
           </div>
         </ScrollArea>
 
-        <div className="flex gap-2">
-          <Input
-            placeholder="Ask about growth marketing, DeFi, community building, SEO..."
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
-            onKeyPress={handleKeyPress}
-            className="flex-1"
+        <div className="mt-4">
+          <PlaceholdersAndVanishInput
+            placeholders={placeholders}
+            onChange={handleChange}
+            onSubmit={handleSubmit}
+            className="shadow-sm"
           />
-          <Button 
-            onClick={handleSendMessage}
-            disabled={!inputValue.trim() || isTyping}
-            size="icon"
-          >
-            <Send className="w-4 h-4" />
-          </Button>
         </div>
       </CardContent>
     </Card>
