@@ -7,7 +7,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { ExternalLink, MapPin, Mail, Calendar, Award, Briefcase, X, Twitter, Globe } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import AIChat from './AIChat';
-import DisplayCards from './ui/display-cards';
+import InteractiveBentoGallery from './ui/interactive-bento-gallery';
 
 const Portfolio = () => {
   const navigate = useNavigate();
@@ -362,47 +362,65 @@ const Portfolio = () => {
 
           {/* Experience Section */}
           <div ref={experienceRef} className="mb-6">
-            <div className="text-center mb-12">
-              <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-4">
-                Experience
-              </h2>
-            </div>
-            
-            {/* Display Cards for Experience */}
-            <div className="flex justify-center">
-              <DisplayCards cards={[
+            <InteractiveBentoGallery
+              mediaItems={[
                 {
-                  icon: <Briefcase className="size-4 text-primary" />,
-                  title: "BrahmaFi",
-                  description: "Growth Marketing Manager",
-                  date: "Present",
-                  iconClassName: "text-primary",
-                  titleClassName: "text-primary",
-                  className: "[grid-area:stack] hover:-translate-y-10 before:absolute before:w-[100%] before:outline-1 before:rounded-xl before:outline-border before:h-[100%] before:content-[''] before:bg-blend-overlay before:bg-background/50 grayscale-[100%] hover:before:opacity-0 before:transition-opacity before:duration-700 hover:grayscale-0 before:left-0 before:top-0",
-                  onClick: () => navigate('/experience/brahma-fi')
+                  id: 1,
+                  type: "image",
+                  title: "Growth Marketing Manager",
+                  desc: "BrahmaFi • Present",
+                  url: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=300&fit=crop",
+                  span: "md:col-span-2 md:row-span-3 sm:col-span-2 sm:row-span-2",
                 },
                 {
-                  icon: <Award className="size-4 text-primary" />,
-                  title: "Liminal Custody",
-                  description: "Content & Communications",
-                  date: "2023-2024",
-                  iconClassName: "text-primary",
-                  titleClassName: "text-primary",
-                  className: "[grid-area:stack] translate-x-16 translate-y-10 hover:-translate-y-1 before:absolute before:w-[100%] before:outline-1 before:rounded-xl before:outline-border before:h-[100%] before:content-[''] before:bg-blend-overlay before:bg-background/50 grayscale-[100%] hover:before:opacity-0 before:transition-opacity before:duration-700 hover:grayscale-0 before:left-0 before:top-0",
-                  onClick: () => navigate('/experience/liminal-custody')
+                  id: 2,
+                  type: "image",
+                  title: "Manager - Content & Communications",
+                  desc: "Liminal Custody • 2023-2024",
+                  url: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=300&fit=crop",
+                  span: "md:col-span-2 md:row-span-2 sm:col-span-1 sm:row-span-2",
                 },
                 {
-                  icon: <ExternalLink className="size-4 text-primary" />,
-                  title: "BitMart",
-                  description: "Senior BD Manager",
-                  date: "2022-2023",
-                  iconClassName: "text-primary",
-                  titleClassName: "text-primary",
-                  className: "[grid-area:stack] translate-x-32 translate-y-20 hover:translate-y-10",
-                  onClick: () => navigate('/experience/bitmart')
+                  id: 3,
+                  type: "image",
+                  title: "Senior Business Development Manager",
+                  desc: "BitMart • 2022-2023",
+                  url: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=300&fit=crop",
+                  span: "md:col-span-2 md:row-span-2 sm:col-span-1 sm:row-span-2",
+                },
+                {
+                  id: 4,
+                  type: "image",
+                  title: "Marketing and Business Development Head",
+                  desc: "ShipFinex • 2022",
+                  url: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=300&fit=crop",
+                  span: "md:col-span-1 md:row-span-2 sm:col-span-1 sm:row-span-2",
+                },
+                {
+                  id: 5,
+                  type: "image",
+                  title: "Head of Marketing and Business Development",
+                  desc: "Spherium Finance • 2021-2022",
+                  url: "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=400&h=300&fit=crop",
+                  span: "md:col-span-1 md:row-span-2 sm:col-span-1 sm:row-span-2",
+                },
+              ]}
+              title="Experience"
+              description="A showcase of my professional journey and key accomplishments"
+              onItemClick={(item) => {
+                const experienceMap: { [key: string]: string } = {
+                  "Growth Marketing Manager": "brahma-fi",
+                  "Manager - Content & Communications": "liminal-custody",
+                  "Senior Business Development Manager": "bitmart",
+                  "Marketing and Business Development Head": "shipfinex",
+                  "Head of Marketing and Business Development": "spherium-finance",
+                };
+                const route = experienceMap[item.title];
+                if (route) {
+                  navigate(`/experience/${route}`);
                 }
-              ]} />
-            </div>
+              }}
+            />
           </div>
 
           {/* AI Chat Section */}
