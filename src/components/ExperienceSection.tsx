@@ -121,55 +121,60 @@ export default function ExperienceSection() {
           </h2>
 
           {/* Stacking cards */}
-          <div className="relative w-full max-w-4xl mx-auto px-6">
+          <div className="relative w-full max-w-4xl mx-auto px-6 h-96">
             {experiences.map((experience, index) => {
               const progress = Math.max(0, scrollProgress * experiences.length - index);
-              const scale = Math.max(0.8, 1 - progress * 0.1);
-              const translateY = Math.max(0, progress * 100);
-              const opacity = Math.max(0.3, 1 - progress * 0.3);
-              const rotation = progress * 2;
+              const isVisible = progress < 1;
+              const scale = Math.max(0.9, 1 - progress * 0.05);
+              const translateY = Math.min(progress * 60, 200);
+              const opacity = Math.max(0.4, 1 - progress * 0.4);
+              const rotation = Math.min(progress * 1, 3);
+
+              // Only show the card if it should be visible
+              if (!isVisible && index !== currentIndex) return null;
 
               return (
                 <Card
                   key={experience.id}
                   ref={(el) => (cardRefs.current[index] = el)}
-                  className="absolute inset-0 cursor-pointer transition-all duration-300 hover:scale-105 neon-glow"
+                  className="absolute top-0 left-0 w-full cursor-pointer transition-all duration-500 ease-out neon-glow border-2 border-primary/20 hover:border-primary/40"
                   style={{
                     transform: `translateY(${translateY}px) scale(${scale}) rotateX(${rotation}deg)`,
                     opacity,
                     zIndex: experiences.length - index,
+                    transformOrigin: 'center center',
                   }}
                   onClick={() => handleCardClick(experience.id)}
                 >
-                  <CardContent className="p-8 h-full flex flex-col justify-center">
-                    <div className="text-center space-y-6">
+                  <CardContent className="p-8 h-96 flex flex-col justify-center">
+                    <div className="text-center space-y-4">
                       <div>
-                        <h3 className="text-4xl font-bold mb-2 gradient-text">
+                        <h3 className="text-3xl md:text-4xl font-bold mb-2 gradient-text">
                           {experience.title}
                         </h3>
-                        <p className="text-2xl text-primary mb-1">{experience.company}</p>
-                        <p className="text-lg text-muted-foreground">{experience.period}</p>
+                        <p className="text-xl md:text-2xl text-primary mb-1">{experience.company}</p>
+                        <p className="text-base md:text-lg text-muted-foreground">{experience.period}</p>
                       </div>
 
-                      <p className="text-lg leading-relaxed max-w-2xl mx-auto">
+                      <p className="text-base md:text-lg leading-relaxed max-w-2xl mx-auto line-clamp-3">
                         {experience.description}
                       </p>
 
-                      <div className="flex flex-wrap gap-2 justify-center">
-                        {experience.tools.slice(0, 6).map((tool) => (
-                          <Badge key={tool} variant="secondary" className="text-sm">
+                      <div className="flex flex-wrap gap-2 justify-center max-w-lg mx-auto">
+                        {experience.tools.slice(0, 5).map((tool) => (
+                          <Badge key={tool} variant="secondary" className="text-xs">
                             {tool}
                           </Badge>
                         ))}
-                        {experience.tools.length > 6 && (
-                          <Badge variant="outline" className="text-sm">
-                            +{experience.tools.length - 6} more
+                        {experience.tools.length > 5 && (
+                          <Badge variant="outline" className="text-xs">
+                            +{experience.tools.length - 5} more
                           </Badge>
                         )}
                       </div>
 
-                      <div className="mt-8 p-4 rounded-lg bg-muted/20 border border-border/30">
-                        <p className="text-sm text-primary font-medium">
+                      <div className="mt-6 p-3 rounded-lg bg-muted/20 border border-border/30">
+                        <p className="text-xs md:text-sm text-primary font-medium">
                           Click to explore full details and campaigns →
                         </p>
                       </div>
@@ -181,7 +186,7 @@ export default function ExperienceSection() {
           </div>
 
           {/* Progress indicator */}
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
             {experiences.map((_, index) => (
               <div
                 key={index}
