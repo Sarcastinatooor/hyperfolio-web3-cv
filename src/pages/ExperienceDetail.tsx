@@ -3,7 +3,126 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { TweetEmbed } from "@/components/ui/tweet-embed";
+import { FeaturesSectionWithHoverEffects } from "@/components/ui/feature-section-with-hover-effects";
 import { ArrowLeft, Calendar, MapPin, Building2, User, Target, TrendingUp, Globe, Award, Briefcase, Code, Anchor } from "lucide-react";
+import {
+  IconTerminal2,
+  IconBrandReact,
+  IconDatabase,
+  IconChartBar,
+  IconBrandFigma,
+  IconCode,
+  IconTrendingUp,
+  IconAward
+} from "@tabler/icons-react";
+
+// Component to create features from experience data
+const ExperienceFeatures = ({ skills, tools, achievements }: { 
+  skills: string[], 
+  tools: { name: string, logo: string }[], 
+  achievements: string[] 
+}) => {
+  const features = [
+    // Top skills
+    ...(skills.slice(0, 3).map((skill, index) => ({
+      title: skill,
+      description: `Core expertise in ${skill} with proven track record`,
+      icon: getSkillIcon(skill, index),
+    }))),
+    // Top tools
+    ...(tools.slice(0, 3).map((tool, index) => ({
+      title: tool.name,
+      description: `Professional experience using ${tool.name}`,
+      icon: getToolIcon(tool.name, index),
+    }))),
+    // Top achievements (limit to 2)
+    ...(achievements.slice(0, 2).map((achievement, index) => ({
+      title: "Key Achievement",
+      description: achievement,
+      icon: <IconAward className="w-6 h-6" />,
+    }))),
+  ];
+
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 relative z-10 py-4 max-w-full mx-auto">
+      {features.map((feature, index) => (
+        <ExperienceFeature key={`${feature.title}-${index}`} {...feature} index={index} />
+      ))}
+    </div>
+  );
+};
+
+const ExperienceFeature = ({
+  title,
+  description,
+  icon,
+  index,
+}: {
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+  index: number;
+}) => {
+  return (
+    <div
+      className={`flex flex-col lg:border-r py-6 relative group/feature border-gray-700 ${
+        (index === 0 || index === 4) && "lg:border-l border-gray-700"
+      } ${index < 4 && "lg:border-b border-gray-700"}`}
+    >
+      {index < 4 && (
+        <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-t from-gray-800 to-transparent pointer-events-none" />
+      )}
+      {index >= 4 && (
+        <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-b from-gray-800 to-transparent pointer-events-none" />
+      )}
+      <div className="mb-4 relative z-10 px-6 text-gray-400">
+        {icon}
+      </div>
+      <div className="text-sm font-bold mb-2 relative z-10 px-6">
+        <div className="absolute left-0 inset-y-0 h-4 group-hover/feature:h-6 w-1 rounded-tr-full rounded-br-full bg-gray-700 group-hover/feature:bg-blue-500 transition-all duration-200 origin-center" />
+        <span className="group-hover/feature:translate-x-2 transition duration-200 inline-block text-gray-100">
+          {title}
+        </span>
+      </div>
+      <p className="text-xs text-gray-400 max-w-xs relative z-10 px-6">
+        {description}
+      </p>
+    </div>
+  );
+};
+
+const getSkillIcon = (skill: string, index: number) => {
+  const iconMap: { [key: string]: React.ReactNode } = {
+    'React': <IconBrandReact className="w-6 h-6" />,
+    'JavaScript': <IconCode className="w-6 h-6" />,
+    'TypeScript': <IconTerminal2 className="w-6 h-6" />,
+    'Node.js': <IconDatabase className="w-6 h-6" />,
+    'Marketing': <IconChartBar className="w-6 h-6" />,
+    'Growth Marketing': <IconTrendingUp className="w-6 h-6" />,
+    'UI/UX': <IconBrandFigma className="w-6 h-6" />,
+    'Content Strategy': <IconCode className="w-6 h-6" />,
+    'SEO': <IconChartBar className="w-6 h-6" />,
+    'Business Development': <IconTrendingUp className="w-6 h-6" />,
+    'KOL Management': <IconChartBar className="w-6 h-6" />,
+  };
+  
+  return iconMap[skill] || <IconCode className="w-6 h-6" />;
+};
+
+const getToolIcon = (tool: string, index: number) => {
+  const iconMap: { [key: string]: React.ReactNode } = {
+    'Figma': <IconBrandFigma className="w-6 h-6" />,
+    'React': <IconBrandReact className="w-6 h-6" />,
+    'MongoDB': <IconDatabase className="w-6 h-6" />,
+    'Analytics': <IconChartBar className="w-6 h-6" />,
+    'Discord': <IconTerminal2 className="w-6 h-6" />,
+    'Slack': <IconTerminal2 className="w-6 h-6" />,
+    'HubSpot': <IconChartBar className="w-6 h-6" />,
+    'Google Ads': <IconChartBar className="w-6 h-6" />,
+  };
+  
+  return iconMap[tool] || <IconTerminal2 className="w-6 h-6" />;
+};
 
 const ExperienceDetail = () => {
   const { id } = useParams();
@@ -413,55 +532,17 @@ const ExperienceDetail = () => {
           </Card>
         )}
 
-        <div className="grid md:grid-cols-2 gap-6">
-          {/* Skills */}
-          <Card className="bg-gray-900 border-gray-800">
-            <CardHeader>
-              <CardTitle className="text-lg text-white">Skills & Expertise</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="flex flex-wrap gap-2">
-                {experience.skills.map((skill, index) => (
-                  <Badge key={index} variant="secondary" className="bg-gray-800 text-gray-300">
-                    {skill}
-                  </Badge>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Tools & Technologies */}
-          <Card className="bg-gray-900 border-gray-800">
-            <CardHeader>
-              <CardTitle className="text-lg text-white">Tools & Technologies</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-2 gap-3">
-                {experience.tools.map((tool, index) => (
-                  <div key={index} className="flex items-center gap-2 p-2 rounded-lg bg-gray-800/50">
-                    <img src={tool.logo} alt={tool.name} className="w-4 h-4" />
-                    <span className="text-sm text-gray-300">{tool.name}</span>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Achievements */}
+        {/* Skills, Tools & Achievements */}
         <Card className="bg-gray-900 border-gray-800">
           <CardHeader>
-            <CardTitle className="text-lg text-white">Key Achievements</CardTitle>
+            <CardTitle className="text-lg text-white">Skills, Tools & Key Achievements</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid md:grid-cols-2 gap-4">
-              {experience.achievements.map((achievement, index) => (
-                <div key={index} className="flex items-start gap-3 p-3 rounded-lg bg-gray-800/30">
-                  <Award className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
-                  <span className="text-gray-300">{achievement}</span>
-                </div>
-              ))}
-            </div>
+            <ExperienceFeatures 
+              skills={experience.skills}
+              tools={experience.tools}
+              achievements={experience.achievements}
+            />
           </CardContent>
         </Card>
       </div>
