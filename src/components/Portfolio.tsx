@@ -61,6 +61,7 @@ const Portfolio = () => {
   };
 
   const experiences = [
+    // Brahma (BrahmaFi)
     {
       title: "Growth Marketing Manager",
       company: "BrahmaFi",
@@ -100,6 +101,7 @@ const Portfolio = () => {
         }
       ]
     },
+    // Liminal
     {
       title: "Manager - Content & Communications",
       company: "Liminal Custody",
@@ -146,6 +148,29 @@ const Portfolio = () => {
         }
       ]
     },
+    // ShipFinex
+    {
+      title: "Marketing and Business Development Head",
+      company: "ShipFinex",
+      period: "Jul 2022 - Dec 2022",
+      keyResponsibilities: [
+        "Won Startup World Cup Pitch Competition",
+        "Generated $10K+ in private sale funding",
+        "Built brand for RWA tokenization"
+      ],
+      description: [
+        "Orchestrated the entire brand building and digital presence setup pushing the envelope of real-world asset tokenisation and fractional ownership.",
+        "Superseded the marketing and business team to set SOP's and Marketing Roadmap including content marketing strategy, graphical brand outlook, identifying targeted keywords for SEO setup, product marketing tactics and collaborating with relevant communities and protocols.",
+        "Participated in major Blockchain events, representing the brand, curating keynote and pitch deck presentations, leading to victory in Startup World Cup Pitch Competition at World Blockchain Summit.",
+        "Initiated investor relationships, seed sale strategy, project showcase to investors generating over $10K ticket size in the private sale round for token allocation."
+      ],
+      skills: ["Brand Building", "Digital Marketing", "SEO Strategy", "Event Management", "Investor Relations", "Startup Pitch"],
+      tools: [
+        { name: "Zendesk", logo: "https://d1eipm3vz40hy0.cloudfront.net/images/AMER/zendesk-favicon.png" },
+        { name: "Discord", logo: "https://discord.com/assets/847541504914fd33810e70a0ea73177e.ico" }
+      ]
+    },
+    // BitMart
     {
       title: "Senior Business Development Manager-India",
       company: "BitMart",
@@ -170,27 +195,7 @@ const Portfolio = () => {
         { name: "Twitter Ads", logo: "https://abs.twimg.com/favicons/twitter.2.ico" }
       ]
     },
-    {
-      title: "Marketing and Business Development Head",
-      company: "ShipFinex",
-      period: "Jul 2022 - Dec 2022",
-      keyResponsibilities: [
-        "Won Startup World Cup Pitch Competition",
-        "Generated $10K+ in private sale funding",
-        "Built brand for RWA tokenization"
-      ],
-      description: [
-        "Orchestrated the entire brand building and digital presence setup pushing the envelope of real-world asset tokenisation and fractional ownership.",
-        "Superseded the marketing and business team to set SOP's and Marketing Roadmap including content marketing strategy, graphical brand outlook, identifying targeted keywords for SEO setup, product marketing tactics and collaborating with relevant communities and protocols.",
-        "Participated in major Blockchain events, representing the brand, curating keynote and pitch deck presentations, leading to victory in Startup World Cup Pitch Competition at World Blockchain Summit.",
-        "Initiated investor relationships, seed sale strategy, project showcase to investors generating over $10K ticket size in the private sale round for token allocation."
-      ],
-      skills: ["Brand Building", "Digital Marketing", "SEO Strategy", "Event Management", "Investor Relations", "Startup Pitch"],
-      tools: [
-        { name: "Zendesk", logo: "https://d1eipm3vz40hy0.cloudfront.net/images/AMER/zendesk-favicon.png" },
-        { name: "Discord", logo: "https://discord.com/assets/847541504914fd33810e70a0ea73177e.ico" }
-      ]
-    },
+    // Spherium Finance
     {
       title: "Head of Marketing and Business Development Team",
       company: "Spherium Finance",
@@ -211,6 +216,7 @@ const Portfolio = () => {
         { name: "Notion", logo: "https://www.notion.so/images/favicon.ico" }
       ]
     },
+    // Huobi Global
     {
       title: "Business Development Manager (Consultant)",
       company: "Huobi Global",
@@ -231,6 +237,7 @@ const Portfolio = () => {
         { name: "Telegram", logo: "https://web.telegram.org/favicon.ico" }
       ]
     },
+    // CoinGape
     {
       title: "Content Manager",
       company: "CoinGape Crypto News",
@@ -251,6 +258,7 @@ const Portfolio = () => {
         { name: "HubSpot", logo: "https://www.hubspot.com/favicon.ico" }
       ]
     },
+    // F&K Solutions
     {
       title: "Freelance Content and Social Media Manager",
       company: "F&K Solutions",
