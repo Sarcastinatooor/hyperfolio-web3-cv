@@ -368,40 +368,93 @@ const Portfolio = () => {
               </h2>
             </div>
             
-            {/* Display Cards for Experience */}
-            <div className="flex justify-center">
-              <DisplayCards cards={[
-                {
-                  icon: <Briefcase className="size-4 text-primary" />,
-                  title: "BrahmaFi",
-                  description: "Growth Marketing Manager",
-                  date: "Present",
-                  iconClassName: "text-primary",
-                  titleClassName: "text-primary",
-                  className: "[grid-area:stack] hover:-translate-y-10 before:absolute before:w-[100%] before:outline-1 before:rounded-xl before:outline-border before:h-[100%] before:content-[''] before:bg-blend-overlay before:bg-background/50 grayscale-[100%] hover:before:opacity-0 before:transition-opacity before:duration-700 hover:grayscale-0 before:left-0 before:top-0",
-                  onClick: () => navigate('/experience/brahma-fi')
-                },
-                {
-                  icon: <Award className="size-4 text-primary" />,
-                  title: "Liminal Custody",
-                  description: "Content & Communications",
-                  date: "2023-2024",
-                  iconClassName: "text-primary",
-                  titleClassName: "text-primary",
-                  className: "[grid-area:stack] translate-x-16 translate-y-10 hover:-translate-y-1 before:absolute before:w-[100%] before:outline-1 before:rounded-xl before:outline-border before:h-[100%] before:content-[''] before:bg-blend-overlay before:bg-background/50 grayscale-[100%] hover:before:opacity-0 before:transition-opacity before:duration-700 hover:grayscale-0 before:left-0 before:top-0",
-                  onClick: () => navigate('/experience/liminal-custody')
-                },
-                {
-                  icon: <ExternalLink className="size-4 text-primary" />,
-                  title: "BitMart",
-                  description: "Senior BD Manager",
-                  date: "2022-2023",
-                  iconClassName: "text-primary",
-                  titleClassName: "text-primary",
-                  className: "[grid-area:stack] translate-x-32 translate-y-20 hover:translate-y-10",
-                  onClick: () => navigate('/experience/bitmart')
-                }
-              ]} />
+            {/* Bento Grid Layout for All Experiences */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 max-w-7xl mx-auto">
+              {experiences.map((exp, index) => (
+                <Card 
+                  key={index}
+                  className={`group cursor-pointer transition-all duration-300 hover:shadow-lg hover:scale-105 border-2 border-border/50 hover:border-primary/30 bg-card/80 backdrop-blur-sm
+                    ${index === 0 ? 'md:col-span-2 lg:col-span-2' : ''}
+                    ${index === 1 ? 'lg:col-span-2 xl:col-span-1' : ''}
+                    ${index === 2 ? 'xl:col-span-1' : ''}
+                  `}
+                  onClick={() => navigate(`/experience/${exp.company.toLowerCase().replace(/\s+/g, '-')}`)}
+                >
+                  <CardContent className="p-6 h-full flex flex-col">
+                    <div className="flex items-start gap-3 mb-3">
+                      <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                        <Briefcase className="w-5 h-5 text-primary" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-semibold text-foreground text-lg leading-tight mb-1 group-hover:text-primary transition-colors">
+                          {exp.company}
+                        </h3>
+                        <p className="text-sm text-muted-foreground font-medium mb-1">
+                          {exp.title}
+                        </p>
+                        <p className="text-xs text-muted-foreground">
+                          {exp.period}
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex-1 mb-4">
+                      <div className="space-y-2">
+                        {exp.keyResponsibilities.slice(0, 3).map((responsibility, idx) => (
+                          <div key={idx} className="flex items-start gap-2">
+                            <div className="w-1 h-1 rounded-full bg-primary mt-2 flex-shrink-0" />
+                            <p className="text-xs text-muted-foreground leading-relaxed">
+                              {responsibility}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    
+                    <div className="flex flex-wrap gap-1 mb-4">
+                      {exp.skills.slice(0, 3).map((skill, idx) => (
+                        <Badge 
+                          key={idx} 
+                          variant="secondary" 
+                          className="text-xs px-2 py-1 bg-secondary/50 text-secondary-foreground"
+                        >
+                          {skill}
+                        </Badge>
+                      ))}
+                      {exp.skills.length > 3 && (
+                        <Badge variant="outline" className="text-xs px-2 py-1">
+                          +{exp.skills.length - 3}
+                        </Badge>
+                      )}
+                    </div>
+                    
+                    <div className="flex items-center justify-between pt-2 border-t border-border/50">
+                      <div className="flex items-center gap-2">
+                        <div className="flex -space-x-1">
+                          {exp.tools.slice(0, 3).map((tool, idx) => (
+                            <div key={idx} className="w-6 h-6 rounded-full bg-muted border border-background flex items-center justify-center">
+                              <img 
+                                src={tool.logo} 
+                                alt={tool.name}
+                                className="w-3 h-3 object-contain"
+                                onError={(e) => {
+                                  e.currentTarget.style.display = 'none';
+                                }}
+                              />
+                            </div>
+                          ))}
+                          {exp.tools.length > 3 && (
+                            <div className="w-6 h-6 rounded-full bg-muted border border-background flex items-center justify-center">
+                              <span className="text-xs text-muted-foreground">+{exp.tools.length - 3}</span>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                      <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </div>
 
