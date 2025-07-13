@@ -88,27 +88,33 @@ const experiences: Experience[] = [
 ];
 
 export default function ExperienceSection() {
-  // Convert experiences to media items for bento gallery
-  const mediaItems: MediaItemType[] = experiences.map((exp, index) => ({
-    id: index + 1,
-    type: "image",
-    title: `${exp.title} at ${exp.company}`,
-    desc: exp.description,
-    url: `https://images.unsplash.com/photo-${1550000000000 + index * 100000}-${Math.random().toString(36).substr(2, 9)}?w=800&h=600&fit=crop&crop=faces,center`,
-    span: getRandomSpan(index)
-  }));
-
-  function getRandomSpan(index: number): string {
-    const spans = [
-      "md:col-span-1 md:row-span-3 sm:col-span-1 sm:row-span-2",
-      "md:col-span-2 md:row-span-2 col-span-1 sm:col-span-2 sm:row-span-2",
-      "md:col-span-1 md:row-span-3 sm:col-span-2 sm:row-span-2",
-      "md:col-span-2 md:row-span-2 sm:col-span-1 sm:row-span-2",
-      "md:col-span-1 md:row-span-3 sm:col-span-1 sm:row-span-2",
-      "md:col-span-2 md:row-span-2 sm:col-span-1 sm:row-span-2"
-    ];
-    return spans[index % spans.length];
-  }
+  // Convert experiences to media items for bento gallery with real Unsplash URLs
+  const mediaItems: MediaItemType[] = [
+    {
+      id: 1,
+      type: "image",
+      title: "Growth Lead at BrahmaFi",
+      desc: "Leading growth initiatives for a DeFi protocol focused on yield optimization and automated portfolio management.",
+      url: "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=800&h=600&fit=crop",
+      span: "md:col-span-2 md:row-span-2 col-span-1 sm:col-span-2 sm:row-span-2"
+    },
+    {
+      id: 2,
+      type: "image", 
+      title: "Marketing Lead at Spiko",
+      desc: "Spearheaded marketing efforts for an innovative AI-powered platform focused on social media automation.",
+      url: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
+      span: "md:col-span-1 md:row-span-3 sm:col-span-1 sm:row-span-2"
+    },
+    {
+      id: 3,
+      type: "image",
+      title: "Marketing Manager at FirstPromoter", 
+      desc: "Managed marketing operations for a leading referral marketing software platform serving SaaS companies.",
+      url: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
+      span: "md:col-span-1 md:row-span-3 sm:col-span-2 sm:row-span-2"
+    }
+  ];
 
   return (
     <section id="experience-section" className="py-16 bg-background">
