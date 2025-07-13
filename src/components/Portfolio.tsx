@@ -406,7 +406,7 @@ const Portfolio = () => {
                 },
               ]}
               title="Experience"
-              description="A showcase of my professional journey and key accomplishments"
+              description=""
               onItemClick={(item) => {
                 const experienceMap: { [key: string]: string } = {
                   "Growth Marketing Manager": "brahma-fi",
