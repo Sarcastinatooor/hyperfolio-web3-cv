@@ -301,8 +301,7 @@ const Portfolio = () => {
           index === 5 ? <Award className="w-4 h-4 text-white" /> :
           index === 6 ? <Briefcase className="w-4 h-4 text-white" /> :
           <User className="w-4 h-4 text-white" />,
-    colSpan: index === 0 || index === 1 ? 2 : 
-             index === 4 || index === 5 ? 2 : 1,
+    colSpan: 1,
     hasPersistentHover: index === 0,
     onClick: () => navigate(`/experience/${index}`)
   }));
