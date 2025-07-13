@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -6,8 +7,10 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { ExternalLink, MapPin, Mail, Calendar, Award, Briefcase, X, Twitter, Globe } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import AIChat from './AIChat';
+import DisplayCards from './ui/display-cards';
 
 const Portfolio = () => {
+  const navigate = useNavigate();
   const [isGmClicked, setIsGmClicked] = useState(false);
   const [displayName, setDisplayName] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
@@ -365,181 +368,42 @@ const Portfolio = () => {
               </h2>
             </div>
             
-            {/* Floating Experience Cards */}
-            <div className="relative">
-              {experiences.map((exp, index) => (
-                <div
-                  key={index}
-                  ref={(el) => cardRefs.current[index] = el}
-                  data-index={index}
-                  className={`relative mb-8 last:mb-0 transition-all duration-700 ease-out ${
-                    visibleCards.includes(index) 
-                      ? 'opacity-100 translate-y-0' 
-                      : 'opacity-0 translate-y-20'
-                  }`}
-                  style={{
-                    transitionDelay: `${index * 200}ms`,
-                    zIndex: experiences.length - index,
-                  }}
-                >
-                  <Card 
-                    className={`relative cursor-pointer group hover-scale transition-all duration-300 border-2 border-primary/20 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/20 ${
-                      index === 0 ? 'min-h-[280px] scale-105' : 'min-h-[240px]'
-                    } ${
-                      index > 0 ? 'lg:-mt-6' : ''
-                    }`}
-                    onClick={() => handleCardClick(index)}
-                  >
-                    <CardContent className="p-6">
-                      <div className="absolute top-4 right-4">
-                        <Badge 
-                          variant={index === 0 ? "default" : "secondary"} 
-                          className="text-xs"
-                        >
-                          {index === 0 ? "Current" : exp.period}
-                        </Badge>
-                      </div>
-                      
-                      <div className="mb-4">
-                        <h3 className={`font-bold text-foreground mb-2 ${
-                          index === 0 ? 'text-xl lg:text-2xl' : 'text-lg lg:text-xl'
-                        }`}>
-                          {exp.company}
-                        </h3>
-                        <p className={`text-primary font-medium mb-3 ${
-                          index === 0 ? 'text-base' : 'text-sm'
-                        }`}>
-                          {exp.title}
-                        </p>
-                      </div>
-                      
-                      <div className="space-y-2">
-                        {(exp.keyResponsibilities || exp.description.slice(0, 3)).map((responsibility, respIndex) => (
-                          <div key={respIndex} className="flex items-start gap-2">
-                            <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                            <p className="text-sm text-muted-foreground leading-relaxed">
-                              {responsibility.length > 120 ? responsibility.slice(0, 120) + '...' : responsibility}
-                            </p>
-                          </div>
-                        ))}
-                      </div>
-                      
-                      <div className="mt-4 pt-4 border-t border-border/30">
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              ))}
+            {/* Display Cards for Experience */}
+            <div className="flex justify-center">
+              <DisplayCards cards={[
+                {
+                  icon: <Briefcase className="size-4 text-primary" />,
+                  title: "BrahmaFi",
+                  description: "Growth Marketing Manager",
+                  date: "Present",
+                  iconClassName: "text-primary",
+                  titleClassName: "text-primary",
+                  className: "[grid-area:stack] hover:-translate-y-10 before:absolute before:w-[100%] before:outline-1 before:rounded-xl before:outline-border before:h-[100%] before:content-[''] before:bg-blend-overlay before:bg-background/50 grayscale-[100%] hover:before:opacity-0 before:transition-opacity before:duration-700 hover:grayscale-0 before:left-0 before:top-0",
+                  onClick: () => navigate('/experience/brahma-fi')
+                },
+                {
+                  icon: <Award className="size-4 text-primary" />,
+                  title: "Liminal Custody",
+                  description: "Content & Communications",
+                  date: "2023-2024",
+                  iconClassName: "text-primary",
+                  titleClassName: "text-primary",
+                  className: "[grid-area:stack] translate-x-16 translate-y-10 hover:-translate-y-1 before:absolute before:w-[100%] before:outline-1 before:rounded-xl before:outline-border before:h-[100%] before:content-[''] before:bg-blend-overlay before:bg-background/50 grayscale-[100%] hover:before:opacity-0 before:transition-opacity before:duration-700 hover:grayscale-0 before:left-0 before:top-0",
+                  onClick: () => navigate('/experience/liminal-custody')
+                },
+                {
+                  icon: <ExternalLink className="size-4 text-primary" />,
+                  title: "BitMart",
+                  description: "Senior BD Manager",
+                  date: "2022-2023",
+                  iconClassName: "text-primary",
+                  titleClassName: "text-primary",
+                  className: "[grid-area:stack] translate-x-32 translate-y-20 hover:translate-y-10",
+                  onClick: () => navigate('/experience/bitmart')
+                }
+              ]} />
             </div>
           </div>
-
-          {/* Experience Detail Modal */}
-          <Dialog open={selectedExperience !== null} onOpenChange={closeModal}>
-            <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
-              {selectedExperience !== null && (
-                <>
-                  <DialogHeader>
-                    <DialogTitle className="text-2xl font-bold text-foreground">
-                      {experiences[selectedExperience].title}
-                    </DialogTitle>
-                    <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                      <span className="text-primary font-medium text-base">
-                        {experiences[selectedExperience].company}
-                      </span>
-                      <span>{experiences[selectedExperience].period}</span>
-                    </div>
-                  </DialogHeader>
-                  
-                  <div className="space-y-6">
-                    {/* Full Description */}
-                    <div>
-                      <h4 className="font-semibold text-foreground mb-3">Key Responsibilities</h4>
-                      <ul className="space-y-3">
-                        {experiences[selectedExperience].description.map((point, index) => (
-                          <li key={index} className="flex items-start gap-3">
-                            <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
-                            <p className="text-sm text-muted-foreground leading-relaxed">{point}</p>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    
-                    {/* Skills & Tools */}
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                      {/* Skills */}
-                      {experiences[selectedExperience].skills && (
-                        <div>
-                          <h4 className="font-semibold text-foreground mb-3">Skills</h4>
-                          <div className="flex flex-wrap gap-2">
-                            {experiences[selectedExperience].skills.map((skill, index) => (
-                              <Badge key={index} variant="secondary" className="text-xs">
-                                {skill}
-                              </Badge>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                      
-                      {/* Tools */}
-                      {experiences[selectedExperience].tools && (
-                        <div>
-                          <h4 className="font-semibold text-foreground mb-3">Tools & Platforms</h4>
-                          <div className="flex flex-wrap gap-2">
-                            {experiences[selectedExperience].tools.map((tool, index) => (
-                              <div key={index} className="flex items-center gap-1.5 bg-muted/50 rounded-md px-3 py-1.5">
-                                <img 
-                                  src={tool.logo} 
-                                  alt={`${tool.name} logo`}
-                                  className="w-4 h-4 object-contain"
-                                  onError={(e) => {
-                                    const target = e.target as HTMLImageElement;
-                                    target.style.display = 'none';
-                                  }}
-                                />
-                                <span className="text-xs text-foreground">{tool.name}</span>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                    
-                    {/* Showcase Section */}
-                    {experiences[selectedExperience].showcase && (
-                      <div>
-                        <h4 className="font-semibold text-foreground mb-4">Featured Work & Campaigns</h4>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                          {experiences[selectedExperience].showcase.map((item, index) => (
-                            <Card key={index} className="border border-border/50 hover:border-primary/50 transition-colors">
-                              <CardContent className="p-4">
-                                <div className="flex items-start justify-between mb-2">
-                                  <Badge variant="outline" className="text-xs">
-                                    {item.type === 'tweet' ? 'Campaign' : item.type === 'blog' ? 'Blog' : 'Case Study'}
-                                  </Badge>
-                                  {item.type === 'tweet' ? <Twitter className="w-4 h-4 text-primary" /> : <Globe className="w-4 h-4 text-primary" />}
-                                </div>
-                                <h5 className="font-medium text-foreground mb-2">{item.title}</h5>
-                                <p className="text-xs text-muted-foreground mb-3">{item.description}</p>
-                                <Button 
-                                  variant="outline" 
-                                  size="sm" 
-                                  className="w-full text-xs"
-                                  onClick={() => window.open(item.url, '_blank')}
-                                >
-                                  <ExternalLink className="w-3 h-3 mr-1" />
-                                  View {item.type === 'tweet' ? 'Campaign' : 'Work'}
-                                </Button>
-                              </CardContent>
-                            </Card>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                </>
-              )}
-            </DialogContent>
-          </Dialog>
 
           {/* AI Chat Section */}
           <div className="mb-8">
