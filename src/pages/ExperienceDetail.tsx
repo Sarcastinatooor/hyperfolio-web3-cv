@@ -29,6 +29,18 @@ const ExperienceDetail = () => {
         "Working closely with the founding team to support BD efforts for new chain integrations, functionality rollouts, and incentive-based campaigns, including outreach and partner coordination for go-to-market execution.",
         "Driven measurable growth across core KPIs — scaling TVL past $100M (peaking at $300M), and growing X and Discord engagement by over 600% and 650% respectively through strategic campaign loops and aligned narrative pushes."
       ],
+      campaignHighlights: [
+        {
+          title: "Major Cross-Chain Campaign",
+          tweetUrl: "https://x.com/BrahmaFi/status/1798777910297497717",
+          description: "Led prominent cross-chain integration campaign showcasing BrahmaFi's expansion"
+        },
+        {
+          title: "Campaign Performance Stats",
+          tweetUrl: "https://x.com/BrahmaFi/status/1828111828796277174", 
+          description: "Campaign metrics and performance data showcasing significant growth achievements"
+        }
+      ],
       skills: ["Growth Marketing", "KOL Management", "Community Operations", "Campaign Management", "Cross-functional Collaboration", "Business Development", "Discord Management", "Content Strategy", "Onchain Analytics"],
       tools: [
         { name: "Discord", logo: "https://discord.com/assets/847541504914fd33810e70a0ea73177e.ico" },
@@ -374,6 +386,39 @@ const ExperienceDetail = () => {
             </div>
           </CardContent>
         </Card>
+
+        {/* Campaign Highlights - only for BrahmaFi */}
+        {experience.campaignHighlights && (
+          <Card className="bg-gray-900 border-gray-800">
+            <CardHeader>
+              <CardTitle className="text-lg text-white">Campaign Highlights</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-6">
+                {experience.campaignHighlights.map((campaign, index) => (
+                  <div key={index} className="border border-gray-700 rounded-lg p-4 bg-gray-800/30">
+                    <h3 className="text-blue-400 font-medium mb-2">{campaign.title}</h3>
+                    <p className="text-gray-300 text-sm mb-3">{campaign.description}</p>
+                    <div className="bg-gray-800 rounded-lg p-4 border border-gray-600">
+                      <div className="flex items-center gap-2 mb-2">
+                        <Anchor className="w-4 h-4 text-blue-400" />
+                        <span className="text-xs text-gray-400">Tweet Embed</span>
+                      </div>
+                      <a 
+                        href={campaign.tweetUrl} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-blue-400 hover:text-blue-300 text-sm break-all"
+                      >
+                        {campaign.tweetUrl}
+                      </a>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        )}
 
         <div className="grid md:grid-cols-2 gap-6">
           {/* Skills */}
