@@ -362,9 +362,6 @@ const Portfolio = () => {
               <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-4">
                 Experience
               </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Experience
-              </p>
             </div>
             
             {/* Floating Experience Cards */}
