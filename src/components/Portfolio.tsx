@@ -288,9 +288,9 @@ const Portfolio = () => {
 
   // Transform experiences into BentoItems
   const experienceBentoItems: BentoItem[] = experiences.map((exp, index) => ({
-    title: exp.title,
+    title: exp.company,
     description: exp.keyResponsibilities[0],
-    meta: exp.company,
+    meta: exp.title,
     status: exp.period,
     tags: exp.skills.slice(0, 3),
     icon: index === 0 ? <TrendingUp className="w-4 h-4 text-white" /> :
