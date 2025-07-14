@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { TweetEmbed } from "@/components/ui/tweet-embed";
 import { SocialMediaDashboard } from "@/components/ui/social-media-dashboard";
+import TwitterAnalyticsDashboard from "@/components/TwitterAnalyticsDashboard";
 import { ArrowLeft, Calendar, MapPin, Building2, User, Target, TrendingUp, Globe, Award, Briefcase, Code, Anchor } from "lucide-react";
 import {
   IconTerminal2,
@@ -400,29 +401,10 @@ const ExperienceDetail = () => {
           </CardContent>
         </Card>
 
-        {/* Social Media Dashboard */}
-        <Card className="bg-gray-900 border-gray-800">
-          <CardHeader>
-            <CardTitle className="text-lg text-white">Campaign Analytics</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <SocialMediaDashboard 
-              campaigns={[{
-                title: "ARB Incentive Giveaway",
-                tweetUrl: "https://x.com/BrahmaFi/status/1798777910297497717",
-                description: "Strategic incentive campaign driving significant TVL growth and community engagement",
-                stats: {
-                  views: "1.2M",
-                  likes: "2.8K",
-                  retweets: "1.5K",
-                  replies: "324",
-                  engagement: "8.4%",
-                  reach: "300+"
-                }
-              }]}
-            />
-          </CardContent>
-        </Card>
+        {/* Twitter Analytics Dashboard - only for BrahmaFi */}
+        {experienceId === 0 && (
+          <TwitterAnalyticsDashboard startDate="2024-01" />
+        )}
       </div>
     </div>
   );
