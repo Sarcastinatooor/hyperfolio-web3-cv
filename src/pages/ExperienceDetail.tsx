@@ -432,19 +432,19 @@ const ExperienceDetail = () => {
           </CardHeader>
           <CardContent>
             <SocialMediaDashboard 
-              campaigns={experience.campaignHighlights?.map(campaign => ({
-                title: campaign.title,
-                tweetUrl: campaign.tweetUrl,
-                description: campaign.description,
+              campaigns={[{
+                title: "ARB Incentive Giveaway",
+                tweetUrl: "https://x.com/BrahmaFi/status/1798777910297497717",
+                description: "Strategic incentive campaign driving significant TVL growth and community engagement",
                 stats: {
-                  views: "127.5K",
-                  likes: "2.4K",
-                  retweets: "856",
-                  replies: "124",
-                  engagement: "6.8%",
-                  reach: "89.2K"
+                  views: "1.2M",
+                  likes: "2.8K",
+                  retweets: "1.5K",
+                  replies: "324",
+                  engagement: "8.4%",
+                  reach: "300+"
                 }
-              })) || []}
+              }]}
             />
           </CardContent>
         </Card>
