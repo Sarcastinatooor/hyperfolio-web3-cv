@@ -237,89 +237,6 @@ const TwitterAnalyticsDashboard: React.FC<TwitterAnalyticsDashboardProps> = ({ s
         </Card>
       </div>
 
-      {/* Charts Row */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Engagement Timeline */}
-        <Card className="lg:col-span-2">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <TrendingUp className="h-5 w-5" />
-              Growth Timeline
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <ChartContainer
-              config={{
-                followers: { label: "Followers", color: "hsl(var(--primary))" },
-                engagement: { label: "Engagement Rate", color: "hsl(var(--secondary))" },
-                avgViews: { label: "Avg Views", color: "hsl(var(--accent))" }
-              }}
-            >
-              <ResponsiveContainer width="100%" height={300}>
-                <LineChart data={engagementData}>
-                  <XAxis dataKey="month" />
-                  <YAxis yAxisId="left" />
-                  <YAxis yAxisId="right" orientation="right" />
-                  <ChartTooltip content={<ChartTooltipContent />} />
-                  <Line 
-                    yAxisId="left"
-                    type="monotone" 
-                    dataKey="followers" 
-                    stroke="hsl(var(--primary))" 
-                    strokeWidth={2}
-                    dot={{ fill: "hsl(var(--primary))" }}
-                  />
-                  <Line 
-                    yAxisId="right"
-                    type="monotone" 
-                    dataKey="engagement" 
-                    stroke="hsl(var(--secondary))" 
-                    strokeWidth={2}
-                    dot={{ fill: "hsl(var(--secondary))" }}
-                  />
-                </LineChart>
-              </ResponsiveContainer>
-            </ChartContainer>
-          </CardContent>
-        </Card>
-
-        {/* Campaign Distribution */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Campaign Distribution</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <ChartContainer
-              config={{
-                giveaways: { label: "Giveaways", color: "hsl(var(--primary))" },
-                product: { label: "Product", color: "hsl(var(--secondary))" },
-                partnerships: { label: "Partnerships", color: "hsl(var(--accent))" },
-                educational: { label: "Educational", color: "hsl(var(--muted))" }
-              }}
-            >
-              <ResponsiveContainer width="100%" height={250}>
-                <PieChart>
-                  <Pie
-                    data={categoryData}
-                    cx="50%"
-                    cy="50%"
-                    outerRadius={80}
-                    fill="#8884d8"
-                    dataKey="value"
-                    label={({ name, value }) => `${name}: ${value}%`}
-                  >
-                    {categoryData.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={entry.color} />
-                    ))}
-                  </Pie>
-                  <ChartTooltip content={<ChartTooltipContent />} />
-                </PieChart>
-              </ResponsiveContainer>
-            </ChartContainer>
-          </CardContent>
-        </Card>
-      </div>
-
       {/* Top Performing Campaigns */}
       <Card>
         <CardHeader>
@@ -370,43 +287,6 @@ const TwitterAnalyticsDashboard: React.FC<TwitterAnalyticsDashboardProps> = ({ s
                 />
               </div>
             ))}
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Campaign Performance Table */}
-      <Card>
-        <CardHeader>
-          <CardTitle>All Campaigns Performance</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b border-border">
-                  <th className="text-left p-3 font-medium text-muted-foreground">Campaign</th>
-                  <th className="text-left p-3 font-medium text-muted-foreground">Date</th>
-                  <th className="text-left p-3 font-medium text-muted-foreground">Category</th>
-                  <th className="text-right p-3 font-medium text-muted-foreground">Views</th>
-                  <th className="text-right p-3 font-medium text-muted-foreground">Engagement</th>
-                  <th className="text-right p-3 font-medium text-muted-foreground">TVL Impact</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredCampaigns.map((campaign) => (
-                  <tr key={campaign.id} className="border-b border-border">
-                    <td className="p-3 font-medium text-foreground">{campaign.name}</td>
-                    <td className="p-3 text-muted-foreground">{campaign.date}</td>
-                    <td className="p-3">
-                      <Badge variant="secondary">{campaign.category}</Badge>
-                    </td>
-                    <td className="p-3 text-right text-foreground">{(campaign.metrics.views / 1000).toFixed(1)}K</td>
-                    <td className="p-3 text-right text-foreground">{campaign.metrics.engagement}%</td>
-                    <td className="p-3 text-right font-medium text-primary">{campaign.metrics.tvlImpact}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
           </div>
         </CardContent>
       </Card>
