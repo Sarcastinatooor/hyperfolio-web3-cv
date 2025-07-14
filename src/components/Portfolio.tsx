@@ -417,7 +417,7 @@ const Portfolio = () => {
                   variant="outline" 
                   size="sm"
                   className="social-button text-xs"
-                  onClick={() => window.open('https://twitter.com/riteshkhan', '_blank')}
+                  onClick={() => window.open('https://x.com/Not_A_De_Gen', '_blank')}
                 >
                   <ExternalLink className="w-3 h-3 mr-1" />
                   Connect
