@@ -400,31 +400,6 @@ const ExperienceDetail = () => {
           </CardContent>
         </Card>
 
-        {/* Campaign Highlights - only for BrahmaFi */}
-        {experience.campaignHighlights && (
-          <Card className="bg-gray-900 border-gray-800">
-            <CardHeader>
-              <CardTitle className="text-lg text-white">Campaign Highlights</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-6">
-                {experience.campaignHighlights.map((campaign, index) => (
-                  <div key={index} className="space-y-4">
-                    <div className="border border-gray-700 rounded-lg p-4 bg-gray-800/30">
-                      <h3 className="text-blue-400 font-medium mb-2">{campaign.title}</h3>
-                      <p className="text-gray-300 text-sm mb-4">{campaign.description}</p>
-                    </div>
-                    <TweetEmbed 
-                      tweetUrl={campaign.tweetUrl} 
-                      className="w-full"
-                    />
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        )}
-
         {/* Social Media Dashboard */}
         <Card className="bg-gray-900 border-gray-800">
           <CardHeader>
