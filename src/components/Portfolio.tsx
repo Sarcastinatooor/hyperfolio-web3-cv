@@ -410,7 +410,7 @@ const Portfolio = () => {
           <div className="hl-card text-center">
             <div className="hl-table-cell">
               <p className="text-xs text-muted-foreground mb-3">
-                Ready to build the future of Web3 together?
+                All my shillngs are done here
               </p>
               <div className="flex justify-center gap-3">
                 <Button 
