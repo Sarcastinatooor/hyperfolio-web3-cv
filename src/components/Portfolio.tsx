@@ -294,7 +294,7 @@ const Portfolio = () => {
     status: exp.period,
     tags: exp.skills.slice(0, 3),
     icon: index === 0 ? <TrendingUp className="w-4 h-4 text-white" /> :
-          index === 1 ? <User className="w-4 h-4 text-white" /> :
+          index === 1 ? <img src="/lovable-uploads/bfb0ed9c-a115-48ed-b7c4-97a1180adfc3.png" alt="Liminal Custody Logo" className="w-4 h-4 object-contain" /> :
           index === 2 ? <Target className="w-4 h-4 text-white" /> :
           index === 3 ? <Building2 className="w-4 h-4 text-white" /> :
           index === 4 ? <Globe className="w-4 h-4 text-white" /> :
