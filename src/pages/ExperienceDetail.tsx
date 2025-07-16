@@ -328,8 +328,12 @@ const ExperienceDetail = () => {
             Back to Portfolio
           </Button>
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-blue-600/20 flex items-center justify-center">
-              {getIcon(experienceId)}
+            <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center overflow-hidden">
+              <img 
+                src="/lovable-uploads/a991def3-65b4-42c5-ae46-fd51b8ba5745.png" 
+                alt={`${experience.company} logo`}
+                className="w-8 h-8 object-contain"
+              />
             </div>
             <div>
               <h1 className="font-semibold text-blue-400">{experience.company}</h1>
