@@ -129,7 +129,7 @@ const TwitterAnalyticsDashboard: React.FC<TwitterAnalyticsDashboardProps> = ({ s
       }
     },
     {
-      id: '2',
+      id: '5',
       name: 'Vault Strategy Launch',
       date: '2024-04-15',
       category: 'product',
@@ -144,7 +144,7 @@ const TwitterAnalyticsDashboard: React.FC<TwitterAnalyticsDashboardProps> = ({ s
       }
     },
     {
-      id: '3',
+      id: '6',
       name: 'Partnership Announcement',
       date: '2024-03-22',
       category: 'partnership',
@@ -159,7 +159,7 @@ const TwitterAnalyticsDashboard: React.FC<TwitterAnalyticsDashboardProps> = ({ s
       }
     },
     {
-      id: '4',
+      id: '7',
       name: 'DeFi Education Series',
       date: '2024-02-10',
       category: 'educational',
