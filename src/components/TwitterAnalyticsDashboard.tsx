@@ -130,9 +130,17 @@ const TwitterAnalyticsDashboard: React.FC<TwitterAnalyticsDashboardProps> = ({ s
     .sort((a, b) => b.metrics.views - a.metrics.views)
     .slice(0, 3);
 
-  const totalViews = filteredCampaigns.reduce((sum, c) => sum + c.metrics.views, 0);
-  const totalEngagement = filteredCampaigns.reduce((sum, c) => sum + c.metrics.likes + c.metrics.retweets + c.metrics.replies, 0);
-  const avgEngagementRate = filteredCampaigns.reduce((sum, c) => sum + c.metrics.engagement, 0) / filteredCampaigns.length;
+  // Real Twitter Analytics Data
+  const totalImpressions = 2200000; // 2.2M
+  const engagementRate = 8; // 8%
+  const profileVisits = 11600; // 11.6K
+  const newFollows = 59200; // 59.2K
+  const totalReplies = 2900; // 2.9K
+  const totalLikes = 26600; // 26.6K
+  const totalReposts = 22100; // 22.1K
+  const totalBookmarks = 1900; // 1.9K
+  
+  const totalEngagement = totalLikes + totalReposts + totalReplies;
 
   return (
     <div className="space-y-6">
@@ -180,28 +188,13 @@ const TwitterAnalyticsDashboard: React.FC<TwitterAnalyticsDashboardProps> = ({ s
           <CardContent className="p-6">
             <div className="flex items-center gap-2">
               <Eye className="h-4 w-4 text-primary" />
-              <span className="text-sm font-medium text-muted-foreground">Total Views</span>
+              <span className="text-sm font-medium text-muted-foreground">Impressions</span>
             </div>
             <div className="text-2xl font-bold text-foreground mt-2">
-              {(totalViews / 1000).toFixed(1)}K
+              {(totalImpressions / 1000000).toFixed(1)}M
             </div>
             <p className="text-xs text-muted-foreground mt-1">
-              +23% from previous period
-            </p>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardContent className="p-6">
-            <div className="flex items-center gap-2">
-              <Heart className="h-4 w-4 text-red-500" />
-              <span className="text-sm font-medium text-muted-foreground">Total Engagement</span>
-            </div>
-            <div className="text-2xl font-bold text-foreground mt-2">
-              {(totalEngagement / 1000).toFixed(1)}K
-            </div>
-            <p className="text-xs text-muted-foreground mt-1">
-              +18% engagement growth
+              Total reach during tenure
             </p>
           </CardContent>
         </Card>
@@ -210,10 +203,10 @@ const TwitterAnalyticsDashboard: React.FC<TwitterAnalyticsDashboardProps> = ({ s
           <CardContent className="p-6">
             <div className="flex items-center gap-2">
               <TrendingUp className="h-4 w-4 text-green-500" />
-              <span className="text-sm font-medium text-muted-foreground">Avg Engagement Rate</span>
+              <span className="text-sm font-medium text-muted-foreground">Engagement Rate</span>
             </div>
             <div className="text-2xl font-bold text-foreground mt-2">
-              {avgEngagementRate.toFixed(1)}%
+              {engagementRate}%
             </div>
             <p className="text-xs text-muted-foreground mt-1">
               Above industry average
@@ -225,13 +218,91 @@ const TwitterAnalyticsDashboard: React.FC<TwitterAnalyticsDashboardProps> = ({ s
           <CardContent className="p-6">
             <div className="flex items-center gap-2">
               <Users className="h-4 w-4 text-blue-500" />
-              <span className="text-sm font-medium text-muted-foreground">Follower Growth</span>
+              <span className="text-sm font-medium text-muted-foreground">Profile Visits</span>
             </div>
             <div className="text-2xl font-bold text-foreground mt-2">
-              +18.7K
+              {(profileVisits / 1000).toFixed(1)}K
             </div>
             <p className="text-xs text-muted-foreground mt-1">
-              149% growth during tenure
+              User discovery rate
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardContent className="p-6">
+            <div className="flex items-center gap-2">
+              <Users className="h-4 w-4 text-primary" />
+              <span className="text-sm font-medium text-muted-foreground">New Follows</span>
+            </div>
+            <div className="text-2xl font-bold text-foreground mt-2">
+              {(newFollows / 1000).toFixed(1)}K
+            </div>
+            <p className="text-xs text-muted-foreground mt-1">
+              Community growth
+            </p>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Engagement Breakdown */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <Card>
+          <CardContent className="p-6">
+            <div className="flex items-center gap-2">
+              <MessageCircle className="h-4 w-4 text-blue-500" />
+              <span className="text-sm font-medium text-muted-foreground">Replies</span>
+            </div>
+            <div className="text-2xl font-bold text-foreground mt-2">
+              {(totalReplies / 1000).toFixed(1)}K
+            </div>
+            <p className="text-xs text-muted-foreground mt-1">
+              Community conversations
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardContent className="p-6">
+            <div className="flex items-center gap-2">
+              <Heart className="h-4 w-4 text-red-500" />
+              <span className="text-sm font-medium text-muted-foreground">Likes</span>
+            </div>
+            <div className="text-2xl font-bold text-foreground mt-2">
+              {(totalLikes / 1000).toFixed(1)}K
+            </div>
+            <p className="text-xs text-muted-foreground mt-1">
+              Content appreciation
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardContent className="p-6">
+            <div className="flex items-center gap-2">
+              <Repeat2 className="h-4 w-4 text-green-500" />
+              <span className="text-sm font-medium text-muted-foreground">Reposts</span>
+            </div>
+            <div className="text-2xl font-bold text-foreground mt-2">
+              {(totalReposts / 1000).toFixed(1)}K
+            </div>
+            <p className="text-xs text-muted-foreground mt-1">
+              Content amplification
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardContent className="p-6">
+            <div className="flex items-center gap-2">
+              <Eye className="h-4 w-4 text-primary" />
+              <span className="text-sm font-medium text-muted-foreground">Bookmarks</span>
+            </div>
+            <div className="text-2xl font-bold text-foreground mt-2">
+              {(totalBookmarks / 1000).toFixed(1)}K
+            </div>
+            <p className="text-xs text-muted-foreground mt-1">
+              Content saved for later
             </p>
           </CardContent>
         </Card>
