@@ -183,7 +183,7 @@ const TwitterAnalyticsDashboard: React.FC<TwitterAnalyticsDashboardProps> = ({ s
       </div>
 
       {/* Key Metrics Overview */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center gap-2">
@@ -217,92 +217,14 @@ const TwitterAnalyticsDashboard: React.FC<TwitterAnalyticsDashboardProps> = ({ s
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center gap-2">
-              <Users className="h-4 w-4 text-blue-500" />
-              <span className="text-sm font-medium text-muted-foreground">Profile Visits</span>
-            </div>
-            <div className="text-2xl font-bold text-foreground mt-2">
-              {(profileVisits / 1000).toFixed(1)}K
-            </div>
-            <p className="text-xs text-muted-foreground mt-1">
-              User discovery rate
-            </p>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardContent className="p-6">
-            <div className="flex items-center gap-2">
               <Users className="h-4 w-4 text-primary" />
-              <span className="text-sm font-medium text-muted-foreground">New Follows</span>
+              <span className="text-sm font-medium text-muted-foreground">Follower Growth</span>
             </div>
             <div className="text-2xl font-bold text-foreground mt-2">
               {(newFollows / 1000).toFixed(1)}K
             </div>
             <p className="text-xs text-muted-foreground mt-1">
-              Community growth
-            </p>
-          </CardContent>
-        </Card>
-      </div>
-
-      {/* Engagement Breakdown */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <Card>
-          <CardContent className="p-6">
-            <div className="flex items-center gap-2">
-              <MessageCircle className="h-4 w-4 text-blue-500" />
-              <span className="text-sm font-medium text-muted-foreground">Replies</span>
-            </div>
-            <div className="text-2xl font-bold text-foreground mt-2">
-              {(totalReplies / 1000).toFixed(1)}K
-            </div>
-            <p className="text-xs text-muted-foreground mt-1">
-              Community conversations
-            </p>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardContent className="p-6">
-            <div className="flex items-center gap-2">
-              <Heart className="h-4 w-4 text-red-500" />
-              <span className="text-sm font-medium text-muted-foreground">Likes</span>
-            </div>
-            <div className="text-2xl font-bold text-foreground mt-2">
-              {(totalLikes / 1000).toFixed(1)}K
-            </div>
-            <p className="text-xs text-muted-foreground mt-1">
-              Content appreciation
-            </p>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardContent className="p-6">
-            <div className="flex items-center gap-2">
-              <Repeat2 className="h-4 w-4 text-green-500" />
-              <span className="text-sm font-medium text-muted-foreground">Reposts</span>
-            </div>
-            <div className="text-2xl font-bold text-foreground mt-2">
-              {(totalReposts / 1000).toFixed(1)}K
-            </div>
-            <p className="text-xs text-muted-foreground mt-1">
-              Content amplification
-            </p>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardContent className="p-6">
-            <div className="flex items-center gap-2">
-              <Eye className="h-4 w-4 text-primary" />
-              <span className="text-sm font-medium text-muted-foreground">Bookmarks</span>
-            </div>
-            <div className="text-2xl font-bold text-foreground mt-2">
-              {(totalBookmarks / 1000).toFixed(1)}K
-            </div>
-            <p className="text-xs text-muted-foreground mt-1">
-              Content saved for later
+              New followers gained
             </p>
           </CardContent>
         </Card>
