@@ -44,6 +44,27 @@ const TwitterAnalyticsDashboard: React.FC<TwitterAnalyticsDashboardProps> = ({ s
   const campaigns: CampaignData[] = [
     {
       id: '1',
+      name: 'Accelerate On-Chain',
+      date: '2024-08-15',
+      category: 'giveaway',
+      tweetUrl: 'https://x.com/BrahmaFi/status/1824130653568504284',
+      highlights: [
+        'Grew Brahma Accounts from 5K+ to 12K+ during campaign window',
+        'Drove $20M+ TVL growth through targeted Brahma feature activations',
+        '2K+ active Karma scorers into the campaign leaderboard',
+        'Enabled structured Karma distribution to incentivize CT contributors and KOLs'
+      ],
+      metrics: {
+        views: 52000,
+        likes: 1450,
+        retweets: 580,
+        replies: 180,
+        engagement: 4.3,
+        tvlImpact: '$20M+'
+      }
+    },
+    {
+      id: '2',
       name: 'ARB Incentive Giveaway',
       date: '2024-05-27',
       category: 'giveaway',
