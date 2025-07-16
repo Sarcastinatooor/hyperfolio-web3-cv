@@ -318,7 +318,7 @@ const TwitterAnalyticsDashboard: React.FC<TwitterAnalyticsDashboardProps> = ({ s
                     <div className="text-xs text-muted-foreground mb-2">Tweet Preview</div>
                     <TweetEmbed 
                       tweetUrl={campaign.tweetUrl} 
-                      className="w-full h-72"
+                      className="w-full h-96"
                     />
                   </div>
                 )}
