@@ -221,7 +221,7 @@ const TwitterAnalyticsDashboard: React.FC<TwitterAnalyticsDashboardProps> = ({ s
 
   const topCampaigns = [...filteredCampaigns]
     .sort((a, b) => b.metrics.views - a.metrics.views)
-    .slice(0, 3);
+    .slice(0, 5);
 
   // Real Twitter Analytics Data
   const totalImpressions = 2200000; // 2.2M
@@ -329,49 +329,71 @@ const TwitterAnalyticsDashboard: React.FC<TwitterAnalyticsDashboardProps> = ({ s
           <CardTitle>Top Performing Campaigns</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="flex overflow-x-auto gap-4 pb-4">
             {topCampaigns.map((campaign, index) => (
-              <div key={campaign.id} className="space-y-4">
-                {/* Campaign Name */}
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h3 className="font-semibold text-foreground">{campaign.name}</h3>
-                    <p className="text-sm text-muted-foreground">{campaign.date}</p>
+              <div key={campaign.id} className="flex-shrink-0 w-80 bg-card border rounded-lg p-4 space-y-3 shadow-sm hover:shadow-md transition-shadow">
+                {/* Campaign Header */}
+                <div className="flex items-start justify-between">
+                  <div className="flex-1">
+                    <h3 className="font-semibold text-foreground text-sm leading-tight">{campaign.name}</h3>
+                    <p className="text-xs text-muted-foreground mt-1">{campaign.date}</p>
                   </div>
-                  <Badge variant={index === 0 ? 'default' : 'secondary'}>
+                  <Badge variant={index === 0 ? 'default' : 'secondary'} className="text-xs">
                     #{index + 1}
                   </Badge>
                 </div>
 
-                {/* Embedded Tweet(s) */}
-                {campaign.tweetUrls ? (
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {campaign.tweetUrls.map((tweetUrl, tweetIndex) => (
-                      <TweetEmbed 
-                        key={tweetIndex}
-                        tweetUrl={tweetUrl} 
-                        className="w-full"
-                      />
-                    ))}
+                {/* Compact Metrics */}
+                <div className="grid grid-cols-2 gap-2 text-xs">
+                  <div className="flex items-center gap-1">
+                    <Eye className="h-3 w-3 text-muted-foreground" />
+                    <span className="text-muted-foreground">Views:</span>
+                    <span className="font-semibold">{(campaign.metrics.views / 1000).toFixed(0)}K</span>
                   </div>
-                ) : campaign.tweetUrl ? (
-                  <TweetEmbed 
-                    tweetUrl={campaign.tweetUrl} 
-                    className="w-full"
-                  />
-                ) : null}
+                  <div className="flex items-center gap-1">
+                    <Heart className="h-3 w-3 text-muted-foreground" />
+                    <span className="text-muted-foreground">Likes:</span>
+                    <span className="font-semibold">{campaign.metrics.likes}</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <Repeat2 className="h-3 w-3 text-muted-foreground" />
+                    <span className="text-muted-foreground">Retweets:</span>
+                    <span className="font-semibold">{campaign.metrics.retweets}</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <TrendingUp className="h-3 w-3 text-green-500" />
+                    <span className="text-muted-foreground">TVL:</span>
+                    <span className="font-semibold text-green-500">{campaign.metrics.tvlImpact}</span>
+                  </div>
+                </div>
 
-                {/* Campaign Highlights */}
+                {/* Mini Tweet Preview */}
+                {campaign.tweetUrl && (
+                  <div className="bg-muted/10 border rounded p-2">
+                    <div className="text-xs text-muted-foreground mb-1">Tweet Preview</div>
+                    <TweetEmbed 
+                      tweetUrl={campaign.tweetUrl} 
+                      className="w-full h-32 overflow-hidden"
+                    />
+                  </div>
+                )}
+
+                {/* Compact Highlights */}
                 {campaign.highlights && (
-                  <div className="bg-muted/20 p-4 rounded-lg">
-                    <div className="text-sm font-medium text-foreground mb-3">Campaign Highlights</div>
-                    <ul className="space-y-2">
-                      {campaign.highlights.map((highlight, idx) => (
-                        <li key={idx} className="text-sm text-muted-foreground flex items-start gap-2">
-                          <span className="text-primary font-bold mt-1 text-xs">•</span>
-                          <span>{highlight}</span>
+                  <div className="bg-muted/10 rounded p-2">
+                    <div className="text-xs font-medium text-foreground mb-2">Key Results</div>
+                    <ul className="space-y-1">
+                      {campaign.highlights.slice(0, 2).map((highlight, idx) => (
+                        <li key={idx} className="text-xs text-muted-foreground flex items-start gap-1">
+                          <span className="text-primary font-bold mt-0.5 text-xs">•</span>
+                          <span className="line-clamp-2">{highlight}</span>
                         </li>
                       ))}
+                      {campaign.highlights.length > 2 && (
+                        <li className="text-xs text-primary font-medium">
+                          +{campaign.highlights.length - 2} more highlights
+                        </li>
+                      )}
                     </ul>
                   </div>
                 )}
