@@ -22,14 +22,7 @@ interface AIChatsProps {
 }
 
 const AIChat = ({ experiences }: AIChatsProps) => {
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: '1',
-      text: "Hi! I'm Sheel's AI assistant. Ask me about his experience, skills, or any specific projects. I can tell you exactly where he applied certain skills and what he accomplished!",
-      sender: 'ai',
-      timestamp: new Date(),
-    }
-  ]);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
@@ -190,7 +183,7 @@ const AIChat = ({ experiences }: AIChatsProps) => {
 
   return (
     <Card className="border border-border/50">
-      <CardHeader className="pb-3">
+      <CardHeader className="pb-2">
         <CardTitle className="flex items-center gap-2 text-lg">
           <MessageCircle className="w-5 h-5 text-primary" />
           Ask About My Experience
@@ -199,7 +192,7 @@ const AIChat = ({ experiences }: AIChatsProps) => {
           Ask me about specific skills, projects, or experiences. I'll tell you exactly where and how they were applied!
         </p>
       </CardHeader>
-      <CardContent className="space-y-4">
+      <CardContent className="space-y-2">
         <ScrollArea 
           ref={scrollAreaRef}
           className="h-64 pr-4"
