@@ -36,12 +36,12 @@ const ExperienceDetail = () => {
         "Growing social engagement by 600%+ across platforms"
       ],
       description: [
-        "Leading all growth initiatives from collaborating with campaign and ecosystem specific KOLs to identifying and onboarding high-intent onchain users to test beta-phase products and push aligned narrative pieces tied to Brahma's brand and messaging.",
-        "Spearheading marquee campaigns in partnership with leading Web3 growth agencies (Hy.pe & Swell), including the Berachain launch and the Imprint NFT campaign tied to TGE reward allocations.",
-        "Collaborating cross-functionally with marketing and product teams to curate narrative-rich social content for X and DeBank, ensuring credible distribution through engagement with KOLs, ambassadors, community members, and Brahma Maxis.",
-        "Leading community operations with a 3-member team, owning the full lifecycle of Brahma's Discord: onboarding optimization, server structuring, user activations, support workflows, role-progression design, incentive mechanism development, and hosting community calls and AMAs in partnership with aligned protocols.",
-        "Working closely with the founding team to support BD efforts for new chain integrations, functionality rollouts, and incentive-based campaigns, including outreach and partner coordination for go-to-market execution.",
-        "Driven measurable growth across core KPIs — scaling TVL past $100M (peaking at $300M), and growing X and Discord engagement by over 600% and 650% respectively through strategic campaign loops and aligned narrative pushes."
+        "Leading all growth initiatives, from KOL collaborations to onboarding high-intent onchain users and driving aligned narrative campaigns.",
+        "Spearheading flagship campaigns with top Web3 agencies (Hy.pe & Swell), including Berachain and Imprint NFT launches tied to TGE rewards.",
+        "Collaborating across marketing, product, and design to craft narrative-first content for X and DeBank, amplified via KOLs, ambassadors, and Brahma Maxis.",
+        "Managing community ops with a 3-member team, owning Discord lifecycle from onboarding, engagement, support, incentives, to hosting AMAs.",
+        "Supporting BD team in outreach for dApp integrations, feature rollouts, and incentive-based partnerships.",
+        "Delivered strong KPIs; TVL scaled to $100M+ (peak $300M), with 600%+ X growth and 650%+ Discord engagement uplift."
       ],
       campaignHighlights: [
         {
@@ -385,17 +385,23 @@ const ExperienceDetail = () => {
           </CardContent>
         </Card>
 
-        {/* Detailed Description */}
+        {/* TL;DR */}
         <Card className="bg-gray-900 border-gray-800">
           <CardHeader>
-            <CardTitle className="text-lg text-white">Detailed Description</CardTitle>
+            <CardTitle className="text-lg text-white">TL;DR</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="space-y-4">
+            <div className="space-y-3">
               {experience.description.map((desc, index) => (
-                <p key={index} className="text-gray-300 leading-relaxed">
-                  {desc}
-                </p>
+                <div 
+                  key={index} 
+                  className="group flex items-start gap-3 p-3 rounded-lg bg-gray-800/30 border border-gray-700/50 hover:border-blue-400/50 hover:bg-gray-800/60 transition-all duration-300 cursor-pointer"
+                >
+                  <div className="w-2 h-2 rounded-full bg-blue-400 mt-2 flex-shrink-0 group-hover:bg-blue-300 transition-colors duration-300" />
+                  <span className="text-gray-300 leading-relaxed group-hover:text-gray-100 transition-colors duration-300">
+                    {desc}
+                  </span>
+                </div>
               ))}
             </div>
           </CardContent>
