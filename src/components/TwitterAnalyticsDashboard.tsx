@@ -17,6 +17,7 @@ interface CampaignData {
   date: string;
   category: 'giveaway' | 'product' | 'partnership' | 'educational';
   tweetUrl: string;
+  highlights?: string[];
   metrics: {
     views: number;
     likes: number;
@@ -47,6 +48,12 @@ const TwitterAnalyticsDashboard: React.FC<TwitterAnalyticsDashboardProps> = ({ s
       date: '2024-05-27',
       category: 'giveaway',
       tweetUrl: 'https://x.com/BrahmaFi/status/1798777910297497717',
+      highlights: [
+        'Drove $8M+ in TVL via targeted campaign and incentive design.',
+        'Activated protocol-native maxis to amplify narrative and onchain participation.',
+        'Ran DeBank whale campaign targeting Aave and Pendle LPs.',
+        'Scaled campaign with 4 top Arbitrum protocols post initial epoch success.'
+      ],
       metrics: {
         views: 45000,
         likes: 1200,
@@ -239,6 +246,7 @@ const TwitterAnalyticsDashboard: React.FC<TwitterAnalyticsDashboardProps> = ({ s
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {topCampaigns.map((campaign, index) => (
               <div key={campaign.id} className="space-y-4">
+                {/* Campaign Name */}
                 <div className="flex items-center justify-between">
                   <div>
                     <h3 className="font-semibold text-foreground">{campaign.name}</h3>
@@ -248,36 +256,27 @@ const TwitterAnalyticsDashboard: React.FC<TwitterAnalyticsDashboardProps> = ({ s
                     #{index + 1}
                   </Badge>
                 </div>
-                
-                <div className="grid grid-cols-2 gap-4 text-sm">
-                  <div className="flex items-center gap-2">
-                    <Eye className="h-4 w-4 text-muted-foreground" />
-                    <span>{(campaign.metrics.views / 1000).toFixed(1)}K views</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Heart className="h-4 w-4 text-red-500" />
-                    <span>{campaign.metrics.likes}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Repeat2 className="h-4 w-4 text-green-500" />
-                    <span>{campaign.metrics.retweets}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <MessageCircle className="h-4 w-4 text-blue-500" />
-                    <span>{campaign.metrics.replies}</span>
-                  </div>
-                </div>
 
-                <div className="bg-muted/20 p-3 rounded-lg">
-                  <div className="text-sm font-medium text-foreground">TVL Impact</div>
-                  <div className="text-lg font-bold text-primary">{campaign.metrics.tvlImpact}</div>
-                  <div className="text-xs text-muted-foreground">Engagement Rate: {campaign.metrics.engagement}%</div>
-                </div>
-
+                {/* Embedded Tweet */}
                 <TweetEmbed 
                   tweetUrl={campaign.tweetUrl} 
                   className="w-full"
                 />
+
+                {/* Campaign Highlights */}
+                {campaign.highlights && (
+                  <div className="bg-muted/20 p-4 rounded-lg">
+                    <div className="text-sm font-medium text-foreground mb-3">Campaign Highlights</div>
+                    <ul className="space-y-2">
+                      {campaign.highlights.map((highlight, idx) => (
+                        <li key={idx} className="text-sm text-muted-foreground flex items-start gap-2">
+                          <span className="text-primary font-bold mt-1 text-xs">•</span>
+                          <span>{highlight}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
             ))}
           </div>
