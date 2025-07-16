@@ -16,7 +16,8 @@ interface CampaignData {
   name: string;
   date: string;
   category: 'giveaway' | 'product' | 'partnership' | 'educational';
-  tweetUrl: string;
+  tweetUrl?: string;
+  tweetUrls?: string[];
   highlights?: string[];
   metrics: {
     views: number;
@@ -42,6 +43,29 @@ const TwitterAnalyticsDashboard: React.FC<TwitterAnalyticsDashboardProps> = ({ s
 
   // Mock comprehensive campaign data
   const campaigns: CampaignData[] = [
+    {
+      id: '0',
+      name: 'Morpho Agent',
+      date: '2024-12-15',
+      category: 'partnership',
+      tweetUrls: [
+        'https://x.com/BrahmaFi/status/1881387071774048390',
+        'https://x.com/gauntlet_xyz/status/1943711957686853806'
+      ],
+      highlights: [
+        'Collaborated with Morpho & Base to activate power users for early Agent testing',
+        'Onboarded Top Karma scorers to spark competition on the leaderboard',
+        'Launched targeted quests to boost engagement and UGC around Morpho Agent'
+      ],
+      metrics: {
+        views: 65000,
+        likes: 1850,
+        retweets: 720,
+        replies: 230,
+        engagement: 4.6,
+        tvlImpact: '$25M+'
+      }
+    },
     {
       id: '1',
       name: 'Accelerate On-Chain',
@@ -278,11 +302,23 @@ const TwitterAnalyticsDashboard: React.FC<TwitterAnalyticsDashboardProps> = ({ s
                   </Badge>
                 </div>
 
-                {/* Embedded Tweet */}
-                <TweetEmbed 
-                  tweetUrl={campaign.tweetUrl} 
-                  className="w-full"
-                />
+                {/* Embedded Tweet(s) */}
+                {campaign.tweetUrls ? (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {campaign.tweetUrls.map((tweetUrl, tweetIndex) => (
+                      <TweetEmbed 
+                        key={tweetIndex}
+                        tweetUrl={tweetUrl} 
+                        className="w-full"
+                      />
+                    ))}
+                  </div>
+                ) : campaign.tweetUrl ? (
+                  <TweetEmbed 
+                    tweetUrl={campaign.tweetUrl} 
+                    className="w-full"
+                  />
+                ) : null}
 
                 {/* Campaign Highlights */}
                 {campaign.highlights && (
