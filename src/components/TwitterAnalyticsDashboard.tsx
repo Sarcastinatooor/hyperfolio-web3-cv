@@ -48,11 +48,9 @@ const TwitterAnalyticsDashboard: React.FC<TwitterAnalyticsDashboardProps> = ({ s
       name: 'Morpho Agent',
       date: '2024-12-15',
       category: 'partnership',
-      tweetUrls: [
-        'https://x.com/BrahmaFi/status/1881387071774048390',
-        'https://x.com/gauntlet_xyz/status/1943711957686853806'
-      ],
+      tweetUrl: 'https://x.com/BrahmaFi/status/1881387071774048390',
       highlights: [
+        'Scaled TVL from ~$1.1M to ~$9.5M (+760%), Agents from ~353 to ~3,103 (+779%), and driving ~$21M in Agentic volume',
         'Collaborated with Morpho & Base to activate power users for early Agent testing',
         'Onboarded Top Karma scorers to spark competition on the leaderboard',
         'Launched targeted quests to boost engagement and UGC around Morpho Agent'
