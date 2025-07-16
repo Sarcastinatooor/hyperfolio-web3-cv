@@ -301,69 +301,39 @@ const TwitterAnalyticsDashboard: React.FC<TwitterAnalyticsDashboardProps> = ({ s
         <CardContent>
           <div className="flex overflow-x-auto gap-4 pb-4">
             {topCampaigns.map((campaign, index) => (
-              <div key={campaign.id} className="flex-shrink-0 w-80 bg-card border rounded-lg p-4 space-y-3 shadow-sm hover:shadow-md transition-shadow">
+              <div key={campaign.id} className="flex-shrink-0 w-96 bg-card border rounded-lg p-4 space-y-4 shadow-sm hover:shadow-md transition-shadow">
                 {/* Campaign Header */}
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
                     <h3 className="font-semibold text-foreground text-sm leading-tight">{campaign.name}</h3>
-                    <p className="text-xs text-muted-foreground mt-1">{campaign.date}</p>
                   </div>
                   <Badge variant={index === 0 ? 'default' : 'secondary'} className="text-xs">
                     #{index + 1}
                   </Badge>
                 </div>
 
-                {/* Compact Metrics */}
-                <div className="grid grid-cols-2 gap-2 text-xs">
-                  <div className="flex items-center gap-1">
-                    <Eye className="h-3 w-3 text-muted-foreground" />
-                    <span className="text-muted-foreground">Views:</span>
-                    <span className="font-semibold">{(campaign.metrics.views / 1000).toFixed(0)}K</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <Heart className="h-3 w-3 text-muted-foreground" />
-                    <span className="text-muted-foreground">Likes:</span>
-                    <span className="font-semibold">{campaign.metrics.likes}</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <Repeat2 className="h-3 w-3 text-muted-foreground" />
-                    <span className="text-muted-foreground">Retweets:</span>
-                    <span className="font-semibold">{campaign.metrics.retweets}</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <TrendingUp className="h-3 w-3 text-green-500" />
-                    <span className="text-muted-foreground">TVL:</span>
-                    <span className="font-semibold text-green-500">{campaign.metrics.tvlImpact}</span>
-                  </div>
-                </div>
-
-                {/* Mini Tweet Preview */}
+                {/* Extended Tweet Preview */}
                 {campaign.tweetUrl && (
-                  <div className="bg-muted/10 border rounded p-2">
-                    <div className="text-xs text-muted-foreground mb-1">Tweet Preview</div>
+                  <div className="bg-muted/10 border rounded p-3">
+                    <div className="text-xs text-muted-foreground mb-2">Tweet Preview</div>
                     <TweetEmbed 
                       tweetUrl={campaign.tweetUrl} 
-                      className="w-full h-32 overflow-hidden"
+                      className="w-full h-48"
                     />
                   </div>
                 )}
 
-                {/* Compact Highlights */}
+                {/* Full Core Contributions */}
                 {campaign.highlights && (
-                  <div className="bg-muted/10 rounded p-2">
-                    <div className="text-xs font-medium text-foreground mb-2">Key Results</div>
-                    <ul className="space-y-1">
-                      {campaign.highlights.slice(0, 2).map((highlight, idx) => (
-                        <li key={idx} className="text-xs text-muted-foreground flex items-start gap-1">
+                  <div className="bg-muted/10 rounded p-3">
+                    <div className="text-xs font-medium text-foreground mb-3">Core Contributions</div>
+                    <ul className="space-y-2">
+                      {campaign.highlights.map((highlight, idx) => (
+                        <li key={idx} className="text-xs text-muted-foreground flex items-start gap-2">
                           <span className="text-primary font-bold mt-0.5 text-xs">•</span>
-                          <span className="line-clamp-2">{highlight}</span>
+                          <span>{highlight}</span>
                         </li>
                       ))}
-                      {campaign.highlights.length > 2 && (
-                        <li className="text-xs text-primary font-medium">
-                          +{campaign.highlights.length - 2} more highlights
-                        </li>
-                      )}
                     </ul>
                   </div>
                 )}
