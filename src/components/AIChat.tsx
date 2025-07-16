@@ -183,7 +183,7 @@ const AIChat = ({ experiences }: AIChatsProps) => {
 
   return (
     <Card className="border border-border/50">
-      <CardHeader className="pb-2">
+      <CardHeader className="pb-1">
         <CardTitle className="flex items-center gap-2 text-lg">
           <MessageCircle className="w-5 h-5 text-primary" />
           Ask About My Experience
@@ -192,7 +192,7 @@ const AIChat = ({ experiences }: AIChatsProps) => {
           Ask me about specific skills, projects, or experiences. I'll tell you exactly where and how they were applied!
         </p>
       </CardHeader>
-      <CardContent className="space-y-2">
+      <CardContent className="space-y-1">
         <ScrollArea 
           ref={scrollAreaRef}
           className="h-64 pr-4"
