@@ -240,38 +240,8 @@ const TwitterAnalyticsDashboard: React.FC<TwitterAnalyticsDashboardProps> = ({ s
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h2 className="text-2xl font-bold text-foreground">BrahmaFi Twitter Analytics</h2>
+          <h2 className="text-2xl font-bold text-foreground">Brahma Twitter Stats</h2>
           <p className="text-muted-foreground">Social media performance during tenure</p>
-        </div>
-        <div className="flex flex-wrap gap-2">
-          <Button
-            variant={selectedCategory === 'all' ? 'default' : 'outline'}
-            size="sm"
-            onClick={() => setSelectedCategory('all')}
-          >
-            All Campaigns
-          </Button>
-          <Button
-            variant={selectedCategory === 'giveaway' ? 'default' : 'outline'}
-            size="sm"
-            onClick={() => setSelectedCategory('giveaway')}
-          >
-            Giveaways
-          </Button>
-          <Button
-            variant={selectedCategory === 'product' ? 'default' : 'outline'}
-            size="sm"
-            onClick={() => setSelectedCategory('product')}
-          >
-            Product
-          </Button>
-          <Button
-            variant={selectedCategory === 'partnership' ? 'default' : 'outline'}
-            size="sm"
-            onClick={() => setSelectedCategory('partnership')}
-          >
-            Partnerships
-          </Button>
         </div>
       </div>
 
