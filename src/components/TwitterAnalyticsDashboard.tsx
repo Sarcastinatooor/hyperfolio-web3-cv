@@ -65,6 +65,28 @@ const TwitterAnalyticsDashboard: React.FC<TwitterAnalyticsDashboardProps> = ({ s
       }
     },
     {
+      id: '0.5',
+      name: 'Berama Hotel | Honey Boxes',
+      date: '2024-11-15',
+      category: 'giveaway',
+      tweetUrl: 'https://x.com/BrahmaFi/status/1887762395948622221',
+      highlights: [
+        'TVL: $9.36M | Txn Volume: $15.3M+ | Transactions: 13K (8K relayed)',
+        'New Accounts on Berachain: 754 onboarded through campaign',
+        'Activated & engaged Bera Maxis as early adopters and amplifiers',
+        'Onboarded power users via partner protocols through coordinated efforts',
+        'Drove KARMA leaderboard action by pushing top scorers to deploy on Berachain'
+      ],
+      metrics: {
+        views: 58000,
+        likes: 1650,
+        retweets: 640,
+        replies: 210,
+        engagement: 4.4,
+        tvlImpact: '$15M+'
+      }
+    },
+    {
       id: '1',
       name: 'Accelerate On-Chain',
       date: '2024-08-15',
