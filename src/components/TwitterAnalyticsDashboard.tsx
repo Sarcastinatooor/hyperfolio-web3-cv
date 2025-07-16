@@ -44,28 +44,7 @@ const TwitterAnalyticsDashboard: React.FC<TwitterAnalyticsDashboardProps> = ({ s
   // Mock comprehensive campaign data
   const campaigns: CampaignData[] = [
     {
-      id: '0',
-      name: 'Morpho Agent',
-      date: '2024-12-15',
-      category: 'partnership',
-      tweetUrl: 'https://x.com/BrahmaFi/status/1881387071774048390',
-      highlights: [
-        'Scaled TVL from ~$1.1M to ~$9.5M (+760%), Agents from ~353 to ~3,103 (+779%), and driving ~$21M in Agentic volume',
-        'Collaborated with Morpho & Base to activate power users for early Agent testing',
-        'Onboarded Top Karma scorers to spark competition on the leaderboard',
-        'Launched targeted quests to boost engagement and UGC around Morpho Agent'
-      ],
-      metrics: {
-        views: 65000,
-        likes: 1850,
-        retweets: 720,
-        replies: 230,
-        engagement: 4.6,
-        tvlImpact: '$25M+'
-      }
-    },
-    {
-      id: '0.5',
+      id: '1',
       name: 'Berama Hotel | Honey Boxes',
       date: '2024-11-15',
       category: 'giveaway',
@@ -87,7 +66,28 @@ const TwitterAnalyticsDashboard: React.FC<TwitterAnalyticsDashboardProps> = ({ s
       }
     },
     {
-      id: '1',
+      id: '2',
+      name: 'Morpho Agent',
+      date: '2024-12-15',
+      category: 'partnership',
+      tweetUrl: 'https://x.com/BrahmaFi/status/1881387071774048390',
+      highlights: [
+        'Scaled TVL from ~$1.1M to ~$9.5M (+760%), Agents from ~353 to ~3,103 (+779%), and driving ~$21M in Agentic volume',
+        'Collaborated with Morpho & Base to activate power users for early Agent testing',
+        'Onboarded Top Karma scorers to spark competition on the leaderboard',
+        'Launched targeted quests to boost engagement and UGC around Morpho Agent'
+      ],
+      metrics: {
+        views: 65000,
+        likes: 1850,
+        retweets: 720,
+        replies: 230,
+        engagement: 4.6,
+        tvlImpact: '$25M+'
+      }
+    },
+    {
+      id: '3',
       name: 'Accelerate On-Chain',
       date: '2024-08-15',
       category: 'giveaway',
@@ -108,7 +108,7 @@ const TwitterAnalyticsDashboard: React.FC<TwitterAnalyticsDashboardProps> = ({ s
       }
     },
     {
-      id: '2',
+      id: '4',
       name: 'ARB Incentive Giveaway',
       date: '2024-05-27',
       category: 'giveaway',
