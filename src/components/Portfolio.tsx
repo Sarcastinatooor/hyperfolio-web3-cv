@@ -295,7 +295,7 @@ const Portfolio = () => {
     tags: exp.skills.slice(0, 3),
     icon: index === 0 ? <TrendingUp className="w-4 h-4 text-white" /> :
           index === 1 ? <img src="/lovable-uploads/bfb0ed9c-a115-48ed-b7c4-97a1180adfc3.png" alt="Liminal Custody Logo" className="w-4 h-4 object-contain" /> :
-          index === 2 ? <Target className="w-4 h-4 text-white" /> :
+          index === 2 ? <img src="/lovable-uploads/b48218d8-1c66-437e-a9d3-31e42c4a8e02.png" alt="ShipFinex Logo" className="w-4 h-4 object-contain" /> :
           index === 3 ? <Building2 className="w-4 h-4 text-white" /> :
           index === 4 ? <Globe className="w-4 h-4 text-white" /> :
           index === 5 ? <Award className="w-4 h-4 text-white" /> :

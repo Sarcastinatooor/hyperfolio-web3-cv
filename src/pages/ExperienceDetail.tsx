@@ -335,6 +335,12 @@ const ExperienceDetail = () => {
                   alt={`${experience.company} logo`}
                   className="w-8 h-8 object-contain"
                 />
+              ) : experienceId === 2 ? (
+                <img 
+                  src="/lovable-uploads/b48218d8-1c66-437e-a9d3-31e42c4a8e02.png" 
+                  alt={`${experience.company} logo`}
+                  className="w-8 h-8 object-contain"
+                />
               ) : (
                 getIcon(experienceId)
               )}
