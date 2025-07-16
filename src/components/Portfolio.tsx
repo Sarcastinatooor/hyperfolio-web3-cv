@@ -390,7 +390,7 @@ const Portfolio = () => {
 
           {/* Experience Section */}
           <div ref={experienceRef} className="mb-6">
-            <div className="text-center mb-12">
+            <div className="text-center mb-6">
               <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-4">
                 Experience
               </h2>
