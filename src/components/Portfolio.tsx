@@ -412,15 +412,26 @@ const Portfolio = () => {
               <p className="text-xs text-muted-foreground mb-3">
                 All my shillngs are done here
               </p>
-              <div className="flex justify-center gap-3">
+              
+              {/* Twitter Profile Showcase */}
+              <div className="bg-card border border-border/50 rounded-lg p-4 max-w-sm mx-auto mb-4">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+                    <Twitter className="w-5 h-5 text-primary" />
+                  </div>
+                  <div className="text-left">
+                    <h3 className="font-semibold text-sm text-foreground">@Not_A_De_Gen</h3>
+                    <p className="text-xs text-muted-foreground">Vibe-led mindshare architect</p>
+                  </div>
+                </div>
                 <Button 
                   variant="outline" 
                   size="sm"
-                  className="social-button text-xs"
+                  className="w-full text-xs"
                   onClick={() => window.open('https://x.com/Not_A_De_Gen', '_blank')}
                 >
                   <ExternalLink className="w-3 h-3 mr-1" />
-                  Connect
+                  Follow on X
                 </Button>
               </div>
             </div>
