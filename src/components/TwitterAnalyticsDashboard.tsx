@@ -4,7 +4,7 @@ import { Badge } from './ui/badge';
 import { TweetEmbed } from './ui/tweet-embed';
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from './ui/chart';
 import { LineChart, Line, AreaChart, Area, BarChart, Bar, XAxis, YAxis, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
-import { Calendar, TrendingUp, Users, Heart, MessageCircle, Repeat2, Eye, Filter, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Calendar, TrendingUp, Users, Heart, MessageCircle, Repeat2, Eye, Filter } from 'lucide-react';
 import { Button } from './ui/button';
 
 interface TwitterAnalyticsDashboardProps {
@@ -40,7 +40,6 @@ interface EngagementDataPoint {
 const TwitterAnalyticsDashboard: React.FC<TwitterAnalyticsDashboardProps> = ({ startDate = "2024-01" }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedPeriod, setSelectedPeriod] = useState<string>('all');
-  const [currentCampaignIndex, setCurrentCampaignIndex] = useState<number>(0);
 
   // Mock comprehensive campaign data
   const campaigns: CampaignData[] = [
@@ -224,14 +223,6 @@ const TwitterAnalyticsDashboard: React.FC<TwitterAnalyticsDashboardProps> = ({ s
     .sort((a, b) => b.metrics.views - a.metrics.views)
     .slice(0, 5);
 
-  const handlePrevCampaign = () => {
-    setCurrentCampaignIndex((prev) => (prev > 0 ? prev - 1 : topCampaigns.length - 1));
-  };
-
-  const handleNextCampaign = () => {
-    setCurrentCampaignIndex((prev) => (prev < topCampaigns.length - 1 ? prev + 1 : 0));
-  };
-
   // Real Twitter Analytics Data
   const totalImpressions = 2200000; // 2.2M
   const engagementRate = 8; // 8%
@@ -305,79 +296,49 @@ const TwitterAnalyticsDashboard: React.FC<TwitterAnalyticsDashboardProps> = ({ s
       {/* Top Performing Campaigns */}
       <Card>
         <CardHeader>
-          <div className="flex items-center justify-between">
-            <CardTitle>Top Performing Campaigns</CardTitle>
-            <div className="flex items-center gap-2">
-              <Button
-                variant="outline"
-                size="icon"
-                onClick={handlePrevCampaign}
-                className="h-8 w-8"
-              >
-                <ChevronLeft className="h-4 w-4" />
-              </Button>
-              <span className="text-sm text-muted-foreground">
-                {currentCampaignIndex + 1} / {topCampaigns.length}
-              </span>
-              <Button
-                variant="outline"
-                size="icon"
-                onClick={handleNextCampaign}
-                className="h-8 w-8"
-              >
-                <ChevronRight className="h-4 w-4" />
-              </Button>
-            </div>
-          </div>
+          <CardTitle>Top Performing Campaigns</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="flex justify-center">
-            {topCampaigns.length > 0 && (
-              <div className="w-96 bg-card border rounded-lg p-4 space-y-4 shadow-sm">
-                {(() => {
-                  const campaign = topCampaigns[currentCampaignIndex];
-                  return (
-                    <>
-                      {/* Campaign Header */}
-                      <div className="flex items-start justify-between">
-                        <div className="flex-1">
-                          <h3 className="font-semibold text-foreground text-sm leading-tight">{campaign.name}</h3>
-                        </div>
-                        <Badge variant={currentCampaignIndex === 0 ? 'default' : 'secondary'} className="text-xs">
-                          #{currentCampaignIndex + 1}
-                        </Badge>
-                      </div>
+          <div className="flex overflow-x-auto gap-4 pb-4">
+            {topCampaigns.map((campaign, index) => (
+              <div key={campaign.id} className="flex-shrink-0 w-96 bg-card border rounded-lg p-4 space-y-4 shadow-sm hover:shadow-md transition-shadow">
+                {/* Campaign Header */}
+                <div className="flex items-start justify-between">
+                  <div className="flex-1">
+                    <h3 className="font-semibold text-foreground text-sm leading-tight">{campaign.name}</h3>
+                  </div>
+                  <Badge variant={index === 0 ? 'default' : 'secondary'} className="text-xs">
+                    #{index + 1}
+                  </Badge>
+                </div>
 
-                      {/* Extended Tweet Preview */}
-                      {campaign.tweetUrl && (
-                        <div className="bg-muted/10 border rounded p-3">
-                          <div className="text-xs text-muted-foreground mb-2">Tweet Preview</div>
-                          <TweetEmbed 
-                            tweetUrl={campaign.tweetUrl} 
-                            className="w-full h-96"
-                          />
-                        </div>
-                      )}
+                {/* Extended Tweet Preview */}
+                {campaign.tweetUrl && (
+                  <div className="bg-muted/10 border rounded p-3">
+                    <div className="text-xs text-muted-foreground mb-2">Tweet Preview</div>
+                    <TweetEmbed 
+                      tweetUrl={campaign.tweetUrl} 
+                      className="w-full h-96"
+                    />
+                  </div>
+                )}
 
-                      {/* Full Core Contributions */}
-                      {campaign.highlights && (
-                        <div className="bg-muted/10 rounded p-3">
-                          <div className="text-xs font-medium text-foreground mb-3">Core Contributions</div>
-                          <ul className="space-y-2">
-                            {campaign.highlights.map((highlight, idx) => (
-                              <li key={idx} className="text-xs text-muted-foreground flex items-start gap-2">
-                                <span className="text-primary font-bold mt-0.5 text-xs">•</span>
-                                <span>{highlight}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-                    </>
-                  );
-                })()}
+                {/* Full Core Contributions */}
+                {campaign.highlights && (
+                  <div className="bg-muted/10 rounded p-3">
+                    <div className="text-xs font-medium text-foreground mb-3">Core Contributions</div>
+                    <ul className="space-y-2">
+                      {campaign.highlights.map((highlight, idx) => (
+                        <li key={idx} className="text-xs text-muted-foreground flex items-start gap-2">
+                          <span className="text-primary font-bold mt-0.5 text-xs">•</span>
+                          <span>{highlight}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
-            )}
+            ))}
           </div>
         </CardContent>
       </Card>
