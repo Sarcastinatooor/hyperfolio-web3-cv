@@ -436,27 +436,35 @@ const ExperienceDetail = () => {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="border border-gray-700 rounded-lg overflow-hidden">
-                <iframe
-                  src="https://finance.yahoo.com/news/shipfinex-real-world-asset-tokenization-143000956.html"
-                  className="w-full h-96 bg-white"
-                  title="ShipFinex Yahoo Finance Article"
-                  frameBorder="0"
-                />
-              </div>
-              <div className="mt-4 p-4 bg-gray-800/50 rounded-lg border border-gray-700">
-                <h3 className="text-white font-semibold mb-2">ShipFinex: A Real-World Asset Tokenization Protocol</h3>
-                <p className="text-gray-300 text-sm">
-                  Coverage of ShipFinex winning the Startup World Cup Pitch Competition and pioneering real-world asset tokenization in the maritime industry.
-                </p>
-                <a 
-                  href="https://finance.yahoo.com/news/shipfinex-real-world-asset-tokenization-143000956.html"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 mt-2 text-blue-400 hover:text-blue-300 text-sm"
-                >
-                  Read full article <Globe className="w-3 h-3" />
-                </a>
+              <div 
+                className="border border-gray-700 rounded-lg p-6 bg-gray-800/30 hover:bg-gray-800/50 transition-all duration-300 cursor-pointer group"
+                onClick={() => window.open('https://finance.yahoo.com/news/shipfinex-real-world-asset-tokenization-143000956.html', '_blank')}
+              >
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center">
+                      <Globe className="w-6 h-6 text-purple-400" />
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-white font-semibold mb-2 group-hover:text-blue-300 transition-colors">
+                      ShipFinex: A Real-World Asset Tokenization Protocol Now Regional Champions of Startup World Cup Pitch Competition
+                    </h3>
+                    <p className="text-gray-300 text-sm mb-3 leading-relaxed">
+                      Dubai, UAE - ShipFinex is emerging to revolutionise the trillion-dollar Maritime economy through real-world asset tokenization and fractional ownership. The protocol won the Startup World Cup Pitch Competition at World Blockchain Summit.
+                    </p>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <Badge variant="secondary" className="text-xs">Yahoo Finance</Badge>
+                        <span className="text-gray-500 text-xs">Nov 15, 2022</span>
+                      </div>
+                      <div className="flex items-center gap-1 text-blue-400 group-hover:text-blue-300 transition-colors">
+                        <span className="text-sm">Read article</span>
+                        <Globe className="w-4 h-4" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </CardContent>
           </Card>
