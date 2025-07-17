@@ -425,6 +425,42 @@ const ExperienceDetail = () => {
         {experienceId === 0 && (
           <TwitterAnalyticsDashboard startDate="2024-01" />
         )}
+
+        {/* News Article Embed - only for ShipFinex */}
+        {experienceId === 2 && (
+          <Card className="bg-gray-900 border-gray-800">
+            <CardHeader>
+              <CardTitle className="text-lg text-white flex items-center gap-2">
+                <Globe className="w-5 h-5 text-blue-400" />
+                In the News
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="border border-gray-700 rounded-lg overflow-hidden">
+                <iframe
+                  src="https://finance.yahoo.com/news/shipfinex-real-world-asset-tokenization-143000956.html"
+                  className="w-full h-96 bg-white"
+                  title="ShipFinex Yahoo Finance Article"
+                  frameBorder="0"
+                />
+              </div>
+              <div className="mt-4 p-4 bg-gray-800/50 rounded-lg border border-gray-700">
+                <h3 className="text-white font-semibold mb-2">ShipFinex: A Real-World Asset Tokenization Protocol</h3>
+                <p className="text-gray-300 text-sm">
+                  Coverage of ShipFinex winning the Startup World Cup Pitch Competition and pioneering real-world asset tokenization in the maritime industry.
+                </p>
+                <a 
+                  href="https://finance.yahoo.com/news/shipfinex-real-world-asset-tokenization-143000956.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 mt-2 text-blue-400 hover:text-blue-300 text-sm"
+                >
+                  Read full article <Globe className="w-3 h-3" />
+                </a>
+              </div>
+            </CardContent>
+          </Card>
+        )}
       </div>
     </div>
   );
