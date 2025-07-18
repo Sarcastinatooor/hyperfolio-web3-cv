@@ -400,6 +400,110 @@ const Portfolio = () => {
             <BentoGrid items={experienceBentoItems} />
           </div>
 
+          {/* KOLs Section */}
+          <div className="mb-12">
+            <div className="text-center mb-8">
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+                Key Opinion Leaders I've Worked With
+              </h2>
+              <p className="text-muted-foreground">
+                Collaborating with top voices in Web3 and DeFi
+              </p>
+            </div>
+            
+            <div className="relative overflow-hidden bg-gradient-to-b from-background/50 to-transparent rounded-2xl border border-white/10 p-8">
+              <div className="flex flex-col gap-6">
+                {/* First Row - Scrolling Right */}
+                <div className="relative">
+                  <div className="flex animate-[scroll-right_30s_linear_infinite] gap-6">
+                    {[
+                      { name: "Stacy Muur", handle: "stacy_muur", avatar: "https://images.unsplash.com/photo-1494790108755-2616b2e32f2a?w=150&h=150&fit=crop&crop=face" },
+                      { name: "The Smart Ape", handle: "the_smart_ape", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face" },
+                      { name: "0xMughal", handle: "0xMughal", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face" },
+                      { name: "Jiraiya", handle: "JiraiyaReal", avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face" },
+                      { name: "Diego DeFi", handle: "diego_defai", avatar: "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?w=150&h=150&fit=crop&crop=face" },
+                      { name: "DeFi Dad", handle: "DeFi_Dad", avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&h=150&fit=crop&crop=face" },
+                    ].concat([
+                      { name: "Stacy Muur", handle: "stacy_muur", avatar: "https://images.unsplash.com/photo-1494790108755-2616b2e32f2a?w=150&h=150&fit=crop&crop=face" },
+                      { name: "The Smart Ape", handle: "the_smart_ape", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face" },
+                      { name: "0xMughal", handle: "0xMughal", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face" },
+                      { name: "Jiraiya", handle: "JiraiyaReal", avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face" },
+                      { name: "Diego DeFi", handle: "diego_defai", avatar: "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?w=150&h=150&fit=crop&crop=face" },
+                      { name: "DeFi Dad", handle: "DeFi_Dad", avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&h=150&fit=crop&crop=face" },
+                    ]).map((kol, index) => (
+                      <div
+                        key={`${kol.handle}-${index}`}
+                        className="group relative flex-shrink-0 cursor-pointer"
+                        onClick={() => window.open(`https://x.com/${kol.handle}`, '_blank')}
+                      >
+                        <div className="relative">
+                          <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-white/20 group-hover:border-primary/50 transition-all duration-300 group-hover:scale-110">
+                            <img
+                              src={kol.avatar}
+                              alt={kol.name}
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                          <div className="absolute inset-0 rounded-full bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        </div>
+                        <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-black/90 text-white px-3 py-1 rounded-lg text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none">
+                          {kol.name}
+                          <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-black/90" />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Second Row - Scrolling Left */}
+                <div className="relative">
+                  <div className="flex animate-[scroll-left_25s_linear_infinite] gap-6">
+                    {[
+                      { name: "LST Maximalist", handle: "lstmaximalist", avatar: "https://images.unsplash.com/photo-1507591064344-4c6ce005b128?w=150&h=150&fit=crop&crop=face" },
+                      { name: "Aibra", handle: "aibra", avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face" },
+                      { name: "Barthazian", handle: "Barthazian", avatar: "https://images.unsplash.com/photo-1463453091185-61582044d556?w=150&h=150&fit=crop&crop=face" },
+                      { name: "HyperLcrgs", handle: "HyperLcrgs", avatar: "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=150&h=150&fit=crop&crop=face" },
+                      { name: "Blum OG", handle: "Blum_OG", avatar: "https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=150&h=150&fit=crop&crop=face" },
+                    ].concat([
+                      { name: "LST Maximalist", handle: "lstmaximalist", avatar: "https://images.unsplash.com/photo-1507591064344-4c6ce005b128?w=150&h=150&fit=crop&crop=face" },
+                      { name: "Aibra", handle: "aibra", avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face" },
+                      { name: "Barthazian", handle: "Barthazian", avatar: "https://images.unsplash.com/photo-1463453091185-61582044d556?w=150&h=150&fit=crop&crop=face" },
+                      { name: "HyperLcrgs", handle: "HyperLcrgs", avatar: "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=150&h=150&fit=crop&crop=face" },
+                      { name: "Blum OG", handle: "Blum_OG", avatar: "https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=150&h=150&fit=crop&crop=face" },
+                    ]).concat([
+                      { name: "LST Maximalist", handle: "lstmaximalist", avatar: "https://images.unsplash.com/photo-1507591064344-4c6ce005b128?w=150&h=150&fit=crop&crop=face" },
+                      { name: "Aibra", handle: "aibra", avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face" },
+                      { name: "Barthazian", handle: "Barthazian", avatar: "https://images.unsplash.com/photo-1463453091185-61582044d556?w=150&h=150&fit=crop&crop=face" },
+                      { name: "HyperLcrgs", handle: "HyperLcrgs", avatar: "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=150&h=150&fit=crop&crop=face" },
+                      { name: "Blum OG", handle: "Blum_OG", avatar: "https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=150&h=150&fit=crop&crop=face" },
+                    ]).map((kol, index) => (
+                      <div
+                        key={`${kol.handle}-${index}`}
+                        className="group relative flex-shrink-0 cursor-pointer"
+                        onClick={() => window.open(`https://x.com/${kol.handle}`, '_blank')}
+                      >
+                        <div className="relative">
+                          <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-white/20 group-hover:border-primary/50 transition-all duration-300 group-hover:scale-110">
+                            <img
+                              src={kol.avatar}
+                              alt={kol.name}
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                          <div className="absolute inset-0 rounded-full bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        </div>
+                        <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-black/90 text-white px-3 py-1 rounded-lg text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none">
+                          {kol.name}
+                          <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-black/90" />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* AI Chat Section */}
           <div className="mb-8">
             <AIChat experiences={experiences} />
