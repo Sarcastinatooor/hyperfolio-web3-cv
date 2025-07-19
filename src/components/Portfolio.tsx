@@ -425,7 +425,7 @@ const Portfolio = () => {
                       { name: "DeFi Dad", handle: "DeFi_Dad", avatar: "/lovable-uploads/1029abfc-9383-4127-8cee-ffc0e04bb3d3.png" },
                       { name: "LST Maximalist", handle: "lstmaximalist", avatar: "/lovable-uploads/c8e25253-4839-4e4a-8907-94d6f00c6476.png" },
                       { name: "Aibra", handle: "aibra", avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face" },
-                      { name: "Barthazian", handle: "Barthazian", avatar: "https://images.unsplash.com/photo-1463453091185-61582044d556?w=150&h=150&fit=crop&crop=face" },
+                      { name: "Barthazian", handle: "Barthazian", avatar: "/lovable-uploads/9ce3ba73-4a14-4b18-b043-2cfe9a9f2556.png" },
                       { name: "HyperLcrgs", handle: "HyperLcrgs", avatar: "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=150&h=150&fit=crop&crop=face" },
                       { name: "Blum OG", handle: "Blum_OG", avatar: "https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=150&h=150&fit=crop&crop=face" },
                     ].concat([
@@ -437,7 +437,7 @@ const Portfolio = () => {
                       { name: "DeFi Dad", handle: "DeFi_Dad", avatar: "/lovable-uploads/1029abfc-9383-4127-8cee-ffc0e04bb3d3.png" },
                       { name: "LST Maximalist", handle: "lstmaximalist", avatar: "/lovable-uploads/c8e25253-4839-4e4a-8907-94d6f00c6476.png" },
                       { name: "Aibra", handle: "aibra", avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face" },
-                      { name: "Barthazian", handle: "Barthazian", avatar: "https://images.unsplash.com/photo-1463453091185-61582044d556?w=150&h=150&fit=crop&crop=face" },
+                      { name: "Barthazian", handle: "Barthazian", avatar: "/lovable-uploads/9ce3ba73-4a14-4b18-b043-2cfe9a9f2556.png" },
                       { name: "HyperLcrgs", handle: "HyperLcrgs", avatar: "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=150&h=150&fit=crop&crop=face" },
                       { name: "Blum OG", handle: "Blum_OG", avatar: "https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=150&h=150&fit=crop&crop=face" },
                     ]).map((kol, index) => (
