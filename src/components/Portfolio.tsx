@@ -418,7 +418,7 @@ const Portfolio = () => {
                   <div className="flex animate-[scroll-right_30s_linear_infinite] gap-6">
                     {[
                       { name: "Stacy Muur", handle: "stacy_muur", avatar: "/lovable-uploads/1f575802-c0d0-4114-8bec-f98bfb56761b.png" },
-                      { name: "The Smart Ape", handle: "the_smart_ape", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face" },
+                      { name: "The Smart Ape", handle: "the_smart_ape", avatar: "/lovable-uploads/a11ad34f-11d8-43e5-b3b6-9890f7430089.png" },
                       { name: "0xMughal", handle: "0xMughal", avatar: "/lovable-uploads/feb6c46f-b756-4ce9-96d5-33f7bacd89b9.png" },
                       { name: "Jiraiya", handle: "JiraiyaReal", avatar: "/lovable-uploads/40b20f90-97ad-44d4-90f2-5e9b20fc5975.png" },
                       { name: "Diego DeFi", handle: "diego_defai", avatar: "/lovable-uploads/d3dbd676-f2e4-4ee1-bdc7-1fa7302a5233.png" },
@@ -430,7 +430,7 @@ const Portfolio = () => {
                       { name: "Blum OG", handle: "Blum_OG", avatar: "/lovable-uploads/1c6fe125-f07e-4646-b1ed-97f5e5672998.png" },
                     ].concat([
                       { name: "Stacy Muur", handle: "stacy_muur", avatar: "/lovable-uploads/1f575802-c0d0-4114-8bec-f98bfb56761b.png" },
-                      { name: "The Smart Ape", handle: "the_smart_ape", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face" },
+                      { name: "The Smart Ape", handle: "the_smart_ape", avatar: "/lovable-uploads/a11ad34f-11d8-43e5-b3b6-9890f7430089.png" },
                       { name: "0xMughal", handle: "0xMughal", avatar: "/lovable-uploads/feb6c46f-b756-4ce9-96d5-33f7bacd89b9.png" },
                       { name: "Jiraiya", handle: "JiraiyaReal", avatar: "/lovable-uploads/40b20f90-97ad-44d4-90f2-5e9b20fc5975.png" },
                       { name: "Diego DeFi", handle: "diego_defai", avatar: "/lovable-uploads/d3dbd676-f2e4-4ee1-bdc7-1fa7302a5233.png" },
