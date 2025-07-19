@@ -4,7 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { ExternalLink, MapPin, Mail, Calendar, Award, Briefcase, X, Twitter, Globe, Building2, User, Target, TrendingUp } from "lucide-react";
+import { ExternalLink, MapPin, Mail, Calendar, Award, Briefcase, X, Twitter, Globe, Building2, User, Target, TrendingUp, Home, Code } from "lucide-react";
+import { Dock, DockIcon, DockItem, DockLabel } from "@/components/ui/dock";
 import { useToast } from "@/hooks/use-toast";
 import AIChat from './AIChat';
 import { BentoGrid, type BentoItem } from './ui/bento-grid';
@@ -482,6 +483,48 @@ const Portfolio = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Navigation Dock */}
+      <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50">
+        <Dock className="bg-background/80 backdrop-blur-md border border-white/10">
+          <DockItem className="aspect-square rounded-full bg-gray-200/50 dark:bg-neutral-800/50 border border-white/10">
+            <DockLabel>Home</DockLabel>
+            <DockIcon>
+              <Home className="h-full w-full text-neutral-600 dark:text-neutral-300" />
+            </DockIcon>
+          </DockItem>
+          <DockItem className="aspect-square rounded-full bg-gray-200/50 dark:bg-neutral-800/50 border border-white/10">
+            <DockLabel>Profile</DockLabel>
+            <DockIcon>
+              <User className="h-full w-full text-neutral-600 dark:text-neutral-300" />
+            </DockIcon>
+          </DockItem>
+          <DockItem className="aspect-square rounded-full bg-gray-200/50 dark:bg-neutral-800/50 border border-white/10">
+            <DockLabel>Experience</DockLabel>
+            <DockIcon>
+              <Briefcase className="h-full w-full text-neutral-600 dark:text-neutral-300" />
+            </DockIcon>
+          </DockItem>
+          <DockItem className="aspect-square rounded-full bg-gray-200/50 dark:bg-neutral-800/50 border border-white/10">
+            <DockLabel>Projects</DockLabel>
+            <DockIcon>
+              <Code className="h-full w-full text-neutral-600 dark:text-neutral-300" />
+            </DockIcon>
+          </DockItem>
+          <DockItem className="aspect-square rounded-full bg-gray-200/50 dark:bg-neutral-800/50 border border-white/10">
+            <DockLabel>Contact</DockLabel>
+            <DockIcon>
+              <Mail className="h-full w-full text-neutral-600 dark:text-neutral-300" />
+            </DockIcon>
+          </DockItem>
+          <DockItem className="aspect-square rounded-full bg-gray-200/50 dark:bg-neutral-800/50 border border-white/10">
+            <DockLabel>Twitter</DockLabel>
+            <DockIcon>
+              <Twitter className="h-full w-full text-neutral-600 dark:text-neutral-300" />
+            </DockIcon>
+          </DockItem>
+        </Dock>
       </div>
     </div>
   );
