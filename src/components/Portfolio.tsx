@@ -430,7 +430,7 @@ const Portfolio = () => {
                       { name: "Blum OG", handle: "Blum_OG", avatar: "/lovable-uploads/1c6fe125-f07e-4646-b1ed-97f5e5672998.png" },
                       { name: "Eli5 DeFi", handle: "eli5_defi", avatar: "/lovable-uploads/dc46ffac-6316-4c5a-8173-5ff00447e61f.png" },
                       { name: "Today in DeFi", handle: "todayindefi", avatar: "/lovable-uploads/3cbcc621-28e5-4718-9f12-64cfe62dc41a.png" },
-                      { name: "Jack Niewold", handle: "JackNiewold", avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face" },
+                      { name: "Jack Niewold", handle: "JackNiewold", avatar: "/lovable-uploads/a00d7c61-898b-4216-ba34-3bea28450878.png" },
                     ].concat([
                       { name: "Stacy Muur", handle: "stacy_muur", avatar: "/lovable-uploads/1f575802-c0d0-4114-8bec-f98bfb56761b.png" },
                       { name: "The Smart Ape", handle: "the_smart_ape", avatar: "/lovable-uploads/a11ad34f-11d8-43e5-b3b6-9890f7430089.png" },
@@ -445,7 +445,7 @@ const Portfolio = () => {
                       { name: "Blum OG", handle: "Blum_OG", avatar: "/lovable-uploads/1c6fe125-f07e-4646-b1ed-97f5e5672998.png" },
                       { name: "Eli5 DeFi", handle: "eli5_defi", avatar: "/lovable-uploads/dc46ffac-6316-4c5a-8173-5ff00447e61f.png" },
                       { name: "Today in DeFi", handle: "todayindefi", avatar: "/lovable-uploads/3cbcc621-28e5-4718-9f12-64cfe62dc41a.png" },
-                      { name: "Jack Niewold", handle: "JackNiewold", avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face" },
+                      { name: "Jack Niewold", handle: "JackNiewold", avatar: "/lovable-uploads/a00d7c61-898b-4216-ba34-3bea28450878.png" },
                     ]).map((kol, index) => (
                       <div
                         key={`${kol.handle}-${index}`}
