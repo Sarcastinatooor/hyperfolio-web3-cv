@@ -412,8 +412,8 @@ const Portfolio = () => {
             </div>
             
             <div className="relative overflow-hidden bg-gradient-to-b from-background/50 to-transparent rounded-2xl border border-white/10 p-8 h-96">
-              <div className="flex justify-center">
-                <div className="flex flex-col animate-scroll-vertical gap-6">
+              <div className="flex justify-center overflow-hidden">
+                <div className="flex animate-scroll-horizontal gap-6">
                   {[
                     { name: "Stacy Muur", handle: "stacy_muur", avatar: "https://pbs.twimg.com/profile_images/1812570375648444416/sEvBnyLq_400x400.jpg" },
                     { name: "The Smart Ape", handle: "the_smart_ape", avatar: "https://pbs.twimg.com/profile_images/1834705639671795712/QWu2iW-t_400x400.jpg" },
@@ -426,19 +426,7 @@ const Portfolio = () => {
                     { name: "Barthazian", handle: "Barthazian", avatar: "https://pbs.twimg.com/profile_images/1827358985842806784/xYqJwGJq_400x400.jpg" },
                     { name: "HyperLcrgs", handle: "HyperLcrgs", avatar: "https://pbs.twimg.com/profile_images/1838224344244649984/sMlZNzpD_400x400.jpg" },
                     { name: "Blum OG", handle: "Blum_OG", avatar: "https://pbs.twimg.com/profile_images/1815070749012008962/V7bHmCQp_400x400.jpg" },
-                  ].concat([
-                    { name: "Stacy Muur", handle: "stacy_muur", avatar: "https://pbs.twimg.com/profile_images/1812570375648444416/sEvBnyLq_400x400.jpg" },
-                    { name: "The Smart Ape", handle: "the_smart_ape", avatar: "https://pbs.twimg.com/profile_images/1834705639671795712/QWu2iW-t_400x400.jpg" },
-                    { name: "0xMughal", handle: "0xMughal", avatar: "https://pbs.twimg.com/profile_images/1708088845901803520/TnqwleMm_400x400.jpg" },
-                    { name: "Jiraiya", handle: "JiraiyaReal", avatar: "https://pbs.twimg.com/profile_images/1806376077686939648/YVA3hAn8_400x400.jpg" },
-                    { name: "Diego DeFi", handle: "diego_defai", avatar: "https://pbs.twimg.com/profile_images/1542197913933930497/1b-vftZY_400x400.jpg" },
-                    { name: "DeFi Dad", handle: "DeFi_Dad", avatar: "https://pbs.twimg.com/profile_images/1580663557965414401/c7zQo-4U_400x400.jpg" },
-                    { name: "LST Maximalist", handle: "lstmaximalist", avatar: "https://pbs.twimg.com/profile_images/1747643574092034048/yLtGOxDJ_400x400.jpg" },
-                    { name: "Aibra", handle: "aibra", avatar: "https://pbs.twimg.com/profile_images/1824486103455789056/WOVvg6n__400x400.jpg" },
-                    { name: "Barthazian", handle: "Barthazian", avatar: "https://pbs.twimg.com/profile_images/1827358985842806784/xYqJwGJq_400x400.jpg" },
-                    { name: "HyperLcrgs", handle: "HyperLcrgs", avatar: "https://pbs.twimg.com/profile_images/1838224344244649984/sMlZNzpD_400x400.jpg" },
-                     { name: "Blum OG", handle: "Blum_OG", avatar: "https://pbs.twimg.com/profile_images/1815070749012008962/V7bHmCQp_400x400.jpg" },
-                   ]).map((kol, index) => (
+                   ].map((kol, index) => (
                       <div
                         key={`${kol.handle}-${index}`}
                         className="group relative flex-shrink-0 cursor-pointer"
@@ -467,7 +455,6 @@ const Portfolio = () => {
                 </div>
               </div>
             </div>
-          </div>
 
           {/* AI Chat Section */}
           <div className="mb-8">
