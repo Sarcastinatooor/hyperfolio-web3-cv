@@ -427,7 +427,7 @@ const Portfolio = () => {
                       { name: "Aibra", handle: "aibra", avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face" },
                       { name: "Barthazian", handle: "Barthazian", avatar: "/lovable-uploads/9ce3ba73-4a14-4b18-b043-2cfe9a9f2556.png" },
                       { name: "HyperLcrgs", handle: "HyperLcrgs", avatar: "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=150&h=150&fit=crop&crop=face" },
-                      { name: "Blum OG", handle: "Blum_OG", avatar: "https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=150&h=150&fit=crop&crop=face" },
+                      { name: "Blum OG", handle: "Blum_OG", avatar: "/lovable-uploads/1c6fe125-f07e-4646-b1ed-97f5e5672998.png" },
                     ].concat([
                       { name: "Stacy Muur", handle: "stacy_muur", avatar: "/lovable-uploads/1f575802-c0d0-4114-8bec-f98bfb56761b.png" },
                       { name: "The Smart Ape", handle: "the_smart_ape", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face" },
@@ -439,7 +439,7 @@ const Portfolio = () => {
                       { name: "Aibra", handle: "aibra", avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face" },
                       { name: "Barthazian", handle: "Barthazian", avatar: "/lovable-uploads/9ce3ba73-4a14-4b18-b043-2cfe9a9f2556.png" },
                       { name: "HyperLcrgs", handle: "HyperLcrgs", avatar: "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=150&h=150&fit=crop&crop=face" },
-                      { name: "Blum OG", handle: "Blum_OG", avatar: "https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=150&h=150&fit=crop&crop=face" },
+                      { name: "Blum OG", handle: "Blum_OG", avatar: "/lovable-uploads/1c6fe125-f07e-4646-b1ed-97f5e5672998.png" },
                     ]).map((kol, index) => (
                       <div
                         key={`${kol.handle}-${index}`}
