@@ -417,7 +417,7 @@ const Portfolio = () => {
                 <div className="relative">
                   <div className="flex animate-[scroll-right_30s_linear_infinite] gap-6">
                     {[
-                      { name: "Stacy Muur", handle: "stacy_muur", avatar: "https://images.unsplash.com/photo-1494790108755-2616b2e32f2a?w=150&h=150&fit=crop&crop=face" },
+                      { name: "Stacy Muur", handle: "stacy_muur", avatar: "/lovable-uploads/1f575802-c0d0-4114-8bec-f98bfb56761b.png" },
                       { name: "The Smart Ape", handle: "the_smart_ape", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face" },
                       { name: "0xMughal", handle: "0xMughal", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face" },
                       { name: "Jiraiya", handle: "JiraiyaReal", avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face" },
@@ -429,7 +429,7 @@ const Portfolio = () => {
                       { name: "HyperLcrgs", handle: "HyperLcrgs", avatar: "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=150&h=150&fit=crop&crop=face" },
                       { name: "Blum OG", handle: "Blum_OG", avatar: "https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=150&h=150&fit=crop&crop=face" },
                     ].concat([
-                      { name: "Stacy Muur", handle: "stacy_muur", avatar: "https://images.unsplash.com/photo-1494790108755-2616b2e32f2a?w=150&h=150&fit=crop&crop=face" },
+                      { name: "Stacy Muur", handle: "stacy_muur", avatar: "/lovable-uploads/1f575802-c0d0-4114-8bec-f98bfb56761b.png" },
                       { name: "The Smart Ape", handle: "the_smart_ape", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face" },
                       { name: "0xMughal", handle: "0xMughal", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face" },
                       { name: "Jiraiya", handle: "JiraiyaReal", avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face" },
