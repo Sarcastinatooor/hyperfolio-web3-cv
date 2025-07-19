@@ -433,6 +433,7 @@ const Portfolio = () => {
                       { name: "Jack Niewold", handle: "JackNiewold", avatar: "/lovable-uploads/a00d7c61-898b-4216-ba34-3bea28450878.png" },
                       { name: "IAmYourChaos", handle: "iamyourchaos", avatar: "/lovable-uploads/fc576325-6e4b-48aa-9d95-c8170d607e78.png" },
                       { name: "Wenxue", handle: "wenxue600", avatar: "/lovable-uploads/c57c5046-5c3c-435c-8b5e-3ee40eb32243.png" },
+                      { name: "0xAllen888", handle: "0xAllen888", avatar: "/lovable-uploads/4d7c3e4e-bc9e-4711-a48f-15f595459d59.png" },
                     ].concat([
                       { name: "Stacy Muur", handle: "stacy_muur", avatar: "/lovable-uploads/1f575802-c0d0-4114-8bec-f98bfb56761b.png" },
                       { name: "The Smart Ape", handle: "the_smart_ape", avatar: "/lovable-uploads/a11ad34f-11d8-43e5-b3b6-9890f7430089.png" },
@@ -450,6 +451,7 @@ const Portfolio = () => {
                       { name: "Jack Niewold", handle: "JackNiewold", avatar: "/lovable-uploads/a00d7c61-898b-4216-ba34-3bea28450878.png" },
                       { name: "IAmYourChaos", handle: "iamyourchaos", avatar: "/lovable-uploads/fc576325-6e4b-48aa-9d95-c8170d607e78.png" },
                       { name: "Wenxue", handle: "wenxue600", avatar: "/lovable-uploads/c57c5046-5c3c-435c-8b5e-3ee40eb32243.png" },
+                      { name: "0xAllen888", handle: "0xAllen888", avatar: "/lovable-uploads/4d7c3e4e-bc9e-4711-a48f-15f595459d59.png" },
                     ]).map((kol, index) => (
                       <div
                         key={`${kol.handle}-${index}`}
