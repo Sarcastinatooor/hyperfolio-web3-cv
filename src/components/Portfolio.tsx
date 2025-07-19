@@ -411,7 +411,7 @@ const Portfolio = () => {
               </p>
             </div>
             
-            <div className="relative overflow-hidden bg-gradient-to-b from-background/50 to-transparent rounded-2xl border border-white/10 p-8">
+            <div className="relative overflow-hidden bg-gradient-to-b from-background/50 to-transparent rounded-2xl border border-white/10 p-8 pt-16 pb-12">
               <div className="flex flex-col">
                 {/* Single Row - Scrolling */}
                 <div className="relative">
