@@ -432,6 +432,7 @@ const Portfolio = () => {
                       { name: "Today in DeFi", handle: "todayindefi", avatar: "/lovable-uploads/3cbcc621-28e5-4718-9f12-64cfe62dc41a.png" },
                       { name: "Jack Niewold", handle: "JackNiewold", avatar: "/lovable-uploads/a00d7c61-898b-4216-ba34-3bea28450878.png" },
                       { name: "IAmYourChaos", handle: "iamyourchaos", avatar: "/lovable-uploads/fc576325-6e4b-48aa-9d95-c8170d607e78.png" },
+                      { name: "Wenxue", handle: "wenxue600", avatar: "/lovable-uploads/c57c5046-5c3c-435c-8b5e-3ee40eb32243.png" },
                     ].concat([
                       { name: "Stacy Muur", handle: "stacy_muur", avatar: "/lovable-uploads/1f575802-c0d0-4114-8bec-f98bfb56761b.png" },
                       { name: "The Smart Ape", handle: "the_smart_ape", avatar: "/lovable-uploads/a11ad34f-11d8-43e5-b3b6-9890f7430089.png" },
@@ -448,6 +449,7 @@ const Portfolio = () => {
                       { name: "Today in DeFi", handle: "todayindefi", avatar: "/lovable-uploads/3cbcc621-28e5-4718-9f12-64cfe62dc41a.png" },
                       { name: "Jack Niewold", handle: "JackNiewold", avatar: "/lovable-uploads/a00d7c61-898b-4216-ba34-3bea28450878.png" },
                       { name: "IAmYourChaos", handle: "iamyourchaos", avatar: "/lovable-uploads/fc576325-6e4b-48aa-9d95-c8170d607e78.png" },
+                      { name: "Wenxue", handle: "wenxue600", avatar: "/lovable-uploads/c57c5046-5c3c-435c-8b5e-3ee40eb32243.png" },
                     ]).map((kol, index) => (
                       <div
                         key={`${kol.handle}-${index}`}
