@@ -448,54 +448,66 @@ const ExperienceDetail = () => {
                 >
                   <CarouselContent className="ml-0">
                     {[
-                      {
-                        id: "logo-1",
-                        description: "Unstoppable Web",
-                        image: "https://pbs.twimg.com/profile_images/1734985012157820928/6AhOj_eK_400x400.jpg",
-                        className: "h-12 w-12 rounded-full object-cover",
-                      },
-                      {
-                        id: "logo-2", 
-                        description: "Rigel Protocol",
-                        image: "https://pbs.twimg.com/profile_images/1584943062651707392/LMgWQhjN_400x400.jpg",
-                        className: "h-12 w-12 rounded-full object-cover",
-                      },
-                      {
-                        id: "logo-3",
-                        description: "LockNess BSC",
-                        image: "https://pbs.twimg.com/profile_images/1522580593623949312/WCg48UhQ_400x400.jpg",
-                        className: "h-12 w-12 rounded-full object-cover",
-                      },
-                      {
-                        id: "logo-4",
-                        description: "Gate.io",
-                        image: "https://pbs.twimg.com/profile_images/1598626133770412033/FZJFKmUz_400x400.jpg",
-                        className: "h-12 w-12 rounded-full object-cover",
-                      },
-                      {
-                        id: "logo-5",
-                        description: "Battle Astra",
-                        image: "https://pbs.twimg.com/profile_images/1638145326506323968/LJFZ4UkC_400x400.jpg",
-                        className: "h-12 w-12 rounded-full object-cover",
-                      },
-                      {
-                        id: "logo-6",
-                        description: "GrailPad",
-                        image: "https://pbs.twimg.com/profile_images/1582404765071974401/dmZ8VFMS_400x400.jpg",
-                        className: "h-12 w-12 rounded-full object-cover",
-                      },
-                      {
-                        id: "logo-7",
-                        description: "Gamers NFT",
-                        image: "https://pbs.twimg.com/profile_images/1733856926618943488/4tR4oJYf_400x400.jpg",
-                        className: "h-12 w-12 rounded-full object-cover",
-                      },
-                      {
-                        id: "logo-8",
-                        description: "Basics Capital",
-                        image: "https://pbs.twimg.com/profile_images/1545089582458744832/IqxL4FmR_400x400.jpg",
-                        className: "h-12 w-12 rounded-full object-cover",
-                      },
+                       {
+                         id: "logo-1",
+                         description: "Alchemy",
+                         image: "/lovable-uploads/843dbcc4-8475-464b-b08a-881a7236f039.png",
+                         className: "h-12 w-12 rounded-lg object-cover",
+                       },
+                       {
+                         id: "logo-2", 
+                         description: "Google Cloud",
+                         image: "/lovable-uploads/310264b2-f312-4fb8-9e5c-06069665072d.png",
+                         className: "h-12 w-12 rounded-lg object-cover",
+                       },
+                       {
+                         id: "logo-3",
+                         description: "Uniswap",
+                         image: "/lovable-uploads/e2f4ceb8-8380-46d0-9ebb-3510167ddc05.png",
+                         className: "h-12 w-12 rounded-lg object-cover",
+                       },
+                       {
+                         id: "logo-4",
+                         description: "Cosmos",
+                         image: "/lovable-uploads/6a974b7a-5a97-4e82-b2ef-803b3e26ef2e.png",
+                         className: "h-12 w-12 rounded-lg object-cover",
+                       },
+                       {
+                         id: "logo-5",
+                         description: "Juno Analytics",
+                         image: "/lovable-uploads/6be7f2f8-5f15-4298-a243-1dc9df95a09a.png",
+                         className: "h-12 w-12 rounded-lg object-cover",
+                       },
+                       {
+                         id: "logo-6",
+                         description: "Database Provider",
+                         image: "/lovable-uploads/f862e7ed-2edc-403f-896a-0e54b102738d.png",
+                         className: "h-12 w-12 rounded-lg object-cover",
+                       },
+                       {
+                         id: "logo-7",
+                         description: "Crown Protocol",
+                         image: "/lovable-uploads/423b1ec9-6660-4e53-9451-906b1d479b5d.png",
+                         className: "h-10 w-auto object-contain",
+                       },
+                       {
+                         id: "logo-8",
+                         description: "DeFi Platform",
+                         image: "/lovable-uploads/ab251ad6-e0bd-4889-9d46-a08e3556a96d.png",
+                         className: "h-12 w-12 rounded-lg object-cover",
+                       },
+                       {
+                         id: "logo-9",
+                         description: "Trading Platform",
+                         image: "/lovable-uploads/f0b34ef6-115d-46fa-8a43-9ed4af1f64af.png",
+                         className: "h-12 w-12 rounded-lg object-cover",
+                       },
+                       {
+                         id: "logo-10",
+                         description: "Blockchain Labs",
+                         image: "/lovable-uploads/55f4cc54-03fb-4746-ac15-55616b6bec99.png",
+                         className: "h-12 w-12 rounded-lg object-cover",
+                       },
                     ].map((logo) => (
                       <CarouselItem
                         key={logo.id}
