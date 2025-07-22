@@ -119,7 +119,7 @@ const Portfolio = () => {
         "Managed and directed an SEO agency to do keyword research, identify transactional and informational keywords to target, amplify current brand website DA & PA, create a Knowledge Center for organic traffic building, and set up SEM ad campaigns based on the targeted ad groups",
         "Worked with a media buyer to optimize Google Ads campaigns, conducting A/B testing for landing page design and content framework and enhancing the overall CPC/CTR performance"
       ],
-      skills: ["Content Strategy", "SEO", "SEM", "Brand Building", "Lead Generation", "Marketing Analytics"],
+      skills: ["Content Funnel Execution", "B2B SaaS Marketing", "Product Marketing", "SEO", "SEM", "Brand Building"],
       tools: [
         { name: "Slack", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/slack/slack-original.svg" },
         { name: "HubSpot", logo: "https://www.hubspot.com/favicon.ico" },
