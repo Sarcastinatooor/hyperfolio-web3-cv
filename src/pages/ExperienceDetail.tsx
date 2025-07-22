@@ -476,6 +476,34 @@ const ExperienceDetail = () => {
           </Card>
         )}
 
+        {/* Dapp List Widget - only for Spherium Finance */}
+        {experienceId === 4 && (
+          <Card className="bg-gray-900 border-gray-800">
+            <CardHeader>
+              <CardTitle className="text-lg text-white flex items-center gap-2">
+                <Award className="w-5 h-5 text-blue-400" />
+                Recognition
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="flex justify-center">
+                <a
+                  href="https://thedapplist.com/project/spherium-finance"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="block hover:opacity-80 transition-opacity duration-200"
+                >
+                  <img
+                    src="https://widget.thedapplist.com/QmQrReq1bLTMrtmhFgqEu9fdrsTAjGwhETk7koPJBzXaEN?theme=light"
+                    alt="Spherium Finance- Featured on The Dapp List with 3733 votes"
+                    className="rounded-lg border border-gray-700"
+                  />
+                </a>
+              </div>
+            </CardContent>
+          </Card>
+        )}
+
         {/* News Article Embed - only for Spherium Finance */}
         {experienceId === 4 && (
           <Card className="bg-gray-900 border-gray-800">
