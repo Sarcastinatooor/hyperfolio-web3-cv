@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { TweetEmbed } from "@/components/ui/tweet-embed";
 import { SocialMediaDashboard } from "@/components/ui/social-media-dashboard";
 import TwitterAnalyticsDashboard from "@/components/TwitterAnalyticsDashboard";
+import { Logos3 } from "@/components/ui/logos3";
 import { ArrowLeft, Calendar, MapPin, Building2, User, Target, TrendingUp, Globe, Award, Briefcase, Code, Anchor } from "lucide-react";
 import {
   IconTerminal2,
@@ -426,6 +427,66 @@ const ExperienceDetail = () => {
             </div>
           </CardContent>
         </Card>
+
+        {/* Partner Companies Carousel - only for Spherium Finance */}
+        {experienceId === 4 && (
+          <div className="bg-gray-900 border border-gray-800 rounded-lg">
+            <Logos3 
+              heading="Key Partners & Collaborators"
+              logos={[
+                {
+                  id: "logo-1",
+                  description: "Unstoppable Web",
+                  image: "https://pbs.twimg.com/profile_images/1734985012157820928/6AhOj_eK_400x400.jpg",
+                  className: "h-8 w-auto filter brightness-0 invert",
+                },
+                {
+                  id: "logo-2", 
+                  description: "Rigel Protocol",
+                  image: "https://pbs.twimg.com/profile_images/1584943062651707392/LMgWQhjN_400x400.jpg",
+                  className: "h-8 w-auto filter brightness-0 invert",
+                },
+                {
+                  id: "logo-3",
+                  description: "LockNess BSC",
+                  image: "https://pbs.twimg.com/profile_images/1522580593623949312/WCg48UhQ_400x400.jpg",
+                  className: "h-8 w-auto filter brightness-0 invert",
+                },
+                {
+                  id: "logo-4",
+                  description: "Gate.io",
+                  image: "https://pbs.twimg.com/profile_images/1598626133770412033/FZJFKmUz_400x400.jpg",
+                  className: "h-8 w-auto filter brightness-0 invert",
+                },
+                {
+                  id: "logo-5",
+                  description: "Battle Astra",
+                  image: "https://pbs.twimg.com/profile_images/1638145326506323968/LJFZ4UkC_400x400.jpg",
+                  className: "h-8 w-auto filter brightness-0 invert",
+                },
+                {
+                  id: "logo-6",
+                  description: "GrailPad",
+                  image: "https://pbs.twimg.com/profile_images/1582404765071974401/dmZ8VFMS_400x400.jpg",
+                  className: "h-8 w-auto filter brightness-0 invert",
+                },
+                {
+                  id: "logo-7",
+                  description: "Gamers NFT",
+                  image: "https://pbs.twimg.com/profile_images/1733856926618943488/4tR4oJYf_400x400.jpg",
+                  className: "h-8 w-auto filter brightness-0 invert",
+                },
+                {
+                  id: "logo-8",
+                  description: "Basics Capital",
+                  image: "https://pbs.twimg.com/profile_images/1545089582458744832/IqxL4FmR_400x400.jpg",
+                  className: "h-8 w-auto filter brightness-0 invert",
+                },
+              ]}
+              className="py-8"
+            />
+          </div>
+        )}
 
         {/* Twitter Analytics Dashboard - only for BrahmaFi */}
         {experienceId === 0 && (
