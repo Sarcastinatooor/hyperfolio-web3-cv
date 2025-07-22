@@ -404,11 +404,8 @@ const Portfolio = () => {
           <div className="mb-12">
             <div className="text-center mb-8">
               <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-                Key Opinion Leaders I've Worked With
+                KOLs I've Collaborated With
               </h2>
-              <p className="text-muted-foreground">
-                Collaborating with top voices in Web3 and DeFi
-              </p>
             </div>
             
             <div className="relative overflow-hidden bg-gradient-to-b from-background/50 to-transparent rounded-2xl border border-white/10 p-8 pt-16 pb-12">
