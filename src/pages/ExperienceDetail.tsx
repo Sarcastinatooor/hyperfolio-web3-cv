@@ -481,8 +481,8 @@ const ExperienceDetail = () => {
                       {
                         id: "logo-6",
                         description: "GrailPad",
-                        image: "https://pbs.twimg.com/profile_images/1582404765071974401/dmZ8VFMS_400x400.jpg",
-                        className: "h-12 w-12 rounded-full object-cover",
+                        image: "/lovable-uploads/3666400e-a355-45d2-9f64-19a0c95722fe.png",
+                        className: "h-12 w-12 object-contain",
                       },
                       {
                         id: "logo-7",
