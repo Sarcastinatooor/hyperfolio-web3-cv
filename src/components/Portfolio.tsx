@@ -210,7 +210,7 @@ const Portfolio = () => {
         "Directing growth marketing hacks, working closely with Founders, Developers & Investors to elaborate product specifications, facilitate third-party integrations, leading brand representation for Business Development relationships.",
         "Outgrow brand audience acquisition and retention through on-chain analytics, defining founders personal brand as thought leaders and positioning them into the tight circles of Web3 OG's."
       ],
-      skills: ["Team Leadership", "DeFi Marketing", "Cross-chain Strategy", "Community Building", "Growth Hacking", "Business Development"],
+      skills: ["Invester Relationships", "Integration Partnerships", "Team Lead", "Community Building", "Growth Hacking", "Business Development"],
       tools: [
         { name: "Jira", logo: "https://wac-cdn.atlassian.com/assets/img/favicons/atlassian/favicon.png" },
         { name: "Notion", logo: "https://www.notion.so/images/favicon.ico" }
