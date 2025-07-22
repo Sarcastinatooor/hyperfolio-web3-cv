@@ -6,6 +6,8 @@ import { TweetEmbed } from "@/components/ui/tweet-embed";
 import { SocialMediaDashboard } from "@/components/ui/social-media-dashboard";
 import TwitterAnalyticsDashboard from "@/components/TwitterAnalyticsDashboard";
 import { Logos3 } from "@/components/ui/logos3";
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import AutoScroll from "embla-carousel-auto-scroll";
 import { ArrowLeft, Calendar, MapPin, Building2, User, Target, TrendingUp, Globe, Award, Briefcase, Code, Anchor } from "lucide-react";
 import {
   IconTerminal2,
@@ -430,62 +432,92 @@ const ExperienceDetail = () => {
 
         {/* Partner Companies Carousel - only for Spherium Finance */}
         {experienceId === 4 && (
-          <div className="bg-gray-900 border border-gray-800 rounded-lg">
-            <Logos3 
-              heading="Key Partners & Collaborators"
-              logos={[
-                {
-                  id: "logo-1",
-                  description: "Unstoppable Web",
-                  image: "https://pbs.twimg.com/profile_images/1734985012157820928/6AhOj_eK_400x400.jpg",
-                  className: "h-8 w-auto filter brightness-0 invert",
-                },
-                {
-                  id: "logo-2", 
-                  description: "Rigel Protocol",
-                  image: "https://pbs.twimg.com/profile_images/1584943062651707392/LMgWQhjN_400x400.jpg",
-                  className: "h-8 w-auto filter brightness-0 invert",
-                },
-                {
-                  id: "logo-3",
-                  description: "LockNess BSC",
-                  image: "https://pbs.twimg.com/profile_images/1522580593623949312/WCg48UhQ_400x400.jpg",
-                  className: "h-8 w-auto filter brightness-0 invert",
-                },
-                {
-                  id: "logo-4",
-                  description: "Gate.io",
-                  image: "https://pbs.twimg.com/profile_images/1598626133770412033/FZJFKmUz_400x400.jpg",
-                  className: "h-8 w-auto filter brightness-0 invert",
-                },
-                {
-                  id: "logo-5",
-                  description: "Battle Astra",
-                  image: "https://pbs.twimg.com/profile_images/1638145326506323968/LJFZ4UkC_400x400.jpg",
-                  className: "h-8 w-auto filter brightness-0 invert",
-                },
-                {
-                  id: "logo-6",
-                  description: "GrailPad",
-                  image: "https://pbs.twimg.com/profile_images/1582404765071974401/dmZ8VFMS_400x400.jpg",
-                  className: "h-8 w-auto filter brightness-0 invert",
-                },
-                {
-                  id: "logo-7",
-                  description: "Gamers NFT",
-                  image: "https://pbs.twimg.com/profile_images/1733856926618943488/4tR4oJYf_400x400.jpg",
-                  className: "h-8 w-auto filter brightness-0 invert",
-                },
-                {
-                  id: "logo-8",
-                  description: "Basics Capital",
-                  image: "https://pbs.twimg.com/profile_images/1545089582458744832/IqxL4FmR_400x400.jpg",
-                  className: "h-8 w-auto filter brightness-0 invert",
-                },
-              ]}
-              className="py-8"
-            />
-          </div>
+          <Card className="bg-gray-900 border-gray-800">
+            <CardHeader>
+              <CardTitle className="text-lg text-white flex items-center gap-2">
+                <Building2 className="w-5 h-5 text-blue-400" />
+                Key Partners & Collaborators
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="relative mx-auto flex items-center justify-center lg:max-w-5xl">
+                <Carousel
+                  opts={{ loop: true }}
+                  plugins={[AutoScroll({ playOnInit: true })]}
+                  className="w-full"
+                >
+                  <CarouselContent className="ml-0">
+                    {[
+                      {
+                        id: "logo-1",
+                        description: "Unstoppable Web",
+                        image: "https://pbs.twimg.com/profile_images/1734985012157820928/6AhOj_eK_400x400.jpg",
+                        className: "h-12 w-12 rounded-full object-cover",
+                      },
+                      {
+                        id: "logo-2", 
+                        description: "Rigel Protocol",
+                        image: "https://pbs.twimg.com/profile_images/1584943062651707392/LMgWQhjN_400x400.jpg",
+                        className: "h-12 w-12 rounded-full object-cover",
+                      },
+                      {
+                        id: "logo-3",
+                        description: "LockNess BSC",
+                        image: "https://pbs.twimg.com/profile_images/1522580593623949312/WCg48UhQ_400x400.jpg",
+                        className: "h-12 w-12 rounded-full object-cover",
+                      },
+                      {
+                        id: "logo-4",
+                        description: "Gate.io",
+                        image: "https://pbs.twimg.com/profile_images/1598626133770412033/FZJFKmUz_400x400.jpg",
+                        className: "h-12 w-12 rounded-full object-cover",
+                      },
+                      {
+                        id: "logo-5",
+                        description: "Battle Astra",
+                        image: "https://pbs.twimg.com/profile_images/1638145326506323968/LJFZ4UkC_400x400.jpg",
+                        className: "h-12 w-12 rounded-full object-cover",
+                      },
+                      {
+                        id: "logo-6",
+                        description: "GrailPad",
+                        image: "https://pbs.twimg.com/profile_images/1582404765071974401/dmZ8VFMS_400x400.jpg",
+                        className: "h-12 w-12 rounded-full object-cover",
+                      },
+                      {
+                        id: "logo-7",
+                        description: "Gamers NFT",
+                        image: "https://pbs.twimg.com/profile_images/1733856926618943488/4tR4oJYf_400x400.jpg",
+                        className: "h-12 w-12 rounded-full object-cover",
+                      },
+                      {
+                        id: "logo-8",
+                        description: "Basics Capital",
+                        image: "https://pbs.twimg.com/profile_images/1545089582458744832/IqxL4FmR_400x400.jpg",
+                        className: "h-12 w-12 rounded-full object-cover",
+                      },
+                    ].map((logo) => (
+                      <CarouselItem
+                        key={logo.id}
+                        className="flex basis-1/3 justify-center pl-0 sm:basis-1/4 md:basis-1/5 lg:basis-1/6"
+                      >
+                        <div className="flex flex-col items-center justify-center space-y-2 p-4">
+                          <img
+                            src={logo.image}
+                            alt={logo.description}
+                            className={logo.className}
+                          />
+                          <span className="text-xs text-gray-400 text-center">{logo.description}</span>
+                        </div>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                </Carousel>
+                <div className="absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-gray-900 to-transparent pointer-events-none"></div>
+                <div className="absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-gray-900 to-transparent pointer-events-none"></div>
+              </div>
+            </CardContent>
+          </Card>
         )}
 
         {/* Twitter Analytics Dashboard - only for BrahmaFi */}
