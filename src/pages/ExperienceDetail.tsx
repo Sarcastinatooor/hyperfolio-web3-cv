@@ -492,9 +492,9 @@ const ExperienceDetail = () => {
                       },
                       {
                         id: "logo-8",
-                        description: "Basics Capital",
-                        image: "https://pbs.twimg.com/profile_images/1545089582458744832/IqxL4FmR_400x400.jpg",
-                        className: "h-12 w-12 rounded-full object-cover",
+                        description: "AdLunam",
+                        image: "/lovable-uploads/522f01ac-0ceb-4b09-9827-1675cc7c3d00.png",
+                        className: "h-12 w-12 object-contain",
                       },
                     ].map((logo) => (
                       <CarouselItem
