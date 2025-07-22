@@ -538,6 +538,12 @@ const ExperienceDetail = () => {
                         image: "/lovable-uploads/91ec0591-8b93-47e0-93aa-ff15b0a3378e.png",
                         className: "h-12 w-12 object-contain",
                       },
+                      {
+                        id: "logo-16",
+                        description: "Brokoli",
+                        image: "/lovable-uploads/brokoli-logo.png",
+                        className: "h-12 w-12 object-contain",
+                      },
                     ].map((logo) => (
                       <CarouselItem
                         key={logo.id}
