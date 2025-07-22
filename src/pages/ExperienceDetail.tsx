@@ -469,8 +469,8 @@ const ExperienceDetail = () => {
                       {
                         id: "logo-4",
                         description: "Gate.io",
-                        image: "https://pbs.twimg.com/profile_images/1598626133770412033/FZJFKmUz_400x400.jpg",
-                        className: "h-12 w-12 rounded-full object-cover",
+                        image: "/lovable-uploads/bf8ff3e2-4712-4402-be82-048ec21e8d2a.png",
+                        className: "h-12 w-12 object-contain p-2 bg-white rounded-lg",
                       },
                       {
                         id: "logo-5",
