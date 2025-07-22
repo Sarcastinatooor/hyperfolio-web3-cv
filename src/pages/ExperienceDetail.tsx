@@ -526,6 +526,12 @@ const ExperienceDetail = () => {
                         image: "/lovable-uploads/1d6eeeeb-3c3b-418b-b3ee-3f35ee90ea1e.png",
                         className: "h-12 w-12 object-contain",
                       },
+                      {
+                        id: "logo-14",
+                        description: "The DAO Maker",
+                        image: "/lovable-uploads/a789876e-65a2-4f77-acf0-614d8dba075b.png",
+                        className: "h-12 w-12 object-contain",
+                      },
                     ].map((logo) => (
                       <CarouselItem
                         key={logo.id}
