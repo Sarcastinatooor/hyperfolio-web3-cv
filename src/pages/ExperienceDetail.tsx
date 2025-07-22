@@ -463,8 +463,8 @@ const ExperienceDetail = () => {
                       {
                         id: "logo-3",
                         description: "LockNess BSC",
-                        image: "https://pbs.twimg.com/profile_images/1522580593623949312/WCg48UhQ_400x400.jpg",
-                        className: "h-12 w-12 rounded-full object-cover",
+                        image: "/lovable-uploads/235e2ad0-b743-4fa3-9e50-e8fabf32d7c7.png",
+                        className: "h-12 w-12 object-contain",
                       },
                       {
                         id: "logo-4",
