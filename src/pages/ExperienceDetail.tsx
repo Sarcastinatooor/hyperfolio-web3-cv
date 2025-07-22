@@ -532,6 +532,12 @@ const ExperienceDetail = () => {
                         image: "/lovable-uploads/a789876e-65a2-4f77-acf0-614d8dba075b.png",
                         className: "h-12 w-12 object-contain",
                       },
+                      {
+                        id: "logo-15",
+                        description: "BscPad",
+                        image: "/lovable-uploads/91ec0591-8b93-47e0-93aa-ff15b0a3378e.png",
+                        className: "h-12 w-12 object-contain",
+                      },
                     ].map((logo) => (
                       <CarouselItem
                         key={logo.id}
