@@ -544,14 +544,8 @@ const ExperienceDetail = () => {
                       <p className="text-gray-300 text-sm mb-3 leading-relaxed">
                         Spherium Finance announces a comprehensive cross-chain incubation and grant program to support innovative DeFi projects across multiple blockchain ecosystems, fostering growth and adoption in the decentralized finance space.
                       </p>
-                       <div className="flex items-center justify-between">
-                         <div className="flex items-center gap-2">
-                           <span className="text-gray-500 text-xs">Press Release</span>
-                         </div>
-                         <div className="flex items-center gap-1 text-blue-400 group-hover:text-blue-300 transition-colors">
-                           <span className="text-sm">Read article</span>
-                           <Globe className="w-4 h-4" />
-                         </div>
+                       <div className="flex items-center gap-2">
+                         <span className="text-gray-500 text-xs">Press Release</span>
                        </div>
                     </div>
                   </div>
