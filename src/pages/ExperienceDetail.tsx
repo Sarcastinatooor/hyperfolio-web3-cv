@@ -474,9 +474,9 @@ const ExperienceDetail = () => {
                       },
                       {
                         id: "logo-5",
-                        description: "Battle Astra",
-                        image: "https://pbs.twimg.com/profile_images/1638145326506323968/LJFZ4UkC_400x400.jpg",
-                        className: "h-12 w-12 rounded-full object-cover",
+                        description: "Arbitrum",
+                        image: "/lovable-uploads/df89e563-c0ca-4c8c-bc4b-9bb44ff632a5.png",
+                        className: "h-12 w-12 object-contain p-1 bg-white rounded-lg",
                       },
                       {
                         id: "logo-6",
