@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { ExternalLink, MapPin, Mail, Calendar, Award, Briefcase, X, Twitter, Globe, Building2, User, Target, TrendingUp } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import AIChat from './AIChat';
+
 import { BentoGrid, type BentoItem } from './ui/bento-grid';
 
 const Portfolio = () => {
@@ -479,10 +479,6 @@ const Portfolio = () => {
             </div>
           </div>
 
-          {/* AI Chat Section */}
-          <div className="mb-8">
-            <AIChat experiences={experiences} />
-          </div>
 
 
           {/* Footer */}
