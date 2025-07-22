@@ -491,19 +491,9 @@ const Portfolio = () => {
                 <img 
                   src="/lovable-uploads/571df8ea-2bcf-468b-aa84-1acb45393edd.png" 
                   alt="Twitter Profile Picture" 
-                  className="w-16 h-16 rounded-full border-2 border-primary/50"
-                />
-              </div>
-              <div className="flex justify-center gap-3">
-                <Button 
-                  variant="outline" 
-                  size="sm"
-                  className="social-button text-xs"
+                  className="w-16 h-16 rounded-full border-2 border-primary/50 cursor-pointer hover:border-primary transition-colors duration-300 hover:scale-105 transform"
                   onClick={() => window.open('https://x.com/Not_A_De_Gen', '_blank')}
-                >
-                  <ExternalLink className="w-3 h-3 mr-1" />
-                  Connect
-                </Button>
+                />
               </div>
             </div>
           </div>
