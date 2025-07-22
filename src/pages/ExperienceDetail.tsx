@@ -514,6 +514,12 @@ const ExperienceDetail = () => {
                         image: "/lovable-uploads/8d91e90e-7e52-4934-b59c-4497bf448d8a.png",
                         className: "h-12 w-12 object-contain",
                       },
+                      {
+                        id: "logo-12",
+                        description: "AnyPad",
+                        image: "/lovable-uploads/7c55f31c-38aa-4767-aa72-e7935d2ea44e.png",
+                        className: "h-12 w-12 object-contain",
+                      },
                     ].map((logo) => (
                       <CarouselItem
                         key={logo.id}
