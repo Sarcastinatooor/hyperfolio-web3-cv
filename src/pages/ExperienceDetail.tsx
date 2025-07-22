@@ -628,11 +628,23 @@ const ExperienceDetail = () => {
                   rel="noreferrer noopener"
                   className="block hover:opacity-80 transition-opacity duration-200"
                 >
-                  <img
-                    src="https://widget.thedapplist.com/QmQrReq1bLTMrtmhFgqEu9fdrsTAjGwhETk7koPJBzXaEN?theme=dark"
-                    alt="Spherium Finance- Featured on The Dapp List with 3733 votes"
-                    className="w-full max-w-md h-auto rounded-lg border border-gray-700"
-                  />
+                  <div className="bg-gray-800 border border-gray-700 rounded-lg p-6 max-w-md w-full">
+                    <div className="flex items-center justify-center space-x-3 mb-4">
+                      <img
+                        src="/lovable-uploads/89ebfe9f-d6ba-4603-91fd-89e06b1e8390.png"
+                        alt="The Dapp List"
+                        className="h-8 w-auto"
+                      />
+                    </div>
+                    <div className="text-center">
+                      <h3 className="text-white font-semibold mb-2">Spherium Finance</h3>
+                      <p className="text-gray-300 text-sm mb-3">Featured project with community recognition</p>
+                      <div className="flex items-center justify-center space-x-2">
+                        <span className="text-blue-400 font-bold text-lg">3,733</span>
+                        <span className="text-gray-400 text-sm">votes</span>
+                      </div>
+                    </div>
+                  </div>
                 </a>
                 <div className="text-center">
                   <p className="text-gray-300 text-sm">
