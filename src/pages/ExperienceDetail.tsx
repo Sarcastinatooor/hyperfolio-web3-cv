@@ -308,6 +308,11 @@ const ExperienceDetail = () => {
   }
 
   const getIcon = (index: number) => {
+    if (index === 0) return <img src="/lovable-uploads/a991def3-65b4-42c5-ae46-fd51b8ba5745.png" alt="BrahmaFi Logo" className="w-6 h-6 object-contain" />;
+    if (index === 1) return <img src="/lovable-uploads/bfb0ed9c-a115-48ed-b7c4-97a1180adfc3.png" alt="Liminal Custody Logo" className="w-6 h-6 object-contain" />;
+    if (index === 2) return <img src="/lovable-uploads/b48218d8-1c66-437e-a9d3-31e42c4a8e02.png" alt="ShipFinex Logo" className="w-6 h-6 object-contain" />;
+    if (index === 3) return <img src="/lovable-uploads/4aab9ee7-324f-4aa4-b2f0-23c0889641c2.png" alt="BitMart Logo" className="w-6 h-6 object-contain" />;
+    
     const icons = [TrendingUp, User, Target, Building2, Globe, Award, Briefcase, Code];
     const IconComponent = icons[index] || User;
     return <IconComponent className="w-6 h-6" />;
