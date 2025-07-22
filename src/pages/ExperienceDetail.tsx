@@ -646,11 +646,6 @@ const ExperienceDetail = () => {
                     </div>
                   </div>
                 </a>
-                <div className="text-center">
-                  <p className="text-gray-300 text-sm">
-                    Featured on The Dapp List with <span className="text-blue-400 font-semibold">3,733 votes</span>
-                  </p>
-                </div>
               </div>
             </CardContent>
           </Card>
