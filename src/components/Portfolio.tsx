@@ -484,9 +484,16 @@ const Portfolio = () => {
           {/* Footer */}
           <div className="hl-card text-center">
             <div className="hl-table-cell">
-              <p className="text-xs text-muted-foreground mb-3">
-                All my shillngs are done here
-              </p>
+              <h2 className="text-lg font-semibold text-white mb-4">
+                Follow me here
+              </h2>
+              <div className="flex justify-center mb-4">
+                <img 
+                  src="/lovable-uploads/571df8ea-2bcf-468b-aa84-1acb45393edd.png" 
+                  alt="Twitter Profile Picture" 
+                  className="w-16 h-16 rounded-full border-2 border-primary/50"
+                />
+              </div>
               <div className="flex justify-center gap-3">
                 <Button 
                   variant="outline" 
