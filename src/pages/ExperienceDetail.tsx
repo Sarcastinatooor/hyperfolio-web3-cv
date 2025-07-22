@@ -496,6 +496,12 @@ const ExperienceDetail = () => {
                         image: "/lovable-uploads/522f01ac-0ceb-4b09-9827-1675cc7c3d00.png",
                         className: "h-12 w-12 object-contain",
                       },
+                      {
+                        id: "logo-9",
+                        description: "Dutch Crypto Investors",
+                        image: "/lovable-uploads/37ff1369-5d42-405f-8f41-a575a945d98b.png",
+                        className: "h-12 w-12 object-contain p-1 bg-white rounded-lg",
+                      },
                     ].map((logo) => (
                       <CarouselItem
                         key={logo.id}
