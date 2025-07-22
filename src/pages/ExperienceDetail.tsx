@@ -486,7 +486,7 @@ const ExperienceDetail = () => {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="flex justify-center bg-white p-4 rounded-lg">
+              <div className="flex justify-center">
                 <a
                   href="https://thedapplist.com/project/spherium-finance"
                   target="_blank"
@@ -494,10 +494,9 @@ const ExperienceDetail = () => {
                   className="block hover:opacity-80 transition-opacity duration-200"
                 >
                   <img
-                    src="https://widget.thedapplist.com/QmQrReq1bLTMrtmhFgqEu9fdrsTAjGwhETk7koPJBzXaEN?theme=light"
+                    src="https://widget.thedapplist.com/QmQrReq1bLTMrtmhFgqEu9fdrsTAjGwhETk7koPJBzXaEN?theme=dark"
                     alt="Spherium Finance- Featured on The Dapp List with 3733 votes"
-                    className="max-w-full h-auto"
-                    style={{ minWidth: '300px' }}
+                    className="max-w-full h-auto rounded-lg"
                   />
                 </a>
               </div>
