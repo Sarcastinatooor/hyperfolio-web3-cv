@@ -457,8 +457,8 @@ const ExperienceDetail = () => {
                       {
                         id: "logo-2", 
                         description: "Rigel Protocol",
-                        image: "https://pbs.twimg.com/profile_images/1584943062651707392/LMgWQhjN_400x400.jpg",
-                        className: "h-12 w-12 rounded-full object-cover",
+                        image: "/lovable-uploads/21cc77ca-5785-4ac5-a2fb-219419c3a7d4.png",
+                        className: "h-12 w-12 object-contain",
                       },
                       {
                         id: "logo-3",
