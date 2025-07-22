@@ -450,9 +450,9 @@ const ExperienceDetail = () => {
                     {[
                       {
                         id: "logo-1",
-                        description: "Unstoppable Web",
-                        image: "https://pbs.twimg.com/profile_images/1734985012157820928/6AhOj_eK_400x400.jpg",
-                        className: "h-12 w-12 rounded-full object-cover",
+                        description: "Unmarshal",
+                        image: "/lovable-uploads/2b670137-8805-40e2-8e9d-05c14513cb59.png",
+                        className: "h-12 w-12 object-contain",
                       },
                       {
                         id: "logo-2", 
