@@ -293,7 +293,7 @@ const Portfolio = () => {
     meta: exp.title,
     status: exp.period,
     tags: exp.skills.slice(0, 3),
-    icon: index === 0 ? <TrendingUp className="w-4 h-4 text-white" /> :
+    icon: index === 0 ? <img src="/lovable-uploads/a991def3-65b4-42c5-ae46-fd51b8ba5745.png" alt="BrahmaFi Logo" className="w-4 h-4 object-contain" /> :
           index === 1 ? <img src="/lovable-uploads/bfb0ed9c-a115-48ed-b7c4-97a1180adfc3.png" alt="Liminal Custody Logo" className="w-4 h-4 object-contain" /> :
           index === 2 ? <img src="/lovable-uploads/b48218d8-1c66-437e-a9d3-31e42c4a8e02.png" alt="ShipFinex Logo" className="w-4 h-4 object-contain" /> :
           index === 3 ? <Building2 className="w-4 h-4 text-white" /> :
