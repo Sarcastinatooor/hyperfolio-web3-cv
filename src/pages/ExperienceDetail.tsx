@@ -523,7 +523,7 @@ const ExperienceDetail = () => {
                     <img 
                       src="/lovable-uploads/24ef73e9-67c9-41e9-85cc-af897f7a0258.png" 
                       alt="Spherium Finance Cointelegraph Article"
-                      className="w-full h-48 object-cover rounded-lg"
+                      className="w-full aspect-[16/9] object-cover rounded-lg"
                     />
                   </div>
                   <div className="flex items-start gap-4">
