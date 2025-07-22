@@ -520,6 +520,12 @@ const ExperienceDetail = () => {
                         image: "/lovable-uploads/7c55f31c-38aa-4767-aa72-e7935d2ea44e.png",
                         className: "h-12 w-12 object-contain",
                       },
+                      {
+                        id: "logo-13",
+                        description: "Unstoppable Domains",
+                        image: "/lovable-uploads/1d6eeeeb-3c3b-418b-b3ee-3f35ee90ea1e.png",
+                        className: "h-12 w-12 object-contain",
+                      },
                     ].map((logo) => (
                       <CarouselItem
                         key={logo.id}
