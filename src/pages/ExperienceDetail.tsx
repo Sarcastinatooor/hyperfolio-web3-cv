@@ -486,9 +486,9 @@ const ExperienceDetail = () => {
                       },
                       {
                         id: "logo-7",
-                        description: "Gamers NFT",
-                        image: "https://pbs.twimg.com/profile_images/1733856926618943488/4tR4oJYf_400x400.jpg",
-                        className: "h-12 w-12 rounded-full object-cover",
+                        description: "Gamerse NFT",
+                        image: "/lovable-uploads/d21ee3ad-346c-4acd-b0e9-c9f55bc9285c.png",
+                        className: "h-12 w-12 object-contain p-1 bg-white rounded-lg",
                       },
                       {
                         id: "logo-8",
