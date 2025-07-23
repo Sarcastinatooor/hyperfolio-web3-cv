@@ -412,7 +412,7 @@ const Portfolio = () => {
               <div className="flex flex-col">
                 {/* Single Row - Scrolling */}
                 <div className="relative">
-                  <div className="flex animate-[scroll-right_30s_linear_infinite] gap-6">
+                  <div className="flex animate-[scroll-right_15s_linear_infinite] gap-6">
                     {[
                       { name: "Stacy Muur", handle: "stacy_muur", avatar: "/lovable-uploads/1f575802-c0d0-4114-8bec-f98bfb56761b.png" },
                       { name: "The Smart Ape", handle: "the_smart_ape", avatar: "/lovable-uploads/a11ad34f-11d8-43e5-b3b6-9890f7430089.png" },
