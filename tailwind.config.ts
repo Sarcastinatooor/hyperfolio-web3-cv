@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -62,11 +63,12 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// DeFi themed colors
+				// HyperFoundation themed colors
 				'neon-cyan': 'hsl(var(--neon-cyan))',
 				'neon-green': 'hsl(var(--neon-green))',
 				'neon-purple': 'hsl(var(--neon-purple))',
-				'neon-pink': 'hsl(var(--neon-pink))',
+				'neon-red': 'hsl(var(--neon-red))',
+				'cta-orange': 'hsl(var(--cta-orange))',
 				'dark-surface': 'hsl(var(--dark-surface))',
 				'grid-color': 'hsl(var(--grid-color))'
 			},

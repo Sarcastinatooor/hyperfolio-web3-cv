@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,69 +9,63 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* HyperLiquid inspired ultra-dark theme */
-    --background: 0 0% 1%;
+    /* HyperFoundation inspired color scheme */
+    --background: 220 15% 4%;
     --foreground: 0 0% 95%;
 
-    --card: 0 0% 2%;
+    --card: 220 12% 8%;
     --card-foreground: 0 0% 95%;
 
-    --popover: 0 0% 2%;
+    --popover: 220 12% 8%;
     --popover-foreground: 0 0% 95%;
 
-    --primary: 138 100% 50%;
-    --primary-foreground: 0 0% 1%;
+    --primary: 260 100% 60%;
+    --primary-foreground: 0 0% 98%;
 
-    --secondary: 0 0% 3%;
+    --secondary: 220 10% 12%;
     --secondary-foreground: 0 0% 95%;
 
-    --muted: 0 0% 4%;
+    --muted: 220 8% 15%;
     --muted-foreground: 0 0% 60%;
 
-    --accent: 138 100% 50%;
+    --accent: 210 100% 70%;
     --accent-foreground: 0 0% 1%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 8%;
-    --input: 0 0% 3%;
-    --ring: 138 100% 50%;
+    --border: 220 10% 12%;
+    --input: 220 12% 8%;
+    --ring: 260 100% 60%;
 
-    /* HyperLiquid specific colors */
-    --neon-cyan: 180 100% 50%;
-    --neon-green: 138 100% 50%;
+    /* HyperFoundation specific colors */
+    --neon-cyan: 210 100% 70%;
+    --neon-green: 260 100% 60%;
     --neon-red: 0 84% 60%;
-    --neon-purple: 270 100% 70%;
-    --dark-surface: 0 0% 2%;
-    --grid-color: 0 0% 5%;
+    --neon-purple: 260 100% 60%;
+    --cta-orange: 25 100% 65%;
+    --dark-surface: 220 12% 8%;
+    --grid-color: 220 10% 12%;
 
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(138 100% 50% / 0.1), hsl(138 100% 50% / 0.05));
-    --gradient-glow: linear-gradient(135deg, hsl(138 100% 50% / 0.05), hsl(0 0% 2%));
-    --gradient-card: linear-gradient(135deg, hsl(0 0% 2%), hsl(0 0% 1%));
+    /* Updated gradients with new color scheme */
+    --gradient-primary: linear-gradient(135deg, hsl(260 100% 60% / 0.1), hsl(260 100% 60% / 0.05));
+    --gradient-glow: linear-gradient(135deg, hsl(260 100% 60% / 0.05), hsl(220 12% 8%));
+    --gradient-card: linear-gradient(135deg, hsl(220 12% 8%), hsl(220 15% 4%));
 
-    /* Shadows */
-    --shadow-neon: 0 0 20px hsl(138 100% 50% / 0.2);
-    --shadow-glow: 0 0 15px hsl(138 100% 50% / 0.15);
+    /* Updated shadows with purple theme */
+    --shadow-neon: 0 0 20px hsl(260 100% 60% / 0.2);
+    --shadow-glow: 0 0 15px hsl(260 100% 60% / 0.15);
     --shadow-card: 0 2px 8px hsl(0 0% 0% / 0.8);
 
     --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -121,8 +116,8 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground overflow-x-hidden;
     background-image: 
-      radial-gradient(circle at 25% 25%, hsl(138 100% 50% / 0.02) 0%, transparent 50%),
-      radial-gradient(circle at 75% 75%, hsl(138 100% 50% / 0.01) 0%, transparent 50%);
+      radial-gradient(circle at 25% 25%, hsl(260 100% 60% / 0.02) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, hsl(260 100% 60% / 0.01) 0%, transparent 50%);
   }
 
   /* Custom scrollbar */
