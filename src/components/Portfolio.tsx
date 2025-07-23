@@ -331,7 +331,7 @@ const Portfolio = () => {
                       </Button>
                     </div>
                   </div>
-                </CardHeader>
+                </div>
                 <CardHeader>
                   <CardTitle className="foundation-heading">{project.title}</CardTitle>
                   <CardDescription className="foundation-body">{project.description}</CardDescription>
