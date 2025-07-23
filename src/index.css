@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,108 +9,104 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* HyperLiquid inspired ultra-dark theme */
-    --background: 0 0% 1%;
-    --foreground: 0 0% 95%;
+    /* HyperFoundation inspired ultra-dark theme */
+    --background: 220 15% 4%;
+    --foreground: 0 0% 98%;
 
-    --card: 0 0% 2%;
-    --card-foreground: 0 0% 95%;
+    --card: 220 12% 8%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 0 0% 2%;
-    --popover-foreground: 0 0% 95%;
+    --popover: 220 12% 8%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 138 100% 50%;
-    --primary-foreground: 0 0% 1%;
+    --primary: 260 100% 60%;
+    --primary-foreground: 0 0% 98%;
 
-    --secondary: 0 0% 3%;
-    --secondary-foreground: 0 0% 95%;
+    --secondary: 220 12% 10%;
+    --secondary-foreground: 0 0% 98%;
 
-    --muted: 0 0% 4%;
-    --muted-foreground: 0 0% 60%;
+    --muted: 220 10% 12%;
+    --muted-foreground: 220 5% 65%;
 
-    --accent: 138 100% 50%;
-    --accent-foreground: 0 0% 1%;
+    --accent: 210 100% 70%;
+    --accent-foreground: 0 0% 98%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 8%;
-    --input: 0 0% 3%;
-    --ring: 138 100% 50%;
+    --border: 220 10% 12%;
+    --input: 220 12% 8%;
+    --ring: 260 100% 60%;
 
-    /* HyperLiquid specific colors */
+    /* HyperFoundation specific colors */
     --neon-cyan: 180 100% 50%;
-    --neon-green: 138 100% 50%;
+    --neon-purple: 260 100% 60%;
+    --neon-blue: 210 100% 70%;
+    --neon-orange: 25 100% 65%;
     --neon-red: 0 84% 60%;
-    --neon-purple: 270 100% 70%;
-    --dark-surface: 0 0% 2%;
-    --grid-color: 0 0% 5%;
+    --dark-surface: 220 12% 8%;
+    --grid-color: 220 10% 12%;
 
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(138 100% 50% / 0.1), hsl(138 100% 50% / 0.05));
-    --gradient-glow: linear-gradient(135deg, hsl(138 100% 50% / 0.05), hsl(0 0% 2%));
-    --gradient-card: linear-gradient(135deg, hsl(0 0% 2%), hsl(0 0% 1%));
+    --gradient-primary: linear-gradient(135deg, hsl(260 100% 60% / 0.1), hsl(210 100% 70% / 0.05));
+    --gradient-glow: linear-gradient(135deg, hsl(260 100% 60% / 0.05), hsl(220 12% 8%));
+    --gradient-card: linear-gradient(135deg, hsl(220 12% 8%), hsl(220 15% 4%));
+    --gradient-hero: linear-gradient(135deg, hsl(260 100% 60% / 0.02), hsl(210 100% 70% / 0.01), hsl(25 100% 65% / 0.01));
 
     /* Shadows */
-    --shadow-neon: 0 0 20px hsl(138 100% 50% / 0.2);
-    --shadow-glow: 0 0 15px hsl(138 100% 50% / 0.15);
+    --shadow-neon: 0 0 20px hsl(260 100% 60% / 0.2);
+    --shadow-glow: 0 0 15px hsl(260 100% 60% / 0.15);
     --shadow-card: 0 2px 8px hsl(0 0% 0% / 0.8);
+    --shadow-accent: 0 0 25px hsl(210 100% 70% / 0.3);
 
     --radius: 0.75rem;
 
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
+    --sidebar-background: 220 12% 8%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 260 100% 60%;
     --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 220 10% 12%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 220 10% 12%;
+    --sidebar-ring: 260 100% 60%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 220 15% 4%;
+    --foreground: 0 0% 98%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 220 12% 8%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 220 12% 8%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 260 100% 60%;
+    --primary-foreground: 0 0% 98%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 220 12% 10%;
+    --secondary-foreground: 0 0% 98%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 220 10% 12%;
+    --muted-foreground: 220 5% 65%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 210 100% 70%;
+    --accent-foreground: 0 0% 98%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 220 10% 12%;
+    --input: 220 12% 8%;
+    --ring: 260 100% 60%;
+    --sidebar-background: 220 12% 8%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 260 100% 60%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 220 10% 12%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 220 10% 12%;
+    --sidebar-ring: 260 100% 60%;
   }
 }
 
@@ -120,9 +117,11 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground overflow-x-hidden;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     background-image: 
-      radial-gradient(circle at 25% 25%, hsl(138 100% 50% / 0.02) 0%, transparent 50%),
-      radial-gradient(circle at 75% 75%, hsl(138 100% 50% / 0.01) 0%, transparent 50%);
+      radial-gradient(circle at 25% 25%, hsl(260 100% 60% / 0.02) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, hsl(210 100% 70% / 0.01) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, hsl(25 100% 65% / 0.005) 0%, transparent 50%);
   }
 
   /* Custom scrollbar */
@@ -148,12 +147,23 @@ All colors MUST be HSL.
     box-shadow: var(--shadow-neon);
   }
 
+  .accent-glow {
+    box-shadow: var(--shadow-accent);
+  }
+
   .card-glow {
     box-shadow: var(--shadow-card);
   }
 
   .text-gradient {
     background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-orange {
+    background: linear-gradient(135deg, hsl(var(--neon-orange)), hsl(var(--primary)));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -166,20 +176,22 @@ All colors MUST be HSL.
     background-size: 20px 20px;
   }
 
-  .gm-button {
+  .foundation-button {
     position: relative;
     overflow: hidden;
     background: var(--gradient-primary);
     border: 1px solid hsl(var(--primary));
     transition: all 0.3s ease;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
   }
 
-  .gm-button:hover {
+  .foundation-button:hover {
     transform: translateY(-2px);
     box-shadow: var(--shadow-neon);
   }
 
-  .gm-button::before {
+  .foundation-button::before {
     content: '';
     position: absolute;
     top: 0;
@@ -190,7 +202,7 @@ All colors MUST be HSL.
     transition: left 0.5s ease;
   }
 
-  .gm-button:hover::before {
+  .foundation-button:hover::before {
     left: 100%;
   }
 
@@ -201,23 +213,25 @@ All colors MUST be HSL.
   }
 
   .social-button:hover {
-    border-color: hsl(var(--primary));
-    box-shadow: 0 0 15px hsl(var(--primary) / 0.3);
+    border-color: hsl(var(--accent));
+    box-shadow: 0 0 15px hsl(var(--accent) / 0.3);
     transform: translateY(-2px);
   }
 
-  .hl-card {
+  .foundation-card {
     background: hsl(var(--card));
     border: 1px solid hsl(var(--border));
-    border-radius: 4px;
-    transition: all 0.2s ease;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
   }
 
-  .hl-card:hover {
+  .foundation-card:hover {
     border-color: hsl(var(--primary) / 0.5);
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.1);
   }
 
-  .hl-table-header {
+  .foundation-table-header {
     background: hsl(var(--muted));
     color: hsl(var(--muted-foreground));
     font-weight: 500;
@@ -226,26 +240,49 @@ All colors MUST be HSL.
     letter-spacing: 0.5px;
     padding: 8px 12px;
     border-bottom: 1px solid hsl(var(--border));
+    font-family: 'Inter', sans-serif;
   }
 
-  .hl-table-cell {
+  .foundation-table-cell {
     padding: 8px 12px;
     border-bottom: 1px solid hsl(var(--border) / 0.5);
-    font-family: 'Courier New', monospace;
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
     font-size: 13px;
   }
 
-  .hl-positive {
-    color: hsl(var(--neon-green));
+  .foundation-positive {
+    color: hsl(var(--neon-blue));
   }
 
-  .hl-negative {
+  .foundation-negative {
     color: hsl(var(--neon-red));
   }
 
-  .hl-metric {
-    font-family: 'Courier New', monospace;
+  .foundation-accent {
+    color: hsl(var(--neon-orange));
+  }
+
+  .foundation-metric {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
     font-weight: 500;
     letter-spacing: 0.5px;
+  }
+
+  .foundation-heading {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  .foundation-subheading {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  .foundation-body {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
   }
 }

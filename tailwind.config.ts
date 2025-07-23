@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -18,6 +19,12 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				'inter': ['Inter', 'sans-serif'],
+				'jetbrains': ['JetBrains Mono', 'monospace'],
+				'sans': ['Inter', 'sans-serif'],
+				'mono': ['JetBrains Mono', 'monospace'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -62,11 +69,12 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// DeFi themed colors
+				// HyperFoundation themed colors
 				'neon-cyan': 'hsl(var(--neon-cyan))',
-				'neon-green': 'hsl(var(--neon-green))',
 				'neon-purple': 'hsl(var(--neon-purple))',
-				'neon-pink': 'hsl(var(--neon-pink))',
+				'neon-blue': 'hsl(var(--neon-blue))',
+				'neon-orange': 'hsl(var(--neon-orange))',
+				'neon-red': 'hsl(var(--neon-red))',
 				'dark-surface': 'hsl(var(--dark-surface))',
 				'grid-color': 'hsl(var(--grid-color))'
 			},
@@ -99,13 +107,19 @@ export default {
 				'scroll-left': {
 					'0%': { transform: 'translateX(0%)' },
 					'100%': { transform: 'translateX(-100%)' }
+				},
+				'gradient-shift': {
+					'0%': { 'background-position': '0% 50%' },
+					'50%': { 'background-position': '100% 50%' },
+					'100%': { 'background-position': '0% 50%' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'scroll-right': 'scroll-right 30s linear infinite',
-				'scroll-left': 'scroll-left 25s linear infinite'
+				'scroll-left': 'scroll-left 25s linear infinite',
+				'gradient-shift': 'gradient-shift 3s ease-in-out infinite'
 			}
 		}
 	},
