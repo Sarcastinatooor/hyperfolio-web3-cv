@@ -354,7 +354,7 @@ const Portfolio = () => {
             <div className="p-6">
               <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
                 <div className="flex-1">
-                  <h1 className="text-3xl lg:text-5xl font-bold text-foreground mb-3 hl-metric min-h-[1.2em]">
+                  <h1 className="text-2xl lg:text-5xl font-bold text-foreground mb-3 hl-metric min-h-[2.5rem] lg:min-h-[1.2em]">
                     {displayName}
                     <span className="animate-pulse">|</span>
                   </h1>
