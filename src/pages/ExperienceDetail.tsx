@@ -316,6 +316,7 @@ const ExperienceDetail = () => {
     if (index === 2) return <img src="/lovable-uploads/b48218d8-1c66-437e-a9d3-31e42c4a8e02.png" alt="ShipFinex Logo" className="w-6 h-6 object-contain" />;
     if (index === 3) return <img src="/lovable-uploads/4aab9ee7-324f-4aa4-b2f0-23c0889641c2.png" alt="BitMart Logo" className="w-6 h-6 object-contain" />;
     if (index === 4) return <img src="/lovable-uploads/7b43e7b3-c363-4285-bc6b-9f4b560ee18f.png" alt="Spherium Finance Logo" className="w-6 h-6 object-contain" />;
+    if (index === 5) return <img src="/lovable-uploads/ebf96c71-aca5-4edd-b755-37acb18b5eaa.png" alt="Huobi Global Logo" className="w-6 h-6 object-contain" />;
     
     const icons = [TrendingUp, User, Target, Building2, Globe, Award, Briefcase, Code];
     const IconComponent = icons[index] || User;
