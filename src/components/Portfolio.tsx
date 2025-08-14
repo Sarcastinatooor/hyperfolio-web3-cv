@@ -299,7 +299,7 @@ const Portfolio = () => {
           index === 3 ? <img src="/lovable-uploads/4aab9ee7-324f-4aa4-b2f0-23c0889641c2.png" alt="BitMart Logo" className="w-4 h-4 object-contain" loading="lazy" /> :
           index === 4 ? <img src="/lovable-uploads/7b43e7b3-c363-4285-bc6b-9f4b560ee18f.png" alt="Spherium Finance Logo" className="w-4 h-4 object-contain" loading="lazy" /> :
           index === 5 ? <img src="/lovable-uploads/ebf96c71-aca5-4edd-b755-37acb18b5eaa.png" alt="Huobi Global Logo" className="w-4 h-4 object-contain" loading="lazy" /> :
-          index === 6 ? <Briefcase className="w-4 h-4 text-white" /> :
+          index === 6 ? <img src="/lovable-uploads/f45b0652-00ce-46b8-9cd2-4e80b7474ee3.png" alt="CoinGape Logo" className="w-4 h-4 object-contain" loading="lazy" /> :
           <User className="w-4 h-4 text-white" />,
     colSpan: 1,
     onClick: () => navigate(`/experience/${index}`),
