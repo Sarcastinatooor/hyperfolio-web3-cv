@@ -404,7 +404,7 @@ const Portfolio = () => {
           <div className="mb-12">
             <div className="text-center mb-8">
               <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-                KOLs I've Collaborated With
+                KOLs I've Collaborated With 
               </h2>
             </div>
             
