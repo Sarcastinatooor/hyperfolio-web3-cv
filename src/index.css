@@ -9,7 +9,7 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* HyperFoundation inspired color scheme */
+    /* HyperFoundation inspired color scheme - Dynamic theme system */
     --background: 220 15% 4%;
     --foreground: 0 0% 95%;
 
@@ -38,7 +38,7 @@ All colors MUST be HSL.
     --input: 220 12% 8%;
     --ring: 260 100% 60%;
 
-    /* HyperFoundation specific colors */
+    /* Dynamic chain-specific colors (updated via JavaScript) */
     --neon-cyan: 210 100% 70%;
     --neon-green: 260 100% 60%;
     --neon-red: 0 84% 60%;
@@ -47,15 +47,18 @@ All colors MUST be HSL.
     --dark-surface: 220 12% 8%;
     --grid-color: 220 10% 12%;
 
-    /* Updated gradients with new color scheme */
-    --gradient-primary: linear-gradient(135deg, hsl(260 100% 60% / 0.1), hsl(260 100% 60% / 0.05));
-    --gradient-glow: linear-gradient(135deg, hsl(260 100% 60% / 0.05), hsl(220 12% 8%));
+    /* Dynamic gradients (updated via JavaScript) */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary) / 0.1), hsl(var(--primary) / 0.05));
+    --gradient-glow: linear-gradient(135deg, hsl(var(--primary) / 0.05), hsl(220 12% 8%));
     --gradient-card: linear-gradient(135deg, hsl(220 12% 8%), hsl(220 15% 4%));
 
-    /* Updated shadows with purple theme */
-    --shadow-neon: 0 0 20px hsl(260 100% 60% / 0.2);
-    --shadow-glow: 0 0 15px hsl(260 100% 60% / 0.15);
+    /* Dynamic shadows (updated via JavaScript) */
+    --shadow-neon: 0 0 20px hsl(var(--primary) / 0.2);
+    --shadow-glow: 0 0 15px hsl(var(--primary) / 0.15);
     --shadow-card: 0 2px 8px hsl(0 0% 0% / 0.8);
+
+    /* Smooth transitions for theme changes */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     --radius: 0.75rem;
 
@@ -116,8 +119,9 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground overflow-x-hidden;
     background-image: 
-      radial-gradient(circle at 25% 25%, hsl(260 100% 60% / 0.02) 0%, transparent 50%),
-      radial-gradient(circle at 75% 75%, hsl(260 100% 60% / 0.01) 0%, transparent 50%);
+      radial-gradient(circle at 25% 25%, hsl(var(--primary) / 0.02) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, hsl(var(--primary) / 0.01) 0%, transparent 50%);
+    transition: all 0.3s ease;
   }
 
   /* Custom scrollbar */
@@ -139,6 +143,11 @@ All colors MUST be HSL.
 }
 
 @layer components {
+  /* Add smooth transitions to all color-dependent elements */
+  * {
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  }
+
   .neon-glow {
     box-shadow: var(--shadow-neon);
   }

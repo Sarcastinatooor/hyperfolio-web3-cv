@@ -6,6 +6,8 @@ import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { ExternalLink, MapPin, Mail, Calendar, Award, Briefcase, X, Twitter, Globe, Building2, User, Target, TrendingUp } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import ChainSelector from "@/components/ChainSelector";
+import { ChainThemeProvider } from "@/contexts/ChainThemeContext";
 
 import { BentoGrid, type BentoItem } from './ui/bento-grid';
 
@@ -342,9 +344,13 @@ const Portfolio = () => {
 
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Grid Pattern Background */}
-      <div className="fixed inset-0 grid-pattern opacity-10 pointer-events-none" />
+    <ChainThemeProvider>
+      <div className="min-h-screen bg-background">
+        {/* Chain Selector */}
+        <ChainSelector />
+        
+        {/* Grid Pattern Background */}
+        <div className="fixed inset-0 grid-pattern opacity-10 pointer-events-none" />
       
       {/* Header Section */}
       <div className="relative z-10">
@@ -500,8 +506,9 @@ const Portfolio = () => {
             </div>
           </div>
         </div>
+        </div>
       </div>
-    </div>
+    </ChainThemeProvider>
   );
 };
 
