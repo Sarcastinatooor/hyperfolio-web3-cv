@@ -24,7 +24,7 @@ const Portfolio = () => {
   const experienceRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  const names = ['Sheel Khandelwal', 'sarcastinator.crypto'];
+  const names = ['Sheel Khandelwal', 'sarcastinator.hl'];
 
   useEffect(() => {
     const currentName = names[nameIndex];
