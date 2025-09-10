@@ -24,20 +24,19 @@ const ChainSelector = () => {
             className="bg-card/90 backdrop-blur-sm border-border/50 hover:border-primary/50 hover:bg-card gap-2 min-w-[140px] justify-between"
           >
             <div className="flex items-center gap-2">
-              <img 
-                src={currentTheme.logoPath} 
-                alt={`${currentTheme.name} logo`}
-                className="w-4 h-4 object-contain"
-                onError={(e) => {
-                  // Fallback to a simple colored circle if logo fails to load
-                  e.currentTarget.style.display = 'none';
-                  const fallback = e.currentTarget.nextElementSibling as HTMLElement;
-                  if (fallback) fallback.style.display = 'block';
-                }}
-              />
               <div 
-                className="w-4 h-4 rounded-full hidden"
-                style={{ backgroundColor: `hsl(${currentTheme.primary})` }}
+                className="w-4 h-4 rounded-full flex-shrink-0"
+                style={{ 
+                  backgroundColor: (() => {
+                    switch (currentChain) {
+                      case 'hyperliquid': return '#8B5CF6';
+                      case 'base': return '#3B82F6';
+                      case 'berachain': return '#F97316';
+                      case 'arbitrum': return '#1E40AF';
+                      default: return `hsl(${currentTheme.primary})`;
+                    }
+                  })()
+                }}
               />
               <span className="text-sm font-medium">{currentTheme.name}</span>
             </div>
@@ -46,49 +45,41 @@ const ChainSelector = () => {
         </DropdownMenuTrigger>
         
         <DropdownMenuContent 
-          className="w-48 bg-background border-border z-50" 
+          className="w-44 bg-background/95 backdrop-blur-md border-border/20 shadow-xl rounded-lg z-50" 
           align="end"
+          sideOffset={8}
         >
           {(['hyperliquid', 'base', 'berachain', 'arbitrum'] as ChainType[]).map((key) => {
             const theme = chainThemes[key];
+            const getChainColor = () => {
+              switch (key) {
+                case 'hyperliquid': return '#8B5CF6'; // Purple
+                case 'base': return '#3B82F6'; // Blue  
+                case 'berachain': return '#F97316'; // Orange
+                case 'arbitrum': return '#1E40AF'; // Dark blue
+                default: return theme.primary;
+              }
+            };
+            
             return (
             <DropdownMenuItem
               key={key}
               onClick={() => handleChainSelect(key as ChainType)}
-              className={`cursor-pointer transition-all duration-200 ${
+              className={`cursor-pointer transition-all duration-200 px-3 py-2.5 mx-1 rounded-md ${
                 currentChain === key 
                   ? 'bg-primary/10 text-primary' 
-                  : 'hover:bg-accent/10'
+                  : 'hover:bg-muted/50'
               }`}
             >
               <div className="flex items-center gap-3 w-full">
-                <img 
-                  src={theme.logoPath} 
-                  alt={`${theme.name} logo`}
-                  className="w-5 h-5 object-contain"
-                  onError={(e) => {
-                    // Fallback to a simple colored circle if logo fails to load
-                    e.currentTarget.style.display = 'none';
-                    const fallback = e.currentTarget.nextElementSibling as HTMLElement;
-                    if (fallback) fallback.style.display = 'block';
-                  }}
-                />
                 <div 
-                  className="w-5 h-5 rounded-full hidden"
-                  style={{ backgroundColor: `hsl(${theme.primary})` }}
+                  className="w-4 h-4 rounded-full flex-shrink-0"
+                  style={{ backgroundColor: getChainColor() }}
                 />
-                <div className="flex flex-col">
-                  <span className="font-medium">{theme.name}</span>
-                  <span className="text-xs text-muted-foreground">
-                    {key === 'hyperliquid' && 'Perps & DEX'}
-                    {key === 'arbitrum' && 'L2 Scaling'}
-                    {key === 'base' && 'Coinbase L2'}
-                    {key === 'berachain' && 'DeFi & Gaming'}
-                  </span>
-                </div>
+                <span className="font-medium text-sm">{theme.name}</span>
                 {currentChain === key && (
                   <div className="ml-auto">
-                    <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
                   </div>
                 )}
               </div>
