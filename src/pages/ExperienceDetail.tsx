@@ -625,7 +625,7 @@ const ExperienceDetail = () => {
             <CardHeader>
               <CardTitle className="text-lg text-white flex items-center gap-2">
                 <Award className="w-5 h-5 text-blue-400" />
-                Recognition
+                Community Voting
               </CardTitle>
             </CardHeader>
             <CardContent>
