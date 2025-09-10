@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
-export type ChainType = 'hyperliquid' | 'arbitrum' | 'base' | 'berachain';
+export type ChainType = 'hyperliquid' | 'base' | 'berachain' | 'arbitrum';
 
 interface ChainTheme {
   name: string;
@@ -16,7 +16,7 @@ interface ChainTheme {
 
 export const chainThemes: Record<ChainType, ChainTheme> = {
   hyperliquid: {
-    name: 'HyperLiquid',
+    name: 'Hyperliquid',
     primary: '260 100% 60%',
     accent: '210 100% 70%',
     neonCyan: '210 100% 70%',
@@ -25,17 +25,6 @@ export const chainThemes: Record<ChainType, ChainTheme> = {
     neonPurple: '260 100% 60%',
     ctaOrange: '25 100% 65%',
     logoPath: '/placeholder-hyperliquid-logo.png' // TODO: Update with actual logo
-  },
-  arbitrum: {
-    name: 'Arbitrum',
-    primary: '221 83% 53%', // Arbitrum blue
-    accent: '221 100% 70%',
-    neonCyan: '221 100% 70%',
-    neonGreen: '221 83% 53%',
-    neonRed: '0 84% 60%',
-    neonPurple: '221 83% 53%',
-    ctaOrange: '25 100% 65%',
-    logoPath: '/placeholder-arbitrum-logo.png' // TODO: Update with actual logo
   },
   base: {
     name: 'Base',
@@ -58,6 +47,17 @@ export const chainThemes: Record<ChainType, ChainTheme> = {
     neonPurple: '25 100% 65%',
     ctaOrange: '25 100% 65%',
     logoPath: '/placeholder-berachain-logo.png' // TODO: Update with actual logo
+  },
+  arbitrum: {
+    name: 'Arbitrum',
+    primary: '221 83% 53%', // Arbitrum blue
+    accent: '221 100% 70%',
+    neonCyan: '221 100% 70%',
+    neonGreen: '221 83% 53%',
+    neonRed: '0 84% 60%',
+    neonPurple: '221 83% 53%',
+    ctaOrange: '25 100% 65%',
+    logoPath: '/placeholder-arbitrum-logo.png' // TODO: Update with actual logo
   }
 };
 

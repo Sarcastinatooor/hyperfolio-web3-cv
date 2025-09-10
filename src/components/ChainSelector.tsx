@@ -16,7 +16,7 @@ const ChainSelector = () => {
   };
 
   return (
-    <div className="fixed top-4 left-4 z-50">
+    <div className="fixed top-4 right-4 z-50">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button 
@@ -46,10 +46,12 @@ const ChainSelector = () => {
         </DropdownMenuTrigger>
         
         <DropdownMenuContent 
-          className="w-48 bg-popover/95 backdrop-blur-md border-border/50" 
-          align="start"
+          className="w-48 bg-background border-border z-50" 
+          align="end"
         >
-          {Object.entries(chainThemes).map(([key, theme]) => (
+          {(['hyperliquid', 'base', 'berachain', 'arbitrum'] as ChainType[]).map((key) => {
+            const theme = chainThemes[key];
+            return (
             <DropdownMenuItem
               key={key}
               onClick={() => handleChainSelect(key as ChainType)}
@@ -91,7 +93,8 @@ const ChainSelector = () => {
                 )}
               </div>
             </DropdownMenuItem>
-          ))}
+            );
+          })}
         </DropdownMenuContent>
       </DropdownMenu>
     </div>
