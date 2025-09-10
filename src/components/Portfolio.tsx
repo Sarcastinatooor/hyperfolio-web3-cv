@@ -345,18 +345,17 @@ const Portfolio = () => {
 
   return (
     <ChainThemeProvider>
-      <div className="min-h-screen bg-background">
-        {/* Chain Selector */}
-        <ChainSelector />
-        
+      <div className="min-h-screen bg-background">        
         {/* Grid Pattern Background */}
         <div className="fixed inset-0 grid-pattern opacity-10 pointer-events-none" />
       
       {/* Header Section */}
       <div className="relative z-10">
         <div className="container mx-auto px-4 py-8">
-          {/* Hero Section */}
-          <div className="hl-card mb-8">
+        {/* Hero Section */}
+        <div className="hl-card mb-8 relative">
+          {/* Chain Selector */}
+          <ChainSelector />
             <div className="p-6">
               <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
                 <div className="flex-1">

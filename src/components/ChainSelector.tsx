@@ -16,12 +16,12 @@ const ChainSelector = () => {
   };
 
   return (
-    <div className="fixed top-4 right-4 z-50">
+    <div className="absolute top-4 right-4 z-50">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button 
             variant="outline" 
-            className="bg-card/90 backdrop-blur-sm border-border/50 hover:border-primary/50 hover:bg-card gap-2 min-w-[140px] justify-between"
+            className="bg-card/90 backdrop-blur-sm border-border/50 hover:border-primary/50 hover:bg-card gap-2 min-w-[120px] justify-between"
           >
             <div className="flex items-center gap-2">
               <div 
