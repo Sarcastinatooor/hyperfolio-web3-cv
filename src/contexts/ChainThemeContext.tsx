@@ -17,47 +17,47 @@ interface ChainTheme {
 export const chainThemes: Record<ChainType, ChainTheme> = {
   hyperliquid: {
     name: 'Hyperliquid',
-    primary: '260 100% 60%',
-    accent: '210 100% 70%',
-    neonCyan: '210 100% 70%',
-    neonGreen: '260 100% 60%',
+    primary: '173 96% 8%', // #072623 converted to HSL
+    accent: '173 96% 15%',
+    neonCyan: '173 96% 25%',
+    neonGreen: '173 96% 8%',
     neonRed: '0 84% 60%',
-    neonPurple: '260 100% 60%',
+    neonPurple: '173 96% 8%',
     ctaOrange: '25 100% 65%',
-    logoPath: '/placeholder-hyperliquid-logo.png' // TODO: Update with actual logo
+    logoPath: '/placeholder-hyperliquid-logo.png'
   },
   base: {
     name: 'Base',
-    primary: '221 83% 53%', // Base blue
-    accent: '221 100% 80%',
-    neonCyan: '221 100% 80%',
-    neonGreen: '221 83% 53%',
+    primary: '240 100% 50%', // #0000ff converted to HSL
+    accent: '240 100% 70%',
+    neonCyan: '240 100% 80%',
+    neonGreen: '240 100% 50%',
     neonRed: '0 84% 60%',
-    neonPurple: '221 83% 53%',
+    neonPurple: '240 100% 50%',
     ctaOrange: '25 100% 65%',
-    logoPath: '/placeholder-base-logo.png' // TODO: Update with actual logo
+    logoPath: '/placeholder-base-logo.png'
   },
   berachain: {
     name: 'Berachain',
-    primary: '25 100% 65%', // Orange/brown theme
-    accent: '35 100% 70%',
-    neonCyan: '35 100% 70%',
-    neonGreen: '25 100% 65%',
+    primary: '50 100% 73%', // #ffe173 converted to HSL
+    accent: '50 100% 80%',
+    neonCyan: '50 100% 85%',
+    neonGreen: '50 100% 73%',
     neonRed: '0 84% 60%',
-    neonPurple: '25 100% 65%',
+    neonPurple: '50 100% 73%',
     ctaOrange: '25 100% 65%',
-    logoPath: '/placeholder-berachain-logo.png' // TODO: Update with actual logo
+    logoPath: '/placeholder-berachain-logo.png'
   },
   arbitrum: {
     name: 'Arbitrum',
-    primary: '221 83% 53%', // Arbitrum blue
-    accent: '221 100% 70%',
-    neonCyan: '221 100% 70%',
-    neonGreen: '221 83% 53%',
+    primary: '213 59% 19%', // #152c4f converted to HSL
+    accent: '213 59% 30%',
+    neonCyan: '213 59% 40%',
+    neonGreen: '213 59% 19%',
     neonRed: '0 84% 60%',
-    neonPurple: '221 83% 53%',
+    neonPurple: '213 59% 19%',
     ctaOrange: '25 100% 65%',
-    logoPath: '/placeholder-arbitrum-logo.png' // TODO: Update with actual logo
+    logoPath: '/placeholder-arbitrum-logo.png'
   }
 };
 

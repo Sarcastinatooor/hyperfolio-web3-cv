@@ -29,10 +29,10 @@ const ChainSelector = () => {
                 style={{ 
                   backgroundColor: (() => {
                     switch (currentChain) {
-                      case 'hyperliquid': return '#8B5CF6';
-                      case 'base': return '#3B82F6';
-                      case 'berachain': return '#F97316';
-                      case 'arbitrum': return '#1E40AF';
+                      case 'hyperliquid': return '#072623';
+                      case 'base': return '#0000ff';
+                      case 'berachain': return '#ffe173';
+                      case 'arbitrum': return '#152c4f';
                       default: return `hsl(${currentTheme.primary})`;
                     }
                   })()
@@ -53,10 +53,10 @@ const ChainSelector = () => {
             const theme = chainThemes[key];
             const getChainColor = () => {
               switch (key) {
-                case 'hyperliquid': return '#8B5CF6'; // Purple
-                case 'base': return '#3B82F6'; // Blue  
-                case 'berachain': return '#F97316'; // Orange
-                case 'arbitrum': return '#1E40AF'; // Dark blue
+                case 'hyperliquid': return '#072623';
+                case 'base': return '#0000ff';
+                case 'berachain': return '#ffe173';
+                case 'arbitrum': return '#152c4f';
                 default: return theme.primary;
               }
             };
