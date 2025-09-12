@@ -1,4 +1,5 @@
 import { useParams, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -8,7 +9,10 @@ import TwitterAnalyticsDashboard from "@/components/TwitterAnalyticsDashboard";
 import { Logos3 } from "@/components/ui/logos3";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import AutoScroll from "embla-carousel-auto-scroll";
-import { ArrowLeft, Calendar, MapPin, Building2, User, Target, TrendingUp, Globe, Award, Briefcase, Code, Anchor } from "lucide-react";
+import { BlogGrid } from "@/components/ui/blog-grid";
+import { BlogPost } from "@/components/ui/blog-card";
+import { BlogService } from "@/services/blogService";
+import { ArrowLeft, Calendar, MapPin, Building2, User, Target, TrendingUp, Globe, Award, Briefcase, Code, Anchor, FileText } from "lucide-react";
 import {
   IconTerminal2,
   IconBrandReact,
@@ -24,6 +28,36 @@ import {
 const ExperienceDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  
+  // Blog posts state for Liminal Custody
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
+  const [blogLoading, setBlogLoading] = useState(false);
+  const [blogError, setBlogError] = useState<string>('');
+
+  // Fetch Liminal blog posts when component mounts and experienceId is 1
+  useEffect(() => {
+    const experienceId = parseInt(id || '0');
+    if (experienceId === 1) {
+      const fetchBlogPosts = async () => {
+        setBlogLoading(true);
+        setBlogError('');
+        try {
+          const result = await BlogService.getLiminalBlogPosts();
+          if (result.error) {
+            setBlogError(result.error);
+          } else {
+            setBlogPosts(result.posts);
+          }
+        } catch (error) {
+          setBlogError('Failed to load blog posts');
+        } finally {
+          setBlogLoading(false);
+        }
+      };
+
+      fetchBlogPosts();
+    }
+  }, [id]);
   
   const experiences = [
     // BrahmaFi
@@ -566,6 +600,28 @@ const ExperienceDetail = () => {
                 <div className="absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-gray-900 to-transparent pointer-events-none"></div>
                 <div className="absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-gray-900 to-transparent pointer-events-none"></div>
               </div>
+            </CardContent>
+          </Card>
+        )}
+
+        {/* Content Portfolio - only for Liminal Custody */}
+        {experienceId === 1 && (
+          <Card className="bg-gray-900 border-gray-800">
+            <CardHeader>
+              <CardTitle className="text-lg text-white flex items-center gap-2">
+                <FileText className="w-5 h-5 text-blue-400" />
+                Published Content Portfolio
+              </CardTitle>
+              <p className="text-gray-400 text-sm">
+                Blog posts and thought leadership content published during tenure (June 2023 - June 2024)
+              </p>
+            </CardHeader>
+            <CardContent>
+              <BlogGrid 
+                posts={blogPosts}
+                isLoading={blogLoading}
+                error={blogError}
+              />
             </CardContent>
           </Card>
         )}
