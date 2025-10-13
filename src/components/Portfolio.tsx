@@ -8,6 +8,7 @@ import { ExternalLink, MapPin, Mail, Calendar, Award, Briefcase, X, Twitter, Glo
 import { useToast } from "@/hooks/use-toast";
 import ChainSelector from "@/components/ChainSelector";
 import { ChainThemeProvider } from "@/contexts/ChainThemeContext";
+import PersonalTwitterAnalytics from "@/components/PersonalTwitterAnalytics";
 
 import { BentoGrid, type BentoItem } from './ui/bento-grid';
 
@@ -403,6 +404,20 @@ const Portfolio = () => {
             
             {/* Bento Grid for Experience */}
             <BentoGrid items={experienceBentoItems} />
+          </div>
+
+          {/* Twitter Analytics Section */}
+          <div className="mb-12">
+            <div className="text-center mb-8">
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+                Personal Twitter Analytics
+              </h2>
+              <p className="text-gray-400">
+                My recent Twitter performance and best posts
+              </p>
+            </div>
+            
+            <PersonalTwitterAnalytics />
           </div>
 
           {/* KOLs Section */}
