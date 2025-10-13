@@ -12,6 +12,8 @@ import AutoScroll from "embla-carousel-auto-scroll";
 import { BlogGrid } from "@/components/ui/blog-grid";
 import { BlogPost } from "@/components/ui/blog-card";
 import { BlogService } from "@/services/blogService";
+import PersonalTwitterAnalytics from "@/components/PersonalTwitterAnalytics";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ArrowLeft, Calendar, MapPin, Building2, User, Target, TrendingUp, Globe, Award, Briefcase, Code, Anchor, FileText } from "lucide-react";
 import {
   IconTerminal2,
@@ -610,18 +612,36 @@ const ExperienceDetail = () => {
             <CardHeader>
               <CardTitle className="text-lg text-white flex items-center gap-2">
                 <FileText className="w-5 h-5 text-blue-400" />
-                Published Content Portfolio
+                Content & Social Media Portfolio
               </CardTitle>
               <p className="text-gray-400 text-sm">
-                Blog posts and thought leadership content published during tenure (June 2023 - June 2024)
+                Published content and social media analytics during tenure
               </p>
             </CardHeader>
             <CardContent>
-              <BlogGrid 
-                posts={blogPosts}
-                isLoading={blogLoading}
-                error={blogError}
-              />
+              <Tabs defaultValue="blogs" className="w-full">
+                <TabsList className="grid w-full grid-cols-2 bg-gray-800 mb-6">
+                  <TabsTrigger value="blogs">Published Blogs</TabsTrigger>
+                  <TabsTrigger value="twitter">Twitter Analytics</TabsTrigger>
+                </TabsList>
+
+                <TabsContent value="blogs">
+                  <div className="space-y-4">
+                    <p className="text-gray-400 text-sm">
+                      Blog posts and thought leadership content published during tenure (June 2023 - June 2024)
+                    </p>
+                    <BlogGrid 
+                      posts={blogPosts}
+                      isLoading={blogLoading}
+                      error={blogError}
+                    />
+                  </div>
+                </TabsContent>
+
+                <TabsContent value="twitter">
+                  <PersonalTwitterAnalytics />
+                </TabsContent>
+              </Tabs>
             </CardContent>
           </Card>
         )}
