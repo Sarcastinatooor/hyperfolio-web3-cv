@@ -178,21 +178,6 @@ const PersonalTwitterAnalytics: React.FC = () => {
             <Card className="bg-gray-800 border-gray-700">
               <CardContent className="p-6">
                 <div className="flex items-center gap-2">
-                  <Heart className="h-4 w-4 text-red-500" />
-                  <span className="text-sm font-medium text-muted-foreground">Total Likes</span>
-                </div>
-                <div className="text-2xl font-bold text-foreground mt-2">
-                  {totals.likes}
-                </div>
-                <p className="text-xs text-muted-foreground mt-1">
-                  Avg {(totals.likes / totals.createPost).toFixed(1)} per post
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-gray-800 border-gray-700">
-              <CardContent className="p-6">
-                <div className="flex items-center gap-2">
                   <TrendingUp className="h-4 w-4 text-green-500" />
                   <span className="text-sm font-medium text-muted-foreground">Engagement Rate</span>
                 </div>
@@ -215,99 +200,26 @@ const PersonalTwitterAnalytics: React.FC = () => {
                   {totals.newFollows}
                 </div>
                 <p className="text-xs text-muted-foreground mt-1">
-                  {totals.profileVisits} profile visits
+                  Last 4 weeks
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-gray-800 border-gray-700">
+              <CardContent className="p-6">
+                <div className="flex items-center gap-2">
+                  <Heart className="h-4 w-4 text-red-500" />
+                  <span className="text-sm font-medium text-muted-foreground">Total Likes</span>
+                </div>
+                <div className="text-2xl font-bold text-foreground mt-2">
+                  {totals.likes}
+                </div>
+                <p className="text-xs text-muted-foreground mt-1">
+                  Avg {(totals.likes / totals.createPost).toFixed(1)} per post
                 </p>
               </CardContent>
             </Card>
           </div>
-
-          {/* Engagement Timeline */}
-          <Card className="bg-gray-800 border-gray-700">
-            <CardHeader>
-              <CardTitle className="text-white">Engagement Timeline</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ChartContainer config={chartConfig} className="h-[300px]">
-                <ResponsiveContainer width="100%" height="100%">
-                  <LineChart data={chartData}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
-                    <XAxis 
-                      dataKey="date" 
-                      stroke="hsl(var(--muted-foreground))"
-                      fontSize={12}
-                    />
-                    <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} />
-                    <ChartTooltip content={<ChartTooltipContent />} />
-                    <Line 
-                      type="monotone" 
-                      dataKey="impressions" 
-                      stroke="hsl(var(--primary))" 
-                      strokeWidth={2}
-                      dot={{ fill: "hsl(var(--primary))" }}
-                    />
-                    <Line 
-                      type="monotone" 
-                      dataKey="engagements" 
-                      stroke="hsl(var(--secondary))" 
-                      strokeWidth={2}
-                      dot={{ fill: "hsl(var(--secondary))" }}
-                    />
-                  </LineChart>
-                </ResponsiveContainer>
-              </ChartContainer>
-            </CardContent>
-          </Card>
-
-          {/* Daily Performance */}
-          <Card className="bg-gray-800 border-gray-700">
-            <CardHeader>
-              <CardTitle className="text-white">Daily Performance</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ChartContainer config={chartConfig} className="h-[250px]">
-                <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={chartData}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
-                    <XAxis 
-                      dataKey="date" 
-                      stroke="hsl(var(--muted-foreground))"
-                      fontSize={12}
-                    />
-                    <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} />
-                    <ChartTooltip content={<ChartTooltipContent />} />
-                    <Bar dataKey="likes" fill="hsl(var(--accent))" radius={[4, 4, 0, 0]} />
-                  </BarChart>
-                </ResponsiveContainer>
-              </ChartContainer>
-            </CardContent>
-          </Card>
-
-          {/* Detailed Metrics */}
-          <Card className="bg-gray-800 border-gray-700">
-            <CardHeader>
-              <CardTitle className="text-white">Detailed Metrics</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div className="space-y-1">
-                  <p className="text-sm text-muted-foreground">Replies</p>
-                  <p className="text-2xl font-bold text-foreground">{totals.replies}</p>
-                </div>
-                <div className="space-y-1">
-                  <p className="text-sm text-muted-foreground">Reposts</p>
-                  <p className="text-2xl font-bold text-foreground">{totals.reposts}</p>
-                </div>
-                <div className="space-y-1">
-                  <p className="text-sm text-muted-foreground">Profile Visits</p>
-                  <p className="text-2xl font-bold text-foreground">{totals.profileVisits}</p>
-                </div>
-                <div className="space-y-1">
-                  <p className="text-sm text-muted-foreground">Posts Created</p>
-                  <p className="text-2xl font-bold text-foreground">{totals.createPost}</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
         </TabsContent>
 
         <TabsContent value="posts" className="space-y-6">
