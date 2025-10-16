@@ -16,12 +16,12 @@ const ChainSelector = () => {
   };
 
   return (
-    <div className="fixed top-4 right-4 z-[100]">
+    <div className="absolute top-4 right-4 z-50">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button 
             variant="outline" 
-            className="bg-background/95 backdrop-blur-md border-border shadow-lg hover:border-primary hover:bg-background gap-2 min-w-[140px] justify-between transition-all"
+            className="bg-card/90 backdrop-blur-sm border-border/50 hover:border-primary/50 hover:bg-card gap-2 min-w-[120px] justify-between"
           >
             <div className="flex items-center gap-2">
               <div 
@@ -45,9 +45,9 @@ const ChainSelector = () => {
         </DropdownMenuTrigger>
         
         <DropdownMenuContent 
-          className="w-48 bg-background/98 backdrop-blur-lg border-border shadow-2xl rounded-lg z-[110]" 
+          className="w-44 bg-background/95 backdrop-blur-md border-border/20 shadow-xl rounded-lg z-50" 
           align="end"
-          sideOffset={12}
+          sideOffset={8}
         >
           {(['hyperliquid', 'base', 'berachain', 'arbitrum'] as ChainType[]).map((key) => {
             const theme = chainThemes[key];
@@ -65,10 +65,10 @@ const ChainSelector = () => {
             <DropdownMenuItem
               key={key}
               onClick={() => handleChainSelect(key as ChainType)}
-              className={`cursor-pointer transition-all duration-200 px-4 py-3 mx-1 my-0.5 rounded-md ${
+              className={`cursor-pointer transition-all duration-200 px-3 py-2.5 mx-1 rounded-md ${
                 currentChain === key 
-                  ? 'bg-primary/15 text-primary font-semibold' 
-                  : 'hover:bg-muted/60 hover:text-foreground'
+                  ? 'bg-primary/10 text-primary' 
+                  : 'hover:bg-muted/50'
               }`}
             >
               <div className="flex items-center gap-3 w-full">
