@@ -13,9 +13,9 @@ const ChainSelector = () => {
   });
 
   return (
-    <div className="fixed top-4 right-4 z-50">
-      <DropdownMenu options={options}>
-        <span className="text-sm font-medium">{currentTheme.name}</span>
+    <div className="fixed top-8 right-12 z-50">
+      <DropdownMenu options={options} className="px-6 py-3 border border-primary/30 hover:border-primary/50">
+        <span className="text-base font-medium">{currentTheme.name}</span>
       </DropdownMenu>
     </div>
   );
