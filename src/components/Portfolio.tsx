@@ -6,7 +6,6 @@ import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { ExternalLink, MapPin, Mail, Calendar, Award, Briefcase, X, Twitter, Globe, Building2, User, Target, TrendingUp } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import ChainSelector from "@/components/ChainSelector";
 import { ChainThemeProvider } from "@/contexts/ChainThemeContext";
 import PersonalTwitterAnalytics from "@/components/PersonalTwitterAnalytics";
 
@@ -355,8 +354,6 @@ const Portfolio = () => {
         <div className="container mx-auto px-4 py-8">
         {/* Hero Section */}
         <div className="hl-card mb-8 relative">
-          {/* Chain Selector */}
-          <ChainSelector />
             <div className="p-6">
               <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
                 <div className="flex-1">
