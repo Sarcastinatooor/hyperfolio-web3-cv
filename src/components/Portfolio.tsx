@@ -407,10 +407,10 @@ const Portfolio = () => {
           <div className="mb-12">
             <div className="text-center mb-8">
               <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-                Personal Twitter Analytics
+                My shit posting saga
               </h2>
               <p className="text-gray-400">
-                My recent Twitter performance and best posts
+                My shit posting saga
               </p>
             </div>
             
