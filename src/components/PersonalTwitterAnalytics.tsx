@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Badge } from './ui/badge';
 import { TweetEmbed } from './ui/tweet-embed';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
+import { ScrollArea } from './ui/scroll-area';
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from './ui/chart';
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, ResponsiveContainer, CartesianGrid } from 'recharts';
 import { TrendingUp, Users, Heart, MessageCircle, Eye, Calendar } from 'lucide-react';
@@ -224,25 +225,19 @@ const PersonalTwitterAnalytics: React.FC = () => {
 
         <TabsContent value="posts" className="space-y-6">
           <div className="flex flex-col gap-2">
-            <h2 className="text-2xl font-bold text-foreground">Best Performing Posts</h2>
-            <p className="text-muted-foreground">Top posts from @Not_A_De_Gen</p>
+            <h2 className="text-2xl font-bold text-foreground">Twitter Timeline</h2>
+            <p className="text-muted-foreground">Recent posts from @Not_A_De_Gen</p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {topTweets.map((tweetUrl, index) => (
-              <Card key={index} className="bg-gray-800 border-gray-700">
-                <CardHeader>
-                  <div className="flex items-center justify-between">
-                    <CardTitle className="text-lg text-white">Post #{index + 1}</CardTitle>
-                    <Badge variant="secondary">Top Performer</Badge>
-                  </div>
-                </CardHeader>
-                <CardContent>
+          <ScrollArea className="h-[800px] w-full rounded-lg border border-border bg-card p-4">
+            <div className="space-y-6 max-w-2xl mx-auto">
+              {topTweets.map((tweetUrl, index) => (
+                <div key={index} className="w-full">
                   <TweetEmbed tweetUrl={tweetUrl} className="w-full" />
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+                </div>
+              ))}
+            </div>
+          </ScrollArea>
         </TabsContent>
       </Tabs>
     </div>
