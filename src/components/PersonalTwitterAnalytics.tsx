@@ -153,12 +153,6 @@ const PersonalTwitterAnalytics: React.FC = () => {
         </TabsList>
 
         <TabsContent value="analytics" className="space-y-6">
-          {/* Header */}
-          <div className="flex flex-col gap-2">
-            <h2 className="text-2xl font-bold text-foreground">My shit posting saga</h2>
-            <p className="text-muted-foreground">My shit posting saga</p>
-          </div>
-
           {/* Key Metrics Overview */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             <Card className="bg-gray-800 border-gray-700">
