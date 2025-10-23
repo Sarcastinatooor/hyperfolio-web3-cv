@@ -148,7 +148,7 @@ const PersonalTwitterAnalytics: React.FC = () => {
     <div className="space-y-6">
       <Tabs defaultValue="analytics" className="w-full">
         <TabsList className="grid w-full grid-cols-2 bg-gray-800">
-          <TabsTrigger value="analytics">My shit posting saga</TabsTrigger>
+          <TabsTrigger value="analytics">Analytics</TabsTrigger>
           <TabsTrigger value="posts">Best Posts</TabsTrigger>
         </TabsList>
 
