@@ -409,9 +409,6 @@ const Portfolio = () => {
               <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
                 My shit posting saga
               </h2>
-              <p className="text-gray-400">
-                My shit posting saga
-              </p>
             </div>
             
             <PersonalTwitterAnalytics />
