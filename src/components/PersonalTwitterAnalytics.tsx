@@ -155,8 +155,8 @@ const PersonalTwitterAnalytics: React.FC = () => {
         <TabsContent value="analytics" className="space-y-6">
           {/* Header */}
           <div className="flex flex-col gap-2">
-            <h2 className="text-2xl font-bold text-foreground">Personal Twitter Analytics</h2>
-            <p className="text-muted-foreground">Last 4 weeks performance (Sep 16 - Oct 13, 2025)</p>
+            <h2 className="text-2xl font-bold text-foreground">My shit posting saga</h2>
+            <p className="text-muted-foreground">My shit posting saga</p>
           </div>
 
           {/* Key Metrics Overview */}
