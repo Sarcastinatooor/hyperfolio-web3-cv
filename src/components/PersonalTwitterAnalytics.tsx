@@ -30,36 +30,51 @@ const PersonalTwitterAnalytics: React.FC = () => {
   useEffect(() => {
     const loadCSVData = async () => {
       try {
-        const response = await fetch('/src/data/twitter_analytics.csv');
+        const response = await fetch('/twitter_analytics.csv');
         const text = await response.text();
         
-        // Parse CSV
-        const lines = text.split('\n');
-        const headers = lines[0].split(',');
-        
+        // Parse CSV - simple split approach
+        const lines = text.trim().split('\n');
         const data: AnalyticsData[] = [];
         
         // Parse data rows (skip header)
         for (let i = 1; i < lines.length; i++) {
-          if (!lines[i].trim()) continue;
+          const line = lines[i].trim();
+          if (!line) continue;
           
-          const values = lines[i].match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g) || [];
-          const cleanValues = values.map(v => v.replace(/^"|"$/g, '').trim());
+          // Split by comma, handling quoted values
+          const values: string[] = [];
+          let currentValue = '';
+          let insideQuotes = false;
           
-          if (cleanValues.length >= 13) {
+          for (let j = 0; j < line.length; j++) {
+            const char = line[j];
+            
+            if (char === '"') {
+              insideQuotes = !insideQuotes;
+            } else if (char === ',' && !insideQuotes) {
+              values.push(currentValue.trim());
+              currentValue = '';
+            } else {
+              currentValue += char;
+            }
+          }
+          values.push(currentValue.trim());
+          
+          if (values.length >= 12) {
             data.push({
-              date: cleanValues[0],
-              impressions: parseInt(cleanValues[1]) || 0,
-              likes: parseInt(cleanValues[2]) || 0,
-              engagements: parseInt(cleanValues[3]) || 0,
-              bookmarks: parseInt(cleanValues[4]) || 0,
-              shares: parseInt(cleanValues[5]) || 0,
-              newFollows: parseInt(cleanValues[6]) || 0,
-              unfollows: parseInt(cleanValues[7]) || 0,
-              replies: parseInt(cleanValues[8]) || 0,
-              reposts: parseInt(cleanValues[9]) || 0,
-              profileVisits: parseInt(cleanValues[10]) || 0,
-              createPost: parseInt(cleanValues[11]) || 0,
+              date: values[0],
+              impressions: parseInt(values[1]) || 0,
+              likes: parseInt(values[2]) || 0,
+              engagements: parseInt(values[3]) || 0,
+              bookmarks: parseInt(values[4]) || 0,
+              shares: parseInt(values[5]) || 0,
+              newFollows: parseInt(values[6]) || 0,
+              unfollows: parseInt(values[7]) || 0,
+              replies: parseInt(values[8]) || 0,
+              reposts: parseInt(values[9]) || 0,
+              profileVisits: parseInt(values[10]) || 0,
+              createPost: parseInt(values[11]) || 0,
             });
           }
         }
