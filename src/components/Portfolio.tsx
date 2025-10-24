@@ -370,10 +370,10 @@ const Portfolio = () => {
                       👋🏼 Henlo,
                     </p>
                     <p>
-                      I have been in the trenches of Web3 world for about 7+ years now, began my journey as an academic writer and since than have explored diverse roles in content, marketiong and business developemnt and everything in between. Not just this, have experience traversing in different genres like an L1, DeFi Protocols, RWA project, Licensed Custodian, Media Publication to Tier-1 Exchanges.
+                      I have been in Web3 trenches for about 7+ years now. Began my journey as an academic writer, wrote a dissertation piece on Bitcoin back in 2018 which was my gateway to the world. Started my experience in web3 as content writer and soon grew into more captive roles as marketer, gtm strategist, BD, growth and what not. In these 7 years, I have dabbled in almost every genre of web3 from L1 to RWAs, from cross-chain DeFi protocols to neo-banks, from Custodian to Tier-1 Centralized Exchanges.
                     </p>
                     <p>
-                      Have pushed out campaigns variety of campaigns from $10-$500k campaigns, pushing Mainnet launch on Burj Khalifa & Times Square, ranked keywords like "Digital Assets" in Top-3, won Startup-World Cup Pitch competitions, led TVL growth of $50M upwards and bought $100M+ trading volumes.
+                      I have worked on the smallest and the biggest campaigns, for both B2B & B2C categories executing $10-$500k campaigns, ranked high-value keywords like "Digital Assets" in Top-3, worked with the biggest yappers and subject-matter experts in the industry, won Startup-World Cup Pitch competitions in World Blockchain Summit, led TVL growth of $50M upwards and bought $100M+ trading volumes.
                     </p>
                   </div>
                   
