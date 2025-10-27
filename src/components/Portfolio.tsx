@@ -495,7 +495,16 @@ const Portfolio = () => {
             </div>
           </div>
 
-
+          {/* Content Scale Section */}
+          <div className="mb-12">
+            <div className="flex justify-center">
+              <img 
+                src="/lovable-uploads/content-scale-analyzer.png" 
+                alt="Content Scale Analysis" 
+                className="w-full max-w-2xl rounded-2xl border border-white/10"
+              />
+            </div>
+          </div>
 
           {/* Footer */}
           <div className="hl-card text-center">
