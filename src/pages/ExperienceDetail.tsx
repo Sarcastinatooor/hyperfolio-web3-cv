@@ -151,7 +151,7 @@ const ExperienceDetail = () => {
     },
     // ShipFinex
     {
-      title: "Marketing and Business Development Head",
+      title: "Marketing & BD Head",
       company: "ShipFinex",
       period: "Jul 2022 - Dec 2022",
       location: "Remote",
