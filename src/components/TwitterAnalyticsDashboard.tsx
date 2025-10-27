@@ -88,27 +88,6 @@ const TwitterAnalyticsDashboard: React.FC<TwitterAnalyticsDashboardProps> = ({ s
     },
     {
       id: '3',
-      name: 'Imprint NFT Mint',
-      date: '2024-10-15',
-      category: 'partnership',
-      tweetUrl: 'https://x.com/BrahmaFi/status/1925552926183051392',
-      highlights: [
-        '160K+ Imprints minted across the campaign duration',
-        '$30M+ TVL impact driven via cross-ecosystem participation',
-        'Partnered with top Berachain NFT projects — THJ, Bullas, Mibera, HoneyCast & Steddy Teddy\'s — to activate and reward their communities',
-        'Led KOL distribution strategy, onboarding and coordinating 30+ key influencers for maximum reach'
-      ],
-      metrics: {
-        views: 75000,
-        likes: 2100,
-        retweets: 850,
-        replies: 280,
-        engagement: 4.8,
-        tvlImpact: '$30M+'
-      }
-    },
-    {
-      id: '4',
       name: 'Morpho Agent',
       date: '2024-12-15',
       category: 'partnership',
