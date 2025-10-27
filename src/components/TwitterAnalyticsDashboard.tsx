@@ -45,6 +45,27 @@ const TwitterAnalyticsDashboard: React.FC<TwitterAnalyticsDashboardProps> = ({ s
   const campaigns: CampaignData[] = [
     {
       id: '1',
+      name: 'Swype.fun Card Launch',
+      date: '2025-01-15',
+      category: 'product',
+      tweetUrl: 'https://x.com/BrahmaFi/status/1946194458992902218',
+      highlights: [
+        'Drove early traction by sharing beta access with Hyperliquid maxis and active crypto card users.',
+        'Onboarded power users and launched tailored campaigns to promote Swype.fun\'s utility and card perks across Base and Hyperliquid.',
+        'Scaled Swype.fun to 280+ registered users, 250+ active users, and $200K+ in transaction volume.',
+        'Showcased yield strategies and IRL Swype use cases on my profile, creatively working around compliance constraints.'
+      ],
+      metrics: {
+        views: 82000,
+        likes: 2400,
+        retweets: 950,
+        replies: 320,
+        engagement: 4.9,
+        tvlImpact: '$200K+'
+      }
+    },
+    {
+      id: '2',
       name: 'Berama Hotel | Honey Boxes',
       date: '2024-11-15',
       category: 'giveaway',
@@ -66,7 +87,7 @@ const TwitterAnalyticsDashboard: React.FC<TwitterAnalyticsDashboardProps> = ({ s
       }
     },
     {
-      id: '2',
+      id: '3',
       name: 'Imprint NFT Mint',
       date: '2024-10-15',
       category: 'partnership',
@@ -87,7 +108,7 @@ const TwitterAnalyticsDashboard: React.FC<TwitterAnalyticsDashboardProps> = ({ s
       }
     },
     {
-      id: '3',
+      id: '4',
       name: 'Morpho Agent',
       date: '2024-12-15',
       category: 'partnership',
@@ -108,7 +129,7 @@ const TwitterAnalyticsDashboard: React.FC<TwitterAnalyticsDashboardProps> = ({ s
       }
     },
     {
-      id: '4',
+      id: '5',
       name: 'Accelerate On-Chain',
       date: '2024-08-15',
       category: 'giveaway',
@@ -129,7 +150,7 @@ const TwitterAnalyticsDashboard: React.FC<TwitterAnalyticsDashboardProps> = ({ s
       }
     },
     {
-      id: '5',
+      id: '6',
       name: 'ARB Incentive Giveaway',
       date: '2024-05-27',
       category: 'giveaway',
@@ -221,7 +242,7 @@ const TwitterAnalyticsDashboard: React.FC<TwitterAnalyticsDashboardProps> = ({ s
 
   const topCampaigns = [...filteredCampaigns]
     .sort((a, b) => b.metrics.views - a.metrics.views)
-    .slice(0, 5);
+    .slice(0, 6);
 
   // Real Twitter Analytics Data
   const totalImpressions = 2200000; // 2.2M
