@@ -520,7 +520,7 @@ const Portfolio = () => {
               {
                 id: "kaito",
                 description: "Kaito",
-                image: "/lovable-uploads/tools/kaito-logo.png",
+                image: "/lovable-uploads/tools/kaito-logo.jpeg",
                 className: "h-16 w-auto",
               },
               {
