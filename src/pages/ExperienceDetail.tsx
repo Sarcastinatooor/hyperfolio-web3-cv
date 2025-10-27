@@ -70,9 +70,9 @@ const ExperienceDetail = () => {
       location: "Remote",
       type: "Full-time",
       keyResponsibilities: [
-        "Leading growth initiatives with KOLs and onchain user acquisition",
-        "Scaling TVL past $100M (peaked at $300M)",
-        "Growing social engagement by 600%+ across platforms"
+        "Drove full-funnel growth — from awareness to activation and retention.",
+        "Scaled TVL past $100M+, onboarded 13K+ active users, and enabled $200K+ in card spend.",
+        "Increased social engagement by 600%+ across platforms."
       ],
       description: [
         "Leading all growth initiatives, from KOL collaborations to onboarding high-intent onchain users and driving aligned narrative campaigns.",
