@@ -246,7 +246,7 @@ const Portfolio = () => {
       company: "CoinGape Crypto News",
       period: "Jul 2021 - Aug 2021",
       keyResponsibilities: [
-        "Scaled established crypto media publication",
+        "Scaled SEO efforts and led writers to capture trending narratives through news-driven content",
         "Led team for high-quality content production",
         "Streamlined content for revenue channels"
       ],

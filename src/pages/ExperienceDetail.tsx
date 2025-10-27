@@ -278,7 +278,7 @@ const ExperienceDetail = () => {
       location: "Remote",
       type: "Full-time",
       keyResponsibilities: [
-        "Scaled established crypto media publication",
+        "Scaled SEO efforts and led writers to capture trending narratives through news-driven content",
         "Led team for high-quality content production",
         "Streamlined content for revenue channels"
       ],
