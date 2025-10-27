@@ -70,7 +70,7 @@ const Portfolio = () => {
       company: "BrahmaFi",
       period: "July 2024 - October 2025",
       keyResponsibilities: [
-        "Led growth initiatives from user acquisition to growing mindshare",
+        "Led end-to-end growth initiatives from user acquisition to brand mindshare",
         "Scaling TVL past $100M (peaked at $300M)",
         "Growing social engagement by 600%+ across platforms"
       ],
