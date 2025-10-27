@@ -171,7 +171,7 @@ const TwitterAnalyticsDashboard: React.FC<TwitterAnalyticsDashboardProps> = ({ s
       }
     },
     {
-      id: '6',
+      id: '7',
       name: 'Vault Strategy Launch',
       date: '2024-04-15',
       category: 'product',
