@@ -67,7 +67,7 @@ const Portfolio = () => {
     {
       title: "Growth Marketing Manager",
       company: "BrahmaFi",
-      period: "Present",
+      period: "July 2024 - October 2025",
       keyResponsibilities: [
         "Leading growth initiatives with KOLs and onchain user acquisition",
         "Scaling TVL past $100M (peaked at $300M)",
