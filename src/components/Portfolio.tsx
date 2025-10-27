@@ -403,17 +403,6 @@ const Portfolio = () => {
             <BentoGrid items={experienceBentoItems} />
           </div>
 
-          {/* Twitter Analytics Section */}
-          <div className="mb-12">
-            <div className="text-center mb-8">
-              <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-                My shit posting saga
-              </h2>
-            </div>
-            
-            <PersonalTwitterAnalytics />
-          </div>
-
           {/* KOLs Section */}
           <div className="mb-12">
             <div className="text-center mb-8">
@@ -495,13 +484,24 @@ const Portfolio = () => {
             </div>
           </div>
 
+          {/* Twitter Analytics Section */}
+          <div className="mb-12">
+            <div className="text-center mb-8">
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+                My shit posting saga
+              </h2>
+            </div>
+            
+            <PersonalTwitterAnalytics />
+          </div>
+
           {/* Content Scale Section */}
           <div className="mb-12">
             <div className="flex justify-center">
               <img 
                 src="/lovable-uploads/content-scale-analyzer.png" 
                 alt="Content Scale Analysis" 
-                className="w-full max-w-2xl rounded-2xl border border-white/10"
+                className="w-full max-w-md rounded-2xl border border-white/10"
               />
             </div>
           </div>
