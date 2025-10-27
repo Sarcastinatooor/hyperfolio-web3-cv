@@ -45,27 +45,6 @@ const TwitterAnalyticsDashboard: React.FC<TwitterAnalyticsDashboardProps> = ({ s
   const campaigns: CampaignData[] = [
     {
       id: '1',
-      name: 'Swype.fun Card Launch',
-      date: '2025-01-15',
-      category: 'product',
-      tweetUrl: 'https://x.com/BrahmaFi/status/1946194458992902218',
-      highlights: [
-        'Drove early traction by sharing beta access with Hyperliquid maxis and active crypto card users.',
-        'Onboarded power users and launched tailored campaigns to promote Swype.fun\'s utility and card perks across Base and Hyperliquid.',
-        'Scaled Swype.fun to 280+ registered users, 250+ active users, and $200K+ in transaction volume.',
-        'Showcased yield strategies and IRL Swype use cases on my profile, creatively working around compliance constraints.'
-      ],
-      metrics: {
-        views: 68000,
-        likes: 1950,
-        retweets: 780,
-        replies: 245,
-        engagement: 4.7,
-        tvlImpact: '$200K+'
-      }
-    },
-    {
-      id: '2',
       name: 'Berama Hotel | Honey Boxes',
       date: '2024-11-15',
       category: 'giveaway',
@@ -87,7 +66,7 @@ const TwitterAnalyticsDashboard: React.FC<TwitterAnalyticsDashboardProps> = ({ s
       }
     },
     {
-      id: '3',
+      id: '2',
       name: 'Imprint NFT Mint',
       date: '2024-10-15',
       category: 'partnership',
@@ -108,7 +87,7 @@ const TwitterAnalyticsDashboard: React.FC<TwitterAnalyticsDashboardProps> = ({ s
       }
     },
     {
-      id: '4',
+      id: '3',
       name: 'Morpho Agent',
       date: '2024-12-15',
       category: 'partnership',
@@ -129,7 +108,7 @@ const TwitterAnalyticsDashboard: React.FC<TwitterAnalyticsDashboardProps> = ({ s
       }
     },
     {
-      id: '5',
+      id: '4',
       name: 'Accelerate On-Chain',
       date: '2024-08-15',
       category: 'giveaway',
@@ -150,7 +129,7 @@ const TwitterAnalyticsDashboard: React.FC<TwitterAnalyticsDashboardProps> = ({ s
       }
     },
     {
-      id: '6',
+      id: '5',
       name: 'ARB Incentive Giveaway',
       date: '2024-05-27',
       category: 'giveaway',
@@ -171,7 +150,7 @@ const TwitterAnalyticsDashboard: React.FC<TwitterAnalyticsDashboardProps> = ({ s
       }
     },
     {
-      id: '7',
+      id: '6',
       name: 'Vault Strategy Launch',
       date: '2024-04-15',
       category: 'product',
@@ -186,7 +165,7 @@ const TwitterAnalyticsDashboard: React.FC<TwitterAnalyticsDashboardProps> = ({ s
       }
     },
     {
-      id: '8',
+      id: '6',
       name: 'Partnership Announcement',
       date: '2024-03-22',
       category: 'partnership',
@@ -201,7 +180,7 @@ const TwitterAnalyticsDashboard: React.FC<TwitterAnalyticsDashboardProps> = ({ s
       }
     },
     {
-      id: '9',
+      id: '7',
       name: 'DeFi Education Series',
       date: '2024-02-10',
       category: 'educational',
