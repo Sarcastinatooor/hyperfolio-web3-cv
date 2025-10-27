@@ -157,7 +157,7 @@ const Portfolio = () => {
       company: "ShipFinex",
       period: "Jul 2022 - Dec 2022",
       keyResponsibilities: [
-        "Build Shipfinex's GTM strategy and spearheaded fundraise phase.",
+        "Designed and executed GTM strategy, spearheading the fundraise and private sale",
         "Generated $10K+ in private sale funding",
         "Built brand for RWA tokenization"
       ],

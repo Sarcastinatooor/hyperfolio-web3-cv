@@ -157,7 +157,7 @@ const ExperienceDetail = () => {
       location: "Remote",
       type: "Full-time",
       keyResponsibilities: [
-        "Build Shipfinex's GTM strategy and spearheaded fundraise phase.",
+        "Designed and executed GTM strategy, spearheading the fundraise and private sale",
         "Generated $10K+ in private sale funding",
         "Built brand for RWA tokenization"
       ],
@@ -173,7 +173,7 @@ const ExperienceDetail = () => {
         { name: "Discord", logo: "https://discord.com/assets/847541504914fd33810e70a0ea73177e.ico" }
       ],
       achievements: [
-        "Build Shipfinex's GTM strategy and spearheaded fundraise phase.",
+        "Designed and executed GTM strategy, spearheading the fundraise and private sale",
         "Raised $10K+ in private sale",
         "Built RWA tokenization brand from scratch",
         "Spoke at 5+ major blockchain events"
