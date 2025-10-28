@@ -214,7 +214,7 @@ const ExperienceDetail = () => {
     },
     // Spherium Finance
     {
-      title: "Head of Marketing & Business Development",
+      title: "Head of Marketing & BD",
       company: "Spherium Finance",
       period: "Aug 2021 - Jul 2022",
       location: "Remote",

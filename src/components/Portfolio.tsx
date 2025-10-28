@@ -200,7 +200,7 @@ const Portfolio = () => {
     },
     // Spherium Finance
     {
-      title: "Head of Marketing and Business Development Team",
+      title: "Head of Marketing & BD",
       company: "Spherium Finance",
       period: "Aug 2021 - Jul 2022",
       keyResponsibilities: [
