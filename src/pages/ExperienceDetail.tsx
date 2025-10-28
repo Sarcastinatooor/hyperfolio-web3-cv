@@ -220,7 +220,7 @@ const ExperienceDetail = () => {
       location: "Remote",
       type: "Full-time",
       keyResponsibilities: [
-        "Led team for DeFi cross-chain adoption",
+        "Launched a suite of cross-chain dApps, onboarded partners, and scaled native token.",
         "Positioned founders as Web3 thought leaders",
         "Implemented growth marketing strategies"
       ],

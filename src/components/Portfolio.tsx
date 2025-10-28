@@ -204,7 +204,7 @@ const Portfolio = () => {
       company: "Spherium Finance",
       period: "Aug 2021 - Jul 2022",
       keyResponsibilities: [
-        "Led team for DeFi cross-chain adoption",
+        "Launched a suite of cross-chain dApps, onboarded partners, and scaled native token.",
         "Positioned founders as Web3 thought leaders",
         "Implemented growth marketing strategies"
       ],
