@@ -509,7 +509,7 @@ const Portfolio = () => {
 
           {/* Tools Showcase Section */}
           <Logos3 
-            heading="Tools & Platforms I've Used"
+            heading="My Curated Web3 Marketing Tooling Stack"
             logos={[
               {
                 id: "cookie3",
