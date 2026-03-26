@@ -744,7 +744,7 @@ const ExperienceDetail = () => {
                 Medium Publication
               </CardTitle>
               <p className="text-gray-400 text-sm">
-                Content published on the Spherium Finance Medium blog
+                Articles published during my tenure (Aug 2021 — Jul 2022)
               </p>
             </CardHeader>
             <CardContent className="space-y-6">
@@ -755,46 +755,59 @@ const ExperienceDetail = () => {
                   <p className="text-xs text-gray-400 mt-1">Followers</p>
                 </div>
                 <div className="bg-gray-800/50 border border-gray-700/50 rounded-lg p-4 text-center">
-                  <p className="text-2xl font-bold text-emerald-400">500+</p>
-                  <p className="text-xs text-gray-400 mt-1">Total Claps</p>
+                  <p className="text-2xl font-bold text-emerald-400">19</p>
+                  <p className="text-xs text-gray-400 mt-1">Articles Published</p>
                 </div>
                 <div className="bg-gray-800/50 border border-gray-700/50 rounded-lg p-4 text-center">
-                  <p className="text-2xl font-bold text-purple-400">50K+</p>
-                  <p className="text-xs text-gray-400 mt-1">Impressions</p>
+                  <p className="text-2xl font-bold text-purple-400">116</p>
+                  <p className="text-xs text-gray-400 mt-1">Publication Followers</p>
                 </div>
               </div>
 
               {/* Articles */}
               <div className="space-y-3">
                 {[
-                  { title: "HyperBridge V2 Goes Live: Revolutionizing Omni-Chain Transactions", date: "Mar 29, 2024", claps: 28, url: "https://spheriumlabs.medium.com/hyperbridge-v2-goes-live-revolutionizing-omni-chain-transactions-1e4d8c6ea6fd", image: "https://miro.medium.com/v2/resize:fill:320:214/1*baLizqCEqWW55Wn4Ts-5sQ@2x.jpeg" },
-                  { title: "What is the Bitcoin halving?", date: "Dec 19, 2023", claps: null, url: "https://spheriumlabs.medium.com/what-is-the-bitcoin-halving-75db749063c3", image: "https://miro.medium.com/v2/resize:fill:320:214/1*qftM1Gl-jw8oXU2jGocJXw@2x.jpeg" },
-                  { title: "What is a Bitcoin ETF?", date: "Dec 11, 2023", claps: null, url: "https://spheriumlabs.medium.com/what-is-a-bitcoin-etf-da85da32bcfa", image: "https://miro.medium.com/v2/resize:fill:320:214/1*2LVm8ti6geH8nupVDJIEKg@2x.jpeg" },
-                  { title: "What is the Ethereum Virtual Machine (EVM)?", date: "Oct 24, 2023", claps: null, url: "https://spheriumlabs.medium.com/what-is-the-ethereum-virtual-machine-evm-24fa1650401a", image: "https://miro.medium.com/v2/resize:fill:320:214/1*NM52EtN3-CAUNwG8lv4Usg@2x.jpeg" },
-                  { title: "Spherium Finance Quarterly Review: Q3/2023 Unveiled", date: "Oct 9, 2023", claps: null, url: "https://spheriumlabs.medium.com/spherium-finance-quarterly-review-q3-2023-unveiled-82bd78ecf23c", image: "https://miro.medium.com/v2/resize:fill:320:214/1*IJYycw8EU43zhtMaQjBlTA@2x.jpeg" },
-                  { title: "HyperBridge's Quantum Leap: zkSync Integration Powers Cross-Chain Interoperability", date: "Sep 4, 2023", claps: null, url: "https://spheriumlabs.medium.com/hyperbridges-quantum-leap-zksync-integration-powers-cross-chain-interoperability-106c7a7c50bc", image: "https://miro.medium.com/v2/resize:fill:320:214/1*MJNj3U9gqVa4oT5OYaLfOA@2x.jpeg" },
-                  { title: "Announcing the Launch of HyperStake on Arbitrum Chain", date: "May 10, 2023", claps: 50, url: "https://spheriumlabs.medium.com/announcing-the-launch-of-hyperstake-on-arbitrum-chain-150fae82c013", image: "https://miro.medium.com/v2/resize:fill:320:214/1*bzO13LjQ5AuJphjOq2hBWA@2x.jpeg" },
+                  { title: "Transcending the Blockchain Barriers Through HyperBridge with GrailPad", date: "Aug 16, 2022", url: "https://medium.com/spherium-finance/transcending-the-blockchain-barriers-through-hyperbridge-with-grailpad-7e7d53c4cece", image: "https://miro.medium.com/v2/resize:fill:320:214/format:webp/1*Kt5ZTd7GETB-b47V2HiLfw.png" },
+                  { title: "Iconising Web3 with a Strategic Partnership with Battle Astra", date: "Jul 19, 2022", url: "https://medium.com/spherium-finance/iconising-web3-with-a-strategic-partnership-with-battle-astra-ee2c72ef8f58", image: "https://miro.medium.com/v2/resize:fill:320:214/format:webp/1*nkv1XzkWS4_rz5DrmqjdCA.png" },
+                  { title: "Pushing the bounds of DeFi with Rigel Protocol", date: "Jul 13, 2022", url: "https://medium.com/spherium-finance/pushing-the-bounds-of-defi-with-rigel-protocol-bc0cc5da8f55", image: "" },
+                  { title: "What are the major issues in DeFi?", date: "Jun 7, 2022", url: "https://medium.com/spherium-finance/what-are-the-major-issues-in-defi-f9438d0907ff", image: "https://miro.medium.com/v2/resize:fill:320:214/format:webp/1*uIsiYnjNdWNMW0EVMjI1mA.jpeg" },
+                  { title: "Spherium Joining Hands with Unmarshal To Integrate Data Driven Dashboards Into HyperSwap", date: "May 10, 2022", url: "https://medium.com/spherium-finance/spherium-joining-hands-with-unmarshal-to-integrate-data-driven-dashboards-into-hyperswap-36819f0047b5", image: "" },
+                  { title: "HyperBridge: The Most Simple Cross-Chain Bridging Solution", date: "May 6, 2022", url: "https://medium.com/spherium-finance/hyperbridge-the-most-simple-cross-chain-bridging-solution-d8c33124ea52", image: "https://miro.medium.com/v2/resize:fill:320:214/format:webp/1*zwRstR7l0ugBtWkr53DKvQ.jpeg" },
+                  { title: "Boundlesspay to Take off on Spherium's Hyperlaunch", date: "May 3, 2022", url: "https://medium.com/spherium-finance/boundlesspay-to-take-off-on-spheriums-hyperlaunch-ba6b17f21ba", image: "" },
+                  { title: "Enhancing the MultiChain Ecosystem With BACKED", date: "Apr 8, 2022", url: "https://medium.com/spherium-finance/enhancing-the-multichain-ecosystem-with-backed-af498fd5494e", image: "" },
+                  { title: "How does Spherium Finance Safeguards Liquidity Locked?", date: "Mar 31, 2022", url: "https://medium.com/spherium-finance/how-does-spherium-finance-safeguards-liquidity-locked-220932effa31", image: "https://miro.medium.com/v2/resize:fill:320:214/format:webp/1*yQHbs5WWYiwARlp0JsKXbA.jpeg" },
+                  { title: "Presenting an Invite-Only Reward-Packed AMA With Spherium Founders", date: "Dec 28, 2021", url: "https://medium.com/spherium-finance/presenting-an-invite-only-reward-packed-ama-with-spherium-founders-82b4010683cf", image: "https://miro.medium.com/v2/resize:fill:320:214/format:webp/1*Ic8doyjpb5ETAMCBo9Ansg.png" },
+                  { title: "Spherium Finance Adding Cross-Chain Operability Into IDO Seeding by Partnering with AdLunam", date: "Dec 22, 2021", url: "https://medium.com/spherium-finance/spherium-finance-adding-cross-chain-operability-into-ido-seeding-by-partnering-with-adlunam-30f795ea1c68", image: "" },
+                  { title: "Spherium Finance joins hands with Brokoli for eco-friendly commitments", date: "Dec 15, 2021", url: "https://medium.com/spherium-finance/spherium-finance-takes-a-step-towards-eco-friendly-commitments-by-joining-hands-with-brokoli-for-d05db85bb386", image: "" },
+                  { title: "How Spherium's Cross-Chain Bridge Will Make Access to DeFi Cheaper", date: "Dec 10, 2021", url: "https://medium.com/spherium-finance/how-spheriums-cross-chain-bridge-will-make-access-to-defi-cheaper-bbc1a8db81fb", image: "https://miro.medium.com/v2/resize:fill:320:214/format:webp/1*DjJzitXhBVNchpAf9ZxBGQ.jpeg" },
+                  { title: "Presenting the Spherium Finance Updated Roadmap", date: "Dec 3, 2021", url: "https://medium.com/spherium-finance/presenting-the-spherium-finance-updated-roadmap-2ee320f39c9b", image: "https://miro.medium.com/v2/resize:fill:320:214/format:webp/1*kaPt2PrGpU1Z9A7XyfYpFA.png" },
+                  { title: "It's a Wrap for the $SPHRI HODLer Reward Campaign!", date: "Nov 26, 2021", url: "https://medium.com/spherium-finance/its-a-wrap-for-the-sphri-hodler-reward-campaign-46b73a097974", image: "https://miro.medium.com/v2/resize:fill:320:214/format:webp/1*fNLR9HyGDcVKJ-S_-IlHdw.jpeg" },
+                  { title: "Spherium Rolls Out Reward Campaign Ahead of HyperLaunch Project", date: "Nov 9, 2021", url: "https://medium.com/spherium-finance/spherium-rolls-out-reward-campaign-ahead-of-hyperlaunch-project-129a6082c195", image: "https://miro.medium.com/v2/resize:fill:320:214/format:webp/1*cPdABEisiLFRZwUc9atKnw.jpeg" },
+                  { title: "HyperSwap Smart Contracts Audit Report Concluded By Halborn", date: "Oct 29, 2021", url: "https://medium.com/spherium-finance/hyperswap-smart-contracts-audit-report-concluded-by-halborn-hyperswap-bridge-to-go-live-on-7a6c8706bc4a", image: "https://miro.medium.com/v2/resize:fill:320:214/format:webp/1*TDmdvMlW3Kh5dXAzbDfAGw.jpeg" },
+                  { title: "Liquidity Mining leading the charge for DeFi adoption", date: "Oct 28, 2021", url: "https://medium.com/spherium-finance/liquidity-mining-leading-the-charge-for-defi-adoption-371bd306e3de", image: "https://miro.medium.com/v2/resize:fill:320:214/format:webp/1*ol1c-ybHZv6L4si1Q_mGyw.jpeg" },
+                  { title: "Spherium Finance Joins Forces With AnyPad to Bolster Innovative Blockchain Startups", date: "Oct 20, 2021", url: "https://medium.com/spherium-finance/spherium-finance-joins-forces-with-anypad-to-bolster-innovative-blockchain-startups-994aad0ae992", image: "https://miro.medium.com/v2/da:true/resize:fill:320:214/format:webp/0*L8NsDc8cFfIeDrek" },
                 ].map((article, index) => (
                   <div
                     key={index}
                     className="flex items-start gap-4 p-3 rounded-lg bg-gray-800/30 border border-gray-700/50 hover:border-blue-400/50 hover:bg-gray-800/60 transition-all duration-300 cursor-pointer group"
                     onClick={() => window.open(article.url, '_blank')}
                   >
-                    <img
-                      src={article.image}
-                      alt={article.title}
-                      className="w-20 h-14 object-cover rounded-md flex-shrink-0"
-                    />
+                    {article.image ? (
+                      <img
+                        src={article.image}
+                        alt={article.title}
+                        className="w-20 h-14 object-cover rounded-md flex-shrink-0"
+                      />
+                    ) : (
+                      <div className="w-20 h-14 rounded-md flex-shrink-0 bg-gray-700/50 flex items-center justify-center">
+                        <FileText className="w-5 h-5 text-gray-500" />
+                      </div>
+                    )}
                     <div className="flex-1 min-w-0">
                       <h4 className="text-sm font-medium text-white group-hover:text-blue-300 transition-colors line-clamp-2">
                         {article.title}
                       </h4>
-                      <div className="flex items-center gap-3 mt-1">
-                        <span className="text-xs text-gray-500">{article.date}</span>
-                        {article.claps && (
-                          <span className="text-xs text-gray-400">👏 {article.claps}</span>
-                        )}
-                      </div>
+                      <span className="text-xs text-gray-500 mt-1 block">{article.date}</span>
                     </div>
                   </div>
                 ))}
@@ -803,7 +816,7 @@ const ExperienceDetail = () => {
               {/* View all link */}
               <div className="text-center">
                 <a
-                  href="https://medium.com/@spheriumlabs"
+                  href="https://medium.com/spherium-finance"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm text-blue-400 hover:text-blue-300 transition-colors"
