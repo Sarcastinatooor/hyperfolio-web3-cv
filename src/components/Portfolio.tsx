@@ -29,7 +29,7 @@ const Portfolio = () => {
 
   useEffect(() => {
     const currentName = names[nameIndex];
-    let timeout: NodeJS.Timeout;
+    let timeout: ReturnType<typeof setTimeout>;
 
     if (!isDeleting) {
       // Typing
