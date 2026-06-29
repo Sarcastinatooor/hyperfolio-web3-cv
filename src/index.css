@@ -1,113 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+/* Aave x Curve blended design system.
+   Aave: dark purple base, glass cards, soft gradients.
+   Curve: monospace numerics, blocky high-contrast accents.
+   All colors MUST be HSL.
 */
 
 @layer base {
   :root {
-    /* HyperFoundation inspired color scheme - Dynamic theme system */
-    --background: 220 15% 4%;
-    --foreground: 0 0% 95%;
+    /* Aave-inspired dark purple base */
+    --background: 248 47% 6%;
+    --foreground: 0 0% 96%;
 
-    --card: 220 12% 8%;
-    --card-foreground: 0 0% 95%;
+    --card: 252 28% 11%;
+    --card-foreground: 0 0% 96%;
 
-    --popover: 220 12% 8%;
-    --popover-foreground: 0 0% 95%;
+    --popover: 252 28% 11%;
+    --popover-foreground: 0 0% 96%;
 
-    --primary: 260 100% 60%;
+    /* Primary: vibrant Aave-style violet */
+    --primary: 264 85% 65%;
     --primary-foreground: 0 0% 98%;
 
-    --secondary: 220 10% 12%;
-    --secondary-foreground: 0 0% 95%;
+    --secondary: 252 22% 14%;
+    --secondary-foreground: 0 0% 96%;
 
-    --muted: 220 8% 15%;
-    --muted-foreground: 0 0% 60%;
+    --muted: 252 18% 18%;
+    --muted-foreground: 252 15% 70%;
 
-    --accent: 210 100% 70%;
-    --accent-foreground: 0 0% 1%;
+    /* Accent: Curve-style bright yellow for high-contrast highlights */
+    --accent: 48 100% 60%;
+    --accent-foreground: 248 47% 6%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 220 10% 12%;
-    --input: 220 12% 8%;
-    --ring: 260 100% 60%;
+    --border: 264 30% 22%;
+    --input: 252 28% 11%;
+    --ring: 264 85% 65%;
 
-    /* Dynamic chain-specific colors (updated via JavaScript) */
-    --neon-cyan: 210 100% 70%;
-    --neon-green: 260 100% 60%;
+    /* Chain-specific accents (used by ChainThemeContext) */
+    --neon-cyan: 192 95% 65%;
+    --neon-green: 150 80% 55%;
     --neon-red: 0 84% 60%;
-    --neon-purple: 260 100% 60%;
+    --neon-purple: 264 85% 65%;
     --cta-orange: 25 100% 65%;
-    --dark-surface: 220 12% 8%;
-    --grid-color: 220 10% 12%;
+    --dark-surface: 252 28% 11%;
+    --grid-color: 264 30% 18%;
 
-    /* Dynamic gradients (updated via JavaScript) */
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary) / 0.1), hsl(var(--primary) / 0.05));
-    --gradient-glow: linear-gradient(135deg, hsl(var(--primary) / 0.05), hsl(220 12% 8%));
-    --gradient-card: linear-gradient(135deg, hsl(220 12% 8%), hsl(220 15% 4%));
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary) / 0.18), hsl(var(--primary) / 0.06));
+    --gradient-glow: linear-gradient(135deg, hsl(var(--primary) / 0.1), hsl(248 47% 6%));
+    --gradient-card: linear-gradient(180deg, hsl(252 28% 12%), hsl(248 35% 8%));
+    --gradient-accent: linear-gradient(135deg, hsl(var(--accent) / 0.16), hsl(var(--primary) / 0.08));
 
-    /* Dynamic shadows (updated via JavaScript) */
-    --shadow-neon: 0 0 20px hsl(var(--primary) / 0.2);
-    --shadow-glow: 0 0 15px hsl(var(--primary) / 0.15);
-    --shadow-card: 0 2px 8px hsl(0 0% 0% / 0.8);
+    /* Shadows */
+    --shadow-neon: 0 0 24px hsl(var(--primary) / 0.28);
+    --shadow-glow: 0 0 18px hsl(var(--primary) / 0.18);
+    --shadow-card: 0 4px 24px hsl(248 47% 2% / 0.6), 0 1px 0 hsl(264 30% 30% / 0.2) inset;
 
-    /* Smooth transitions for theme changes */
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-background: 252 28% 11%;
+    --sidebar-foreground: 0 0% 96%;
+    --sidebar-primary: 264 85% 65%;
     --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 252 22% 14%;
+    --sidebar-accent-foreground: 0 0% 96%;
+    --sidebar-border: 264 30% 22%;
+    --sidebar-ring: 264 85% 65%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --background: 248 47% 6%;
+    --foreground: 0 0% 96%;
+    --card: 252 28% 11%;
+    --card-foreground: 0 0% 96%;
+    --popover: 252 28% 11%;
+    --popover-foreground: 0 0% 96%;
+    --primary: 264 85% 65%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 252 22% 14%;
+    --secondary-foreground: 0 0% 96%;
+    --muted: 252 18% 18%;
+    --muted-foreground: 252 15% 70%;
+    --accent: 48 100% 60%;
+    --accent-foreground: 248 47% 6%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 264 30% 22%;
+    --input: 252 28% 11%;
+    --ring: 264 85% 65%;
   }
 }
 
@@ -116,36 +105,56 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
-  body {
-    @apply bg-background text-foreground overflow-x-hidden;
-    background-image: 
-      radial-gradient(circle at 25% 25%, hsl(var(--primary) / 0.02) 0%, transparent 50%),
-      radial-gradient(circle at 75% 75%, hsl(var(--primary) / 0.01) 0%, transparent 50%);
-    transition: all 0.3s ease;
+  html {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   }
 
-  /* Custom scrollbar */
+  body {
+    @apply bg-background text-foreground overflow-x-hidden;
+    background-image:
+      radial-gradient(circle at 20% 15%, hsl(var(--primary) / 0.10) 0%, transparent 45%),
+      radial-gradient(circle at 80% 85%, hsl(var(--accent) / 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, hsl(248 47% 8%) 0%, hsl(248 47% 4%) 100%);
+    background-attachment: fixed;
+    transition: all 0.3s ease;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  /* Number / address / code styling */
+  .font-mono, code, pre, .hl-metric, .hl-table-cell, .num {
+    font-family: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+    font-feature-settings: "zero", "ss01";
+  }
+
+  /* Scrollbar */
   ::-webkit-scrollbar {
     width: 8px;
+    height: 8px;
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-muted;
+    @apply bg-background;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-primary rounded-full;
+    background: hsl(var(--primary) / 0.6);
+    border-radius: 4px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-primary/80;
+    background: hsl(var(--primary));
+  }
+
+  /* Selection */
+  ::selection {
+    background: hsl(var(--primary) / 0.4);
+    color: hsl(var(--foreground));
   }
 }
 
 @layer components {
-  /* Add smooth transitions to all color-dependent elements */
   * {
-    transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
   }
 
   .neon-glow {
@@ -164,22 +173,42 @@ All colors MUST be HSL.
   }
 
   .grid-pattern {
-    background-image: 
-      linear-gradient(hsl(var(--grid-color)) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(var(--grid-color)) 1px, transparent 1px);
-    background-size: 20px 20px;
+    background-image:
+      linear-gradient(hsl(var(--grid-color) / 0.4) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--grid-color) / 0.4) 1px, transparent 1px);
+    background-size: 32px 32px;
   }
 
+  /* Aave-style glass card */
+  .hl-card {
+    background: linear-gradient(180deg, hsl(var(--card) / 0.85), hsl(var(--card) / 0.6));
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid hsl(var(--border));
+    border-radius: var(--radius);
+    transition: all 0.25s ease;
+  }
+
+  .hl-card:hover {
+    border-color: hsl(var(--primary) / 0.55);
+    box-shadow: 0 0 0 1px hsl(var(--primary) / 0.15), var(--shadow-card);
+  }
+
+  /* Curve-style blocky button with hard border */
   .gm-button {
     position: relative;
     overflow: hidden;
-    background: var(--gradient-primary);
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(264 85% 55%) 100%);
     border: 1px solid hsl(var(--primary));
-    transition: all 0.3s ease;
+    border-radius: var(--radius);
+    color: hsl(var(--primary-foreground));
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    transition: all 0.25s ease;
   }
 
   .gm-button:hover {
-    transform: translateY(-2px);
+    transform: translateY(-1px);
     box-shadow: var(--shadow-neon);
   }
 
@@ -190,18 +219,36 @@ All colors MUST be HSL.
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.4), transparent);
-    transition: left 0.5s ease;
+    background: linear-gradient(90deg, transparent, hsl(0 0% 100% / 0.18), transparent);
+    transition: left 0.55s ease;
   }
 
   .gm-button:hover::before {
     left: 100%;
   }
 
+  /* Curve-style accent button (yellow) */
+  .accent-button {
+    background: hsl(var(--accent));
+    color: hsl(var(--accent-foreground));
+    border: 1px solid hsl(var(--accent));
+    border-radius: var(--radius);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    transition: all 0.2s ease;
+  }
+
+  .accent-button:hover {
+    background: hsl(48 100% 65%);
+    transform: translateY(-1px);
+    box-shadow: 0 0 18px hsl(var(--accent) / 0.45);
+  }
+
   .social-button {
     background: hsl(var(--dark-surface));
     border: 1px solid hsl(var(--border));
-    transition: all 0.3s ease;
+    border-radius: var(--radius);
+    transition: all 0.25s ease;
   }
 
   .social-button:hover {
@@ -210,46 +257,76 @@ All colors MUST be HSL.
     transform: translateY(-2px);
   }
 
-  .hl-card {
-    background: hsl(var(--card));
-    border: 1px solid hsl(var(--border));
-    border-radius: 4px;
-    transition: all 0.2s ease;
-  }
-
-  .hl-card:hover {
-    border-color: hsl(var(--primary) / 0.5);
-  }
-
+  /* Curve-style table styling for data */
   .hl-table-header {
     background: hsl(var(--muted));
     color: hsl(var(--muted-foreground));
-    font-weight: 500;
-    font-size: 11px;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    font-size: 10.5px;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    padding: 8px 12px;
+    letter-spacing: 0.08em;
+    padding: 10px 14px;
     border-bottom: 1px solid hsl(var(--border));
   }
 
   .hl-table-cell {
-    padding: 8px 12px;
+    padding: 10px 14px;
     border-bottom: 1px solid hsl(var(--border) / 0.5);
-    font-family: 'Courier New', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 13px;
   }
 
-  .hl-positive {
-    color: hsl(var(--neon-green));
-  }
-
-  .hl-negative {
-    color: hsl(var(--neon-red));
-  }
+  .hl-positive { color: hsl(var(--neon-green)); }
+  .hl-negative { color: hsl(var(--neon-red)); }
+  .hl-accent { color: hsl(var(--accent)); }
 
   .hl-metric {
-    font-family: 'Courier New', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-weight: 500;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.02em;
+  }
+
+  /* Curve-style hard-bordered chip */
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid hsl(var(--border));
+    background: hsl(var(--muted) / 0.6);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: hsl(var(--muted-foreground));
+    transition: all 0.2s ease;
+  }
+
+  .chip:hover {
+    border-color: hsl(var(--primary) / 0.6);
+    color: hsl(var(--foreground));
+  }
+
+  .chip-accent {
+    background: hsl(var(--accent) / 0.12);
+    border-color: hsl(var(--accent) / 0.4);
+    color: hsl(var(--accent));
+  }
+
+  /* Live status pulse dot */
+  .live-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: hsl(var(--neon-green));
+    box-shadow: 0 0 8px hsl(var(--neon-green) / 0.7);
+    animation: live-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes live-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(0.85); }
   }
 }

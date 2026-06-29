@@ -11,6 +11,7 @@ import PersonalTwitterAnalytics from "@/components/PersonalTwitterAnalytics";
 
 import { BentoGrid, type BentoItem } from './ui/bento-grid';
 import { Logos3 } from './ui/logos3';
+import TopNav from './TopNav';
 
 const Portfolio = () => {
   const navigate = useNavigate();
@@ -346,10 +347,13 @@ const Portfolio = () => {
 
   return (
     <ChainThemeProvider>
-      <div className="min-h-screen bg-background">        
+      <div className="min-h-screen bg-background">
         {/* Grid Pattern Background */}
         <div className="fixed inset-0 grid-pattern opacity-10 pointer-events-none" />
-      
+
+        {/* Top Navigation */}
+        <TopNav />
+
       {/* Header Section */}
       <div className="relative z-10">
         <div className="container mx-auto px-4 py-8">
