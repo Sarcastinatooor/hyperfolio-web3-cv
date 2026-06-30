@@ -12,6 +12,8 @@ import PersonalTwitterAnalytics from "@/components/PersonalTwitterAnalytics";
 import { BentoGrid, type BentoItem } from './ui/bento-grid';
 import { Logos3 } from './ui/logos3';
 import TopNav from './TopNav';
+import ExperienceGrid, { type ExperienceCardData } from './ExperienceGrid';
+import KolMarquee from './KolMarquee';
 
 const Portfolio = () => {
   const navigate = useNavigate();
@@ -290,7 +292,49 @@ const Portfolio = () => {
     "Web3 Analytics", "Project Management", "Strategic Planning", "Partnership Development"
   ];
 
-  // Transform experiences into BentoItems
+  // Hero metrics per experience for the new dynamic cards
+  const EXPERIENCE_METRICS: Array<{ metric: string; metricLabel: string; accent: ExperienceCardData["accent"] }> = [
+    { metric: "$300M", metricLabel: "Peak TVL · 600%+ engagement", accent: "primary" },
+    { metric: "Top-3", metricLabel: "“Digital Assets” SEO rank", accent: "primary" },
+    { metric: "Won", metricLabel: "SWC MENA · WBS Dubai", accent: "yellow" },
+    { metric: "$100M+", metricLabel: "Futures Vol · 80+ KOLs", accent: "cyan" },
+    { metric: "5K → 54K", metricLabel: "Twitter growth · $3.3M raise", accent: "green" },
+    { metric: "500%", metricLabel: "User & Volume growth · 3mo", accent: "primary" },
+    { metric: "SEO scale", metricLabel: "Crypto news syndication", accent: "yellow" },
+    { metric: "3+ yrs", metricLabel: "Multi-project freelance era", accent: "primary" },
+  ];
+
+  // Dynamic Experience cards
+  const experienceCards: ExperienceCardData[] = experiences.map((exp, index) => {
+    const m = EXPERIENCE_METRICS[index] ?? { metric: "—", metricLabel: "—", accent: "primary" as const };
+    const logoSrcMap: Record<number, string> = {
+      0: "/lovable-uploads/a991def3-65b4-42c5-ae46-fd51b8ba5745.png",
+      1: "/lovable-uploads/bfb0ed9c-a115-48ed-b7c4-97a1180adfc3.png",
+      2: "/lovable-uploads/b48218d8-1c66-437e-a9d3-31e42c4a8e02.png",
+      3: "/lovable-uploads/4aab9ee7-324f-4aa4-b2f0-23c0889641c2.png",
+      4: "/lovable-uploads/7b43e7b3-c363-4285-bc6b-9f4b560ee18f.png",
+      5: "/lovable-uploads/ebf96c71-aca5-4edd-b755-37acb18b5eaa.png",
+      6: "/lovable-uploads/f45b0652-00ce-46b8-9cd2-4e80b7474ee3.png",
+    };
+    const logo = logoSrcMap[index] ? (
+      <img src={logoSrcMap[index]} alt={`${exp.company} logo`} className="w-7 h-7 object-contain" loading="lazy" />
+    ) : (
+      <span className="text-xs font-mono font-bold text-muted-foreground">{exp.company.slice(0, 2).toUpperCase()}</span>
+    );
+    return {
+      company: exp.company,
+      title: exp.title,
+      period: exp.period,
+      metric: m.metric,
+      metricLabel: m.metricLabel,
+      accent: m.accent,
+      skills: exp.skills,
+      logo,
+      onClick: () => navigate(`/experience/${index}`),
+    };
+  });
+
+  // (Legacy) Transform experiences into BentoItems — kept temporarily for reference
   const experienceBentoItems: BentoItem[] = experiences.map((exp, index) => ({
     title: exp.company,
     description: exp.keyResponsibilities[0],
@@ -397,28 +441,47 @@ const Portfolio = () => {
           </div>
 
           {/* Experience Section */}
-          <div ref={experienceRef} className="mb-6">
-            <div className="text-center mb-6">
-              <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-4">
-                Experience
-              </h2>
+          <div ref={experienceRef} className="mb-12">
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-6">
+              <div>
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="live-dot" />
+                  <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">
+                    Career Stack
+                  </span>
+                </div>
+                <h2 className="text-2xl lg:text-3xl font-bold text-foreground tracking-tight">
+                  Experience
+                </h2>
+              </div>
+              <div className="flex gap-3">
+                <div className="hl-card px-4 py-2.5 min-w-[100px]">
+                  <div className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">
+                    Total
+                  </div>
+                  <div className="text-xl font-mono font-bold text-foreground mt-0.5">8 yrs</div>
+                </div>
+                <div className="hl-card px-4 py-2.5 min-w-[100px]">
+                  <div className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">
+                    Roles
+                  </div>
+                  <div className="text-xl font-mono font-bold text-accent mt-0.5">{experiences.length}</div>
+                </div>
+              </div>
             </div>
-            
-            {/* Bento Grid for Experience */}
-            <BentoGrid items={experienceBentoItems} />
+
+            <ExperienceGrid items={experienceCards} />
           </div>
 
           {/* KOLs Section */}
           <div className="mb-12">
-            <div className="text-center mb-8">
-              <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-                KOLs I've Collaborated With 
-              </h2>
-            </div>
-            
+            <KolMarquee />
+          </div>
+
+          {/* Legacy KOL inline (hidden) — kept for reference, can be removed in next pass */}
+          <div className="hidden">
             <div className="relative overflow-hidden bg-gradient-to-b from-background/50 to-transparent rounded-2xl border border-white/10 p-8 pt-16 pb-12">
               <div className="flex flex-col">
-                {/* Single Row - Scrolling */}
                 <div className="relative">
                   <div className="flex animate-[scroll-right_15s_linear_infinite] gap-6">
                     {[

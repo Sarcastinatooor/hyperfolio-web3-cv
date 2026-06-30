@@ -46,19 +46,7 @@ const TopNav = () => {
 
   return (
     <header className="sticky top-0 z-50 w-full backdrop-blur-xl bg-background/70 border-b border-border">
-      <div className="container mx-auto px-4 h-14 flex items-center justify-between gap-3">
-        {/* Left: brand */}
-        <a
-          href="/"
-          className="flex items-center gap-2 font-mono text-sm font-semibold tracking-wider text-foreground hover:text-primary transition-colors"
-        >
-          <span className="inline-block w-2 h-2 rounded-full bg-primary shadow-[0_0_10px_hsl(var(--primary))]" />
-          <span>SHEEL.HL</span>
-          <span className="hidden sm:inline text-muted-foreground font-normal">
-            / growth & bd
-          </span>
-        </a>
-
+      <div className="container mx-auto px-4 h-14 flex items-center justify-end gap-3">
         {/* Right: chain selector + counter + connect */}
         <div className="flex items-center gap-2">
           <div className="relative" ref={dropdownRef}>
