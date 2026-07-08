@@ -411,7 +411,7 @@ const Portfolio = () => {
                     <span className="animate-pulse">|</span>
                   </h1>
                   <p className="text-lg lg:text-xl text-muted-foreground mb-4 hl-metric">
-                    Vibe Marketing for Conversions not just Mindshare
+                    Content creator by origin. GTM engineer by outcome.
                   </p>
                   
                   <div className="text-sm text-foreground/80 max-w-3xl leading-relaxed space-y-3">
