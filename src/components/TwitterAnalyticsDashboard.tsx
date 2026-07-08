@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Badge } from './ui/badge';
 import { TweetEmbed } from './ui/tweet-embed';
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from './ui/chart';
 import { LineChart, Line, AreaChart, Area, BarChart, Bar, XAxis, YAxis, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
-import { Calendar, TrendingUp, Users, Heart, MessageCircle, Repeat2, Eye, Filter } from 'lucide-react';
+import { Calendar, TrendingUp, Users, Heart, MessageCircle, Repeat2, Eye, Filter, ChevronLeft, ChevronRight, ArrowUpRight, Trophy } from 'lucide-react';
 import { Button } from './ui/button';
 
 interface TwitterAnalyticsDashboardProps {
@@ -37,9 +37,30 @@ interface EngagementDataPoint {
   avgViews: number;
 }
 
+const CATEGORY_COLOR: Record<string, { text: string; bg: string; border: string; label: string }> = {
+  product: { text: 'text-primary', bg: 'bg-primary/12', border: 'border-primary/40', label: 'Product' },
+  partnership: { text: 'text-[hsl(var(--neon-cyan))]', bg: 'bg-[hsl(var(--neon-cyan)/0.12)]', border: 'border-[hsl(var(--neon-cyan)/0.4)]', label: 'Partnership' },
+  giveaway: { text: 'text-accent', bg: 'bg-accent/12', border: 'border-accent/40', label: 'Giveaway' },
+  educational: { text: 'text-[hsl(var(--neon-green))]', bg: 'bg-[hsl(var(--neon-green)/0.12)]', border: 'border-[hsl(var(--neon-green)/0.4)]', label: 'Educational' },
+};
+
+const formatCount = (n: number): string => {
+  if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(1)}M`;
+  if (n >= 1_000) return `${(n / 1_000).toFixed(1)}K`;
+  return String(n);
+};
+
 const TwitterAnalyticsDashboard: React.FC<TwitterAnalyticsDashboardProps> = ({ startDate = "2024-01" }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedPeriod, setSelectedPeriod] = useState<string>('all');
+  const campaignScrollRef = useRef<HTMLDivElement>(null);
+
+  const scrollCampaigns = (dir: 'left' | 'right') => {
+    const el = campaignScrollRef.current;
+    if (!el) return;
+    const cardWidth = 340;
+    el.scrollBy({ left: dir === 'left' ? -cardWidth : cardWidth, behavior: 'smooth' });
+  };
 
   // Mock comprehensive campaign data
   const campaigns: CampaignData[] = [
@@ -314,55 +335,164 @@ const TwitterAnalyticsDashboard: React.FC<TwitterAnalyticsDashboardProps> = ({ s
         </Card>
       </div>
 
-      {/* Top Performing Campaigns */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Top Performing Campaigns</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="flex overflow-x-auto gap-4 pb-4">
-            {topCampaigns.map((campaign, index) => (
-              <div key={campaign.id} className="flex-shrink-0 w-96 bg-card border rounded-lg p-4 space-y-4 shadow-sm hover:shadow-md transition-shadow">
-                {/* Campaign Header */}
-                <div className="flex items-start justify-between">
-                  <div className="flex-1">
-                    <h3 className="font-semibold text-foreground text-sm leading-tight">{campaign.name}</h3>
-                  </div>
-                  <Badge variant={index === 0 ? 'default' : 'secondary'} className="text-xs">
-                    #{index + 1}
-                  </Badge>
-                </div>
-
-                {/* Extended Tweet Preview */}
-                {campaign.tweetUrl && (
-                  <div className="bg-muted/10 border rounded p-3">
-                    <div className="text-xs text-muted-foreground mb-2">Tweet Preview</div>
-                    <TweetEmbed 
-                      tweetUrl={campaign.tweetUrl} 
-                      className="w-full h-96"
-                    />
-                  </div>
-                )}
-
-                {/* Full Core Contributions */}
-                {campaign.highlights && (
-                  <div className="bg-muted/10 rounded p-3">
-                    <div className="text-xs font-medium text-foreground mb-3">Core Contributions</div>
-                    <ul className="space-y-2">
-                      {campaign.highlights.map((highlight, idx) => (
-                        <li key={idx} className="text-xs text-muted-foreground flex items-start gap-2">
-                          <span className="text-primary font-bold mt-0.5 text-xs">•</span>
-                          <span>{highlight}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </div>
-            ))}
+      {/* Top Performing Campaigns — dynamic horizontal leaderboard */}
+      <div className="hl-card p-6 md:p-8">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-6">
+          <div>
+            <div className="flex items-center gap-2 mb-2">
+              <Trophy className="w-4 h-4 text-primary" />
+              <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">
+                Top Performing Campaigns
+              </span>
+            </div>
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground tracking-tight">
+              Campaign leaderboard
+            </h2>
+            <p className="text-xs text-muted-foreground mt-1 font-mono flex items-center gap-1">
+              <ChevronRight className="w-3 h-3 text-accent" />
+              Ranked by impressions · Scroll to explore
+            </p>
           </div>
-        </CardContent>
-      </Card>
+          <div className="flex gap-3">
+            <div className="hl-card px-4 py-2.5 min-w-[110px]">
+              <div className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">
+                Campaigns
+              </div>
+              <div className="text-xl font-mono font-bold text-foreground mt-0.5">
+                {topCampaigns.length}
+              </div>
+            </div>
+            <div className="hl-card px-4 py-2.5 min-w-[110px]">
+              <div className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">
+                Peak Impact
+              </div>
+              <div className="text-xl font-mono font-bold text-accent mt-0.5">$100M+</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Horizontal snap-scroll with edge fades */}
+        <div className="relative">
+          <div
+            className="absolute inset-y-0 left-0 w-10 z-10 pointer-events-none"
+            style={{ background: "linear-gradient(to right, hsl(var(--card)) 0%, transparent 100%)" }}
+          />
+          <div
+            className="absolute inset-y-0 right-0 w-10 z-10 pointer-events-none"
+            style={{ background: "linear-gradient(to left, hsl(var(--card)) 0%, transparent 100%)" }}
+          />
+
+          <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 scroll-smooth">
+            {topCampaigns.map((campaign, index) => {
+              const CATEGORY_STYLE: Record<string, { label: string; chipClass: string }> = {
+                product: { label: "Product", chipClass: "text-primary border-primary/40 bg-primary/10" },
+                partnership: { label: "Partnership", chipClass: "text-accent border-accent/40 bg-accent/10" },
+                giveaway: { label: "Giveaway", chipClass: "text-[hsl(var(--neon-green))] border-[hsl(var(--neon-green)/0.4)] bg-[hsl(var(--neon-green)/0.1)]" },
+                educational: { label: "Educational", chipClass: "text-[hsl(var(--neon-cyan))] border-[hsl(var(--neon-cyan)/0.4)] bg-[hsl(var(--neon-cyan)/0.1)]" },
+              };
+              const cat = CATEGORY_STYLE[campaign.category] || CATEGORY_STYLE.product;
+
+              const formatNum = (n: number) => {
+                if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(1)}M`;
+                if (n >= 1_000) return `${(n / 1_000).toFixed(0)}K`;
+                return `${n}`;
+              };
+
+              return (
+                <div
+                  key={`${campaign.id}-${index}`}
+                  className="hl-card group flex-shrink-0 w-[320px] md:w-[360px] snap-start p-5 flex flex-col transition-all duration-300 hover:-translate-y-1"
+                >
+                  {/* Rank + Category */}
+                  <div className="flex items-start justify-between mb-3">
+                    <div className="text-4xl font-mono font-black text-foreground/25 leading-none">
+                      #{index + 1}
+                    </div>
+                    <span
+                      className={`inline-flex items-center px-2.5 py-1 rounded-full border font-mono text-[10px] uppercase tracking-widest ${cat.chipClass}`}
+                    >
+                      {cat.label}
+                    </span>
+                  </div>
+
+                  {/* Campaign name */}
+                  <h3 className="text-base font-bold text-foreground leading-tight mb-4 line-clamp-2 min-h-[2.75rem]">
+                    {campaign.name}
+                  </h3>
+
+                  {/* Hero metric: TVL Impact */}
+                  <div className="rounded-md border border-accent/40 bg-accent/8 px-4 py-3 mb-3">
+                    <div className="text-[10px] font-mono uppercase tracking-widest text-accent/80 mb-1">
+                      TVL Impact
+                    </div>
+                    <div className="text-2xl font-mono font-bold text-accent leading-none">
+                      {campaign.metrics.tvlImpact}
+                    </div>
+                  </div>
+
+                  {/* Secondary metrics */}
+                  <div className="grid grid-cols-3 gap-2 mb-4">
+                    <div className="rounded-md border border-border bg-muted/30 px-2 py-2 text-center">
+                      <div className="text-[9px] font-mono uppercase tracking-widest text-muted-foreground">
+                        Views
+                      </div>
+                      <div className="text-sm font-mono font-bold text-foreground mt-0.5">
+                        {formatNum(campaign.metrics.views)}
+                      </div>
+                    </div>
+                    <div className="rounded-md border border-border bg-muted/30 px-2 py-2 text-center">
+                      <div className="text-[9px] font-mono uppercase tracking-widest text-muted-foreground">
+                        ER
+                      </div>
+                      <div className="text-sm font-mono font-bold text-foreground mt-0.5">
+                        {campaign.metrics.engagement}%
+                      </div>
+                    </div>
+                    <div className="rounded-md border border-border bg-muted/30 px-2 py-2 text-center">
+                      <div className="text-[9px] font-mono uppercase tracking-widest text-muted-foreground">
+                        Reposts
+                      </div>
+                      <div className="text-sm font-mono font-bold text-foreground mt-0.5">
+                        {formatNum(campaign.metrics.retweets)}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Core contributions with internal scroll */}
+                  {campaign.highlights && (
+                    <div className="mb-4 flex-1 min-h-0">
+                      <div className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground mb-2">
+                        Core Contributions
+                      </div>
+                      <ul className="space-y-2 max-h-[140px] overflow-y-auto pr-2 text-xs text-foreground/85 leading-relaxed">
+                        {campaign.highlights.map((highlight, idx) => (
+                          <li key={idx} className="flex items-start gap-2">
+                            <span className="text-accent mt-0.5 shrink-0 font-mono">▸</span>
+                            <span>{highlight}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {/* CTA */}
+                  {campaign.tweetUrl && (
+                    <a
+                      href={campaign.tweetUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-auto flex items-center justify-center gap-2 rounded-md border border-border bg-background/40 px-3 py-2 text-[11px] font-mono uppercase tracking-widest text-muted-foreground hover:border-primary/60 hover:text-primary hover:bg-primary/5 transition-colors"
+                    >
+                      <span>View campaign on X</span>
+                      <ArrowUpRight className="w-3 h-3" />
+                    </a>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
