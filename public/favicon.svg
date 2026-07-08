@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1B1440"/>
+      <stop offset="100%" stop-color="#0B0819"/>
+    </linearGradient>
+    <linearGradient id="s" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#B18CFF"/>
+      <stop offset="100%" stop-color="#7A3AF0"/>
+    </linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="1.2"/>
+    </filter>
+  </defs>
+
+  <rect x="0" y="0" width="64" height="64" rx="14" ry="14" fill="url(#bg)"/>
+
+  <!-- soft accent dot bottom-right -->
+  <circle cx="52" cy="52" r="4" fill="#FFD54B" opacity="0.85"/>
+  <circle cx="52" cy="52" r="6" fill="#FFD54B" opacity="0.25" filter="url(#glow)"/>
+
+  <!-- stylized S -->
+  <path d="M45 20
+           C 45 15, 40 12, 32 12
+           C 23 12, 18 15, 18 22
+           C 18 28, 23 30, 32 32
+           C 41 34, 46 36, 46 42
+           C 46 49, 41 52, 32 52
+           C 24 52, 19 49, 19 44"
+        fill="none"
+        stroke="url(#s)"
+        stroke-width="6"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
+</svg>
