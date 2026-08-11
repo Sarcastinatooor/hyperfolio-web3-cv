@@ -334,7 +334,7 @@ const ExperienceDetail = () => {
 
   if (!experience) {
     return (
-      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+      <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-4">Experience not found</h1>
           <Button onClick={() => navigate('/')} variant="outline">
@@ -361,21 +361,21 @@ const ExperienceDetail = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-background text-foreground">
       {/* Header */}
-      <div className="border-b border-gray-800 bg-gray-900/50 backdrop-blur-sm sticky top-0 z-10">
+      <div className="border-b border-border bg-card/85 backdrop-blur-sm sticky top-0 z-10">
         <div className="max-w-4xl mx-auto px-6 py-4 flex items-center gap-4">
           <Button
             onClick={() => navigate('/')}
             variant="ghost"
             size="sm"
-            className="text-gray-400 hover:text-white"
+            className="text-muted-foreground hover:text-foreground"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Portfolio
           </Button>
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center overflow-hidden">
+            <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center overflow-hidden">
               {experienceId === 1 ? (
                 <img 
                   src="/lovable-uploads/bfb0ed9c-a115-48ed-b7c4-97a1180adfc3.png" 
@@ -393,8 +393,8 @@ const ExperienceDetail = () => {
               )}
             </div>
             <div>
-              <h1 className="font-semibold text-blue-400">{experience.company}</h1>
-              <p className="text-sm text-emerald-400">{experience.title}</p>
+              <h1 className="font-semibold text-primary">{experience.company}</h1>
+              <p className="text-sm text-brand-secondary">{experience.title}</p>
             </div>
           </div>
         </div>
@@ -403,20 +403,20 @@ const ExperienceDetail = () => {
       {/* Content */}
       <div className="max-w-4xl mx-auto px-6 py-8 space-y-8">
         {/* Overview */}
-        <Card className="bg-gray-900 border-gray-800">
+        <Card className="bg-card border-border">
           <CardHeader>
             <div className="flex items-start justify-between">
               <div>
-                <CardTitle className="text-xl text-blue-400">{experience.company}</CardTitle>
-                <p className="text-emerald-400 font-medium mt-1">{experience.title}</p>
+                <CardTitle className="text-xl text-primary">{experience.company}</CardTitle>
+                <p className="text-brand-secondary font-medium mt-1">{experience.title}</p>
               </div>
-              <Badge variant="secondary" className="bg-gray-800 text-gray-300">
+              <Badge variant="secondary" className="border border-border bg-secondary text-secondary-foreground">
                 {experience.type}
               </Badge>
             </div>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="flex items-center gap-6 text-sm text-gray-400">
+            <div className="flex items-center gap-6 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
                 <Calendar className="w-4 h-4" />
                 {experience.period}
@@ -430,16 +430,16 @@ const ExperienceDetail = () => {
         </Card>
 
         {/* Key Responsibilities */}
-        <Card className="bg-gray-900 border-gray-800">
+        <Card className="bg-card border-border">
           <CardHeader>
-            <CardTitle className="text-lg text-white">Key Responsibilities</CardTitle>
+            <CardTitle className="text-lg text-foreground">Key Responsibilities</CardTitle>
           </CardHeader>
           <CardContent>
             <ul className="space-y-2">
               {experience.keyResponsibilities.map((responsibility, index) => (
                 <li key={index} className="flex items-start gap-3">
-                  <div className="w-2 h-2 rounded-full bg-blue-400 mt-2 flex-shrink-0" />
-                  <span className="text-gray-300">{responsibility}</span>
+                  <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
+                  <span className="text-foreground/90">{responsibility}</span>
                 </li>
               ))}
             </ul>
@@ -447,19 +447,19 @@ const ExperienceDetail = () => {
         </Card>
 
         {/* TL;DR */}
-        <Card className="bg-gray-900 border-gray-800">
+        <Card className="bg-card border-border">
           <CardHeader>
-            <CardTitle className="text-lg text-white">TL;DR</CardTitle>
+            <CardTitle className="text-lg text-foreground">TL;DR</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
               {experience.description.map((desc, index) => (
                 <div 
                   key={index} 
-                  className="group flex items-start gap-3 p-3 rounded-lg bg-gray-800/30 border border-gray-700/50 hover:border-blue-400/50 hover:bg-gray-800/60 transition-all duration-300 cursor-pointer"
+                  className="group flex items-start gap-3 p-3 rounded-lg bg-secondary/45 border border-border hover:border-primary/55 hover:bg-secondary/80 transition-all duration-300 cursor-pointer"
                 >
-                  <div className="w-2 h-2 rounded-full bg-blue-400 mt-2 flex-shrink-0 group-hover:bg-blue-300 transition-colors duration-300" />
-                  <span className="text-gray-300 leading-relaxed group-hover:text-gray-100 transition-colors duration-300">
+                  <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0 group-hover:bg-primary/80 transition-colors duration-300" />
+                  <span className="text-foreground/90 leading-relaxed group-hover:text-foreground transition-colors duration-300">
                     {desc}
                   </span>
                 </div>
@@ -470,10 +470,10 @@ const ExperienceDetail = () => {
 
         {/* Partner Companies Carousel - only for Spherium Finance */}
         {experienceId === 4 && (
-          <Card className="bg-gray-900 border-gray-800">
+          <Card className="bg-card border-border">
             <CardHeader>
-              <CardTitle className="text-lg text-white flex items-center gap-2">
-                <Building2 className="w-5 h-5 text-blue-400" />
+              <CardTitle className="text-lg text-foreground flex items-center gap-2">
+                <Building2 className="w-5 h-5 text-primary" />
                 Product Partnerships
               </CardTitle>
             </CardHeader>
@@ -593,14 +593,14 @@ const ExperienceDetail = () => {
                             alt={logo.description}
                             className={logo.className}
                           />
-                          <span className="text-xs text-gray-400 text-center">{logo.description}</span>
+                          <span className="text-xs text-muted-foreground text-center">{logo.description}</span>
                         </div>
                       </CarouselItem>
                     ))}
                   </CarouselContent>
                 </Carousel>
-                <div className="absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-gray-900 to-transparent pointer-events-none"></div>
-                <div className="absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-gray-900 to-transparent pointer-events-none"></div>
+                <div className="absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-card to-transparent pointer-events-none"></div>
+                <div className="absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-card to-transparent pointer-events-none"></div>
               </div>
             </CardContent>
           </Card>
@@ -608,26 +608,26 @@ const ExperienceDetail = () => {
 
         {/* Content Portfolio - only for Liminal Custody */}
         {experienceId === 1 && (
-          <Card className="bg-gray-900 border-gray-800">
+          <Card className="bg-card border-border">
             <CardHeader>
-              <CardTitle className="text-lg text-white flex items-center gap-2">
-                <FileText className="w-5 h-5 text-blue-400" />
+              <CardTitle className="text-lg text-foreground flex items-center gap-2">
+                <FileText className="w-5 h-5 text-primary" />
                 Content & Social Media Portfolio
               </CardTitle>
-              <p className="text-gray-400 text-sm">
+              <p className="text-muted-foreground text-sm">
                 Published content and social media analytics during tenure
               </p>
             </CardHeader>
             <CardContent>
               <Tabs defaultValue="blogs" className="w-full">
-                <TabsList className="grid w-full grid-cols-2 bg-gray-800 mb-6">
+                <TabsList className="grid w-full grid-cols-2 bg-secondary mb-6">
                   <TabsTrigger value="blogs">Published Blogs</TabsTrigger>
                   <TabsTrigger value="twitter">Twitter Analytics</TabsTrigger>
                 </TabsList>
 
                 <TabsContent value="blogs">
                   <div className="space-y-4">
-                    <p className="text-gray-400 text-sm">
+                    <p className="text-muted-foreground text-sm">
                       Blog posts and thought leadership content published during tenure (June 2023 - June 2024)
                     </p>
                     <BlogGrid 
@@ -653,37 +653,37 @@ const ExperienceDetail = () => {
 
         {/* News Article Embed - only for ShipFinex */}
         {experienceId === 2 && (
-          <Card className="bg-gray-900 border-gray-800">
+          <Card className="bg-card border-border">
             <CardHeader>
-              <CardTitle className="text-lg text-white flex items-center gap-2">
-                <Globe className="w-5 h-5 text-blue-400" />
+              <CardTitle className="text-lg text-foreground flex items-center gap-2">
+                <Globe className="w-5 h-5 text-primary" />
                 In the News
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div 
-                className="border border-gray-700 rounded-lg p-6 bg-gray-800/30 hover:bg-gray-800/50 transition-all duration-300 cursor-pointer group"
+                className="border border-border rounded-lg p-6 bg-secondary/45 hover:bg-secondary/75 hover:border-primary/50 transition-all duration-300 cursor-pointer group"
                 onClick={() => window.open('https://finance.yahoo.com/news/shipfinex-real-world-asset-tokenization-143000956.html', '_blank')}
               >
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0">
-                    <div className="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center">
-                      <Globe className="w-6 h-6 text-purple-400" />
+                    <div className="w-12 h-12 bg-brand-secondary/15 rounded-lg flex items-center justify-center">
+                      <Globe className="w-6 h-6 text-brand-secondary" />
                     </div>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-white font-semibold mb-2 group-hover:text-blue-300 transition-colors">
+                    <h3 className="text-foreground font-semibold mb-2 group-hover:text-primary transition-colors">
                       ShipFinex: A Real-World Asset Tokenization Protocol Now Regional Champions of Startup World Cup Pitch Competition
                     </h3>
-                    <p className="text-gray-300 text-sm mb-3 leading-relaxed">
+                    <p className="text-foreground/90 text-sm mb-3 leading-relaxed">
                       Dubai, UAE - ShipFinex is emerging to revolutionise the trillion-dollar Maritime economy through real-world asset tokenization and fractional ownership. The protocol won the Startup World Cup Pitch Competition at World Blockchain Summit.
                     </p>
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
                         <Badge variant="secondary" className="text-xs">Yahoo Finance</Badge>
-                        <span className="text-gray-500 text-xs">Nov 15, 2022</span>
+                        <span className="text-muted-foreground/80 text-xs">Nov 15, 2022</span>
                       </div>
-                      <div className="flex items-center gap-1 text-blue-400 group-hover:text-blue-300 transition-colors">
+                      <div className="flex items-center gap-1 text-primary group-hover:text-primary/80 transition-colors">
                         <span className="text-sm">Read article</span>
                         <Globe className="w-4 h-4" />
                       </div>
@@ -697,10 +697,10 @@ const ExperienceDetail = () => {
 
         {/* Dapp List Widget - only for Spherium Finance */}
         {experienceId === 4 && (
-          <Card className="bg-gray-900 border-gray-800">
+          <Card className="bg-card border-border">
             <CardHeader>
-              <CardTitle className="text-lg text-white flex items-center gap-2">
-                <Award className="w-5 h-5 text-blue-400" />
+              <CardTitle className="text-lg text-foreground flex items-center gap-2">
+                <Award className="w-5 h-5 text-primary" />
                 Community Voting
               </CardTitle>
             </CardHeader>
@@ -712,7 +712,7 @@ const ExperienceDetail = () => {
                   rel="noreferrer noopener"
                   className="block hover:opacity-80 transition-opacity duration-200"
                 >
-                  <div className="bg-gray-800 border border-gray-700 rounded-lg p-6 max-w-md w-full">
+                  <div className="bg-secondary border border-border rounded-lg p-6 max-w-md w-full">
                     <div className="flex items-center justify-center space-x-3 mb-4">
                       <img
                         src="/lovable-uploads/89ebfe9f-d6ba-4603-91fd-89e06b1e8390.png"
@@ -721,11 +721,11 @@ const ExperienceDetail = () => {
                       />
                     </div>
                     <div className="text-center">
-                      <h3 className="text-white font-semibold mb-2">Spherium Finance</h3>
-                      <p className="text-gray-300 text-sm mb-3">Featured project with community recognition</p>
+                      <h3 className="text-foreground font-semibold mb-2">Spherium Finance</h3>
+                      <p className="text-foreground/90 text-sm mb-3">Featured project with community recognition</p>
                       <div className="flex items-center justify-center space-x-2">
-                        <span className="text-blue-400 font-bold text-lg">3,733</span>
-                        <span className="text-gray-400 text-sm">votes</span>
+                        <span className="text-accent font-bold text-lg">3,733</span>
+                        <span className="text-muted-foreground text-sm">votes</span>
                       </div>
                     </div>
                   </div>
@@ -737,30 +737,30 @@ const ExperienceDetail = () => {
 
         {/* Medium Publication - only for Spherium Finance */}
         {experienceId === 4 && (
-          <Card className="bg-gray-900 border-gray-800">
+          <Card className="bg-card border-border">
             <CardHeader>
-              <CardTitle className="text-lg text-white flex items-center gap-2">
-                <FileText className="w-5 h-5 text-blue-400" />
+              <CardTitle className="text-lg text-foreground flex items-center gap-2">
+                <FileText className="w-5 h-5 text-primary" />
                 Medium Publication
               </CardTitle>
-              <p className="text-gray-400 text-sm">
+              <p className="text-muted-foreground text-sm">
                 Articles published during my tenure (Aug 2021 — Jul 2022)
               </p>
             </CardHeader>
             <CardContent className="space-y-4">
               {/* Stats */}
               <div className="grid grid-cols-3 gap-4">
-                <div className="bg-gray-800/50 border border-gray-700/50 rounded-lg p-4 text-center">
-                  <p className="text-2xl font-bold text-blue-400">479</p>
-                  <p className="text-xs text-gray-400 mt-1">Followers</p>
+                <div className="bg-secondary/60 border border-border rounded-lg p-4 text-center">
+                  <p className="text-2xl font-bold text-primary">479</p>
+                  <p className="text-xs text-muted-foreground mt-1">Followers</p>
                 </div>
-                <div className="bg-gray-800/50 border border-gray-700/50 rounded-lg p-4 text-center">
-                  <p className="text-2xl font-bold text-emerald-400">19</p>
-                  <p className="text-xs text-gray-400 mt-1">Articles Published</p>
+                <div className="bg-secondary/60 border border-border rounded-lg p-4 text-center">
+                  <p className="text-2xl font-bold text-neon-green">19</p>
+                  <p className="text-xs text-muted-foreground mt-1">Articles Published</p>
                 </div>
-                <div className="bg-gray-800/50 border border-gray-700/50 rounded-lg p-4 text-center">
-                  <p className="text-2xl font-bold text-purple-400">116</p>
-                  <p className="text-xs text-gray-400 mt-1">Publication Followers</p>
+                <div className="bg-secondary/60 border border-border rounded-lg p-4 text-center">
+                  <p className="text-2xl font-bold text-brand-secondary">116</p>
+                  <p className="text-xs text-muted-foreground mt-1">Publication Followers</p>
                 </div>
               </div>
 
@@ -769,7 +769,7 @@ const ExperienceDetail = () => {
                 href="https://medium.com/@spheriumlabs"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 p-3 rounded-lg bg-gray-800/30 border border-gray-700/50 hover:border-blue-400/50 hover:bg-gray-800/60 transition-all duration-300 text-blue-400 hover:text-blue-300"
+                className="flex items-center justify-center gap-2 p-3 rounded-lg bg-secondary/45 border border-border hover:border-primary/55 hover:bg-secondary/80 transition-all duration-300 text-primary hover:text-primary/80"
               >
                 <FileText className="w-4 h-4" />
                 <span className="text-sm font-medium">View Medium Publication →</span>
@@ -780,16 +780,16 @@ const ExperienceDetail = () => {
 
         {/* News Article Embed - only for Spherium Finance */}
         {experienceId === 4 && (
-          <Card className="bg-gray-900 border-gray-800">
+          <Card className="bg-card border-border">
             <CardHeader>
-              <CardTitle className="text-lg text-white flex items-center gap-2">
-                <Globe className="w-5 h-5 text-blue-400" />
+              <CardTitle className="text-lg text-foreground flex items-center gap-2">
+                <Globe className="w-5 h-5 text-primary" />
                 In the News
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div 
-                className="border border-gray-700 rounded-lg p-6 bg-gray-800/30 hover:bg-gray-800/50 transition-all duration-300 cursor-pointer group"
+                className="border border-border rounded-lg p-6 bg-secondary/45 hover:bg-secondary/75 hover:border-primary/50 transition-all duration-300 cursor-pointer group"
                 onClick={() => window.open('https://cointelegraph.com/press-releases/spherium-finance-unveils-a-cross-chain-incubation-and-grant-program', '_blank')}
               >
                 <div className="flex flex-col gap-4">
@@ -802,19 +802,19 @@ const ExperienceDetail = () => {
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="flex-shrink-0">
-                      <div className="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center">
-                        <Globe className="w-6 h-6 text-blue-400" />
+                      <div className="w-12 h-12 bg-primary/15 rounded-lg flex items-center justify-center">
+                        <Globe className="w-6 h-6 text-primary" />
                       </div>
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-white font-semibold mb-2 group-hover:text-blue-300 transition-colors">
+                      <h3 className="text-foreground font-semibold mb-2 group-hover:text-primary transition-colors">
                         Spherium Finance Unveils a Cross-Chain Incubation and Grant Program
                       </h3>
-                      <p className="text-gray-300 text-sm mb-3 leading-relaxed">
+                      <p className="text-foreground/90 text-sm mb-3 leading-relaxed">
                         Spherium Finance announces a comprehensive cross-chain incubation and grant program to support innovative DeFi projects across multiple blockchain ecosystems, fostering growth and adoption in the decentralized finance space.
                       </p>
                        <div className="flex items-center gap-2">
-                         <span className="text-gray-500 text-xs">Press Release</span>
+                         <span className="text-muted-foreground/80 text-xs">Press Release</span>
                        </div>
                     </div>
                   </div>

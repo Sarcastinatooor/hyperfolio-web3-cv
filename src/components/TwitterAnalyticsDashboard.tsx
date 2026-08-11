@@ -253,7 +253,7 @@ const TwitterAnalyticsDashboard: React.FC<TwitterAnalyticsDashboardProps> = ({ s
   // Campaign category distribution
   const categoryData = [
     { name: 'Giveaways', value: 35, count: 8, color: 'hsl(var(--primary))' },
-    { name: 'Product', value: 30, count: 7, color: 'hsl(var(--secondary))' },
+    { name: 'Product', value: 30, count: 7, color: 'hsl(var(--brand-secondary))' },
     { name: 'Partnerships', value: 20, count: 5, color: 'hsl(var(--accent))' },
     { name: 'Educational', value: 15, count: 4, color: 'hsl(var(--muted))' }
   ];

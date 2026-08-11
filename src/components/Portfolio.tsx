@@ -6,14 +6,16 @@ import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { ExternalLink, MapPin, Mail, Calendar, Award, Briefcase, X, Twitter, Globe, Building2, User, Target, TrendingUp } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { ChainThemeProvider } from "@/contexts/ChainThemeContext";
 import PersonalTwitterAnalytics from "@/components/PersonalTwitterAnalytics";
+import CreatorReputation from "@/components/CreatorReputation";
+import type { BentoItem } from './ui/bento-grid';
 
-import { BentoGrid, type BentoItem } from './ui/bento-grid';
-import { Logos3 } from './ui/logos3';
 import TopNav from './TopNav';
-import ExperienceGrid, { type ExperienceCardData } from './ExperienceGrid';
 import KolMarquee from './KolMarquee';
+import { BackgroundGridBeam } from './ui/background-grid-beam';
+import { Timeline, type TimelineEntry } from './ui/timeline';
+import { ProjectShowcase, type ShowcaseProject } from './ui/project-showcase';
+import { LogoMarquee } from './ui/logo-marquee';
 
 const Portfolio = () => {
   const navigate = useNavigate();
@@ -292,47 +294,95 @@ const Portfolio = () => {
     "Web3 Analytics", "Project Management", "Strategic Planning", "Partnership Development"
   ];
 
-  // Hero metrics per experience for the new dynamic cards
-  const EXPERIENCE_METRICS: Array<{ metric: string; metricLabel: string; accent: ExperienceCardData["accent"] }> = [
-    { metric: "$300M", metricLabel: "Peak TVL · 600%+ engagement", accent: "primary" },
-    { metric: "Top-3", metricLabel: "“Digital Assets” SEO rank", accent: "primary" },
-    { metric: "Won", metricLabel: "SWC MENA · WBS Dubai", accent: "yellow" },
-    { metric: "$100M+", metricLabel: "Futures Vol · 80+ KOLs", accent: "cyan" },
-    { metric: "5K → 54K", metricLabel: "Twitter growth · $3.3M raise", accent: "green" },
-    { metric: "500%", metricLabel: "User & Volume growth · 3mo", accent: "primary" },
-    { metric: "SEO scale", metricLabel: "Crypto news syndication", accent: "yellow" },
-    { metric: "3+ yrs", metricLabel: "Multi-project freelance era", accent: "primary" },
+  const CAREER_OUTCOMES: Array<{ badge: string; description: string }> = [
+    {
+      badge: "PEAK $300M TVL",
+      description:
+        "Owned the growth engine across acquisition, campaigns, KOL partnerships, and community operations—scaling TVL beyond $100M to a $300M peak and lifting social engagement by 600%+.",
+    },
+    {
+      badge: "TOP-3 SEO",
+      description:
+        "Built the end-to-end B2B content and communications function, aligning product, sales, SEO, and paid distribution to turn technical custody products into demand-generating narratives.",
+    },
+    {
+      badge: "PITCH WINNER",
+      description:
+        "Led brand, go-to-market, and investor outreach for an RWA tokenization startup—winning the Startup World Cup pitch at WBS Dubai and generating $10K+ private-sale tickets.",
+    },
+    {
+      badge: "$100M+ VOLUME",
+      description:
+        "Expanded BitMart across the Indian market through an 80+ KOL partner network, performance-led campaigns, and regional business development that drove $100M+ in futures volume.",
+    },
+    {
+      badge: "5K → 54K X",
+      description:
+        "Shipped growth for a cross-chain DeFi suite, positioned the founders as category voices, expanded the social audience from 5K to 54K, and supported a $3.3M raise.",
+    },
+    {
+      badge: "500% GROWTH",
+      description:
+        "Built a multi-market influencer ecosystem for Huobi Global and introduced measurable KOL frameworks that increased regional users and trading volume by 500% in three months.",
+    },
+    {
+      badge: "SEO SCALE",
+      description:
+        "Led a crypto newsroom across market coverage, sponsored content, and press releases while improving the publication's SEO system and creating repeatable content-led revenue channels.",
+    },
+    {
+      badge: "3+ YEARS",
+      description:
+        "Started in the Web3 trenches by running content and social programs across multiple crypto projects—building the editorial, community, and distribution instincts that shaped every role after it.",
+    },
   ];
 
-  // Dynamic Experience cards
-  const experienceCards: ExperienceCardData[] = experiences.map((exp, index) => {
-    const m = EXPERIENCE_METRICS[index] ?? { metric: "—", metricLabel: "—", accent: "primary" as const };
-    const logoSrcMap: Record<number, string> = {
-      0: "/lovable-uploads/a991def3-65b4-42c5-ae46-fd51b8ba5745.png",
-      1: "/lovable-uploads/bfb0ed9c-a115-48ed-b7c4-97a1180adfc3.png",
-      2: "/lovable-uploads/b48218d8-1c66-437e-a9d3-31e42c4a8e02.png",
-      3: "/lovable-uploads/4aab9ee7-324f-4aa4-b2f0-23c0889641c2.png",
-      4: "/lovable-uploads/7b43e7b3-c363-4285-bc6b-9f4b560ee18f.png",
-      5: "/lovable-uploads/ebf96c71-aca5-4edd-b755-37acb18b5eaa.png",
-      6: "/lovable-uploads/f45b0652-00ce-46b8-9cd2-4e80b7474ee3.png",
-    };
-    const logo = logoSrcMap[index] ? (
-      <img src={logoSrcMap[index]} alt={`${exp.company} logo`} className="w-7 h-7 object-contain" loading="lazy" />
-    ) : (
-      <span className="text-xs font-mono font-bold text-muted-foreground">{exp.company.slice(0, 2).toUpperCase()}</span>
-    );
-    return {
-      company: exp.company,
-      title: exp.title,
-      period: exp.period,
-      metric: m.metric,
-      metricLabel: m.metricLabel,
-      accent: m.accent,
-      skills: exp.skills,
-      logo,
-      onClick: () => navigate(`/experience/${index}`),
-    };
-  });
+  const experienceLogos = [
+    "/lovable-uploads/a991def3-65b4-42c5-ae46-fd51b8ba5745.png",
+    "/lovable-uploads/bfb0ed9c-a115-48ed-b7c4-97a1180adfc3.png",
+    "/lovable-uploads/b48218d8-1c66-437e-a9d3-31e42c4a8e02.png",
+    "/lovable-uploads/4aab9ee7-324f-4aa4-b2f0-23c0889641c2.png",
+    "/lovable-uploads/7b43e7b3-c363-4285-bc6b-9f4b560ee18f.png",
+    "/lovable-uploads/ebf96c71-aca5-4edd-b755-37acb18b5eaa.png",
+    "/lovable-uploads/f45b0652-00ce-46b8-9cd2-4e80b7474ee3.png",
+    "/lovable-uploads/571df8ea-2bcf-468b-aa84-1acb45393edd.png",
+  ];
+
+  const careerTimelineData: TimelineEntry[] = experiences.map((exp, index) => ({
+    title: exp.period,
+    content: (
+      <button type="button" onClick={() => navigate(`/experience/${index}`)} className="group w-full rounded-xl border border-border bg-card/75 p-5 text-left transition-all hover:-translate-y-0.5 hover:border-primary/45 hover:bg-card hover:shadow-[0_18px_60px_-34px_hsl(var(--primary)/0.55)] md:p-6">
+        <div className="flex items-start justify-between gap-4">
+          <div className="flex min-w-0 items-center gap-3">
+            <div className="grid h-11 w-11 shrink-0 place-items-center overflow-hidden rounded-lg border border-border bg-background p-1.5">
+              <img src={experienceLogos[index]} alt="" className="max-h-full max-w-full object-contain" loading="lazy" />
+            </div>
+            <div className="min-w-0">
+              <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-primary">{exp.company}</div>
+              <h3 className="mt-1 text-lg font-semibold text-foreground md:text-xl">{exp.title}</h3>
+            </div>
+          </div>
+          <ExternalLink className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary" />
+        </div>
+        <div className="mt-5 rounded-lg border border-primary/20 bg-primary/5 p-4">
+          <div className="font-mono text-[9px] uppercase tracking-[0.18em] text-muted-foreground">{CAREER_OUTCOMES[index]?.badge}</div>
+          <p className="mt-2 text-sm leading-6 text-foreground/85">{CAREER_OUTCOMES[index]?.description ?? exp.keyResponsibilities[0]}</p>
+        </div>
+        <div className="mt-4 flex flex-wrap gap-2">
+          {exp.skills.slice(0, 4).map((skill) => <span key={skill} className="chip">{skill}</span>)}
+        </div>
+      </button>
+    ),
+  }));
+
+  const showcaseProjects: ShowcaseProject[] = experiences.slice(0, 6).map((exp, index) => ({
+    id: exp.company,
+    title: CAREER_OUTCOMES[index]?.badge ?? exp.company,
+    meta: `${exp.company} · ${exp.period}`,
+    description: exp.keyResponsibilities[0],
+    image: experienceLogos[index],
+    onSelect: () => navigate(`/experience/${index}`),
+  }));
 
   // (Legacy) Transform experiences into BentoItems — kept temporarily for reference
   const experienceBentoItems: BentoItem[] = experiences.map((exp, index) => ({
@@ -390,10 +440,9 @@ const Portfolio = () => {
 
 
   return (
-    <ChainThemeProvider>
       <div className="min-h-screen bg-background">
-        {/* Grid Pattern Background */}
-        <div className="fixed inset-0 grid-pattern opacity-10 pointer-events-none" />
+        {/* Ambient grid beam background */}
+        <BackgroundGridBeam />
 
         {/* Top Navigation */}
         <TopNav />
@@ -402,7 +451,7 @@ const Portfolio = () => {
       <div className="relative z-10">
         <div className="container mx-auto px-4 py-8">
         {/* Hero Section */}
-        <div className="hl-card mb-8 relative">
+        <div id="about" className="hl-card mb-8 relative scroll-mt-24">
             <div className="p-6">
               <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
                 <div className="flex-1">
@@ -414,7 +463,7 @@ const Portfolio = () => {
                     Content creator by origin. GTM engineer by outcome.
                   </p>
                   
-                  <div className="text-sm text-foreground/80 max-w-3xl leading-relaxed space-y-3">
+                  <div className="text-sm text-foreground/90 max-w-3xl leading-relaxed space-y-3">
                     <p className="hl-metric">
                       👋🏼 Henlo,
                     </p>
@@ -441,13 +490,13 @@ const Portfolio = () => {
           </div>
 
           {/* Experience Section */}
-          <div ref={experienceRef} className="mb-12">
+          <div id="experience" ref={experienceRef} className="mb-12 scroll-mt-24">
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-6">
               <div>
                 <div className="flex items-center gap-2 mb-2">
                   <span className="live-dot" />
                   <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">
-                    Career Stack
+                    Career Changelog
                   </span>
                 </div>
                 <h2 className="text-2xl lg:text-3xl font-bold text-foreground tracking-tight">
@@ -470,11 +519,15 @@ const Portfolio = () => {
               </div>
             </div>
 
-            <ExperienceGrid items={experienceCards} />
+            <Timeline data={careerTimelineData} />
+          </div>
+
+          <div id="work" className="mb-12 scroll-mt-24">
+            <ProjectShowcase projects={showcaseProjects} />
           </div>
 
           {/* KOLs Section */}
-          <div className="mb-12">
+          <div id="network" className="mb-12 scroll-mt-24">
             <KolMarquee />
           </div>
 
@@ -553,9 +606,9 @@ const Portfolio = () => {
           </div>
 
           {/* Twitter Analytics Section */}
-          <div className="mb-12">
+          <div id="analytics" className="mb-12 scroll-mt-24">
             <div className="text-center mb-8">
-              <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
                 My shit posting saga
               </h2>
             </div>
@@ -563,83 +616,70 @@ const Portfolio = () => {
             <PersonalTwitterAnalytics />
           </div>
 
-          {/* Content Scale Section */}
-          <div className="mb-12">
-            <div className="flex justify-center">
-              <img 
-                src="/lovable-uploads/content-scale-analyzer.png" 
-                alt="Content Scale Analysis" 
-                className="w-full max-w-md rounded-2xl border border-white/10"
-              />
-            </div>
+          {/* Creator reputation signals */}
+          <div id="reputation" className="mb-12 scroll-mt-24">
+            <CreatorReputation />
           </div>
 
           {/* Tools Showcase Section */}
-          <Logos3 
-            heading="My Curated Web3 Marketing Tooling Stack"
+          <div id="tools" className="mb-12 scroll-mt-24">
+          <LogoMarquee
+            title="My Curated Web3 Marketing Tooling Stack"
+            description="The analytics, distribution, community, and research systems behind the work."
             logos={[
               {
                 id: "cookie3",
-                description: "Cookie3 Analytics",
+                name: "Cookie3 Analytics",
                 image: "/lovable-uploads/tools/cookie3-logo.png",
-                className: "h-16 w-auto",
               },
               {
                 id: "kaito",
-                description: "Kaito",
+                name: "Kaito",
                 image: "/lovable-uploads/tools/kaito-logo.jpeg",
-                className: "h-16 w-auto",
               },
               {
                 id: "protokol",
-                description: "ProtoKOL",
+                name: "ProtoKOL",
                 image: "/lovable-uploads/tools/protokol-logo.png",
-                className: "h-16 w-auto",
               },
               {
                 id: "posthog",
-                description: "Posthog",
+                name: "PostHog",
                 image: "/lovable-uploads/tools/posthog-logo.png",
-                className: "h-16 w-auto",
               },
               {
                 id: "discord",
-                description: "Discord",
+                name: "Discord",
                 image: "/lovable-uploads/tools/discord-logo.png",
-                className: "h-16 w-auto",
               },
               {
                 id: "debank",
-                description: "DeBank",
+                name: "DeBank",
                 image: "/lovable-uploads/tools/debank-logo.png",
-                className: "h-16 w-auto",
               },
               {
                 id: "galxe",
-                description: "Galxe",
+                name: "Galxe",
                 image: "/lovable-uploads/tools/galxe-logo.png",
-                className: "h-16 w-auto",
               },
               {
                 id: "infinit",
-                description: "Infinit",
+                name: "Infinit",
                 image: "/lovable-uploads/tools/infinit-logo.png",
-                className: "h-16 w-auto",
               },
               {
                 id: "dune",
-                description: "Dune Analytics",
+                name: "Dune Analytics",
                 image: "/lovable-uploads/tools/dune-logo.svg",
-                className: "h-16 w-auto",
               },
             ]}
-            className="mb-12"
           />
+          </div>
 
           {/* Footer */}
           <div className="hl-card text-center">
             <div className="hl-table-cell">
-              <h2 className="text-lg font-semibold text-white mb-4">
+              <h2 className="text-lg font-semibold text-foreground mb-4">
                 Follow me here
               </h2>
               <div className="flex justify-center mb-4">
@@ -655,7 +695,6 @@ const Portfolio = () => {
         </div>
         </div>
       </div>
-    </ChainThemeProvider>
   );
 };
 

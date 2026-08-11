@@ -4,99 +4,113 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Aave x Curve blended design system.
-   Aave: dark purple base, glass cards, soft gradients.
-   Curve: monospace numerics, blocky high-contrast accents.
+/* Onchain Terminal design system.
+   Deep green-black surfaces, mint interaction color, periwinkle support,
+   and amber reserved for high-value metrics.
    All colors MUST be HSL.
 */
 
 @layer base {
   :root {
-    /* Aave-inspired dark purple base */
-    --background: 248 47% 6%;
-    --foreground: 0 0% 96%;
+    --background: 168 42% 5%;
+    --foreground: 163 47% 97%;
 
-    --card: 252 28% 11%;
-    --card-foreground: 0 0% 96%;
+    --card: 166 32% 8%;
+    --card-foreground: 163 47% 97%;
 
-    --popover: 252 28% 11%;
-    --popover-foreground: 0 0% 96%;
+    --popover: 166 32% 8%;
+    --popover-foreground: 163 47% 97%;
 
-    /* Primary: vibrant Aave-style violet */
-    --primary: 264 85% 65%;
-    --primary-foreground: 0 0% 98%;
+    --primary: 169 69% 61%;
+    --primary-foreground: 165 60% 4%;
+    --brand-secondary: 225 100% 77%;
 
-    --secondary: 252 22% 14%;
-    --secondary-foreground: 0 0% 96%;
+    --secondary: 166 30% 11%;
+    --secondary-foreground: 163 47% 97%;
 
-    --muted: 252 18% 18%;
-    --muted-foreground: 252 15% 70%;
+    --muted: 166 24% 14%;
+    --muted-foreground: 163 15% 73%;
 
-    /* Accent: Curve-style bright yellow for high-contrast highlights */
-    --accent: 48 100% 60%;
-    --accent-foreground: 248 47% 6%;
+    --accent: 42 100% 70%;
+    --accent-foreground: 165 60% 4%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 264 30% 22%;
-    --input: 252 28% 11%;
-    --ring: 264 85% 65%;
+    --border: 165 23% 21%;
+    --input: 166 30% 11%;
+    --ring: 169 69% 61%;
 
-    /* Chain-specific accents (used by ChainThemeContext) */
-    --neon-cyan: 192 95% 65%;
-    --neon-green: 150 80% 55%;
+    /* Portfolio signal accents */
+    --neon-cyan: 169 69% 61%;
+    --neon-green: 151 68% 58%;
     --neon-red: 0 84% 60%;
-    --neon-purple: 264 85% 65%;
+    --neon-purple: 225 100% 77%;
     --cta-orange: 25 100% 65%;
-    --dark-surface: 252 28% 11%;
-    --grid-color: 264 30% 18%;
+    --dark-surface: 166 32% 8%;
+    --grid-color: 165 23% 21%;
 
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary) / 0.18), hsl(var(--primary) / 0.06));
-    --gradient-glow: linear-gradient(135deg, hsl(var(--primary) / 0.1), hsl(248 47% 6%));
-    --gradient-card: linear-gradient(180deg, hsl(252 28% 12%), hsl(248 35% 8%));
-    --gradient-accent: linear-gradient(135deg, hsl(var(--accent) / 0.16), hsl(var(--primary) / 0.08));
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary) / 0.18), hsl(var(--brand-secondary) / 0.08));
+    --gradient-glow: linear-gradient(135deg, hsl(var(--primary) / 0.1), hsl(var(--background)));
+    --gradient-card: linear-gradient(180deg, hsl(var(--card)), hsl(var(--background)));
+    --gradient-accent: linear-gradient(135deg, hsl(var(--accent) / 0.14), hsl(var(--brand-secondary) / 0.08));
 
     /* Shadows */
     --shadow-neon: 0 0 24px hsl(var(--primary) / 0.28);
     --shadow-glow: 0 0 18px hsl(var(--primary) / 0.18);
-    --shadow-card: 0 4px 24px hsl(248 47% 2% / 0.6), 0 1px 0 hsl(264 30% 30% / 0.2) inset;
+    --shadow-card: 0 4px 24px hsl(168 42% 2% / 0.65), 0 1px 0 hsl(var(--primary) / 0.08) inset;
 
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     --radius: 0.5rem;
 
-    --sidebar-background: 252 28% 11%;
-    --sidebar-foreground: 0 0% 96%;
-    --sidebar-primary: 264 85% 65%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 252 22% 14%;
-    --sidebar-accent-foreground: 0 0% 96%;
-    --sidebar-border: 264 30% 22%;
-    --sidebar-ring: 264 85% 65%;
+    --sidebar-background: 166 32% 8%;
+    --sidebar-foreground: 163 47% 97%;
+    --sidebar-primary: 169 69% 61%;
+    --sidebar-primary-foreground: 165 60% 4%;
+    --sidebar-accent: 166 30% 11%;
+    --sidebar-accent-foreground: 163 47% 97%;
+    --sidebar-border: 165 23% 21%;
+    --sidebar-ring: 169 69% 61%;
   }
 
   .dark {
-    --background: 248 47% 6%;
-    --foreground: 0 0% 96%;
-    --card: 252 28% 11%;
-    --card-foreground: 0 0% 96%;
-    --popover: 252 28% 11%;
-    --popover-foreground: 0 0% 96%;
-    --primary: 264 85% 65%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 252 22% 14%;
-    --secondary-foreground: 0 0% 96%;
-    --muted: 252 18% 18%;
-    --muted-foreground: 252 15% 70%;
-    --accent: 48 100% 60%;
-    --accent-foreground: 248 47% 6%;
+    --background: 168 42% 5%;
+    --foreground: 163 47% 97%;
+    --card: 166 32% 8%;
+    --card-foreground: 163 47% 97%;
+    --popover: 166 32% 8%;
+    --popover-foreground: 163 47% 97%;
+    --primary: 169 69% 61%;
+    --primary-foreground: 165 60% 4%;
+    --brand-secondary: 225 100% 77%;
+    --secondary: 166 30% 11%;
+    --secondary-foreground: 163 47% 97%;
+    --muted: 166 24% 14%;
+    --muted-foreground: 163 15% 73%;
+    --accent: 42 100% 70%;
+    --accent-foreground: 165 60% 4%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
-    --border: 264 30% 22%;
-    --input: 252 28% 11%;
-    --ring: 264 85% 65%;
+    --border: 165 23% 21%;
+    --input: 166 30% 11%;
+    --ring: 169 69% 61%;
+  }
+}
+
+@keyframes logo-marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.logo-marquee-track {
+  animation: logo-marquee-scroll 26s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-marquee-track {
+    animation: none;
   }
 }
 
@@ -112,9 +126,9 @@
   body {
     @apply bg-background text-foreground overflow-x-hidden;
     background-image:
-      radial-gradient(circle at 20% 15%, hsl(var(--primary) / 0.10) 0%, transparent 45%),
-      radial-gradient(circle at 80% 85%, hsl(var(--accent) / 0.05) 0%, transparent 50%),
-      radial-gradient(circle at 50% 50%, hsl(248 47% 8%) 0%, hsl(248 47% 4%) 100%);
+      radial-gradient(circle at 20% 15%, hsl(var(--primary) / 0.08) 0%, transparent 45%),
+      radial-gradient(circle at 80% 85%, hsl(var(--brand-secondary) / 0.06) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, hsl(166 32% 7%) 0%, hsl(var(--background)) 100%);
     background-attachment: fixed;
     transition: all 0.3s ease;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
@@ -157,6 +171,11 @@
     transition: border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
   }
 
+  .retro {
+    font-family: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+    font-synthesis: none;
+  }
+
   .neon-glow {
     box-shadow: var(--shadow-neon);
   }
@@ -172,16 +191,9 @@
     background-clip: text;
   }
 
-  .grid-pattern {
-    background-image:
-      linear-gradient(hsl(var(--grid-color) / 0.4) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(var(--grid-color) / 0.4) 1px, transparent 1px);
-    background-size: 32px 32px;
-  }
-
-  /* Aave-style glass card */
+  /* Onchain Terminal glass card */
   .hl-card {
-    background: linear-gradient(180deg, hsl(var(--card) / 0.85), hsl(var(--card) / 0.6));
+    background: linear-gradient(180deg, hsl(var(--card) / 0.94), hsl(var(--card) / 0.72));
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid hsl(var(--border));
@@ -198,7 +210,7 @@
   .gm-button {
     position: relative;
     overflow: hidden;
-    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(264 85% 55%) 100%);
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(169 65% 49%) 100%);
     border: 1px solid hsl(var(--primary));
     border-radius: var(--radius);
     color: hsl(var(--primary-foreground));
@@ -239,7 +251,7 @@
   }
 
   .accent-button:hover {
-    background: hsl(48 100% 65%);
+    background: hsl(42 100% 75%);
     transform: translateY(-1px);
     box-shadow: 0 0 18px hsl(var(--accent) / 0.45);
   }

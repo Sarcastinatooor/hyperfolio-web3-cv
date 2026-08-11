@@ -26,9 +26,9 @@ export const BlogGrid = ({ posts = [], isLoading = false, error }: BlogGridProps
 
   if (isLoading) {
     return (
-      <Card className="bg-gray-900 border-gray-800">
+      <Card className="bg-card border-border">
         <CardContent className="flex items-center justify-center py-12">
-          <div className="flex items-center gap-3 text-gray-400">
+          <div className="flex items-center gap-3 text-muted-foreground">
             <Loader2 className="w-6 h-6 animate-spin" />
             <span>Loading blog posts...</span>
           </div>
@@ -50,8 +50,8 @@ export const BlogGrid = ({ posts = [], isLoading = false, error }: BlogGridProps
 
   if (posts.length === 0) {
     return (
-      <Card className="bg-gray-900 border-gray-800">
-        <CardContent className="flex flex-col items-center justify-center py-12 text-gray-400">
+      <Card className="bg-card border-border">
+        <CardContent className="flex flex-col items-center justify-center py-12 text-muted-foreground">
           <FileText className="w-12 h-12 mb-4 opacity-50" />
           <p className="text-lg font-medium mb-2">No blog posts found</p>
           <p className="text-sm text-center">
@@ -76,7 +76,7 @@ export const BlogGrid = ({ posts = [], isLoading = false, error }: BlogGridProps
         <div className="flex justify-center">
           <button
             onClick={loadMore}
-            className="px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white hover:bg-gray-700 hover:border-blue-400/50 transition-all duration-300 flex items-center gap-2"
+            className="px-6 py-3 bg-secondary border border-border rounded-lg text-foreground hover:bg-secondary/80 hover:border-primary/50 transition-all duration-300 flex items-center gap-2"
           >
             <FileText className="w-4 h-4" />
             Load More Posts ({posts.length - displayedPosts.length} remaining)
@@ -85,7 +85,7 @@ export const BlogGrid = ({ posts = [], isLoading = false, error }: BlogGridProps
       )}
 
       {/* Posts summary */}
-      <div className="flex items-center justify-center gap-4 text-sm text-gray-400 border-t border-gray-800 pt-4">
+      <div className="flex items-center justify-center gap-4 text-sm text-muted-foreground border-t border-border pt-4">
         <div className="flex items-center gap-2">
           <Calendar className="w-4 h-4" />
           <span>Showing {displayedPosts.length} of {posts.length} posts</span>
