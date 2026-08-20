@@ -16,6 +16,7 @@ import { BackgroundGridBeam } from './ui/background-grid-beam';
 import { Timeline, type TimelineEntry } from './ui/timeline';
 import { ProjectShowcase, type ShowcaseProject } from './ui/project-showcase';
 import { LogoMarquee } from './ui/logo-marquee';
+import { SelectedWriting } from './SelectedWriting';
 
 const Portfolio = () => {
   const navigate = useNavigate();
@@ -524,6 +525,10 @@ const Portfolio = () => {
 
           <div id="work" className="mb-12 scroll-mt-24">
             <ProjectShowcase projects={showcaseProjects} />
+          </div>
+
+          <div id="writing" className="mb-12 scroll-mt-24">
+            <SelectedWriting />
           </div>
 
           {/* KOLs Section */}

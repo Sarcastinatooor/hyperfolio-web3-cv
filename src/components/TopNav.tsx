@@ -6,6 +6,7 @@ const navItems = [
   { id: "about", label: "About" },
   { id: "experience", label: "Career" },
   { id: "work", label: "Work" },
+  { id: "writing", label: "Writing" },
   { id: "network", label: "Network" },
   { id: "analytics", label: "X data" },
   { id: "reputation", label: "Signals" },
