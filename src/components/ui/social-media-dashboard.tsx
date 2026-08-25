@@ -175,7 +175,7 @@ function StatCard({ icon, label, value, trend }: StatCardProps) {
         </div>
         <div className="flex items-end justify-between">
           <span className="text-xl font-bold text-foreground">{value}</span>
-          <span className={`text-xs font-medium ${isPositive ? 'text-green-600' : 'text-red-600'}`}>
+          <span className={`text-xs font-medium ${isPositive ? 'text-neon-green' : 'text-neon-red'}`}>
             {trend}
           </span>
         </div>

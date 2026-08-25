@@ -1,40 +1,20 @@
-import { useState, useEffect, useRef } from "react";
-import { ChevronDown, Wallet } from "lucide-react";
-import { useChainTheme, chainThemes, type ChainType } from "@/contexts/ChainThemeContext";
+import { Wallet } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { ScrollSpy } from "@/components/ui/scroll-spy";
 
-const CHAIN_ORDER: ChainType[] = ["hyperliquid", "arbitrum", "base", "berachain"];
-
-const CHAIN_TICKER: Record<ChainType, string> = {
-  hyperliquid: "HL",
-  arbitrum: "ARB",
-  base: "BASE",
-  berachain: "BERA",
-};
-
-const CHAIN_DOT_COLOR: Record<ChainType, string> = {
-  hyperliquid: "#50d2c1",
-  arbitrum: "#28a0f0",
-  base: "#0052ff",
-  berachain: "#ffe173",
-};
+const navItems = [
+  { id: "about", label: "About" },
+  { id: "experience", label: "Career" },
+  { id: "work", label: "Work" },
+  { id: "writing", label: "Writing" },
+  { id: "network", label: "Network" },
+  { id: "analytics", label: "X data" },
+  { id: "reputation", label: "Signals" },
+  { id: "tools", label: "Tools" },
+];
 
 const TopNav = () => {
-  const { currentChain, setChain } = useChainTheme();
   const { toast } = useToast();
-  const [chainOpen, setChainOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-
-  // Close dropdown on outside click
-  useEffect(() => {
-    const handler = (e: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-        setChainOpen(false);
-      }
-    };
-    if (chainOpen) document.addEventListener("mousedown", handler);
-    return () => document.removeEventListener("mousedown", handler);
-  }, [chainOpen]);
 
   const handleConnect = () => {
     toast({
@@ -45,60 +25,11 @@ const TopNav = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full backdrop-blur-xl bg-background/70 border-b border-border">
-      <div className="container mx-auto px-4 h-14 flex items-center justify-end gap-3">
-        {/* Right: chain selector + counter + connect */}
-        <div className="flex items-center gap-2">
-          <div className="relative" ref={dropdownRef}>
-            <button
-              type="button"
-              onClick={() => setChainOpen((o) => !o)}
-              className="hl-card flex items-center gap-2 px-3 py-1.5 text-xs font-mono uppercase tracking-wider hover:border-primary/60 transition-colors"
-            >
-              <span
-                className="inline-block w-2 h-2 rounded-full"
-                style={{ backgroundColor: CHAIN_DOT_COLOR[currentChain] }}
-              />
-              <span className="hidden sm:inline">
-                {chainThemes[currentChain].name}
-              </span>
-              <span className="sm:hidden">{CHAIN_TICKER[currentChain]}</span>
-              <ChevronDown className="w-3 h-3" />
-            </button>
-
-            {chainOpen && (
-              <div className="absolute right-0 top-full mt-2 min-w-[200px] hl-card p-1 shadow-xl z-50">
-                {CHAIN_ORDER.map((chain) => {
-                  const active = currentChain === chain;
-                  return (
-                    <button
-                      key={chain}
-                      type="button"
-                      onClick={() => {
-                        setChain(chain);
-                        setChainOpen(false);
-                      }}
-                      className={`w-full text-left flex items-center gap-2 px-3 py-2 rounded text-xs font-mono uppercase tracking-wider transition-colors ${
-                        active
-                          ? "bg-primary/15 text-foreground"
-                          : "text-muted-foreground hover:bg-primary/10 hover:text-foreground"
-                      }`}
-                    >
-                      <span
-                        className="inline-block w-2 h-2 rounded-full"
-                        style={{ backgroundColor: CHAIN_DOT_COLOR[chain] }}
-                      />
-                      <span>{chainThemes[chain].name}</span>
-                      {active && (
-                        <span className="ml-auto text-primary">●</span>
-                      )}
-                    </button>
-                  );
-                })}
-              </div>
-            )}
-          </div>
-
+    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/70 backdrop-blur-xl">
+      <div className="container mx-auto flex min-h-16 items-center gap-3 px-4 py-2">
+        <ScrollSpy items={navItems} className="min-w-0 flex-1 md:flex-none" />
+        {/* Right: counter + connect */}
+        <div className="ml-auto flex shrink-0 items-center gap-2">
           {/* Visit counter chip (placeholder until wallet connect is live) */}
           <div className="hidden md:flex chip chip-accent items-center gap-1.5">
             <span className="live-dot" />

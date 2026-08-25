@@ -16,8 +16,8 @@ export const TweetEmbed: React.FC<TweetEmbedProps> = ({ tweetUrl, className = ""
 
   if (!tweetId) {
     return (
-      <div className={`border border-gray-700 rounded-lg p-4 bg-gray-800/50 ${className}`}>
-        <p className="text-gray-400 text-sm">Invalid tweet URL</p>
+      <div className={`border border-border rounded-lg p-4 bg-secondary/60 ${className}`}>
+        <p className="text-muted-foreground text-sm">Invalid tweet URL</p>
       </div>
     );
   }
@@ -26,7 +26,7 @@ export const TweetEmbed: React.FC<TweetEmbedProps> = ({ tweetUrl, className = ""
   const embedUrl = `https://platform.twitter.com/embed/Tweet.html?id=${tweetId}&theme=dark&dnt=true&omit_script=true`;
 
   return (
-    <div className={`border border-gray-700 rounded-lg overflow-hidden bg-gray-900/50 ${className}`}>
+    <div className={`border border-border rounded-lg overflow-hidden bg-card/70 ${className}`}>
       <iframe
         src={embedUrl}
         width="100%"

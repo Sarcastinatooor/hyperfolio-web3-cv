@@ -1,12 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { Badge } from './ui/badge';
-import { TweetEmbed } from './ui/tweet-embed';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
-import { ScrollArea } from './ui/scroll-area';
-import { ChartContainer, ChartTooltip, ChartTooltipContent } from './ui/chart';
-import { LineChart, Line, BarChart, Bar, XAxis, YAxis, ResponsiveContainer, CartesianGrid } from 'recharts';
-import { TrendingUp, Users, Heart, MessageCircle, Eye, Calendar } from 'lucide-react';
+import { useCallback, useEffect, useMemo, useState } from "react";
+import {
+  Eye,
+  Heart,
+  MessageCircle,
+  MousePointer2,
+  Sparkles,
+  TrendingUp,
+  Users,
+} from "lucide-react";
+
+import { Card, CardContent } from "@/components/ui/card";
+import { AdvancedStats } from "@/components/ui/advanced-stats";
+import { BlurRevealDeck, type DeckItem } from "@/components/ui/blur-reveal-deck";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { TweetEmbed } from "@/components/ui/tweet-embed";
 
 interface AnalyticsData {
   date: string;
@@ -23,264 +30,327 @@ interface AnalyticsData {
   createPost: number;
 }
 
-const PersonalTwitterAnalytics: React.FC = () => {
+interface PostAnalytics {
+  id: string;
+  date: string;
+  text: string;
+  link: string;
+  impressions: number;
+  likes: number;
+  engagements: number;
+  bookmarks: number;
+  replies: number;
+  reposts: number;
+  profileVisits: number;
+}
+
+const parseCsv = (text: string) => {
+  const rows: string[][] = [];
+  let row: string[] = [];
+  let value = "";
+  let quoted = false;
+
+  for (let index = 0; index < text.length; index += 1) {
+    const char = text[index];
+    const next = text[index + 1];
+
+    if (char === '"' && quoted && next === '"') {
+      value += '"';
+      index += 1;
+    } else if (char === '"') {
+      quoted = !quoted;
+    } else if (char === "," && !quoted) {
+      row.push(value.trim());
+      value = "";
+    } else if ((char === "\n" || char === "\r") && !quoted) {
+      if (char === "\r" && next === "\n") index += 1;
+      row.push(value.trim());
+      if (row.some(Boolean)) rows.push(row);
+      row = [];
+      value = "";
+    } else {
+      value += char;
+    }
+  }
+
+  if (value || row.length) {
+    row.push(value.trim());
+    if (row.some(Boolean)) rows.push(row);
+  }
+
+  return rows;
+};
+
+const toNumber = (value?: string) => Number.parseInt(value || "0", 10) || 0;
+
+const compactNumber = new Intl.NumberFormat("en-US", {
+  notation: "compact",
+  maximumFractionDigits: 1,
+});
+
+const fullNumber = new Intl.NumberFormat("en-US");
+
+const PersonalTwitterAnalytics = () => {
   const [analyticsData, setAnalyticsData] = useState<AnalyticsData[]>([]);
+  const [posts, setPosts] = useState<PostAnalytics[]>([]);
+  const [selectedPostId, setSelectedPostId] = useState<string>("");
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   useEffect(() => {
-    const loadCSVData = async () => {
+    const loadAnalytics = async () => {
       try {
-        const response = await fetch('/twitter_analytics.csv');
-        const text = await response.text();
-        
-        // Parse CSV - simple split approach
-        const lines = text.trim().split('\n');
-        const data: AnalyticsData[] = [];
-        
-        // Parse data rows (skip header)
-        for (let i = 1; i < lines.length; i++) {
-          const line = lines[i].trim();
-          if (!line) continue;
-          
-          // Split by comma, handling quoted values
-          const values: string[] = [];
-          let currentValue = '';
-          let insideQuotes = false;
-          
-          for (let j = 0; j < line.length; j++) {
-            const char = line[j];
-            
-            if (char === '"') {
-              insideQuotes = !insideQuotes;
-            } else if (char === ',' && !insideQuotes) {
-              values.push(currentValue.trim());
-              currentValue = '';
-            } else {
-              currentValue += char;
-            }
-          }
-          values.push(currentValue.trim());
-          
-          if (values.length >= 12) {
-            data.push({
-              date: values[0],
-              impressions: parseInt(values[1]) || 0,
-              likes: parseInt(values[2]) || 0,
-              engagements: parseInt(values[3]) || 0,
-              bookmarks: parseInt(values[4]) || 0,
-              shares: parseInt(values[5]) || 0,
-              newFollows: parseInt(values[6]) || 0,
-              unfollows: parseInt(values[7]) || 0,
-              replies: parseInt(values[8]) || 0,
-              reposts: parseInt(values[9]) || 0,
-              profileVisits: parseInt(values[10]) || 0,
-              createPost: parseInt(values[11]) || 0,
-            });
-          }
+        const [overviewResponse, contentResponse] = await Promise.all([
+          fetch("/twitter_analytics.csv"),
+          fetch("/twitter_content_analytics.csv"),
+        ]);
+
+        if (!overviewResponse.ok || !contentResponse.ok) {
+          throw new Error("The X analytics export could not be loaded.");
         }
-        
-        // Get last 4 weeks (28 days)
-        const last4Weeks = data.slice(0, 28).reverse();
-        setAnalyticsData(last4Weeks);
-        setLoading(false);
-      } catch (error) {
-        console.error('Error loading CSV:', error);
+
+        const [overviewText, contentText] = await Promise.all([
+          overviewResponse.text(),
+          contentResponse.text(),
+        ]);
+
+        const overviewRows = parseCsv(overviewText).slice(1);
+        const nextAnalytics = overviewRows
+          .filter((values) => values.length >= 12)
+          .map((values) => ({
+            date: values[0],
+            impressions: toNumber(values[1]),
+            likes: toNumber(values[2]),
+            engagements: toNumber(values[3]),
+            bookmarks: toNumber(values[4]),
+            shares: toNumber(values[5]),
+            newFollows: toNumber(values[6]),
+            unfollows: toNumber(values[7]),
+            replies: toNumber(values[8]),
+            reposts: toNumber(values[9]),
+            profileVisits: toNumber(values[10]),
+            createPost: toNumber(values[11]),
+          }))
+          .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+
+        const contentRows = parseCsv(contentText).slice(1);
+        const topPosts = contentRows
+          .filter((values) => values.length >= 13 && values[3]?.includes("/status/"))
+          .map((values) => ({
+            id: values[0],
+            date: values[1],
+            text: values[2],
+            link: values[3],
+            impressions: toNumber(values[4]),
+            likes: toNumber(values[5]),
+            engagements: toNumber(values[6]),
+            bookmarks: toNumber(values[7]),
+            replies: toNumber(values[10]),
+            reposts: toNumber(values[11]),
+            profileVisits: toNumber(values[12]),
+          }))
+          .filter((post) => post.impressions > 0)
+          .sort((a, b) => b.impressions - a.impressions)
+          .slice(0, 6);
+
+        setAnalyticsData(nextAnalytics);
+        setPosts(topPosts);
+        setSelectedPostId(topPosts[0]?.id || "");
+      } catch (loadError) {
+        setError(loadError instanceof Error ? loadError.message : "Analytics unavailable.");
+      } finally {
         setLoading(false);
       }
     };
 
-    loadCSVData();
+    loadAnalytics();
   }, []);
 
-  // Calculate totals
-  const totals = analyticsData.reduce((acc, day) => ({
-    impressions: acc.impressions + day.impressions,
-    likes: acc.likes + day.likes,
-    engagements: acc.engagements + day.engagements,
-    newFollows: acc.newFollows + day.newFollows,
-    profileVisits: acc.profileVisits + day.profileVisits,
-    replies: acc.replies + day.replies,
-    reposts: acc.reposts + day.reposts,
-    createPost: acc.createPost + day.createPost,
-  }), {
-    impressions: 0,
-    likes: 0,
-    engagements: 0,
-    newFollows: 0,
-    profileVisits: 0,
-    replies: 0,
-    reposts: 0,
-    createPost: 0,
-  });
+  const totals = useMemo(
+    () =>
+      analyticsData.reduce(
+        (acc, day) => ({
+          impressions: acc.impressions + day.impressions,
+          likes: acc.likes + day.likes,
+          engagements: acc.engagements + day.engagements,
+          newFollows: acc.newFollows + day.newFollows,
+          profileVisits: acc.profileVisits + day.profileVisits,
+          replies: acc.replies + day.replies,
+          reposts: acc.reposts + day.reposts,
+          createPost: acc.createPost + day.createPost,
+        }),
+        {
+          impressions: 0,
+          likes: 0,
+          engagements: 0,
+          newFollows: 0,
+          profileVisits: 0,
+          replies: 0,
+          reposts: 0,
+          createPost: 0,
+        },
+      ),
+    [analyticsData],
+  );
 
-  const engagementRate = totals.impressions > 0 
-    ? ((totals.engagements / totals.impressions) * 100).toFixed(2)
-    : '0.00';
+  const chartData = useMemo(
+    () =>
+      analyticsData.map((day) => ({
+        date: new Date(day.date).toLocaleDateString("en-US", {
+          month: "short",
+          day: "numeric",
+        }),
+        impressions: day.impressions,
+        engagements: day.engagements,
+      })),
+    [analyticsData],
+  );
 
-  // Top performing tweets from @Not_A_De_Gen
-  const topTweets = [
-    'https://x.com/Not_A_De_Gen/status/1980200790644953487',
-    'https://x.com/Not_A_De_Gen/status/1979597816960876580',
-    'https://x.com/Not_A_De_Gen/status/1979121316616704202',
-    'https://x.com/Not_A_De_Gen/status/1978028884378460391',
-    'https://x.com/Not_A_De_Gen/status/1977707525999894604',
-    'https://x.com/Not_A_De_Gen/status/1977666183529713666',
-    'https://x.com/Not_A_De_Gen/status/1977296799694979104',
-    'https://x.com/Not_A_De_Gen/status/1976637330871226390',
-    'https://x.com/Not_A_De_Gen/status/1976553246022930831',
-    'https://x.com/Not_A_De_Gen/status/1975832907471098024',
-    'https://x.com/Not_A_De_Gen/status/1975550688316039516',
-    'https://x.com/Not_A_De_Gen/status/1975498027629519010',
-    'https://x.com/Not_A_De_Gen/status/1975294657858097244',
-    'https://x.com/Not_A_De_Gen/status/1974188594651652350',
-    'https://x.com/Not_A_De_Gen/status/1974038994603110860',
-    'https://x.com/Not_A_De_Gen/status/1973393010311438410',
-    'https://x.com/Not_A_De_Gen/status/1973130333567455432',
-    'https://x.com/Not_A_De_Gen/status/1973114786947760618',
-    'https://x.com/Not_A_De_Gen/status/1972564808118468829',
-    'https://x.com/Not_A_De_Gen/status/1971920337446097317',
-    'https://x.com/Not_A_De_Gen/status/1971548144006463875',
-    'https://x.com/Not_A_De_Gen/status/1970961077782409724',
-    'https://x.com/Not_A_De_Gen/status/1969390872979783796',
-    'https://x.com/Not_A_De_Gen/status/1968645277583065509',
-    'https://x.com/Not_A_De_Gen/status/1968605874374541325',
-    'https://x.com/Not_A_De_Gen/status/1968357099815186513',
-    'https://x.com/Not_A_De_Gen/status/1967563312616403022',
-    'https://x.com/Not_A_De_Gen/status/1967216357864591374',
-    'https://x.com/Not_A_De_Gen/status/1966487123516924286',
-    'https://x.com/Not_A_De_Gen/status/1966428465366028783',
-    'https://x.com/Not_A_De_Gen/status/1966239519948357752',
-    'https://x.com/Not_A_De_Gen/status/1965131867797311621',
-    'https://x.com/Not_A_De_Gen/status/1965043312303423559',
-    'https://x.com/Not_A_De_Gen/status/1962479703291531583',
-    'https://x.com/Not_A_De_Gen/status/1961004125715673581',
-    'https://x.com/Not_A_De_Gen/status/1960099979969667136',
+  const selectedPost = posts.find((post) => post.id === selectedPostId) || posts[0];
+  const latestDate = analyticsData.at(-1)?.date;
+  const earliestDate = analyticsData[0]?.date;
+  const engagementRate = totals.impressions
+    ? (totals.engagements / totals.impressions) * 100
+    : 0;
+
+  const metricCards = [
+    {
+      label: "Impressions",
+      value: compactNumber.format(totals.impressions),
+      detail: `${totals.createPost} original posts`,
+      icon: Eye,
+    },
+    {
+      label: "Engagement rate",
+      value: `${engagementRate.toFixed(2)}%`,
+      detail: `${compactNumber.format(totals.engagements)} engagements`,
+      icon: TrendingUp,
+    },
+    {
+      label: "Profile visits",
+      value: compactNumber.format(totals.profileVisits),
+      detail: "High-intent profile actions",
+      icon: MousePointer2,
+    },
+    {
+      label: "New follows",
+      value: fullNumber.format(totals.newFollows),
+      detail: "Gross follows in period",
+      icon: Users,
+    },
+    {
+      label: "Likes",
+      value: compactNumber.format(totals.likes),
+      detail: `${totals.createPost ? (totals.likes / totals.createPost).toFixed(1) : "0"} per original post`,
+      icon: Heart,
+    },
+    {
+      label: "Replies",
+      value: fullNumber.format(totals.replies),
+      detail: "Conversation depth",
+      icon: MessageCircle,
+    },
   ];
 
-  // Format chart data
-  const chartData = analyticsData.map(d => ({
-    date: new Date(d.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
-    impressions: d.impressions,
-    engagements: d.engagements,
-    likes: d.likes,
-    profileVisits: d.profileVisits,
-  }));
+  const deckItems: DeckItem[] = useMemo(
+    () =>
+      posts.map((post, index) => ({
+        id: post.id,
+        eyebrow: `Rank ${String(index + 1).padStart(2, "0")} · ${new Date(post.date).toLocaleDateString("en-US", { month: "short", day: "numeric" })}`,
+        title: `${compactNumber.format(post.impressions)} impressions`,
+        text: post.text,
+        href: post.link,
+        stats: [
+          { label: "Engagements", value: fullNumber.format(post.engagements) },
+          { label: "Likes", value: fullNumber.format(post.likes) },
+          { label: "Replies", value: fullNumber.format(post.replies) },
+        ],
+      })),
+    [posts],
+  );
 
-  const chartConfig = {
-    impressions: {
-      label: "Impressions",
-      color: "hsl(var(--primary))",
-    },
-    engagements: {
-      label: "Engagements",
-      color: "hsl(var(--secondary))",
-    },
-    likes: {
-      label: "Likes",
-      color: "hsl(var(--accent))",
-    },
-  };
+  const handleDeckChange = useCallback((item: DeckItem) => {
+    setSelectedPostId(item.id);
+  }, []);
 
   if (loading) {
     return (
-      <Card className="bg-gray-900 border-gray-800">
-        <CardContent className="p-6">
-          <div className="text-center text-gray-400">Loading analytics...</div>
+      <Card className="border-border bg-card/80">
+        <CardContent className="p-8 text-center font-mono text-sm text-muted-foreground">
+          Loading verified X analytics…
+        </CardContent>
+      </Card>
+    );
+  }
+
+  if (error || !analyticsData.length) {
+    return (
+      <Card className="border-border bg-card/80">
+        <CardContent className="p-8 text-center text-sm text-muted-foreground">
+          {error || "No X analytics are available yet."}
         </CardContent>
       </Card>
     );
   }
 
   return (
-    <div className="space-y-6">
-      <Tabs defaultValue="analytics" className="w-full">
-        <TabsList className="grid w-full grid-cols-2 bg-gray-800">
-          <TabsTrigger value="analytics">Analytics</TabsTrigger>
-          <TabsTrigger value="posts">Best Posts</TabsTrigger>
-        </TabsList>
-
-        <TabsContent value="analytics" className="space-y-6">
-          {/* Key Metrics Overview */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <Card className="bg-gray-800 border-gray-700">
-              <CardContent className="p-6">
-                <div className="flex items-center gap-2">
-                  <Eye className="h-4 w-4 text-primary" />
-                  <span className="text-sm font-medium text-muted-foreground">Total Impressions</span>
-                </div>
-                <div className="text-2xl font-bold text-foreground mt-2">
-                  {(totals.impressions / 1000).toFixed(1)}K
-                </div>
-                <p className="text-xs text-muted-foreground mt-1">
-                  {totals.createPost} posts created
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-gray-800 border-gray-700">
-              <CardContent className="p-6">
-                <div className="flex items-center gap-2">
-                  <TrendingUp className="h-4 w-4 text-green-500" />
-                  <span className="text-sm font-medium text-muted-foreground">Engagement Rate</span>
-                </div>
-                <div className="text-2xl font-bold text-foreground mt-2">
-                  {engagementRate}%
-                </div>
-                <p className="text-xs text-muted-foreground mt-1">
-                  {totals.engagements} total engagements
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-gray-800 border-gray-700">
-              <CardContent className="p-6">
-                <div className="flex items-center gap-2">
-                  <Users className="h-4 w-4 text-primary" />
-                  <span className="text-sm font-medium text-muted-foreground">New Followers</span>
-                </div>
-                <div className="text-2xl font-bold text-foreground mt-2">
-                  {totals.newFollows}
-                </div>
-                <p className="text-xs text-muted-foreground mt-1">
-                  Last 4 weeks
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-gray-800 border-gray-700">
-              <CardContent className="p-6">
-                <div className="flex items-center gap-2">
-                  <Heart className="h-4 w-4 text-red-500" />
-                  <span className="text-sm font-medium text-muted-foreground">Total Likes</span>
-                </div>
-                <div className="text-2xl font-bold text-foreground mt-2">
-                  {totals.likes}
-                </div>
-                <p className="text-xs text-muted-foreground mt-1">
-                  Avg {(totals.likes / totals.createPost).toFixed(1)} per post
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </TabsContent>
-
-        <TabsContent value="posts" className="space-y-6">
-          <div className="flex flex-col gap-2">
-            <h2 className="text-2xl font-bold text-foreground">Twitter Timeline</h2>
-            <p className="text-muted-foreground">Recent posts from @Not_A_De_Gen</p>
-          </div>
-
-          <ScrollArea className="h-[800px] w-full rounded-lg border border-border bg-card p-4">
-            <div className="space-y-6 max-w-2xl mx-auto">
-              {topTweets.map((tweetUrl, index) => (
-                <div key={index} className="w-full">
-                  <TweetEmbed tweetUrl={tweetUrl} className="w-full" />
-                </div>
-              ))}
+    <div className="space-y-5">
+      <div className="hl-card overflow-hidden">
+        <div className="flex flex-col gap-4 border-b border-border p-5 md:flex-row md:items-end md:justify-between">
+          <div>
+            <div className="mb-2 flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.2em] text-primary">
+              <Sparkles className="h-3.5 w-3.5" />
+              Verified performance feed
             </div>
-          </ScrollArea>
-        </TabsContent>
-      </Tabs>
+            <h3 className="text-xl font-semibold text-foreground md:text-2xl">
+              90 days in the X trenches
+            </h3>
+            <p className="mt-1 max-w-2xl text-sm text-muted-foreground">
+              Reach, conversation quality, and the posts that generated the strongest signal.
+            </p>
+          </div>
+          <div className="rounded-md border border-border bg-secondary/60 px-3 py-2 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+            {earliestDate && latestDate
+              ? `${new Date(earliestDate).toLocaleDateString("en-US", { month: "short", day: "numeric" })} — ${new Date(latestDate).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}`
+              : "Latest export"}
+          </div>
+        </div>
+
+        <Tabs defaultValue="analytics" className="w-full">
+          <div className="border-b border-border px-5 py-3">
+            <TabsList className="grid h-10 w-full max-w-sm grid-cols-2 bg-secondary/70">
+              <TabsTrigger value="analytics">Performance</TabsTrigger>
+              <TabsTrigger value="posts">Best posts</TabsTrigger>
+            </TabsList>
+          </div>
+
+          <TabsContent value="analytics" className="m-0 p-5">
+            <AdvancedStats metrics={metricCards} chartData={chartData} />
+          </TabsContent>
+
+          <TabsContent value="posts" className="m-0 p-5">
+            <div className="grid gap-8 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:items-start">
+              <div>
+                <div className="mb-5">
+                  <div className="text-sm font-semibold text-foreground">Blur-reveal performance deck</div>
+                  <div className="text-xs text-muted-foreground">Swipe or use the controls. Ranked by verified impressions.</div>
+                </div>
+                <BlurRevealDeck items={deckItems} onActiveChange={handleDeckChange} />
+              </div>
+
+              {selectedPost && (
+                <div className="min-w-0 rounded-xl border border-border bg-secondary/35 p-3 md:p-4 lg:sticky lg:top-24">
+                  <TweetEmbed tweetUrl={selectedPost.link} className="w-full" />
+                </div>
+              )}
+            </div>
+          </TabsContent>
+        </Tabs>
+      </div>
+
+      <p className="text-center font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
+        Source: authenticated X Analytics export · updated through {latestDate ? new Date(latestDate).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }) : "the latest export"}
+      </p>
     </div>
   );
 };

@@ -71,6 +71,8 @@ export default {
 				'neon-cyan': 'hsl(var(--neon-cyan))',
 				'neon-green': 'hsl(var(--neon-green))',
 				'neon-purple': 'hsl(var(--neon-purple))',
+				'brand-secondary': 'hsl(var(--brand-secondary))',
+				'elevated': 'hsl(var(--secondary))',
 				'neon-red': 'hsl(var(--neon-red))',
 				'cta-orange': 'hsl(var(--cta-orange))',
 				'dark-surface': 'hsl(var(--dark-surface))',
