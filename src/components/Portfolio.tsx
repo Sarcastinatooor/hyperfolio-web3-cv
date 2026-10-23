@@ -14,7 +14,6 @@ import TopNav from './TopNav';
 import KolMarquee from './KolMarquee';
 import { BackgroundGridBeam } from './ui/background-grid-beam';
 import { Timeline, type TimelineEntry } from './ui/timeline';
-import { ProjectShowcase, type ShowcaseProject } from './ui/project-showcase';
 import { LogoMarquee } from './ui/logo-marquee';
 import { SelectedWriting } from './SelectedWriting';
 
@@ -376,15 +375,6 @@ const Portfolio = () => {
     ),
   }));
 
-  const showcaseProjects: ShowcaseProject[] = experiences.slice(0, 6).map((exp, index) => ({
-    id: exp.company,
-    title: CAREER_OUTCOMES[index]?.badge ?? exp.company,
-    meta: `${exp.company} · ${exp.period}`,
-    description: exp.keyResponsibilities[0],
-    image: experienceLogos[index],
-    onSelect: () => navigate(`/experience/${index}`),
-  }));
-
   // (Legacy) Transform experiences into BentoItems — kept temporarily for reference
   const experienceBentoItems: BentoItem[] = experiences.map((exp, index) => ({
     title: exp.company,
@@ -521,10 +511,6 @@ const Portfolio = () => {
             </div>
 
             <Timeline data={careerTimelineData} />
-          </div>
-
-          <div id="work" className="mb-12 scroll-mt-24">
-            <ProjectShowcase projects={showcaseProjects} />
           </div>
 
           <div id="writing" className="mb-12 scroll-mt-24">
