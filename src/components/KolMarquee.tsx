@@ -14,6 +14,7 @@ const KOLS: KolEntry[] = [
   { name: "Jiraiya", handle: "JiraiyaReal", avatar: "/lovable-uploads/40b20f90-97ad-44d4-90f2-5e9b20fc5975.png", tag: "Trader" },
   { name: "Diego DeFi", handle: "diego_defai", avatar: "/lovable-uploads/d3dbd676-f2e4-4ee1-bdc7-1fa7302a5233.png", tag: "DeFi" },
   { name: "DeFi Dad", handle: "DeFi_Dad", avatar: "/lovable-uploads/1029abfc-9383-4127-8cee-ffc0e04bb3d3.png", tag: "OG" },
+  { name: "Stephen | DeFi Dojo", handle: "phtevenstrong", avatar: "https://unavatar.io/x/phtevenstrong", tag: "DeFi" },
   { name: "LST Maximalist", handle: "lstmaximalist", avatar: "/lovable-uploads/c8e25253-4839-4e4a-8907-94d6f00c6476.png", tag: "LST" },
   { name: "Aibra", handle: "aibra", avatar: "/lovable-uploads/20d8a89f-cf6b-46dd-aa6a-9d75aadd582f.png", tag: "Trader" },
   { name: "Barthazian", handle: "Barthazian", avatar: "/lovable-uploads/9ce3ba73-4a14-4b18-b043-2cfe9a9f2556.png", tag: "DeFi" },
